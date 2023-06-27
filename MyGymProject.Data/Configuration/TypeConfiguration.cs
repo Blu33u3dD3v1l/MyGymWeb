@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MyGymProject.Data.Configuration
+namespace MyGymWeb.Data.Configuration
 {
     internal class TypeConfiguration : IEntityTypeConfiguration<Models.Type>
     {

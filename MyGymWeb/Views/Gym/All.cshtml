@@ -1,0 +1,37 @@
+﻿@model IEnumerable<GymsViewModel>
+
+@{
+    ViewBag.Title = "Welcome to Our Gyms";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+
+
+<div class="text-center row">
+    @foreach (var gym in Model)
+    {
+        <div class="card col-7" style="width: 20rem;">
+            <img class="card-img-top" style="width: 19rem;"
+                 src="@gym.ImageUrl" alt="Gym Image" >
+            <div class="card-body">
+
+                <h5 class="card-title mt-1">@gym.Name</h5>
+                <p class="mb-0">Type: @gym.Type</p>
+            </div>
+            @if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                <a class="input-group-sm" asp-route-gymId="@gym.Id" asp-controller="Gym" asp-action="Details" method="post">
+                    <input type="submit" value="Details" class="btn btn-success mb-3 p-2" />
+                </a>
+                <form class="input-group-sm" asp-route-gymId="@gym.Id" asp-controller="Gym" asp-action="PickGym" method="post">
+                    <input type="submit" value="Pick Gym" class="btn btn-success mb-3 p-2" />
+                </form>
+
+            }
+        </div>
+    }
+</div>
+

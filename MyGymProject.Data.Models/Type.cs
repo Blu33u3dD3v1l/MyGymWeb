@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static MyGymProject.Common.Constants.ValidationConstants.TypeNameValidations;
+using static MyGymWeb.Common.Constants.ValidationConstants.TypeNameValidations;
 
-namespace MyGymProject.Data.Models
+namespace MyGymWeb.Data.Models
 {
     public class Type
     {

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MyGymProject.Data.Migrations
+namespace MyGymWeb.Data.Migrations
 {
-    public partial class InitialSeed : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

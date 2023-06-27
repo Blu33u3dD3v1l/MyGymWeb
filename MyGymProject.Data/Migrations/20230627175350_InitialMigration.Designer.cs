@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyGymProject.Data;
+using MyGymWeb.Data;
 
 #nullable disable
 
-namespace MyGymProject.Data.Migrations
+namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    [Migration("20230627155341_InitialSeed")]
-    partial class InitialSeed
+    [Migration("20230627175350_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,7 +226,7 @@ namespace MyGymProject.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.All", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.All", b =>
                 {
                     b.Property<int>("GymId")
                         .HasColumnType("int");
@@ -251,7 +251,7 @@ namespace MyGymProject.Data.Migrations
                     b.ToTable("All");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.BoxingTrainer", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.BoxingTrainer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -358,7 +358,7 @@ namespace MyGymProject.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.ClassicTrainer", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.ClassicTrainer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -465,7 +465,7 @@ namespace MyGymProject.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.GroupEvents", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.GroupEvents", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -503,7 +503,7 @@ namespace MyGymProject.Data.Migrations
                     b.ToTable("GroupEvents");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.GroupTrainerName", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.GroupTrainerName", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -538,7 +538,7 @@ namespace MyGymProject.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.Gym", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.Gym", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -604,7 +604,7 @@ namespace MyGymProject.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.GymUser", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.GymUser", b =>
                 {
                     b.Property<int>("GymId")
                         .HasColumnType("int");
@@ -619,7 +619,7 @@ namespace MyGymProject.Data.Migrations
                     b.ToTable("GymsUsers");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.Product", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -706,7 +706,7 @@ namespace MyGymProject.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.Type", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.Type", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -797,27 +797,27 @@ namespace MyGymProject.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.All", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.All", b =>
                 {
-                    b.HasOne("MyGymProject.Data.Models.BoxingTrainer", "BoxingTrainer")
+                    b.HasOne("MyGymWeb.Data.Models.BoxingTrainer", "BoxingTrainer")
                         .WithMany("All")
                         .HasForeignKey("BoxingTrainerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyGymProject.Data.Models.ClassicTrainer", "ClassicTrainer")
+                    b.HasOne("MyGymWeb.Data.Models.ClassicTrainer", "ClassicTrainer")
                         .WithMany("All")
                         .HasForeignKey("ClassicTrainerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyGymProject.Data.Models.Gym", "Gym")
+                    b.HasOne("MyGymWeb.Data.Models.Gym", "Gym")
                         .WithMany("GymBoxingTrainers")
                         .HasForeignKey("GymId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyGymProject.Data.Models.Product", "Product")
+                    b.HasOne("MyGymWeb.Data.Models.Product", "Product")
                         .WithMany("All")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -832,35 +832,35 @@ namespace MyGymProject.Data.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.BoxingTrainer", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.BoxingTrainer", b =>
                 {
-                    b.HasOne("MyGymProject.Data.Models.Gym", null)
+                    b.HasOne("MyGymWeb.Data.Models.Gym", null)
                         .WithMany("BoxingTrainers")
                         .HasForeignKey("GymId");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.ClassicTrainer", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.ClassicTrainer", b =>
                 {
-                    b.HasOne("MyGymProject.Data.Models.Gym", null)
+                    b.HasOne("MyGymWeb.Data.Models.Gym", null)
                         .WithMany("ClassicTrainers")
                         .HasForeignKey("GymId");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.GroupEvents", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.GroupEvents", b =>
                 {
-                    b.HasOne("MyGymProject.Data.Models.GroupTrainerName", "GroupTrainerNames")
+                    b.HasOne("MyGymWeb.Data.Models.GroupTrainerName", "GroupTrainerNames")
                         .WithMany()
                         .HasForeignKey("GroupTrainerNamesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyGymProject.Data.Models.Gym", "Gym")
+                    b.HasOne("MyGymWeb.Data.Models.Gym", "Gym")
                         .WithMany("GroupsEvents")
                         .HasForeignKey("GymId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyGymProject.Data.Models.Type", "Type")
+                    b.HasOne("MyGymWeb.Data.Models.Type", "Type")
                         .WithMany("GroupsEvents")
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -873,9 +873,9 @@ namespace MyGymProject.Data.Migrations
                     b.Navigation("Type");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.GymUser", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.GymUser", b =>
                 {
-                    b.HasOne("MyGymProject.Data.Models.Gym", "Gym")
+                    b.HasOne("MyGymWeb.Data.Models.Gym", "Gym")
                         .WithMany("GymsUsers")
                         .HasForeignKey("GymId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -892,24 +892,24 @@ namespace MyGymProject.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.Product", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.Product", b =>
                 {
-                    b.HasOne("MyGymProject.Data.Models.Gym", null)
+                    b.HasOne("MyGymWeb.Data.Models.Gym", null)
                         .WithMany("Products")
                         .HasForeignKey("GymId");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.BoxingTrainer", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.BoxingTrainer", b =>
                 {
                     b.Navigation("All");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.ClassicTrainer", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.ClassicTrainer", b =>
                 {
                     b.Navigation("All");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.Gym", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.Gym", b =>
                 {
                     b.Navigation("BoxingTrainers");
 
@@ -924,12 +924,12 @@ namespace MyGymProject.Data.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.Product", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.Product", b =>
                 {
                     b.Navigation("All");
                 });
 
-            modelBuilder.Entity("MyGymProject.Data.Models.Type", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.Type", b =>
                 {
                     b.Navigation("GroupsEvents");
                 });

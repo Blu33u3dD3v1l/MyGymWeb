@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static MyGymProject.Common.Constants.ValidationConstants.GroupTrainerNamesValidation;
+using static MyGymWeb.Common.Constants.ValidationConstants.GroupTrainerNamesValidation;
 
-namespace MyGymProject.Data.Models
+namespace MyGymWeb.Data.Models
 {
     public class GroupTrainerName
     {

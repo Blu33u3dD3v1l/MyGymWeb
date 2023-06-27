@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static MyGymProject.Common.Constants.ValidationConstants.GymValidations;
+using static MyGymWeb.Common.Constants.ValidationConstants.GymValidations;
 
-namespace MyGymProject.Data.Models
+namespace MyGymWeb.Data.Models
 {
     public class Gym
     {

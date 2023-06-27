@@ -1,4 +1,4 @@
-﻿namespace MyGymProject.Data.Models
+﻿namespace MyGymWeb.Data.Models
 {
     public class All
     {

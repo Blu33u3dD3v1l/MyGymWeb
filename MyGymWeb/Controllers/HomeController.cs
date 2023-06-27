@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyGymWeb.Models;
+using MyGymWeb.Models.Home;
 using System.Diagnostics;
 
 namespace MyGymWeb.Controllers

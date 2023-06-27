@@ -1,10 +1,10 @@
-﻿using MyGymProject.Data.Configuration;
-using MyGymProject.Data.Models;
+﻿using MyGymWeb.Data.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MyGymWeb.Data.Models;
 
-namespace MyGymProject.Data
+namespace MyGymWeb.Data
 {
     public class MyGymProjectDbContext : IdentityDbContext<IdentityUser>
     {
@@ -25,7 +25,7 @@ namespace MyGymProject.Data
 
         public DbSet<Product> Products { get; set; } = null!;
 
-        public DbSet<Models.Type> Types { get; set; } = null!;
+        public DbSet<MyGymWeb.Data.Models.Type> Types { get; set; } = null!;
 
         public DbSet<GymUser> GymsUsers { get; set; } = null!;
 

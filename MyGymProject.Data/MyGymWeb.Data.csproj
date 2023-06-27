@@ -20,8 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyGymProject.Common\MyGymProject.Common.csproj" />
-    <ProjectReference Include="..\MyGymProject.Data.Models\MyGymProject.Data.Models.csproj" />
+    <ProjectReference Include="..\MyGymProject.Data.Models\MyGymWeb.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>
