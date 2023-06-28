@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230628124029_DataRefactoring")]
+    partial class DataRefactoring
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -523,10 +525,6 @@ namespace MyGymWeb.Data.Migrations
                     b.Property<decimal>("PricePerHour")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("GymId");
@@ -542,8 +540,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "You dream.",
                             Name = "Arnold Schwarzenegger",
                             Practis = "Practis Above 20 Years",
-                            PricePerHour = 200m,
-                            Type = "CLassicTrainer"
+                            PricePerHour = 200m
                         },
                         new
                         {
@@ -553,8 +550,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "Don't be afraid of failure.",
                             Name = "Chris Bumstead",
                             Practis = "Practis Above 10 Years",
-                            PricePerHour = 160m,
-                            Type = "CLassicTrainer"
+                            PricePerHour = 160m
                         },
                         new
                         {
@@ -564,8 +560,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "If something stands between you and your success, move it.",
                             Name = "Jay Cutler",
                             Practis = "Practis Above 20 Years",
-                            PricePerHour = 180m,
-                            Type = "CLassicTrainer"
+                            PricePerHour = 180m
                         },
                         new
                         {
@@ -575,8 +570,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "You must not only have competitiveness but ability, regardless of the circumstance you face, to never quit.",
                             Name = "Dorian Yates",
                             Practis = "Practis Above 20 Years",
-                            PricePerHour = 170m,
-                            Type = "CLassicTrainer"
+                            PricePerHour = 170m
                         },
                         new
                         {
@@ -586,8 +580,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "Just Do It.",
                             Name = "Ronnie Coleman",
                             Practis = "Practis Above 20 Years",
-                            PricePerHour = 200m,
-                            Type = "CLassicTrainer"
+                            PricePerHour = 200m
                         },
                         new
                         {
@@ -597,8 +590,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "Go For It",
                             Name = "Melina Keltaniemi ",
                             Practis = "Practis Above 2 Years",
-                            PricePerHour = 100m,
-                            Type = "CLassicTrainer"
+                            PricePerHour = 100m
                         },
                         new
                         {
@@ -608,8 +600,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "Lets smash some Heads!",
                             Name = "Mike Tyson",
                             Practis = "Above 20 Years!",
-                            PricePerHour = 200m,
-                            Type = "BoxingTrainer"
+                            PricePerHour = 200m
                         },
                         new
                         {
@@ -619,8 +610,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "Don't be afraid of failure.",
                             Name = "Muhammad Ali",
                             Practis = "Practis Above 10 Years",
-                            PricePerHour = 160m,
-                            Type = "BoxingTrainer"
+                            PricePerHour = 160m
                         },
                         new
                         {
@@ -630,8 +620,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "If something stands between you and your success, move it.",
                             Name = "Evander Holyfield",
                             Practis = "Practis Above 20 Years",
-                            PricePerHour = 180m,
-                            Type = "BoxingTrainer"
+                            PricePerHour = 180m
                         },
                         new
                         {
@@ -641,8 +630,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "You must not only have competitiveness but ability, regardless of the circumstance you face, to never quit.",
                             Name = "Anthony Joshua",
                             Practis = "Practis Above 10 Years",
-                            PricePerHour = 150m,
-                            Type = "BoxingTrainer"
+                            PricePerHour = 150m
                         },
                         new
                         {
@@ -652,8 +640,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "Just Do It.",
                             Name = "Wladimir Klitschko",
                             Practis = "Above 20 Years",
-                            PricePerHour = 200m,
-                            Type = "BoxingTrainer"
+                            PricePerHour = 200m
                         },
                         new
                         {
@@ -663,41 +650,7 @@ namespace MyGymWeb.Data.Migrations
                             Moto = "Go For It",
                             Name = "Hanna Gabriels",
                             Practis = "Practis Above 7 Years",
-                            PricePerHour = 100m,
-                            Type = "BoxingTrainer"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ImageUrl = "https://fitnessgalore.net/wp-content/uploads/2013/12/kristenmcgeetodaynew-1050x1575.jpg",
-                            Info = "Kristin McGee is an American fitness instructor and yogi who launched Peloton Interactive yoga classes.She is a mom of three boys and a fitness influencer who advocates for the benefits of movement.",
-                            Moto = "Go For It",
-                            Name = "Kristin McGee",
-                            Practis = "Practis Above 7 Years",
-                            PricePerHour = 100m,
-                            Type = "YogaTrainer"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ImageUrl = "https://res.cloudinary.com/fleetnation/image/private/c_fit,w_1120/fl_no_overflow,g_south,l_text:style_gothic2:%C2%A9%20Imagerisium,o_20,y_10/fl_no_overflow,g_center,l_watermark4,o_25,y_50/v1471521586/qub6twmyw0o4b2gjdxyf.jpg",
-                            Info = "Eugenie Peterson, known as Indra Devi, is a pioneering teacher of yoga as exercise, and an early disciple of the father of modern yoga.She went to India in her twenties, becoming a film star there and acquiring the stage name Indra Devi. She was the first woman to study under the yoga guru Krishnamacharya at the Mysore Palace, alongside B.K.S Iyengar and K. Pattabhi Jois who went on to become yoga gurus. Moving to China, she taught the first yoga classes in that country at Madame Chiang Kai-shek's house.",
-                            Moto = "Dream",
-                            Name = "Indra Devi",
-                            Practis = "Practis Above 7 Years",
-                            PricePerHour = 100m,
-                            Type = "YogaTrainer"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ImageUrl = "https://i0.wp.com/ideamensch.com/wp-content/uploads/2021/02/brett-larkin-e1613526716771.jpg",
-                            Info = "Brett Larkin is a Youtube Star, Pilates and Yoga instructor who rose to fame for her at-home, beginner-friendly vinyasa flow and meditation courses she posts to her YouTube channel, where she has amassed a following of 500,000 subscribers. The focus of her channel is to make yoga more accessible to everyone. She also offers a yoga instructor training online course. Born on July 24, , Brett Larkin hails from , United States. As in 2023, Brett Larkin's age is N/A. Check below for more deets about Brett Larkin. This page will put a light upon the Brett Larkin bio, wiki, age, birthday, family details, affairs, controversies, caste, height, weight, rumors, lesser-known facts, and more",
-                            Moto = "Dream",
-                            Name = "Bett Larkin",
-                            Practis = "Practis Above 5 Years",
-                            PricePerHour = 100m,
-                            Type = "PilatesTrainer"
+                            PricePerHour = 100m
                         });
                 });
 

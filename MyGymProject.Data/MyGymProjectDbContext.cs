@@ -13,9 +13,7 @@ namespace MyGymWeb.Data
         {
         }
 
-        public DbSet<BoxingTrainer> BoxingTrainers { get; set; } = null!;
-
-        public DbSet<ClassicTrainer> ClassicTrainers { get; set; } = null!;
+        public DbSet<Trainer> Trainers { get; set; } = null!;
 
         public DbSet<GroupEvents> GroupEvents { get; set; } = null!;
 
@@ -25,7 +23,7 @@ namespace MyGymWeb.Data
 
         public DbSet<Product> Products { get; set; } = null!;
 
-        public DbSet<MyGymWeb.Data.Models.Type> Types { get; set; } = null!;
+        public DbSet<Models.Type> Types { get; set; } = null!;
 
         public DbSet<GymUser> GymsUsers { get; set; } = null!;
 
@@ -36,15 +34,15 @@ namespace MyGymWeb.Data
         {
 
             builder.Entity<All>()
-                .HasKey(x => new { x.GymId, x.BoxingTrainerId, x.ClassicTrainerId, x.ProductId, });
+                .HasKey(x => new { x.GymId, x.TrainerId, x.ProductId, });
             base.OnModelCreating(builder);
 
             builder.Entity<GymUser>()
                .HasKey(x => new { x.GymId, x.UserId });
             base.OnModelCreating(builder);
 
-            builder.ApplyConfiguration(new BoxingTrainerConfiguration());
-            builder.ApplyConfiguration(new ClassicTrainerConfiguration());
+           
+            builder.ApplyConfiguration(new TrainerConfiguration());
             builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
             builder.ApplyConfiguration(new GymConfiguration());
             builder.ApplyConfiguration(new ProductConfiguration());

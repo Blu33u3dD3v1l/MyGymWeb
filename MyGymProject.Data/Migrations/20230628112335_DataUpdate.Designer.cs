@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230628112335_DataUpdate")]
+    partial class DataUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,19 +231,238 @@ namespace MyGymWeb.Data.Migrations
                     b.Property<int>("GymId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TrainerId")
+                    b.Property<int>("BoxingTrainerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ClassicTrainerId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.HasKey("GymId", "TrainerId", "ProductId");
+                    b.HasKey("GymId", "BoxingTrainerId", "ClassicTrainerId", "ProductId");
+
+                    b.HasIndex("BoxingTrainerId");
+
+                    b.HasIndex("ClassicTrainerId");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("TrainerId");
-
                     b.ToTable("All");
+                });
+
+            modelBuilder.Entity("MyGymWeb.Data.Models.BoxingTrainer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("GymId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Info")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Moto")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Practis")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("PricePerHour")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GymId");
+
+                    b.ToTable("BoxingTrainers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ImageUrl = "https://www.si.com/.image/t_share/MTY4MTk2NjgxODE2NjE0ODEz/1988-mike-tyson-nlc_05245jpg.jpg",
+                            Info = "Michael Gerard Tyson is an American former professional boxer whos Nicknam is Iron Mike and Kid Dynamite in his early career, and later known as The Baddest Man on the Planet,Tyson is considered to be one of the greatest heavyweight boxers of all time.He reigned as the undisputed world heavyweight champion. Tyson won his first 19 professional fights by knockout, 12 of them in the first round. Claiming his first belt at 20 years, four months, and 22 days old, Tyson holds the record as the youngest boxer ever to win a heavyweight title.He was the first heavyweight boxer to simultaneously hold the WBA, WBC and IBF titles, as well as the only heavyweight to unify them in succession. The following year, Tyson became the lineal champion when he knocked out Michael Spinks in 91 seconds of the first round. Tyson was knocked out by underdog Buster Douglas in one of the biggest upsets in boxing history.",
+                            Moto = "Lets smash some Heads!",
+                            Name = "Mike Tyson",
+                            Practis = "Above 20 Years!",
+                            PricePerHour = 200m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ImageUrl = "https://cdn.britannica.com/86/192386-050-D7F3126D/Muhammad-Ali-American.jpg",
+                            Info = "Muhammad Ali born Cassius Marcellus Clay Jr. was an American professional boxer and activist. Nicknamed The Greatest, he is regarded as one of the most significant sports figures of the 20th century and is often regarded as the greatest heavyweight boxer of all time.",
+                            Moto = "Don't be afraid of failure.",
+                            Name = "Muhammad Ali",
+                            Practis = "Practis Above 10 Years",
+                            PricePerHour = 160m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ImageUrl = "https://media.gettyimages.com/id/702973/photo/bodybuilder-jay-cutler-poses-during-the-arnold-classic-2002-february-23-2002-in-columbus-oh.jpg?s=612x612&w=gi&k=20&c=P2UjdlRcstD8CETCQYByU_2yqjx3KWnJ4xInKXIt3T0=",
+                            Info = "Evander Holyfield is an American former professional boxer. He reigned as the undisputed champion at cruiserweight in the late 1980s and at heavyweight, and is the only boxer in history to win the undisputed championship in two weight classes in the three belt era. Nicknamed the Real Deal, Holyfield is the only four-time world heavyweight champion, having held the unified WBA, WBC, and IBF titles.",
+                            Moto = "If something stands between you and your success, move it.",
+                            Name = "Evander Holyfield",
+                            Practis = "Practis Above 20 Years",
+                            PricePerHour = 180m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/2b/Anthony_Joshua_2017.png",
+                            Info = "Anthony Oluwafemi Olaseni Joshua OBE (born 15 October 1989) is a British professional boxer. He is a two-time former unified world heavyweight champion, having held the WBA (Super), IBF, WBO, and IBO titles twice between 2016 and 2021. At regional level, he held the British and Commonwealth heavyweight titles from 2015 to 2016.",
+                            Moto = "You must not only have competitiveness but ability, regardless of the circumstance you face, to never quit.",
+                            Name = "Anthony Joshua",
+                            Practis = "Practis Above 10 Years",
+                            PricePerHour = 150m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ImageUrl = "https://img.championat.com/s/735x490/news/big/v/s/45-letnij-vladimir-klichko-pokazal-vpechatlyayuschuyu-fizicheskuyu-formu-foto_1621247259885661893.jpg",
+                            Info = "Wladimir Klitschko (born 25 March 1976) is a Ukrainian former professional boxer who competed from 1996 to 2017. He held the world heavyweight championship twice, including the unified WBA (Super), IBF, WBO, IBO, and Ring magazine titles. A strategic and intelligent boxer, Klitschko is considered to be one of the best heavyweight champions of all time.He was known for his exceptional knockout power, using a strong jab, straight right hand and left hook, quick hand speed, as well as great footwork and mobility, unusual for boxers of his size",
+                            Moto = "Just Do It.",
+                            Name = "Wladimir Klitschko",
+                            Practis = "Above 20 Years",
+                            PricePerHour = 200m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ImageUrl = "https://latinbox2011.files.wordpress.com/2018/12/img_5540.jpg",
+                            Info = "Hanna Gabriels Valle (born 14 January 1983) is a Costa Rican professional boxer. She has held world championships in four weight classes, having held the WBA female light middleweight title since 2016; the WBA female light heavyweight and WBC female heavyweight titles since April 2021;[nb 1] the WBO welterweight title in 2009; and the WBO light middleweight title twice between 2010 and 2018. As of September 2020, she is ranked as the world's third best active light middleweight by The Ring and BoxRec",
+                            Moto = "Go For It",
+                            Name = "Hanna Gabriels",
+                            Practis = "Practis Above 7 Years",
+                            PricePerHour = 100m
+                        });
+                });
+
+            modelBuilder.Entity("MyGymWeb.Data.Models.ClassicTrainer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("GymId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Info")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Moto")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Practis")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("PricePerHour")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GymId");
+
+                    b.ToTable("ClassicTrainers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ImageUrl = "https://i.ebayimg.com/images/g/yDkAAOSw7vtjPegV/s-l960.webp",
+                            Info = "Arnold Schwarzenegger is known as the Styrian Oak, or Austrian Oak, in the bodybuilding world, where he dwarfed his competition. He won his first amateur Mr. Universe title 20 years old. After moving to California he compete bigger events in the United States, he won three more Mr. Universe titles and then the professional Mr. Olympia title six years in a row before retiring.",
+                            Moto = "You dream.",
+                            Name = "Arnold Schwarzenegger",
+                            Practis = "Practis Above 20 Years",
+                            PricePerHour = 200m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ImageUrl = "https://www.muscleandfitness.com/wp-content/uploads/2019/10/Chris-Bumstead-Shirtless-Hands-On-Hip.jpg?quality=86&strip=all",
+                            Info = "Christopher Adam Bumstead is a Canadian IFBB professional bodybuilder. Bumstead is the reigning Mr. Olympia Classic Physique winner, having won the competition in 2019, 2020, 2021 and 2022. He was also the runner-up in 2017 and 2018.",
+                            Moto = "Don't be afraid of failure.",
+                            Name = "Chris Bumstead",
+                            Practis = "Practis Above 10 Years",
+                            PricePerHour = 160m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ImageUrl = "https://media.gettyimages.com/id/702973/photo/bodybuilder-jay-cutler-poses-during-the-arnold-classic-2002-february-23-2002-in-columbus-oh.jpg?s=612x612&w=gi&k=20&c=P2UjdlRcstD8CETCQYByU_2yqjx3KWnJ4xInKXIt3T0=",
+                            Info = "Jason Isaac Cutler is an American retired professional bodybuilder.An IFBB pro, Cutler is a four-time Mr. Olympia winner and a six-time runner-up, the most in history.",
+                            Moto = "If something stands between you and your success, move it.",
+                            Name = "Jay Cutler",
+                            Practis = "Practis Above 20 Years",
+                            PricePerHour = 180m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ImageUrl = "https://generationiron.com/wp-content/uploads/2022/01/CED5711A-1DAC-45E1-BB83-5462E5A04652.jpeg",
+                            Info = "Dorian Andrew Mientjez Yates is an English retired professional bodybuilder. He won the Mr. Olympia title six consecutive times and has the fifth-highest number of Mr. Olympia wins in history, ranking behind Ronnie Coleman",
+                            Moto = "You must not only have competitiveness but ability, regardless of the circumstance you face, to never quit.",
+                            Name = "Dorian Yates",
+                            Practis = "Practis Above 20 Years",
+                            PricePerHour = 170m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ImageUrl = "https://yt3.googleusercontent.com/d8GULtiQ88hMBsHr-4P2p4_30wj-QjaZaR_f97WZxDc3EP_vm5wfx-xSazlSEWhilab0Pq7HgA=s900-c-k-c0x00ffffff-no-rj",
+                            Info = "Ronald \"Ronnie\" Dean Coleman is an American retired professional bodybuilder. The winner of the Mr. Olympia title for eight consecutive years, he is widely regarded as either the greatest bodybuilder of all time or one of the two greatest along with Arnold Schwarzenegger and as the most dominant bodybuilding physique ever to grace the stage.Winner of 26 IFBB professional titles, he is also renowned for his combination of size and conditioning, dominant body-parts and extremely heavy workouts, making him the strongest bodybuilder of all time.",
+                            Moto = "Just Do It.",
+                            Name = "Ronnie Coleman",
+                            Practis = "Practis Above 20 Years",
+                            PricePerHour = 200m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ImageUrl = "https://musclehealthmag.com/wp-content/uploads/2019/05/melina5-819x1024.jpg",
+                            Info = "A young female bodybuilder at only 22 years old, Melina Keltaniemi is just beginning her career, but she’s off to a flying start!This ripped female bodybuilder came 2nd place in the 2018 Nordic Elite Pro, 3rd place at IFBB Elite Pro Russia, and was 2018's IFBB Elite Pro World Champion. Her drive to become the most successful female bodybuilder is clear, and her mindset matches that of a champion competitor.",
+                            Moto = "Go For It",
+                            Name = "Melina Keltaniemi ",
+                            Practis = "Practis Above 2 Years",
+                            PricePerHour = 100m
+                        });
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.GroupEvents", b =>
@@ -485,222 +706,6 @@ namespace MyGymWeb.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyGymWeb.Data.Models.Trainer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("GymId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Info")
-                        .IsRequired()
-                        .HasMaxLength(5000)
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Moto")
-                        .IsRequired()
-                        .HasMaxLength(5000)
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Practis")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<decimal>("PricePerHour")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GymId");
-
-                    b.ToTable("Trainers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ImageUrl = "https://i.ebayimg.com/images/g/yDkAAOSw7vtjPegV/s-l960.webp",
-                            Info = "Arnold Schwarzenegger is known as the Styrian Oak, or Austrian Oak, in the bodybuilding world, where he dwarfed his competition. He won his first amateur Mr. Universe title 20 years old. After moving to California he compete bigger events in the United States, he won three more Mr. Universe titles and then the professional Mr. Olympia title six years in a row before retiring.",
-                            Moto = "You dream.",
-                            Name = "Arnold Schwarzenegger",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 200m,
-                            Type = "CLassicTrainer"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ImageUrl = "https://www.muscleandfitness.com/wp-content/uploads/2019/10/Chris-Bumstead-Shirtless-Hands-On-Hip.jpg?quality=86&strip=all",
-                            Info = "Christopher Adam Bumstead is a Canadian IFBB professional bodybuilder. Bumstead is the reigning Mr. Olympia Classic Physique winner, having won the competition in 2019, 2020, 2021 and 2022. He was also the runner-up in 2017 and 2018.",
-                            Moto = "Don't be afraid of failure.",
-                            Name = "Chris Bumstead",
-                            Practis = "Practis Above 10 Years",
-                            PricePerHour = 160m,
-                            Type = "CLassicTrainer"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ImageUrl = "https://media.gettyimages.com/id/702973/photo/bodybuilder-jay-cutler-poses-during-the-arnold-classic-2002-february-23-2002-in-columbus-oh.jpg?s=612x612&w=gi&k=20&c=P2UjdlRcstD8CETCQYByU_2yqjx3KWnJ4xInKXIt3T0=",
-                            Info = "Jason Isaac Cutler is an American retired professional bodybuilder.An IFBB pro, Cutler is a four-time Mr. Olympia winner and a six-time runner-up, the most in history.",
-                            Moto = "If something stands between you and your success, move it.",
-                            Name = "Jay Cutler",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 180m,
-                            Type = "CLassicTrainer"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ImageUrl = "https://generationiron.com/wp-content/uploads/2022/01/CED5711A-1DAC-45E1-BB83-5462E5A04652.jpeg",
-                            Info = "Dorian Andrew Mientjez Yates is an English retired professional bodybuilder. He won the Mr. Olympia title six consecutive times and has the fifth-highest number of Mr. Olympia wins in history, ranking behind Ronnie Coleman",
-                            Moto = "You must not only have competitiveness but ability, regardless of the circumstance you face, to never quit.",
-                            Name = "Dorian Yates",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 170m,
-                            Type = "CLassicTrainer"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ImageUrl = "https://yt3.googleusercontent.com/d8GULtiQ88hMBsHr-4P2p4_30wj-QjaZaR_f97WZxDc3EP_vm5wfx-xSazlSEWhilab0Pq7HgA=s900-c-k-c0x00ffffff-no-rj",
-                            Info = "Ronald \"Ronnie\" Dean Coleman is an American retired professional bodybuilder. The winner of the Mr. Olympia title for eight consecutive years, he is widely regarded as either the greatest bodybuilder of all time or one of the two greatest along with Arnold Schwarzenegger and as the most dominant bodybuilding physique ever to grace the stage.Winner of 26 IFBB professional titles, he is also renowned for his combination of size and conditioning, dominant body-parts and extremely heavy workouts, making him the strongest bodybuilder of all time.",
-                            Moto = "Just Do It.",
-                            Name = "Ronnie Coleman",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 200m,
-                            Type = "CLassicTrainer"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ImageUrl = "https://musclehealthmag.com/wp-content/uploads/2019/05/melina5-819x1024.jpg",
-                            Info = "A young female bodybuilder at only 22 years old, Melina Keltaniemi is just beginning her career, but she’s off to a flying start!This ripped female bodybuilder came 2nd place in the 2018 Nordic Elite Pro, 3rd place at IFBB Elite Pro Russia, and was 2018's IFBB Elite Pro World Champion. Her drive to become the most successful female bodybuilder is clear, and her mindset matches that of a champion competitor.",
-                            Moto = "Go For It",
-                            Name = "Melina Keltaniemi ",
-                            Practis = "Practis Above 2 Years",
-                            PricePerHour = 100m,
-                            Type = "CLassicTrainer"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ImageUrl = "https://www.si.com/.image/t_share/MTY4MTk2NjgxODE2NjE0ODEz/1988-mike-tyson-nlc_05245jpg.jpg",
-                            Info = "Michael Gerard Tyson is an American former professional boxer whos Nicknam is Iron Mike and Kid Dynamite in his early career, and later known as The Baddest Man on the Planet,Tyson is considered to be one of the greatest heavyweight boxers of all time.He reigned as the undisputed world heavyweight champion. Tyson won his first 19 professional fights by knockout, 12 of them in the first round. Claiming his first belt at 20 years, four months, and 22 days old, Tyson holds the record as the youngest boxer ever to win a heavyweight title.He was the first heavyweight boxer to simultaneously hold the WBA, WBC and IBF titles, as well as the only heavyweight to unify them in succession. The following year, Tyson became the lineal champion when he knocked out Michael Spinks in 91 seconds of the first round. Tyson was knocked out by underdog Buster Douglas in one of the biggest upsets in boxing history.",
-                            Moto = "Lets smash some Heads!",
-                            Name = "Mike Tyson",
-                            Practis = "Above 20 Years!",
-                            PricePerHour = 200m,
-                            Type = "BoxingTrainer"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ImageUrl = "https://cdn.britannica.com/86/192386-050-D7F3126D/Muhammad-Ali-American.jpg",
-                            Info = "Muhammad Ali born Cassius Marcellus Clay Jr. was an American professional boxer and activist. Nicknamed The Greatest, he is regarded as one of the most significant sports figures of the 20th century and is often regarded as the greatest heavyweight boxer of all time.",
-                            Moto = "Don't be afraid of failure.",
-                            Name = "Muhammad Ali",
-                            Practis = "Practis Above 10 Years",
-                            PricePerHour = 160m,
-                            Type = "BoxingTrainer"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ImageUrl = "https://media.gettyimages.com/id/702973/photo/bodybuilder-jay-cutler-poses-during-the-arnold-classic-2002-february-23-2002-in-columbus-oh.jpg?s=612x612&w=gi&k=20&c=P2UjdlRcstD8CETCQYByU_2yqjx3KWnJ4xInKXIt3T0=",
-                            Info = "Evander Holyfield is an American former professional boxer. He reigned as the undisputed champion at cruiserweight in the late 1980s and at heavyweight, and is the only boxer in history to win the undisputed championship in two weight classes in the three belt era. Nicknamed the Real Deal, Holyfield is the only four-time world heavyweight champion, having held the unified WBA, WBC, and IBF titles.",
-                            Moto = "If something stands between you and your success, move it.",
-                            Name = "Evander Holyfield",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 180m,
-                            Type = "BoxingTrainer"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/2b/Anthony_Joshua_2017.png",
-                            Info = "Anthony Oluwafemi Olaseni Joshua OBE (born 15 October 1989) is a British professional boxer. He is a two-time former unified world heavyweight champion, having held the WBA (Super), IBF, WBO, and IBO titles twice between 2016 and 2021. At regional level, he held the British and Commonwealth heavyweight titles from 2015 to 2016.",
-                            Moto = "You must not only have competitiveness but ability, regardless of the circumstance you face, to never quit.",
-                            Name = "Anthony Joshua",
-                            Practis = "Practis Above 10 Years",
-                            PricePerHour = 150m,
-                            Type = "BoxingTrainer"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ImageUrl = "https://img.championat.com/s/735x490/news/big/v/s/45-letnij-vladimir-klichko-pokazal-vpechatlyayuschuyu-fizicheskuyu-formu-foto_1621247259885661893.jpg",
-                            Info = "Wladimir Klitschko (born 25 March 1976) is a Ukrainian former professional boxer who competed from 1996 to 2017. He held the world heavyweight championship twice, including the unified WBA (Super), IBF, WBO, IBO, and Ring magazine titles. A strategic and intelligent boxer, Klitschko is considered to be one of the best heavyweight champions of all time.He was known for his exceptional knockout power, using a strong jab, straight right hand and left hook, quick hand speed, as well as great footwork and mobility, unusual for boxers of his size",
-                            Moto = "Just Do It.",
-                            Name = "Wladimir Klitschko",
-                            Practis = "Above 20 Years",
-                            PricePerHour = 200m,
-                            Type = "BoxingTrainer"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ImageUrl = "https://latinbox2011.files.wordpress.com/2018/12/img_5540.jpg",
-                            Info = "Hanna Gabriels Valle (born 14 January 1983) is a Costa Rican professional boxer. She has held world championships in four weight classes, having held the WBA female light middleweight title since 2016; the WBA female light heavyweight and WBC female heavyweight titles since April 2021;[nb 1] the WBO welterweight title in 2009; and the WBO light middleweight title twice between 2010 and 2018. As of September 2020, she is ranked as the world's third best active light middleweight by The Ring and BoxRec",
-                            Moto = "Go For It",
-                            Name = "Hanna Gabriels",
-                            Practis = "Practis Above 7 Years",
-                            PricePerHour = 100m,
-                            Type = "BoxingTrainer"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ImageUrl = "https://fitnessgalore.net/wp-content/uploads/2013/12/kristenmcgeetodaynew-1050x1575.jpg",
-                            Info = "Kristin McGee is an American fitness instructor and yogi who launched Peloton Interactive yoga classes.She is a mom of three boys and a fitness influencer who advocates for the benefits of movement.",
-                            Moto = "Go For It",
-                            Name = "Kristin McGee",
-                            Practis = "Practis Above 7 Years",
-                            PricePerHour = 100m,
-                            Type = "YogaTrainer"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ImageUrl = "https://res.cloudinary.com/fleetnation/image/private/c_fit,w_1120/fl_no_overflow,g_south,l_text:style_gothic2:%C2%A9%20Imagerisium,o_20,y_10/fl_no_overflow,g_center,l_watermark4,o_25,y_50/v1471521586/qub6twmyw0o4b2gjdxyf.jpg",
-                            Info = "Eugenie Peterson, known as Indra Devi, is a pioneering teacher of yoga as exercise, and an early disciple of the father of modern yoga.She went to India in her twenties, becoming a film star there and acquiring the stage name Indra Devi. She was the first woman to study under the yoga guru Krishnamacharya at the Mysore Palace, alongside B.K.S Iyengar and K. Pattabhi Jois who went on to become yoga gurus. Moving to China, she taught the first yoga classes in that country at Madame Chiang Kai-shek's house.",
-                            Moto = "Dream",
-                            Name = "Indra Devi",
-                            Practis = "Practis Above 7 Years",
-                            PricePerHour = 100m,
-                            Type = "YogaTrainer"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ImageUrl = "https://i0.wp.com/ideamensch.com/wp-content/uploads/2021/02/brett-larkin-e1613526716771.jpg",
-                            Info = "Brett Larkin is a Youtube Star, Pilates and Yoga instructor who rose to fame for her at-home, beginner-friendly vinyasa flow and meditation courses she posts to her YouTube channel, where she has amassed a following of 500,000 subscribers. The focus of her channel is to make yoga more accessible to everyone. She also offers a yoga instructor training online course. Born on July 24, , Brett Larkin hails from , United States. As in 2023, Brett Larkin's age is N/A. Check below for more deets about Brett Larkin. This page will put a light upon the Brett Larkin bio, wiki, age, birthday, family details, affairs, controversies, caste, height, weight, rumors, lesser-known facts, and more",
-                            Moto = "Dream",
-                            Name = "Bett Larkin",
-                            Practis = "Practis Above 5 Years",
-                            PricePerHour = 100m,
-                            Type = "PilatesTrainer"
-                        });
-                });
-
             modelBuilder.Entity("MyGymWeb.Data.Models.Type", b =>
                 {
                     b.Property<int>("Id")
@@ -794,6 +799,18 @@ namespace MyGymWeb.Data.Migrations
 
             modelBuilder.Entity("MyGymWeb.Data.Models.All", b =>
                 {
+                    b.HasOne("MyGymWeb.Data.Models.BoxingTrainer", "BoxingTrainer")
+                        .WithMany("All")
+                        .HasForeignKey("BoxingTrainerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyGymWeb.Data.Models.ClassicTrainer", "ClassicTrainer")
+                        .WithMany("All")
+                        .HasForeignKey("ClassicTrainerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MyGymWeb.Data.Models.Gym", "Gym")
                         .WithMany("GymBoxingTrainers")
                         .HasForeignKey("GymId")
@@ -806,17 +823,27 @@ namespace MyGymWeb.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyGymWeb.Data.Models.Trainer", "Trainer")
-                        .WithMany("All")
-                        .HasForeignKey("TrainerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("BoxingTrainer");
+
+                    b.Navigation("ClassicTrainer");
 
                     b.Navigation("Gym");
 
                     b.Navigation("Product");
+                });
 
-                    b.Navigation("Trainer");
+            modelBuilder.Entity("MyGymWeb.Data.Models.BoxingTrainer", b =>
+                {
+                    b.HasOne("MyGymWeb.Data.Models.Gym", null)
+                        .WithMany("BoxingTrainers")
+                        .HasForeignKey("GymId");
+                });
+
+            modelBuilder.Entity("MyGymWeb.Data.Models.ClassicTrainer", b =>
+                {
+                    b.HasOne("MyGymWeb.Data.Models.Gym", null)
+                        .WithMany("ClassicTrainers")
+                        .HasForeignKey("GymId");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.GroupEvents", b =>
@@ -872,15 +899,20 @@ namespace MyGymWeb.Data.Migrations
                         .HasForeignKey("GymId");
                 });
 
-            modelBuilder.Entity("MyGymWeb.Data.Models.Trainer", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.BoxingTrainer", b =>
                 {
-                    b.HasOne("MyGymWeb.Data.Models.Gym", null)
-                        .WithMany("ClassicTrainers")
-                        .HasForeignKey("GymId");
+                    b.Navigation("All");
+                });
+
+            modelBuilder.Entity("MyGymWeb.Data.Models.ClassicTrainer", b =>
+                {
+                    b.Navigation("All");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Gym", b =>
                 {
+                    b.Navigation("BoxingTrainers");
+
                     b.Navigation("ClassicTrainers");
 
                     b.Navigation("GroupsEvents");
@@ -893,11 +925,6 @@ namespace MyGymWeb.Data.Migrations
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Product", b =>
-                {
-                    b.Navigation("All");
-                });
-
-            modelBuilder.Entity("MyGymWeb.Data.Models.Trainer", b =>
                 {
                     b.Navigation("All");
                 });

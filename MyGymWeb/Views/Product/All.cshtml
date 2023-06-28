@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProductViewModel>
+
+@{
+    ViewBag.Title = "Our Products";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+
+
+<div class="text-center row">
+    @foreach (var product in Model)
+    {
+        <div class="card col-7" style="width: 20rem;">
+            <img class="card-img-top" style="width: 19rem;"
+                 src="@product.ImageUrl" alt="Product Image" >
+            <div class="card-body">
+
+                <h5 class="card-title mt-1">@product.Name</h5>
+                <p class="mb-0">Mark: @product.Mark</p>
+                <p class="mb-0">Price: @product.Price$</p>
+
+            </div>
+            @if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                <a class="input-group-sm" asp-route-productId="@product.Id" asp-controller="Product" asp-action="Details" method="post">
+                    <input type="submit" value="Details" class="btn btn-success mb-3 p-2" />
+                </a>
+                <form class="input-group-sm" asp-route-productId="@product.Id" asp-controller="Home" asp-action="Index" method="post">
+                    <input type="submit" value="Buy" class="btn btn-success mb-3 p-2" />
+                </form>
+
+            }
+        </div>
+    }
+</div>
+

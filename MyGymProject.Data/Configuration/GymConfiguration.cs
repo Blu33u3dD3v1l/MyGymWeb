@@ -19,7 +19,7 @@ namespace MyGymWeb.Data.Configuration
             {
                 Id = 1,
                 Name = "BoxingGym",
-                ImageUrl = "https://t4.ftcdn.net/jpg/01/81/13/87/360_F_181138772_ihC3eeSfzQCIUBCZTQC9i6odb8ALOjUw.jpg",
+                ImageUrl = "https://e0.pxfuel.com/wallpapers/668/410/desktop-wallpaper-boxing-for-resolution-boxing-boxeo.jpg",
                 Description = "This Gym is most popular and most exclusive  private 1 on 1 and group boxing training facility! All of our classes are taught by world-class coaches in a fun and friendly environment. Hybrid offers both Boxing and Muay Thai Kickboxing semi-private classes which focus on proper boxing technique, kicking technique, shadow boxing drills, 1-on-1 mitt work, bag work, and High Intensity Interval Training so you can get amazing results in the fastest time possible. We cap all classes at 6 participants for a more personal group training experience. Burn over 500 calories per class.",
                 Type = "BigBoxGym"
             },
@@ -27,7 +27,7 @@ namespace MyGymWeb.Data.Configuration
              {
                  Id = 2,
                  Name = "BodyBuilding",
-                 ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnt7cNQqkpsp8fnIxvd5p_isrMs_NLaioC1-2Z5vn7XQ&s",
+                 ImageUrl = "https://rare-gallery.com/uploads/posts/585296-adult-barbell.jpg",
                  Description = "This is not just gyms, nor ordinary spa. This is the unique lifestyle club in our country – places where, together with our club members, we realize our common vision of a meaningful life. What is it? To achieve change, health, personal balance and satisfaction through sport in a convenient and accessible way, saving time and effort, but without compromising the rhythm of the big city. Dynamically and purposefully, not with compulsion or with annoyance, but jointly, with fun and at with own pace. Each one of the clubs has a unique interior design, prepared by Pro Design Interiors.",
                  Type = "ClassicGym"
              },

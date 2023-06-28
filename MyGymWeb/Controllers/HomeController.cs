@@ -1,27 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
+using MyGymWeb.Services.Interface;
 using System.Diagnostics;
 
 namespace MyGymWeb.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IGymService gymService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IGymService _gymService)
         {
-            _logger = logger;
+            gymService = _gymService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            var entity = await gymService.GetAllGymsForIndexAsync();
+            return View(entity);
+        }      
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

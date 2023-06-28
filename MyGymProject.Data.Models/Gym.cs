@@ -8,11 +8,10 @@ namespace MyGymWeb.Data.Models
 
         public Gym()
         {
-            this.ClassicTrainers = new List<ClassicTrainer>();
+            this.ClassicTrainers = new List<Trainer>();
             this.GroupsEvents = new List<GroupEvents>(); 
             this.Products = new List<Product>(); 
-            this.GymBoxingTrainers = new List<All>();
-            this.BoxingTrainers = new List<BoxingTrainer>();
+            this.GymBoxingTrainers = new List<All>();          
             this.GymsUsers = new List<GymUser>();
         }
 
@@ -37,13 +36,11 @@ namespace MyGymWeb.Data.Models
 
         public virtual IList<All> GymBoxingTrainers { get; set; }
 
-        public virtual IList<ClassicTrainer> ClassicTrainers { get; set; }
+        public virtual IList<Trainer> ClassicTrainers { get; set; }
 
         public virtual IList<GroupEvents> GroupsEvents { get; set; }
 
         public virtual IList<Product> Products { get; set; }
-
-        public virtual IList<BoxingTrainer> BoxingTrainers { get; set; }
 
         public virtual IList<GymUser> GymsUsers { get; set; }
 

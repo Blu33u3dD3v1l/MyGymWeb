@@ -7,13 +7,9 @@
 
         public Gym Gym { get; set; } = null!;
 
-        public int BoxingTrainerId { get; set; }
+        public int TrainerId { get; set; }   
 
-        public BoxingTrainer BoxingTrainer { get; set; } = null!;
-
-        public int ClassicTrainerId { get; set; }   
-
-        public ClassicTrainer ClassicTrainer { get; set; } = null!;
+        public Trainer Trainer { get; set; } = null!;
 
         public int ProductId { get; set; }
 
