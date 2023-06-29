@@ -21,8 +21,8 @@
                 @if(this.User.Identity?.IsAuthenticated ?? false)
                 {
                    
-                   <a class="ml-2 btn btn-danger" asp-controller="Gym" asp-action="Pick Gym"
-                   asp-route-gymId="@Model.Id">Pick</a>
+                   <a class="ml-2 btn btn-danger" asp-controller="Trainer" asp-action="TrainerView"
+                   asp-route-gymId="@Model.Id">Choose Trainer</a>
                    
                 }
             </div>

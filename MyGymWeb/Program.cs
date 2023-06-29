@@ -29,6 +29,8 @@ namespace MyGymWeb
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<IGymService, GymService>();
+            builder.Services.AddScoped<ITrainerService, TrainerService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
 
             var app = builder.Build();
 

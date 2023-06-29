@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TrainerViewModel>
+
+@{
+    ViewBag.Title = "Trainers";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+
+
+<div class="text-center row">
+    @foreach (var trainer in Model)
+    {
+        <div class="card col-7" style="width: 20rem;">
+            <img class="card-img-top" style="width: 19rem;"
+                 src="@trainer.ImageUrl" alt="Trainer Image">
+            <div class="card-body">
+
+                <h5 class="card-title mt-1">@trainer.Name</h5>
+            </div>
+            @if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                <a class="input-group-sm" asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
+                    <input type="submit" value="Details" class="btn btn-success mb-3 p-2" />
+                </a>
+                <form class="input-group-sm" asp-route-gymId="@trainer.Id" asp-controller="Trainer" asp-action="PickGym" method="post">
+                    <input type="submit" value="Pick Trainer" class="btn btn-success mb-3 p-2" />
+                </form>
+
+            }
+        </div>
+    }
+</div>

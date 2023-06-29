@@ -47,40 +47,9 @@ namespace MyGymWeb.Services
             return allGyms;
         }
 
-        public async Task<IEnumerable<ProductViewModel>> GetAllProductsAsync()
-        {
-            var products = await context.Products
-               .Select(x => new ProductViewModel()
-               {
-                   Id = x.Id,
-                   Name = x.Name,
-                   ImageUrl = x.ImageUrl,
-                   Description = x.Description,
-                   Mark = x.Mark,
-                   Price = x.Price,
+      
 
-               }).ToListAsync();
-
-            return products;
-        }
-
-        public async Task<IEnumerable<TrainerViewModel>> GetAllTrainersAsync()
-        {
-            var trainers = await context.Trainers
-               .Select(x => new TrainerViewModel()
-               {
-                   Id = x.Id,
-                   Name = x.Name,
-                   ImageUrl = x.ImageUrl,
-                   Info = x.Info,
-                   Moto = x.Moto,
-                   Practis = x.Practis,
-                   PricePerHour = x.PricePerHour,
-
-               }).ToListAsync();
-
-            return trainers;
-        }
+       
 
         public async Task<GymsViewModel> GetDescriptionAsync(int gymId)
         {
@@ -90,6 +59,7 @@ namespace MyGymWeb.Services
             {
                 throw new ArgumentNullException("Id Not Found!");
             }
+
 
             var entity = new GymsViewModel()
             {
@@ -125,28 +95,7 @@ namespace MyGymWeb.Services
             return entity;
         }
 
-        public async Task<TrainerViewModel> GetTrainerDescriptionAsync(int trainerId)
-        {
-            var currId = await context.Trainers.FindAsync(trainerId);
-
-            if (currId == null)
-            {
-                throw new ArgumentNullException("Id Not Found!");
-            }
-
-            var entity = new TrainerViewModel()
-            {
-                Id = currId.Id,
-                Name = currId.Name,
-                ImageUrl= currId.ImageUrl,
-                Moto = currId.Moto,
-                Info = currId.Info,
-                Practis = currId.Practis,
-                PricePerHour = currId.PricePerHour,
-            };
-
-            return entity;
-        }
+       
     }
 }
 

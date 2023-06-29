@@ -5,15 +5,15 @@ namespace MyGymWeb.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IGymService gymService;
+        private readonly IProductService productService;
 
-        public ProductController(IGymService _gymService)
-            => gymService = _gymService;
+        public ProductController(IProductService _productService)
+            => productService = _productService;
 
         [HttpGet]
         public async Task<IActionResult> All()
         {
-            var model = await gymService.GetAllProductsAsync();
+            var model = await productService.GetAllProductsAsync();
 
             return View(model);
         }
@@ -22,7 +22,7 @@ namespace MyGymWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int productId)
         {
-            var model = await gymService.GetProductDescriptionAsync(productId);
+            var model = await productService.GetProductDescriptionAsync(productId);
 
             return View(model);
         }
