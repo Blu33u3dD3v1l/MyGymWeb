@@ -14,7 +14,6 @@ namespace MyGymWeb.Services
             context = _context;
         }
 
-
         public async Task<IEnumerable<ProductViewModel>> GetAllProductsAsync()
         {
             var products = await context.Products
@@ -30,6 +29,29 @@ namespace MyGymWeb.Services
                }).ToListAsync();
 
             return products;
+        }
+
+        public async Task<TestViewModel> GetEditProductAsync(int productId)
+        {
+           var currPoduct = await context.Products
+                .FirstOrDefaultAsync(x => x.Id == productId);
+
+            if (currPoduct == null)
+            {
+
+                throw new Exception();
+            }
+
+            return new TestViewModel()
+            {
+                Id = productId,
+                Name = currPoduct.Name,
+                ImageUrl = currPoduct.ImageUrl,
+                Description = currPoduct.Description,
+                Price = currPoduct.Price,
+                Mark = currPoduct.Mark,
+
+            };
         }
 
         public async Task<ProductViewModel> GetProductDescriptionAsync(int productId)

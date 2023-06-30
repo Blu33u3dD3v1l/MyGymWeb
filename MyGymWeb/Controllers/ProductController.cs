@@ -27,5 +27,13 @@ namespace MyGymWeb.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int productId)
+        {
+            var model = await productService.GetEditProductAsync(productId);
+
+            return View(model);
+        }
+
     }
 }

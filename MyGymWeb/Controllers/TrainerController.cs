@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Controllers
@@ -33,6 +34,59 @@ namespace MyGymWeb.Controllers
             var t = await trainerService.GetTypeTrainersAsync(gymId);
             return View(t);
         }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var view = await trainerService.GetEditTrainerAsync(id);
+            return View(view);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditTrainerFormModel model)
+        {
+           if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                await this.trainerService.EditByIdAsync(id, model);
+
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+            }
+
+            return RedirectToAction("All", "Trainer");
+        }
+
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> Edit(int trainerId, EditTrainerFormModel model)
+        //{
+
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+
+        //    try
+        //    {
+        //        await trainerService.EditByIdAsync(trainerId, model);
+        //    }
+
+        //    catch (Exception)
+        //    {
+
+        //        return View(model);
+        //    }
+        //    return RedirectToAction("All", "Trainer");
+        //}
+
 
     }
 }

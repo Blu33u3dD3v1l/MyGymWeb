@@ -11,7 +11,7 @@ namespace MyGymWeb.Data.Models
             this.ClassicTrainers = new List<Trainer>();
             this.GroupsEvents = new List<GroupEvents>(); 
             this.Products = new List<Product>(); 
-            this.GymBoxingTrainers = new List<All>();          
+            this.All = new List<All>();          
             this.GymsUsers = new List<GymUser>();
         }
 
@@ -34,7 +34,7 @@ namespace MyGymWeb.Data.Models
         public string ImageUrl { get; set; } = null!;
 
 
-        public virtual IList<All> GymBoxingTrainers { get; set; }
+        public virtual IList<All> All { get; set; }
 
         public virtual IList<Trainer> ClassicTrainers { get; set; }
 

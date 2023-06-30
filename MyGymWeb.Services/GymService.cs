@@ -16,6 +16,26 @@ namespace MyGymWeb.Services
             context = _context;
         }
 
+        public async Task EditByIdAsync(int id,EditGymFormModel model)
+        {
+            var currGym = await context.Gyms.
+               FirstOrDefaultAsync(x => x.Id == id);
+
+            if (currGym == null)
+            {
+                throw new Exception();
+            }
+
+            currGym.Id = id;
+            currGym.Name = model.Name;
+            currGym.Description = model.Description;
+            currGym.ImageUrl = model.ImageUrl;
+            currGym.Type = model.Type;
+
+            await this.context.SaveChangesAsync();
+
+        }
+
         public async Task<IEnumerable<GymsViewModel>> GetAllGymsAsync()
         {
             var entity = await context.Gyms
@@ -51,9 +71,9 @@ namespace MyGymWeb.Services
 
        
 
-        public async Task<GymsViewModel> GetDescriptionAsync(int gymId)
+        public async Task<GymsViewModel> GetDescriptionAsync(int id)
         {
-            var currId = await context.Gyms.FindAsync(gymId);
+            var currId = await context.Gyms.FindAsync(id);
 
             if(currId == null)
             {
@@ -71,6 +91,26 @@ namespace MyGymWeb.Services
             };                                                                                                                                                                                             
 
             return entity;
+        }
+
+        public async Task<EditGymFormModel> GetEditGymAsync(int id)
+        {
+            var currGym = await context.Gyms.
+               FirstOrDefaultAsync(x => x.Id == id);
+
+            if (currGym == null)
+            {
+                throw new Exception();
+            }
+
+            return new EditGymFormModel()
+            {
+                Id = currGym.Id,
+                Name = currGym.Name,
+                ImageUrl = currGym.ImageUrl,               
+                Type = currGym.Type,
+                Description = currGym.Description
+            };
         }
 
         public async Task<ProductViewModel> GetProductDescriptionAsync(int productId)

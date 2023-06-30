@@ -28,25 +28,26 @@ namespace MyGymWeb.Data
         public DbSet<GymUser> GymsUsers { get; set; } = null!;
 
 
-
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
             builder.Entity<All>()
-                .HasKey(x => new { x.GymId, x.TrainerId, x.ProductId, });
+               .HasKey(x => new { x.GymId, x.TrainerId, x.ProductId, });
             base.OnModelCreating(builder);
 
             builder.Entity<GymUser>()
                .HasKey(x => new { x.GymId, x.UserId });
-            base.OnModelCreating(builder);
+          
 
-           
             builder.ApplyConfiguration(new TrainerConfiguration());
             builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
             builder.ApplyConfiguration(new GymConfiguration());
             builder.ApplyConfiguration(new ProductConfiguration());
             builder.ApplyConfiguration(new TypeConfiguration());
+
+
+            base.OnModelCreating(builder);
+
 
         }
     }

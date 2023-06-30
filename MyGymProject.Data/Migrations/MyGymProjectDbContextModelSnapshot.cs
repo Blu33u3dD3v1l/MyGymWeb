@@ -548,7 +548,7 @@ namespace MyGymWeb.Data.Migrations
                         new
                         {
                             Id = 2,
-                            ImageUrl = "https://www.muscleandfitness.com/wp-content/uploads/2019/10/Chris-Bumstead-Shirtless-Hands-On-Hip.jpg?quality=86&strip=all",
+                            ImageUrl = "https://e0.pxfuel.com/wallpapers/609/537/desktop-wallpaper-chris-bumstead.jpg",
                             Info = "Christopher Adam Bumstead is a Canadian IFBB professional bodybuilder. Bumstead is the reigning Mr. Olympia Classic Physique winner, having won the competition in 2019, 2020, 2021 and 2022. He was also the runner-up in 2017 and 2018.",
                             Moto = "Don't be afraid of failure.",
                             Name = "Chris Bumstead",
@@ -795,7 +795,7 @@ namespace MyGymWeb.Data.Migrations
             modelBuilder.Entity("MyGymWeb.Data.Models.All", b =>
                 {
                     b.HasOne("MyGymWeb.Data.Models.Gym", "Gym")
-                        .WithMany("GymBoxingTrainers")
+                        .WithMany("All")
                         .HasForeignKey("GymId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -881,11 +881,11 @@ namespace MyGymWeb.Data.Migrations
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Gym", b =>
                 {
+                    b.Navigation("All");
+
                     b.Navigation("ClassicTrainers");
 
                     b.Navigation("GroupsEvents");
-
-                    b.Navigation("GymBoxingTrainers");
 
                     b.Navigation("GymsUsers");
 

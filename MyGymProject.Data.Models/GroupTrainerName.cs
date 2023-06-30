@@ -13,5 +13,7 @@ namespace MyGymWeb.Data.Models
         [MaxLength(NameMaxValidation)]
         [Required]
         public string Name { get; set; } = null!;
+
+      
     }
 }

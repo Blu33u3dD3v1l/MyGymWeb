@@ -7,5 +7,6 @@ namespace MyGymWeb.Services.Interface
 
         Task<IEnumerable<ProductViewModel>> GetAllProductsAsync();
         Task<ProductViewModel> GetProductDescriptionAsync(int productId);
+        Task<TestViewModel> GetEditProductAsync(int productId);
     }
 }

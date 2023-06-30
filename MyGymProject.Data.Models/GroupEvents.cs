@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using static MyGymWeb.Common.Constants.ValidationConstants.GroupEventsValidations;
 
 namespace MyGymWeb.Data.Models
@@ -28,7 +29,7 @@ namespace MyGymWeb.Data.Models
 
         public int GymId { get; set; }
 
-        public Gym? Gym { get; set; } 
+        public Gym Gym { get; set; } = null!;
         
         public int GroupTrainerNamesId { get; set; }
 

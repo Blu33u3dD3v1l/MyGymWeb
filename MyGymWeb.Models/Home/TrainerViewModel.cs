@@ -15,5 +15,7 @@
         public decimal PricePerHour { get; set; }
 
         public string Moto { get; set; } = null!;
+
+        public string Type { get; set; } = null!;
     }
 }

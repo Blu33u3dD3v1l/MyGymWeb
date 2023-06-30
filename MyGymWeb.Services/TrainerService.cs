@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using MyGymWeb.Data;
+using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyGymWeb.Services
 {
@@ -121,10 +124,61 @@ namespace MyGymWeb.Services
                 Info = currId.Info,
                 Practis = currId.Practis,
                 PricePerHour = currId.PricePerHour,
+                Type = currId.Type,
             };
 
             return entity;
         }
 
+        public async Task<EditTrainerFormModel> GetEditTrainerAsync(int id)
+        {
+             var currTrainer = await context.Trainers.
+                FirstOrDefaultAsync(x => x.Id == id);
+
+            if (currTrainer == null)
+            {
+                throw new Exception();
+            }
+
+            return new EditTrainerFormModel()
+            {
+                Id = currTrainer.Id,
+                Name = currTrainer.Name,
+                ImageUrl = currTrainer.ImageUrl,
+                Moto = currTrainer.Moto,
+                Info = currTrainer.Info,
+                Practis = currTrainer.Practis,
+                PricePerHour = currTrainer.PricePerHour,
+                Type = currTrainer.Type,
+            };
+        }
+
+        public async Task EditByIdAsync(int id, EditTrainerFormModel model)
+        {
+            var currTrainer = await context.Trainers.
+                FirstOrDefaultAsync(x => x.Id == id);
+
+            if(currTrainer == null)
+            {
+                throw new Exception();
+            }
+
+            currTrainer.Id = id;
+            currTrainer.Name = model.Name;
+            currTrainer.PricePerHour = model.PricePerHour;
+            currTrainer.Info = model.Info;
+            currTrainer.Practis = model.Practis;
+            currTrainer.Moto = model.Moto;
+            currTrainer.ImageUrl = model.ImageUrl;
+            currTrainer.Type = model.Type;
+
+            await this.context.SaveChangesAsync();
+            
+            
+        }
+
+
+
+      
     }
 }

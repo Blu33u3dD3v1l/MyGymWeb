@@ -23,12 +23,14 @@
             </div>
             @if (User?.Identity?.IsAuthenticated ?? false)
             {
-                <a class="input-group-sm" asp-route-gymId="@gym.Id" asp-controller="Gym" asp-action="Details" method="post">
+
+                <a class="input-group-sm"  asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Details" method="post">
                     <input type="submit" value="Details" class="btn btn-success mb-3 p-2" />
                 </a>
-                <form class="input-group-sm" asp-route-gymId="@gym.Id" asp-controller="Gym" asp-action="View" method="post">
-                    <input type="submit" value="View" class="btn btn-success mb-3 p-2" />
+                <form class="input-group-sm" asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Edit" method="get">
+                    <input type="submit" value="Edit" class="btn btn-success mb-3 p-2" />
                 </form>
+                
 
             }
         </div>
