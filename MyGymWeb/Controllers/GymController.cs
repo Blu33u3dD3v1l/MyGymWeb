@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services;
 using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Controllers
 {
+    [Authorize]
     public class GymController : Controller
     {
         private readonly IGymService gymService;
@@ -12,6 +16,7 @@ namespace MyGymWeb.Controllers
         public GymController(IGymService _gymService)
             => gymService = _gymService;
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> All()
         {
@@ -56,5 +61,23 @@ namespace MyGymWeb.Controllers
             return RedirectToAction("All", "Gym");
         }
 
+        public IActionResult Add()
+        {
+            var model =  new AddGymFormModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AddGymFormModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                throw new Exception();
+            }
+
+          
+                await gymService.AddGymAsync(model);
+                return RedirectToAction("All", "Gym");
+        }
     }
 }

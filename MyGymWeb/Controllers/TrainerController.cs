@@ -35,6 +35,7 @@ namespace MyGymWeb.Controllers
             return View(t);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var view = await trainerService.GetEditTrainerAsync(id);
@@ -63,30 +64,37 @@ namespace MyGymWeb.Controllers
             return RedirectToAction("All", "Trainer");
         }
 
+        [HttpGet]
+        public IActionResult Add()
+        {
+            var model = new AddTrainerFormModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AddTrainerFormModel model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                await this.trainerService.AddTrainerAsync(model);
+
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+            }
+
+            return RedirectToAction("All", "Trainer");
 
 
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(int trainerId, EditTrainerFormModel model)
-        //{
-
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(model);
-        //    }
-
-        //    try
-        //    {
-        //        await trainerService.EditByIdAsync(trainerId, model);
-        //    }
-
-        //    catch (Exception)
-        //    {
-
-        //        return View(model);
-        //    }
-        //    return RedirectToAction("All", "Trainer");
-        //}
-
+        }
 
     }
 }

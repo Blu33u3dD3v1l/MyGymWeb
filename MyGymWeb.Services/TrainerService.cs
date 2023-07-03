@@ -177,8 +177,23 @@ namespace MyGymWeb.Services
             
         }
 
+        public async Task AddTrainerAsync(AddTrainerFormModel model)
+        {
+            var entity = new Trainer()
+            {
+                Name = model.Name,
+                PricePerHour = model.PricePerHour,
+                Type = model.Type,
+                ImageUrl = model.ImageUrl,
+                Info = model.Info,
+                Moto = model.Moto,
+                Practis = model.Practis,
 
+            };
 
-      
+            await this.context.Trainers.AddAsync(entity);
+            await this.context.SaveChangesAsync();
+
+        }
     }
 }

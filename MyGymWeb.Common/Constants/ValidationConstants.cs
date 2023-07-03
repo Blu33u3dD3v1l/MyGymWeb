@@ -16,6 +16,10 @@
 
             public const int MotoMinValidation = 10;
             public const int MotoMaxValidation = 5000;
+
+            public const string PriceMinValidation = "1";
+            public const string PriceMaxValidation = "200";
+
         }
 
         public static class BoxingTrainerValidations

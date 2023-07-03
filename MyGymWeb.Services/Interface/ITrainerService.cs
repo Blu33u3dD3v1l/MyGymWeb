@@ -10,6 +10,8 @@ namespace MyGymWeb.Services.Interface
         Task<IEnumerable<TrainerViewModel>> GetTypeTrainersAsync(int gymId);
         Task<EditTrainerFormModel> GetEditTrainerAsync(int id);
         Task EditByIdAsync(int id, EditTrainerFormModel model);
+        Task AddTrainerAsync(AddTrainerFormModel model);
+
 
     }
 }

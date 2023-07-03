@@ -5,7 +5,7 @@ namespace MyGymWeb.Data.Models
     public class GymUser
     {
 
-        public string UserId { get; set; } = null!;
+        public string UserId { get; set; } = null!; 
 
         public IdentityUser User { get; set; } = null!;
 
