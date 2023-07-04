@@ -194,5 +194,31 @@ namespace MyGymWeb.Services
             await this.context.SaveChangesAsync();
 
         }
+
+        public async Task<bool> TrainerExistByUserId(string userId)
+        {
+            bool result = await this.context.Trainers
+                 .AnyAsync(x => x.UserId == userId);
+
+            return result;
+        }
+
+        public async Task BecomeTrainerAsync(string userId, AddTrainerFormModel model)
+        {
+            Trainer newTrainer = new Trainer()
+            {
+                Name = model.Name,
+                PricePerHour = model.PricePerHour,
+                Type = model.Type,
+                ImageUrl = model.ImageUrl,
+                Info = model.Info,
+                Moto = model.Moto,
+                Practis = model.Practis,
+                UserId = userId
+            };
+
+            await context.Trainers.AddAsync(newTrainer);
+            await context.SaveChangesAsync();
+        }
     }
 }

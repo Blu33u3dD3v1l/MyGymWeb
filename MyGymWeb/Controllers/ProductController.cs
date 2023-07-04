@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService productService;

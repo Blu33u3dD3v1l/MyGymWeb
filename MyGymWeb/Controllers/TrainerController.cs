@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
+using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
 
 namespace MyGymWeb.Controllers
 {
+    [Authorize]
     public class TrainerController : Controller
     {
 
@@ -95,6 +98,40 @@ namespace MyGymWeb.Controllers
 
 
         }
+
+
+        public async Task<IActionResult> Become()
+        {
+
+            string? userId = this.User.GetId();
+            bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
+
+            if (isTrainer)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Become(AddTrainerFormModel model)
+        {
+            string? userId = this.User.GetId();
+            bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
+
+            if (isTrainer)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            await this.trainerService.BecomeTrainerAsync(userId, model);
+
+            return RedirectToAction("All", "Trainer");
+        }
+
+
 
     }
 }

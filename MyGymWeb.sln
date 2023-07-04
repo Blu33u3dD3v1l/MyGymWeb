@@ -15,11 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.Models", "MyGymWeb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.Common", "MyGymWeb.Common\MyGymWeb.Common.csproj", "{E09BBFF4-DC82-4A1D-B310-C9E1F1D438B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGymWeb.Data.Models", "MyGymWeb.Data.Models\MyGymWeb.Data.Models.csproj", "{E9300F43-5027-47AD-9194-0B6838B140A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.Data.Models", "MyGymWeb.Data.Models\MyGymWeb.Data.Models.csproj", "{E9300F43-5027-47AD-9194-0B6838B140A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E16BFD74-81D2-4CDF-BCFB-4F87B089AE85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGymWeb.Services", "MyGymWeb.Services\MyGymWeb.Services.csproj", "{63304BA1-A531-4F34-A6A7-8B703000916F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.Services", "MyGymWeb.Services\MyGymWeb.Services.csproj", "{63304BA1-A531-4F34-A6A7-8B703000916F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGymWeb.Infrastructure", "MyGymWeb.Infrastructure\MyGymWeb.Infrastructure.csproj", "{3B05122F-5487-4DD5-9553-5013CC643105}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{63304BA1-A531-4F34-A6A7-8B703000916F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63304BA1-A531-4F34-A6A7-8B703000916F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63304BA1-A531-4F34-A6A7-8B703000916F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B05122F-5487-4DD5-9553-5013CC643105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B05122F-5487-4DD5-9553-5013CC643105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B05122F-5487-4DD5-9553-5013CC643105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B05122F-5487-4DD5-9553-5013CC643105}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

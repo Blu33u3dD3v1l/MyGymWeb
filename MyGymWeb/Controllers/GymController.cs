@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyGymWeb.Models.Home;
-using MyGymWeb.Services;
 using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Controllers
