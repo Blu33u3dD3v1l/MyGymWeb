@@ -22,7 +22,7 @@ namespace MyGymWeb.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(int trainerId)
+        public async Task<IActionResult> Details(Guid trainerId)
         {
             var model = await trainerService.GetTrainerDescriptionAsync(trainerId);
 
@@ -36,14 +36,14 @@ namespace MyGymWeb.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             var view = await trainerService.GetEditTrainerAsync(id);
             return View(view);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, EditTrainerFormModel model)
+        public async Task<IActionResult> Edit(Guid id, EditTrainerFormModel model)
         {
            if(!ModelState.IsValid)
             {

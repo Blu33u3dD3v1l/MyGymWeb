@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230704140016_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -278,23 +280,6 @@ namespace MyGymWeb.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GroupTrainerNames");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Desy Perez"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "John Doe"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Kevin Friend"
-                        });
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Gym", b =>
@@ -337,40 +322,6 @@ namespace MyGymWeb.Data.Migrations
                     b.HasIndex("TrainerId");
 
                     b.ToTable("Gyms");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 2,
-                            Description = "This Gym is most popular and most exclusive  private 1 on 1 and group boxing training facility! All of our classes are taught by world-class coaches in a fun and friendly environment. Hybrid offers both Boxing and Muay Thai Kickboxing semi-private classes which focus on proper boxing technique, kicking technique, shadow boxing drills, 1-on-1 mitt work, bag work, and High Intensity Interval Training so you can get amazing results in the fastest time possible. We cap all classes at 6 participants for a more personal group training experience. Burn over 500 calories per class.",
-                            ImageUrl = "https://e0.pxfuel.com/wallpapers/668/410/desktop-wallpaper-boxing-for-resolution-boxing-boxeo.jpg",
-                            Name = "BoxingGym",
-                            Type = "BigBoxGym"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "This is not just gyms, nor ordinary spa. This is the unique lifestyle club in our country – places where, together with our club members, we realize our common vision of a meaningful life. What is it? To achieve change, health, personal balance and satisfaction through sport in a convenient and accessible way, saving time and effort, but without compromising the rhythm of the big city. Dynamically and purposefully, not with compulsion or with annoyance, but jointly, with fun and at with own pace. Each one of the clubs has a unique interior design, prepared by Pro Design Interiors.",
-                            ImageUrl = "https://rare-gallery.com/uploads/posts/585296-adult-barbell.jpg",
-                            Name = "BodyBuilding",
-                            Type = "ClassicGym"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "The Pilates method, with its proven beneficial effect on the body, is preferred as a training activity among a large number of ladies. The exercises are performed smoothly, with maximum control in each movement to avoid injuries and achieve the desired results. With regular exercise, you can improve your posture, even your gait. It is a unique system of exercises for stretching and strength, strengthening and toning muscles. No exercise is an end in itself, all the muscles of the body are activated. You will strengthen your muscles and shape your body so that it looks even more graceful, tight and beautiful. Pain in the neck and back is especially affected.By following the exact instructions, at the end of the workout you will feel your body toned and pleasantly relaxed.",
-                            ImageUrl = "https://fitathletic.com/wp-content/uploads/2014/07/fit_athletic_blog_reformer-pilates-1.jpg",
-                            Name = "PilatesGym",
-                            Type = "PilatesGym"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "You are about to pass through the many dimensions of your own Self. This journey will take you through a transformation of consciousness, across a vital bridge connecting spirit and matter, Heaven and Earth, mind and body. And as you transform yourself, you transform the world.We are committed to providing you with the tools to support you on your journey to a full spectrum yoga experience.We will be glad to meet you!",
-                            ImageUrl = "https://previews.123rf.com/images/popunderlight/popunderlight1801/popunderlight180100251/92852319-portrait-of-attractive-asian-girl-doing-yoga-exercise-in-gym.jpg",
-                            Name = "YogaGym",
-                            Type = "YogaGym"
-                        });
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Product", b =>
@@ -411,53 +362,6 @@ namespace MyGymWeb.Data.Migrations
                     b.HasIndex("GymId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Introducing our sleek and stylish protein shaker bottle - the perfect companion for your workouts and active lifestyle!, Crafted with a perfect size.",
-                            ImageUrl = "https://cdn.shopify.com/s/files/1/0572/7397/4993/products/ShakerBanner_1_1080x.jpg?v=1676866459",
-                            Mark = "WolvesFitness",
-                            Name = "Wolves Fitness Shaker Bottle",
-                            Price = 30
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "The UFE 2in1 Protein Shaker is a premium shaker that is BPA, BPS and BPF free. The Shaker has a 700ml capacity and comes complete dual mixing.",
-                            ImageUrl = "https://files.ekmcdn.com/alphasports86/images/urban-fitness-2in1-protein-shaker-700ml--2023-p.jpg?v=6FB99E0C-5E66-4D39-B4E2-7384D9AB6276",
-                            Mark = "Urban Fitness",
-                            Name = "Urban Fitness 2in1 Protein Shaker",
-                            Price = 27
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "ElephantSkin gloves are designed for (hobby) athletes who do not want to compromise on hygiene during their training.More training, less cleaning - that's the concept behind ElephantSkin's sustainable fitness glove.",
-                            ImageUrl = "https://cdn.shopify.com/s/files/1/0585/3016/9008/products/elephantskin-fitness-handschuhe-titelbild.png?v=1644683288",
-                            Mark = "ElephantSkin Fitness",
-                            Name = "The Fitness Gloves",
-                            Price = 17
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Keep your hard-earned muscles fed, whether youre at home or at the gym. Stay fit & consistent with your protein supplementation & stay strong around the clock, in the gym or at home. Pro series whey has a scientific combination of whey isolate (fast) for immediate absorption and whey concentrate (slow digesting) to give feed your muscles for longer time a protein drink thats richer & tastier than any whey protein in india",
-                            ImageUrl = "https://cdn.shopify.com/s/files/1/0233/6459/9885/products/51v0EC9aP5L._SL1080.jpg?v=1666270776",
-                            Mark = "Goodlife",
-                            Name = "Pro Nutrition and Fitness",
-                            Price = 50
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing.",
-                            ImageUrl = "https://fitness1.bg/products/u/levrone-wellness-series-l-carnitine-125000-1-l-1786f0c.jpg",
-                            Mark = "Goodlife",
-                            Name = "L-Carnitine",
-                            Price = 14
-                        });
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Trainer", b =>
@@ -523,28 +427,6 @@ namespace MyGymWeb.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Types");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Pilates"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Yoga"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Classic"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Boxing"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

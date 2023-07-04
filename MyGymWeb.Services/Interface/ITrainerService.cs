@@ -6,10 +6,10 @@ namespace MyGymWeb.Services.Interface
     {
 
         Task<IEnumerable<TrainerViewModel>> GetAllTrainersAsync();
-        Task<TrainerViewModel> GetTrainerDescriptionAsync(int trainerId);
+        Task<TrainerViewModel> GetTrainerDescriptionAsync(Guid trainerId);
         Task<IEnumerable<TrainerViewModel>> GetTypeTrainersAsync(int gymId);
-        Task<EditTrainerFormModel> GetEditTrainerAsync(int id);
-        Task EditByIdAsync(int id, EditTrainerFormModel model);
+        Task<EditTrainerFormModel> GetEditTrainerAsync(Guid id);
+        Task EditByIdAsync(Guid id, EditTrainerFormModel model);
         Task AddTrainerAsync(AddTrainerFormModel model);
 
 

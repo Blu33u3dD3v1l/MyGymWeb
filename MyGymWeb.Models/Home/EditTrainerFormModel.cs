@@ -6,7 +6,7 @@ namespace MyGymWeb.Models.Home
     {
 
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [StringLength(NameMaxValidation, MinimumLength = NameMinValidation)]
         [Required]

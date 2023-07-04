@@ -12,8 +12,8 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    [Migration("20230628124029_DataRefactoring")]
-    partial class DataRefactoring
+    [Migration("20230704141307_SeedingDb")]
+    partial class SeedingDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,26 +226,6 @@ namespace MyGymWeb.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MyGymWeb.Data.Models.All", b =>
-                {
-                    b.Property<int>("GymId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrainerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GymId", "TrainerId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("TrainerId");
-
-                    b.ToTable("All");
-                });
-
             modelBuilder.Entity("MyGymWeb.Data.Models.GroupEvents", b =>
                 {
                     b.Property<int>("Id")
@@ -262,7 +242,7 @@ namespace MyGymWeb.Data.Migrations
                     b.Property<int>("GroupTrainerNamesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GymId")
+                    b.Property<int?>("GymId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -270,7 +250,7 @@ namespace MyGymWeb.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("TypeId")
+                    b.Property<int?>("TypeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -327,6 +307,9 @@ namespace MyGymWeb.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("AthleteId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(5000)
@@ -341,6 +324,9 @@ namespace MyGymWeb.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<Guid?>("TrainerId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -348,12 +334,16 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AthleteId");
+
+                    b.HasIndex("TrainerId");
+
                     b.ToTable("Gyms");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             Description = "This Gym is most popular and most exclusive  private 1 on 1 and group boxing training facility! All of our classes are taught by world-class coaches in a fun and friendly environment. Hybrid offers both Boxing and Muay Thai Kickboxing semi-private classes which focus on proper boxing technique, kicking technique, shadow boxing drills, 1-on-1 mitt work, bag work, and High Intensity Interval Training so you can get amazing results in the fastest time possible. We cap all classes at 6 participants for a more personal group training experience. Burn over 500 calories per class.",
                             ImageUrl = "https://e0.pxfuel.com/wallpapers/668/410/desktop-wallpaper-boxing-for-resolution-boxing-boxeo.jpg",
                             Name = "BoxingGym",
@@ -361,7 +351,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 3,
                             Description = "This is not just gyms, nor ordinary spa. This is the unique lifestyle club in our country – places where, together with our club members, we realize our common vision of a meaningful life. What is it? To achieve change, health, personal balance and satisfaction through sport in a convenient and accessible way, saving time and effort, but without compromising the rhythm of the big city. Dynamically and purposefully, not with compulsion or with annoyance, but jointly, with fun and at with own pace. Each one of the clubs has a unique interior design, prepared by Pro Design Interiors.",
                             ImageUrl = "https://rare-gallery.com/uploads/posts/585296-adult-barbell.jpg",
                             Name = "BodyBuilding",
@@ -369,7 +359,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 4,
                             Description = "The Pilates method, with its proven beneficial effect on the body, is preferred as a training activity among a large number of ladies. The exercises are performed smoothly, with maximum control in each movement to avoid injuries and achieve the desired results. With regular exercise, you can improve your posture, even your gait. It is a unique system of exercises for stretching and strength, strengthening and toning muscles. No exercise is an end in itself, all the muscles of the body are activated. You will strengthen your muscles and shape your body so that it looks even more graceful, tight and beautiful. Pain in the neck and back is especially affected.By following the exact instructions, at the end of the workout you will feel your body toned and pleasantly relaxed.",
                             ImageUrl = "https://fitathletic.com/wp-content/uploads/2014/07/fit_athletic_blog_reformer-pilates-1.jpg",
                             Name = "PilatesGym",
@@ -377,27 +367,12 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 5,
                             Description = "You are about to pass through the many dimensions of your own Self. This journey will take you through a transformation of consciousness, across a vital bridge connecting spirit and matter, Heaven and Earth, mind and body. And as you transform yourself, you transform the world.We are committed to providing you with the tools to support you on your journey to a full spectrum yoga experience.We will be glad to meet you!",
                             ImageUrl = "https://previews.123rf.com/images/popunderlight/popunderlight1801/popunderlight180100251/92852319-portrait-of-attractive-asian-girl-doing-yoga-exercise-in-gym.jpg",
                             Name = "YogaGym",
                             Type = "YogaGym"
                         });
-                });
-
-            modelBuilder.Entity("MyGymWeb.Data.Models.GymUser", b =>
-                {
-                    b.Property<int>("GymId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("GymId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("GymsUsers");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Product", b =>
@@ -489,14 +464,9 @@ namespace MyGymWeb.Data.Migrations
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Trainer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("GymId")
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -525,133 +495,18 @@ namespace MyGymWeb.Data.Migrations
                     b.Property<decimal>("PricePerHour")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("GymId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Trainers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ImageUrl = "https://i.ebayimg.com/images/g/yDkAAOSw7vtjPegV/s-l960.webp",
-                            Info = "Arnold Schwarzenegger is known as the Styrian Oak, or Austrian Oak, in the bodybuilding world, where he dwarfed his competition. He won his first amateur Mr. Universe title 20 years old. After moving to California he compete bigger events in the United States, he won three more Mr. Universe titles and then the professional Mr. Olympia title six years in a row before retiring.",
-                            Moto = "You dream.",
-                            Name = "Arnold Schwarzenegger",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 200m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ImageUrl = "https://www.muscleandfitness.com/wp-content/uploads/2019/10/Chris-Bumstead-Shirtless-Hands-On-Hip.jpg?quality=86&strip=all",
-                            Info = "Christopher Adam Bumstead is a Canadian IFBB professional bodybuilder. Bumstead is the reigning Mr. Olympia Classic Physique winner, having won the competition in 2019, 2020, 2021 and 2022. He was also the runner-up in 2017 and 2018.",
-                            Moto = "Don't be afraid of failure.",
-                            Name = "Chris Bumstead",
-                            Practis = "Practis Above 10 Years",
-                            PricePerHour = 160m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ImageUrl = "https://media.gettyimages.com/id/702973/photo/bodybuilder-jay-cutler-poses-during-the-arnold-classic-2002-february-23-2002-in-columbus-oh.jpg?s=612x612&w=gi&k=20&c=P2UjdlRcstD8CETCQYByU_2yqjx3KWnJ4xInKXIt3T0=",
-                            Info = "Jason Isaac Cutler is an American retired professional bodybuilder.An IFBB pro, Cutler is a four-time Mr. Olympia winner and a six-time runner-up, the most in history.",
-                            Moto = "If something stands between you and your success, move it.",
-                            Name = "Jay Cutler",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 180m
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ImageUrl = "https://generationiron.com/wp-content/uploads/2022/01/CED5711A-1DAC-45E1-BB83-5462E5A04652.jpeg",
-                            Info = "Dorian Andrew Mientjez Yates is an English retired professional bodybuilder. He won the Mr. Olympia title six consecutive times and has the fifth-highest number of Mr. Olympia wins in history, ranking behind Ronnie Coleman",
-                            Moto = "You must not only have competitiveness but ability, regardless of the circumstance you face, to never quit.",
-                            Name = "Dorian Yates",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 170m
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ImageUrl = "https://yt3.googleusercontent.com/d8GULtiQ88hMBsHr-4P2p4_30wj-QjaZaR_f97WZxDc3EP_vm5wfx-xSazlSEWhilab0Pq7HgA=s900-c-k-c0x00ffffff-no-rj",
-                            Info = "Ronald \"Ronnie\" Dean Coleman is an American retired professional bodybuilder. The winner of the Mr. Olympia title for eight consecutive years, he is widely regarded as either the greatest bodybuilder of all time or one of the two greatest along with Arnold Schwarzenegger and as the most dominant bodybuilding physique ever to grace the stage.Winner of 26 IFBB professional titles, he is also renowned for his combination of size and conditioning, dominant body-parts and extremely heavy workouts, making him the strongest bodybuilder of all time.",
-                            Moto = "Just Do It.",
-                            Name = "Ronnie Coleman",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 200m
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ImageUrl = "https://musclehealthmag.com/wp-content/uploads/2019/05/melina5-819x1024.jpg",
-                            Info = "A young female bodybuilder at only 22 years old, Melina Keltaniemi is just beginning her career, but she’s off to a flying start!This ripped female bodybuilder came 2nd place in the 2018 Nordic Elite Pro, 3rd place at IFBB Elite Pro Russia, and was 2018's IFBB Elite Pro World Champion. Her drive to become the most successful female bodybuilder is clear, and her mindset matches that of a champion competitor.",
-                            Moto = "Go For It",
-                            Name = "Melina Keltaniemi ",
-                            Practis = "Practis Above 2 Years",
-                            PricePerHour = 100m
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ImageUrl = "https://www.si.com/.image/t_share/MTY4MTk2NjgxODE2NjE0ODEz/1988-mike-tyson-nlc_05245jpg.jpg",
-                            Info = "Michael Gerard Tyson is an American former professional boxer whos Nicknam is Iron Mike and Kid Dynamite in his early career, and later known as The Baddest Man on the Planet,Tyson is considered to be one of the greatest heavyweight boxers of all time.He reigned as the undisputed world heavyweight champion. Tyson won his first 19 professional fights by knockout, 12 of them in the first round. Claiming his first belt at 20 years, four months, and 22 days old, Tyson holds the record as the youngest boxer ever to win a heavyweight title.He was the first heavyweight boxer to simultaneously hold the WBA, WBC and IBF titles, as well as the only heavyweight to unify them in succession. The following year, Tyson became the lineal champion when he knocked out Michael Spinks in 91 seconds of the first round. Tyson was knocked out by underdog Buster Douglas in one of the biggest upsets in boxing history.",
-                            Moto = "Lets smash some Heads!",
-                            Name = "Mike Tyson",
-                            Practis = "Above 20 Years!",
-                            PricePerHour = 200m
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ImageUrl = "https://cdn.britannica.com/86/192386-050-D7F3126D/Muhammad-Ali-American.jpg",
-                            Info = "Muhammad Ali born Cassius Marcellus Clay Jr. was an American professional boxer and activist. Nicknamed The Greatest, he is regarded as one of the most significant sports figures of the 20th century and is often regarded as the greatest heavyweight boxer of all time.",
-                            Moto = "Don't be afraid of failure.",
-                            Name = "Muhammad Ali",
-                            Practis = "Practis Above 10 Years",
-                            PricePerHour = 160m
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ImageUrl = "https://media.gettyimages.com/id/702973/photo/bodybuilder-jay-cutler-poses-during-the-arnold-classic-2002-february-23-2002-in-columbus-oh.jpg?s=612x612&w=gi&k=20&c=P2UjdlRcstD8CETCQYByU_2yqjx3KWnJ4xInKXIt3T0=",
-                            Info = "Evander Holyfield is an American former professional boxer. He reigned as the undisputed champion at cruiserweight in the late 1980s and at heavyweight, and is the only boxer in history to win the undisputed championship in two weight classes in the three belt era. Nicknamed the Real Deal, Holyfield is the only four-time world heavyweight champion, having held the unified WBA, WBC, and IBF titles.",
-                            Moto = "If something stands between you and your success, move it.",
-                            Name = "Evander Holyfield",
-                            Practis = "Practis Above 20 Years",
-                            PricePerHour = 180m
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/2b/Anthony_Joshua_2017.png",
-                            Info = "Anthony Oluwafemi Olaseni Joshua OBE (born 15 October 1989) is a British professional boxer. He is a two-time former unified world heavyweight champion, having held the WBA (Super), IBF, WBO, and IBO titles twice between 2016 and 2021. At regional level, he held the British and Commonwealth heavyweight titles from 2015 to 2016.",
-                            Moto = "You must not only have competitiveness but ability, regardless of the circumstance you face, to never quit.",
-                            Name = "Anthony Joshua",
-                            Practis = "Practis Above 10 Years",
-                            PricePerHour = 150m
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ImageUrl = "https://img.championat.com/s/735x490/news/big/v/s/45-letnij-vladimir-klichko-pokazal-vpechatlyayuschuyu-fizicheskuyu-formu-foto_1621247259885661893.jpg",
-                            Info = "Wladimir Klitschko (born 25 March 1976) is a Ukrainian former professional boxer who competed from 1996 to 2017. He held the world heavyweight championship twice, including the unified WBA (Super), IBF, WBO, IBO, and Ring magazine titles. A strategic and intelligent boxer, Klitschko is considered to be one of the best heavyweight champions of all time.He was known for his exceptional knockout power, using a strong jab, straight right hand and left hook, quick hand speed, as well as great footwork and mobility, unusual for boxers of his size",
-                            Moto = "Just Do It.",
-                            Name = "Wladimir Klitschko",
-                            Practis = "Above 20 Years",
-                            PricePerHour = 200m
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ImageUrl = "https://latinbox2011.files.wordpress.com/2018/12/img_5540.jpg",
-                            Info = "Hanna Gabriels Valle (born 14 January 1983) is a Costa Rican professional boxer. She has held world championships in four weight classes, having held the WBA female light middleweight title since 2016; the WBA female light heavyweight and WBC female heavyweight titles since April 2021;[nb 1] the WBO welterweight title in 2009; and the WBO light middleweight title twice between 2010 and 2018. As of September 2020, she is ranked as the world's third best active light middleweight by The Ring and BoxRec",
-                            Moto = "Go For It",
-                            Name = "Hanna Gabriels",
-                            Practis = "Practis Above 7 Years",
-                            PricePerHour = 100m
-                        });
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Type", b =>
@@ -745,33 +600,6 @@ namespace MyGymWeb.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MyGymWeb.Data.Models.All", b =>
-                {
-                    b.HasOne("MyGymWeb.Data.Models.Gym", "Gym")
-                        .WithMany("GymBoxingTrainers")
-                        .HasForeignKey("GymId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyGymWeb.Data.Models.Product", "Product")
-                        .WithMany("All")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyGymWeb.Data.Models.Trainer", "Trainer")
-                        .WithMany("All")
-                        .HasForeignKey("TrainerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Gym");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Trainer");
-                });
-
             modelBuilder.Entity("MyGymWeb.Data.Models.GroupEvents", b =>
                 {
                     b.HasOne("MyGymWeb.Data.Models.GroupTrainerName", "GroupTrainerNames")
@@ -782,15 +610,11 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasOne("MyGymWeb.Data.Models.Gym", "Gym")
                         .WithMany("GroupsEvents")
-                        .HasForeignKey("GymId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GymId");
 
                     b.HasOne("MyGymWeb.Data.Models.Type", "Type")
                         .WithMany("GroupsEvents")
-                        .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TypeId");
 
                     b.Navigation("GroupTrainerNames");
 
@@ -799,60 +623,49 @@ namespace MyGymWeb.Data.Migrations
                     b.Navigation("Type");
                 });
 
-            modelBuilder.Entity("MyGymWeb.Data.Models.GymUser", b =>
+            modelBuilder.Entity("MyGymWeb.Data.Models.Gym", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Athlete")
+                        .WithMany()
+                        .HasForeignKey("AthleteId");
+
+                    b.HasOne("MyGymWeb.Data.Models.Trainer", "Trainer")
+                        .WithMany("Gyms")
+                        .HasForeignKey("TrainerId");
+
+                    b.Navigation("Athlete");
+
+                    b.Navigation("Trainer");
+                });
+
+            modelBuilder.Entity("MyGymWeb.Data.Models.Product", b =>
                 {
                     b.HasOne("MyGymWeb.Data.Models.Gym", "Gym")
-                        .WithMany("GymsUsers")
-                        .HasForeignKey("GymId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Products")
+                        .HasForeignKey("GymId");
 
                     b.Navigation("Gym");
+                });
+
+            modelBuilder.Entity("MyGymWeb.Data.Models.Trainer", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyGymWeb.Data.Models.Product", b =>
-                {
-                    b.HasOne("MyGymWeb.Data.Models.Gym", null)
-                        .WithMany("Products")
-                        .HasForeignKey("GymId");
-                });
-
-            modelBuilder.Entity("MyGymWeb.Data.Models.Trainer", b =>
-                {
-                    b.HasOne("MyGymWeb.Data.Models.Gym", null)
-                        .WithMany("ClassicTrainers")
-                        .HasForeignKey("GymId");
-                });
-
             modelBuilder.Entity("MyGymWeb.Data.Models.Gym", b =>
                 {
-                    b.Navigation("ClassicTrainers");
-
                     b.Navigation("GroupsEvents");
-
-                    b.Navigation("GymBoxingTrainers");
-
-                    b.Navigation("GymsUsers");
 
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("MyGymWeb.Data.Models.Product", b =>
-                {
-                    b.Navigation("All");
-                });
-
             modelBuilder.Entity("MyGymWeb.Data.Models.Trainer", b =>
                 {
-                    b.Navigation("All");
+                    b.Navigation("Gyms");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Type", b =>

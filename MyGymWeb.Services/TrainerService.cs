@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
@@ -106,7 +105,7 @@ namespace MyGymWeb.Services
 
         }
 
-        public async Task<TrainerViewModel> GetTrainerDescriptionAsync(int trainerId)
+        public async Task<TrainerViewModel> GetTrainerDescriptionAsync(Guid trainerId)
         {
             var currId = await context.Trainers.FindAsync(trainerId);
 
@@ -130,7 +129,7 @@ namespace MyGymWeb.Services
             return entity;
         }
 
-        public async Task<EditTrainerFormModel> GetEditTrainerAsync(int id)
+        public async Task<EditTrainerFormModel> GetEditTrainerAsync(Guid id)
         {
              var currTrainer = await context.Trainers.
                 FirstOrDefaultAsync(x => x.Id == id);
@@ -153,7 +152,7 @@ namespace MyGymWeb.Services
             };
         }
 
-        public async Task EditByIdAsync(int id, EditTrainerFormModel model)
+        public async Task EditByIdAsync(Guid id, EditTrainerFormModel model)
         {
             var currTrainer = await context.Trainers.
                 FirstOrDefaultAsync(x => x.Id == id);
