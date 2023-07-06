@@ -148,5 +148,31 @@ namespace MyGymWeb.Controllers
             return RedirectToAction("All", "Trainer");
         }
 
+        [HttpGet]         
+        
+        public async Task<IActionResult> Delete(Guid id, TrainerDetailsRemoveViewModel model)
+        {
+            string? userId = this.User.GetId();
+
+            if (userId == null)
+            {
+                return RedirectToAction("All", "Trainer");
+            }
+
+            bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
+
+            if(!isTrainer)
+            {
+                return RedirectToAction("All", "Trainer");
+            }
+
+            var a = trainerService.GetForDeleteAsync(id, model);
+            return View(a);
+        }
+
+        //public Task<IActionResult> Delete(TrainerDetailsRemoveViewModel model)
+        //{
+
+        //}
     }
 }

@@ -32,7 +32,7 @@
                     <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Edit" method="post">
                         <input type="submit" value="EditTrainer" class="btn btn-success btn-md" />
                     </a>
-                    <a asp-route-id="@trainer.Id" method="post">
+                    <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Delete" method="post">
                         <input type="submit" value="Delete" class="btn btn-success btn-md" />
                     </a>
                 </div>
