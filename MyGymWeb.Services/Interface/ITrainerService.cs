@@ -13,7 +13,8 @@ namespace MyGymWeb.Services.Interface
         Task AddTrainerAsync(AddTrainerFormModel model);
         Task<bool> TrainerExistByUserId(string userId);
         Task BecomeTrainerAsync(string userId, AddTrainerFormModel model);
-        Task GetForDeleteAsync(Guid id, TrainerDetailsRemoveViewModel model);
+        Task<TrainerDetailsRemoveViewModel> GetForDeleteAsync(Guid id, TrainerDetailsRemoveViewModel model);
+        Task<bool> GetTrainerUserId(Guid trainerId, string UserId);
         Task DeleteTrainerAsync(Guid id);
 
 
