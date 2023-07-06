@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
@@ -76,5 +77,6 @@ namespace MyGymWeb.Controllers
                 await gymService.AddGymAsync(model);
                 return RedirectToAction("All", "Gym");
         }
+       
     }
 }

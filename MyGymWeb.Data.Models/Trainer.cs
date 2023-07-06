@@ -52,6 +52,7 @@ namespace MyGymWeb.Data.Models
 
         public IdentityUser? User { get; set; }
 
+        public bool IsActive { get; set; } = true;
         public virtual List<Gym> Gyms { get; set; }
        
     }

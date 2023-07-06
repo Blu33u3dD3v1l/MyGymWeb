@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyGymWeb.Data.Models\MyGymWeb.Data.Models.csproj" />
+    <ProjectReference Include="..\MyGymWeb.Infrastructure\MyGymWeb.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

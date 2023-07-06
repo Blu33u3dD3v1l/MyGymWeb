@@ -3,7 +3,7 @@ using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace MyGymWeb.Services
 {
@@ -131,8 +131,8 @@ namespace MyGymWeb.Services
 
         public async Task<EditTrainerFormModel> GetEditTrainerAsync(Guid id)
         {
-             var currTrainer = await context.Trainers.
-                FirstOrDefaultAsync(x => x.Id == id);
+            var currTrainer = await context.Trainers.
+               FirstOrDefaultAsync(x => x.Id == id);
 
             if (currTrainer == null)
             {
@@ -157,7 +157,7 @@ namespace MyGymWeb.Services
             var currTrainer = await context.Trainers.
                 FirstOrDefaultAsync(x => x.Id == id);
 
-            if(currTrainer == null)
+            if (currTrainer == null)
             {
                 throw new Exception();
             }
@@ -172,8 +172,8 @@ namespace MyGymWeb.Services
             currTrainer.Type = model.Type;
 
             await this.context.SaveChangesAsync();
-            
-            
+
+
         }
 
         public async Task AddTrainerAsync(AddTrainerFormModel model)
@@ -220,5 +220,6 @@ namespace MyGymWeb.Services
             await context.Trainers.AddAsync(newTrainer);
             await context.SaveChangesAsync();
         }
+
     }
 }

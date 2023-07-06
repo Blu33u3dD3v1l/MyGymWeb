@@ -4,7 +4,7 @@ html {
 
 @media (min-width: 768px) {
   html {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 
@@ -18,4 +18,6 @@ body {
     /*background-color: #222;*/
     margin-bottom: 100px;
 }
-
+im1{
+    border-image: url(../Image.Jpg.jpg)
+}

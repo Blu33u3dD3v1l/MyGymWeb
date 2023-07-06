@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230706114236_CascadeDeleteAdded")]
+    partial class CascadeDeleteAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -474,9 +476,6 @@ namespace MyGymWeb.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(5000)
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Moto")
                         .IsRequired()

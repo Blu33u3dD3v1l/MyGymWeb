@@ -13,25 +13,33 @@
 <div class="text-center row">
     @foreach (var gym in Model)
     {
-        <div class="card col-7" style="width: 20rem;">
-            <img class="card-img-top" style="width: 19rem;"
-                 src="@gym.ImageUrl" alt="Gym Image" >
-            <div class="card-body">
+        
+            <div class="card col-7 " style="width: 18rem;">
+                <img class="card-img-top" style="width: 17rem;"
+                     src="@gym.ImageUrl" alt="Gym Image">
+                <div class="card-body">
 
-                <h5 class="card-title mt-1">@gym.Name</h5>
-                <p class="mb-0">Type: @gym.Type</p>
+                    <h5 class="card-title mt-1">@gym.Name</h5>
+                    <p class="mb-0">Type: @gym.Type</p>
+                </div>
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+
+                    <div class="d-flex justify-content-center">
+                        <a asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Details" method="post">
+                            <input type="submit" value="Details" class="btn btn-primary btn-md" />
+                        </a>
+                        <a asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Edit" method="post">
+                            <input type="submit" value="Edit" class="btn btn-warning btn-md" />
+                        </a>
+                    <a asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Delete" method="get">
+                        <input type="submit" value="Delete" class="btn btn-warning btn-md" />
+                    </a>
+                    </div>
+                }
             </div>
-            @if (User?.Identity?.IsAuthenticated ?? false)
-            {
-
-                <a class="input-group-sm"  asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Details" method="post">
-                    <input type="submit" value="Details" class="btn btn-success mb-3 p-2" />
-                </a>
-                <form class="input-group-sm" asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Edit" method="get">
-                    <input type="submit" value="Edit" class="btn btn-success mb-3 p-2" />
-                </form>
-            }
-        </div>
+        
+       
     }
 </div>
 

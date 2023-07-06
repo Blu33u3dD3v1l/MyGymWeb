@@ -3,7 +3,7 @@ using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
-
+using System.Security.Cryptography.X509Certificates;
 
 namespace MyGymWeb.Services
 {
@@ -30,6 +30,15 @@ namespace MyGymWeb.Services
             await context.Gyms.AddAsync(entity);
             await context.SaveChangesAsync();
             
+        }
+
+        public async Task DeleteGymAsync(int id)
+        {
+           var gym = await context.Gyms
+                .FirstAsync(x => x.Id == id);
+
+           context.Gyms.Remove(gym); 
+           await context.SaveChangesAsync();
         }
 
         public async Task EditByIdAsync(int id,EditGymFormModel model)
@@ -152,6 +161,7 @@ namespace MyGymWeb.Services
 
             return entity;
         }
+
 
        
     }

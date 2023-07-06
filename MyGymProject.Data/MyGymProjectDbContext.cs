@@ -32,11 +32,18 @@ namespace MyGymWeb.Data
         {
 
 
+            builder.Entity<Gym>()
+                .HasOne(x => x.Trainer)
+                .WithMany(y => y.Gyms)
+                .HasForeignKey(x => x.TrainerId)
+                .OnDelete(DeleteBehavior.Cascade);
            
            builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
            builder.ApplyConfiguration(new GymConfiguration());
            builder.ApplyConfiguration(new ProductConfiguration());
            builder.ApplyConfiguration(new TypeConfiguration());
+           //builder.ApplyConfiguration(new TrainerConfiguration());
+
 
 
             base.OnModelCreating(builder);

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230705132213_Opp")]
+    partial class Opp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -475,9 +477,6 @@ namespace MyGymWeb.Data.Migrations
                         .HasMaxLength(5000)
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Moto")
                         .IsRequired()
                         .HasMaxLength(5000)
@@ -508,6 +507,19 @@ namespace MyGymWeb.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Trainers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("de2f3c98-2c0b-4def-b8e2-6e0ddef45663"),
+                            ImageUrl = ".\\Images\\Image.Jpg.jpg",
+                            Info = "gfgfgfgf",
+                            Moto = "fdsdsf",
+                            Name = "Alabala",
+                            Practis = "gfgfgf",
+                            PricePerHour = 200m,
+                            Type = "gfgfgfgff"
+                        });
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Type", b =>
@@ -632,8 +644,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasOne("MyGymWeb.Data.Models.Trainer", "Trainer")
                         .WithMany("Gyms")
-                        .HasForeignKey("TrainerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TrainerId");
 
                     b.Navigation("Athlete");
 

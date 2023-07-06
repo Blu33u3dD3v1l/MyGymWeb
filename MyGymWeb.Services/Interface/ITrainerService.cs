@@ -12,7 +12,8 @@ namespace MyGymWeb.Services.Interface
         Task EditByIdAsync(Guid id, EditTrainerFormModel model);
         Task AddTrainerAsync(AddTrainerFormModel model);
         Task<bool> TrainerExistByUserId(string userId);
-        Task BecomeTrainerAsync(string userId, AddTrainerFormModel model);
+        Task BecomeTrainerAsync(string userId, AddTrainerFormModel model);       
+        
 
 
     }

@@ -11,3 +11,4 @@ namespace MyGymWeb.Infrastructure.Extensions
         }
     }
 }
+

@@ -13,8 +13,8 @@
 <div class="text-center row">
     @foreach (var trainer in Model)
     {
-        <div class="card" style="width: 22rem;">
-            <img class="card-img-top" style="width: 21rem;"
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" style="width: 17rem;"
                  src="@trainer.ImageUrl" alt="Trainer Image">
             <div class="card-body">
 
@@ -24,13 +24,16 @@
             {
                 <div class="d-flex justify-content-center">
                     <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
-                        <input type="submit" value="Details" class="btn btn-primary btn-lg" />
+                        <input type="submit" value="Details" class="btn btn-primary btn-md" />
                     </a>
                     <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Pick" method="post">
-                        <input type="submit" value="PickTrainer" class="btn btn-warning btn-lg" />
+                        <input type="submit" value="PickTrainer" class="btn btn-warning btn-md" />
                     </a>
                     <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Edit" method="post">
-                        <input type="submit" value="EditTrainer" class="btn btn-success btn-lg" />
+                        <input type="submit" value="EditTrainer" class="btn btn-success btn-md" />
+                    </a>
+                    <a asp-route-id="@trainer.Id" method="post">
+                        <input type="submit" value="Delete" class="btn btn-success btn-md" />
                     </a>
                 </div>
 

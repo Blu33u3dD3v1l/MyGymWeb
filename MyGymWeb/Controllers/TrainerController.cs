@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
+using System.Security.Claims;
 using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
 
 namespace MyGymWeb.Controllers
@@ -104,10 +105,18 @@ namespace MyGymWeb.Controllers
         {
 
             string? userId = this.User.GetId();
+            if(userId == null)
+            {
+                return RedirectToAction("All", "Trainer");
+            }
+
             bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
+
+            
 
             if (isTrainer)
             {
+
                 return RedirectToAction("Index", "Home");
             }
 
@@ -119,7 +128,15 @@ namespace MyGymWeb.Controllers
         public async Task<IActionResult> Become(AddTrainerFormModel model)
         {
             string? userId = this.User.GetId();
+
+            if (userId == null)
+            {
+                return RedirectToAction("All", "Trainer");
+            }
+
             bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
+
+        
 
             if (isTrainer)
             {
@@ -130,8 +147,6 @@ namespace MyGymWeb.Controllers
 
             return RedirectToAction("All", "Trainer");
         }
-
-
 
     }
 }
