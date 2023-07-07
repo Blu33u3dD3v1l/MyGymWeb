@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Controllers
@@ -22,19 +23,51 @@ namespace MyGymWeb.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Details(int productId)
+        public async Task<IActionResult> Details(int id)
         {
-            var model = await productService.GetProductDescriptionAsync(productId);
+            var model = await productService.GetProductDescriptionAsync(id);
 
             return View(model);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int productId)
+        public async Task<IActionResult> Edit(int id)
         {
-            var model = await productService.GetEditProductAsync(productId);
+            var model = await productService.GetEditProductAsync(id);
 
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            var model = new AddProductsFormModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AddProductsFormModel model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                await this.productService.AddProductsAsync(model);
+
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+            }
+
+            return RedirectToAction("All", "Product");
+
+
         }
 
     }

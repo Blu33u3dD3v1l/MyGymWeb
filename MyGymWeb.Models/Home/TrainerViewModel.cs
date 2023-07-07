@@ -17,5 +17,6 @@
         public string Moto { get; set; } = null!;
 
         public string Type { get; set; } = null!;
+        public bool IsAvailable { get; set; }
     }
 }

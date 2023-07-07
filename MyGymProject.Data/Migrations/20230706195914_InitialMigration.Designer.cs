@@ -12,8 +12,8 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    [Migration("20230705132047_Extension")]
-    partial class Extension
+    [Migration("20230706195914_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -631,7 +631,8 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasOne("MyGymWeb.Data.Models.Trainer", "Trainer")
                         .WithMany("Gyms")
-                        .HasForeignKey("TrainerId");
+                        .HasForeignKey("TrainerId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Athlete");
 

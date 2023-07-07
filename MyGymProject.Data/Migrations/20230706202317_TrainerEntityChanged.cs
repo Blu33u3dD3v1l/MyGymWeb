@@ -4,22 +4,23 @@
 
 namespace MyGymWeb.Data.Migrations
 {
-    public partial class IsNotActiveAdded : Migration
+    public partial class TrainerEntityChanged : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
+            migrationBuilder.AddColumn<bool>(
                 name: "IsActive",
                 table: "Trainers",
-                newName: "IsNotActive");
+                type: "bit",
+                nullable: false,
+                defaultValue: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "IsNotActive",
-                table: "Trainers",
-                newName: "IsActive");
+            migrationBuilder.DropColumn(
+                name: "IsActive",
+                table: "Trainers");
         }
     }
 }

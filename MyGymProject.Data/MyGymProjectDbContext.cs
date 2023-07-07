@@ -26,11 +26,13 @@ namespace MyGymWeb.Data
         public DbSet<Models.Type> Types { get; set; } = null!;
 
        
+       
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
+           
 
             builder.Entity<Gym>()
                 .HasOne(x => x.Trainer)

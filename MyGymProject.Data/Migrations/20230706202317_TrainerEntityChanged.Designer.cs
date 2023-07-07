@@ -12,8 +12,8 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    [Migration("20230704141307_SeedingDb")]
-    partial class SeedingDb
+    [Migration("20230706202317_TrainerEntityChanged")]
+    partial class TrainerEntityChanged
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -477,6 +477,9 @@ namespace MyGymWeb.Data.Migrations
                         .HasMaxLength(5000)
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Moto")
                         .IsRequired()
                         .HasMaxLength(5000)
@@ -631,7 +634,8 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasOne("MyGymWeb.Data.Models.Trainer", "Trainer")
                         .WithMany("Gyms")
-                        .HasForeignKey("TrainerId");
+                        .HasForeignKey("TrainerId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Athlete");
 

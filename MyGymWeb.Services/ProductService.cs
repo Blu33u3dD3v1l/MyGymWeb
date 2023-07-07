@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
+using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 
@@ -12,6 +13,23 @@ namespace MyGymWeb.Services
         public ProductService(MyGymProjectDbContext _context)
         {
             context = _context;
+        }
+
+        public async Task AddProductsAsync(AddProductsFormModel model)
+        {
+            var entity = new Product()
+            {
+                Name = model.Name,
+                Description = model.Description,
+                ImageUrl = model.ImageUrl,
+                Mark = model.Mark,
+                Price = model.Price,
+                
+
+            };
+
+            await this.context.Products.AddAsync(entity);
+            await this.context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<ProductViewModel>> GetAllProductsAsync()
@@ -31,10 +49,10 @@ namespace MyGymWeb.Services
             return products;
         }
 
-        public async Task<TestViewModel> GetEditProductAsync(int productId)
+        public async Task<TestViewModel> GetEditProductAsync(int id)
         {
            var currPoduct = await context.Products
-                .FirstOrDefaultAsync(x => x.Id == productId);
+                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (currPoduct == null)
             {
@@ -44,7 +62,7 @@ namespace MyGymWeb.Services
 
             return new TestViewModel()
             {
-                Id = productId,
+                Id = id,
                 Name = currPoduct.Name,
                 ImageUrl = currPoduct.ImageUrl,
                 Description = currPoduct.Description,
@@ -54,9 +72,9 @@ namespace MyGymWeb.Services
             };
         }
 
-        public async Task<ProductViewModel> GetProductDescriptionAsync(int productId)
+        public async Task<ProductViewModel> GetProductDescriptionAsync(int id)
         {
-            var currId = await context.Products.FindAsync(productId);
+            var currId = await context.Products.FindAsync(id);
 
             if (currId == null)
             {

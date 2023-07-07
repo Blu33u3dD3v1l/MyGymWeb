@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
+using MyGymWeb.Data.Models;
 using MyGymWeb.Services;
 using MyGymWeb.Services.Interface;
 
@@ -31,6 +32,7 @@ namespace MyGymWeb
             builder.Services.AddScoped<IGymService, GymService>();
             builder.Services.AddScoped<ITrainerService, TrainerService>();
             builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IAthleteService, AthleteService>();
 
             var app = builder.Build();
 

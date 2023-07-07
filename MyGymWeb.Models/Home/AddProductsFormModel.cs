@@ -1,13 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using static MyGymWeb.Common.Constants.ValidationConstants.ProductValidations;
 
-namespace MyGymWeb.Data.Models
+namespace MyGymWeb.Models.Home
 {
-    public class Product
+    public class AddProductsFormModel
     {
-
-        [Key]
-        public int Id { get; set; }
 
         [MaxLength(MarkMaxValidation)]
         [Required]
@@ -17,7 +14,7 @@ namespace MyGymWeb.Data.Models
         [Required]
         public string Name { get; set; } = null!;
 
-        [Range(1.0, 2000.0)]
+        [Range(1.0, 200.0)]
         [Required]
         public int Price { get; set; }
 
@@ -27,10 +24,5 @@ namespace MyGymWeb.Data.Models
 
         [Required]
         public string ImageUrl { get; set; } = null!;
-
-        public int? GymId { get; set; }
-        
-        public Gym? Gym { get; set; }    
-
     }
 }

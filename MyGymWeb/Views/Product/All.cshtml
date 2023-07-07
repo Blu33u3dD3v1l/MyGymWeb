@@ -26,15 +26,20 @@
             </div>
             @if (User?.Identity?.IsAuthenticated ?? false)
             {
-                <a class="input-group-sm" asp-route-productId="@product.Id" asp-controller="Product" asp-action="Details" method="post">
-                    <input type="submit" value="Details" class="btn btn-success mb-3 p-2" />
-                </a>
-                <a class="input-group-sm" asp-route-productId="@product.Id" asp-controller="Product" asp-action="Edit" method="get">
-                    <input type="submit" value="Edit" class="btn btn-success mb-3 p-2" />
-                </a>
-                <form class="input-group-sm" asp-route-productId="@product.Id" asp-controller="Home" asp-action="Index" method="post">
-                    <input type="submit" value="Buy" class="btn btn-success mb-3 p-2" />
-                </form>
+                <div class="d-flex justify-content-center">
+                    <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Details" method="post">
+                        <input type="submit" value="Details" class="btn btn-primary btn-sm" />
+                    </a>
+                    <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Buy" method="post">
+                        <input type="submit" value="Buy" class="btn btn-warning btn-sm" />
+                    </a>
+                    <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Edit" method="post">
+                        <input type="submit" value="EditProduct" class="btn btn-success btn-sm" />
+                    </a>
+                    <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Delete" method="get">
+                        <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+                    </a>
+                </div>
 
             }
         </div>
