@@ -19,7 +19,7 @@ namespace MyGymWeb.Data.Models
 
         [Range(1.0, 2000.0)]
         [Required]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         [MaxLength(DescriptionMaxValidation)]
         [Required]

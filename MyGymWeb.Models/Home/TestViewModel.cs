@@ -16,9 +16,9 @@ namespace MyGymWeb.Models.Home
         [Required]
         public string Name { get; set; } = null!;
 
-        [Range(1.0, 200.0)]
+        [Range(1.0, 2000.0)]
         [Required]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         [StringLength(DescriptionMaxValidation, MinimumLength = DescriptionMinValidation)]
         [Required]

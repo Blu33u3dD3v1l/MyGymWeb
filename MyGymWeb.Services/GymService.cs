@@ -139,31 +139,6 @@ namespace MyGymWeb.Services
                 Description = currGym.Description
             };
         }
-
-        public async Task<ProductViewModel> GetProductDescriptionAsync(int productId)
-        {
-            var currId = await context.Products.FindAsync(productId);
-
-            if (currId == null)
-            {
-                throw new ArgumentNullException("Id Not Found!");
-            }
-
-            var entity = new ProductViewModel()
-            {
-                Id = currId.Id,
-                Name = currId.Name,
-                ImageUrl = currId.ImageUrl,
-                Description = currId.Description,
-                Mark = currId.Mark,
-                Price = currId.Price,
-            };
-
-            return entity;
-        }
-
-
-       
     }
 }
 

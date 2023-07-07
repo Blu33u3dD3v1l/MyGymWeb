@@ -40,10 +40,10 @@
         public static class ProductValidations
         {
             public const int NameMinValidation = 10;
-            public const int NameMaxValidation = 50;
+            public const int NameMaxValidation = 500;
 
             public const int MarkMinValidation = 10;
-            public const int MarkMaxValidation = 50;
+            public const int MarkMaxValidation = 500;
 
             public const int DescriptionMinValidation = 10;
             public const int DescriptionMaxValidation = 5000;

@@ -32,6 +32,26 @@ namespace MyGymWeb.Services
             await this.context.SaveChangesAsync();
         }
 
+        public async Task EditByIdAsync(int id, TestViewModel model)
+        {
+            var currProduct = await context.Products.
+               FirstOrDefaultAsync(x => x.Id == id);
+
+            if (currProduct == null)
+            {
+                throw new Exception();
+            }
+
+            currProduct.Id = id;
+            currProduct.Name = model.Name;
+            currProduct.Description = model.Description;
+            currProduct.ImageUrl = model.ImageUrl;
+            currProduct.Mark = model.Mark;
+            currProduct.Price = model.Price;
+
+            await this.context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<ProductViewModel>> GetAllProductsAsync()
         {
             var products = await context.Products
@@ -42,7 +62,8 @@ namespace MyGymWeb.Services
                    ImageUrl = x.ImageUrl,
                    Description = x.Description,
                    Mark = x.Mark,
-                   Price = x.Price,
+                   Price= x.Price,
+
 
                }).ToListAsync();
 
@@ -62,7 +83,7 @@ namespace MyGymWeb.Services
 
             return new TestViewModel()
             {
-                Id = id,
+            
                 Name = currPoduct.Name,
                 ImageUrl = currPoduct.ImageUrl,
                 Description = currPoduct.Description,
@@ -89,6 +110,7 @@ namespace MyGymWeb.Services
                 Description = currId.Description,
                 Mark = currId.Mark,
                 Price = currId.Price,
+
             };
 
             return entity;

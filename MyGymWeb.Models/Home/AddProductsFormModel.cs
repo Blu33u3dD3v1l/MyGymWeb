@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.ComponentModel.DataAnnotations;
 using static MyGymWeb.Common.Constants.ValidationConstants.ProductValidations;
 
 namespace MyGymWeb.Models.Home
@@ -14,9 +15,9 @@ namespace MyGymWeb.Models.Home
         [Required]
         public string Name { get; set; } = null!;
 
-        [Range(1.0, 200.0)]
+        [Range(1.0, 2000.0)]
         [Required]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         [MaxLength(DescriptionMaxValidation)]
         [Required]
