@@ -3,17 +3,24 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MyGymWeb</title>   
+    <title>@ViewData["Title"] - MyGymWeb</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyGymWeb.styles.css" asp-append-version="true" />
 </head>
-<body >
-   
+<body>
+    
+   @* <div class="top-bar">
+        <div class="container">
+            <div class="col col-12 text-end">
+                <p><a>Call Us at 555-555-555</a></p>
+            </div>
+        </div>
+    </div>*@
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4">
-            <div class="container-fluid">               
-                 <img class="h-100" src="https://static.vecteezy.com/system/resources/thumbnails/000/595/983/small/04012019-25.jpg" style="width:5em; height:6em;" alt="myGym" />
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom">
+            <div class="container-fluid">
+                <img class="h-100" src="https://static.vecteezy.com/system/resources/thumbnails/000/595/983/small/04012019-25.jpg" style="width:5em; height:6em;" alt="myGym" />
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,7 +28,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark h5" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" class="nav-link active">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Gym" asp-action="All">Gyms</a>
@@ -35,7 +42,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Athlete" asp-action="Mine">My Trainers</a>
                         </li>
-                     
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="Become">Apply</a>
                         </li>
@@ -45,15 +52,13 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @DateTime.UtcNow - MyGymWeb
+            &copy; @DateTime.Now - MyGymWeb
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

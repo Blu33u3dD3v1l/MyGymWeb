@@ -3,6 +3,7 @@ using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
+using System.Collections;
 using System.Security.Cryptography.X509Certificates;
 
 namespace MyGymWeb.Services
@@ -90,6 +91,8 @@ namespace MyGymWeb.Services
                     ImageUrl= x.ImageUrl,
 
                 }).ToListAsync();
+
+            
 
             return allGyms;
         }

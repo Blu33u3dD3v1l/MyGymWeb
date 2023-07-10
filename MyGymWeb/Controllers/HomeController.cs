@@ -9,20 +9,11 @@ namespace MyGymWeb.Controllers
    
     public class HomeController : Controller
     {
-        private readonly IGymService gymService;
-
-        public HomeController(IGymService _gymService)
-        {
-            gymService = _gymService;
-        }
-
-
-        public async Task<IActionResult> Index()
+      
+        public IActionResult Index()
         {
 
-
-            var entity = await gymService.GetAllGymsForIndexAsync();
-            return View(entity);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

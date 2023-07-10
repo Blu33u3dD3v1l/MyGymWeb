@@ -32,7 +32,7 @@ namespace MyGymWeb
             builder.Services.AddScoped<IGymService, GymService>();
             builder.Services.AddScoped<ITrainerService, TrainerService>();
             builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<IAthleteService, AthleteService>();
+    
 
             var app = builder.Build();
 

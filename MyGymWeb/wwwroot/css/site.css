@@ -15,9 +15,32 @@ html {
 
 body {
 
-  background-color: #222;
     margin-bottom: 100px;
 }
-im1{
-    border-image: url(../Image.Jpg.jpg)
+.navbar{
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .9);
+    z-index: 1;
+        
+}
+.nav-item{
+    padding: .5rem;
+}
+.nav-link{
+    color: #5b5555!important;
+}
+.nav-link.active,
+.nav-link:hover{
+
+    color: #4981b3!important;
+}
+.top-bar{
+    background: #7aaec4;
+    height: 2.8rem;
+    padding: .5rem 0;
+}
+.carousel-inner{
+    max-height: 42rem!important;
 }

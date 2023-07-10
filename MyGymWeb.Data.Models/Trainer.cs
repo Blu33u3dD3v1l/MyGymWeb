@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static MyGymWeb.Common.Constants.ValidationConstants.ClasicTrainerValidations;
 
 
@@ -50,7 +51,13 @@ namespace MyGymWeb.Data.Models
 
         public string? UserId { get; set; }
 
+        [ForeignKey(nameof(UserId))]
         public IdentityUser? User { get; set; }
+
+        public string? GetTrainerId { get; set; }
+
+        [ForeignKey(nameof(GetTrainerId))]
+        public IdentityUser? GetTrainer { get; set; }
 
         public bool IsActive { get; set; } = true;
 
