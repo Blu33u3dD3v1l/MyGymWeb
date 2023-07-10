@@ -44,3 +44,9 @@ body {
 .carousel-inner{
     max-height: 42rem!important;
 }
+.fixed{
+    background-image: url("../images/beauty-spa.jpg");
+}
+.fixed-background{
+    padding: 10rem 0; 
+}
