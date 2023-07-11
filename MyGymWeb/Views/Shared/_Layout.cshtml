@@ -9,18 +9,11 @@
     <link rel="stylesheet" href="~/MyGymWeb.styles.css" asp-append-version="true" />
 </head>
 <body>
-    
-   @* <div class="top-bar">
-        <div class="container">
-            <div class="col col-12 text-end">
-                <p><a>Call Us at 555-555-555</a></p>
-            </div>
-        </div>
-    </div>*@
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom">
             <div class="container-fluid">
-                <img class="h-100" src="https://static.vecteezy.com/system/resources/thumbnails/000/595/983/small/04012019-25.jpg" style="width:5em; height:6em;" alt="myGym" />
+                <img class="h-100" src="https://static.vecteezy.com/system/resources/thumbnails/000/595/983/small/04012019-25.jpg" style="width:5em; height:6em;" alt="./images/04012019-25.jpg" />
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -56,11 +49,40 @@
         @RenderBody()
     </main>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now - MyGymWeb
+
+    <div class="container py-4" style="height:80px">
+        <div class="row py-1">
+            <div class="col-lg-4">
+                <h5>GYMFIT</h5>
+                <p class="py-4">
+                    The fitness philosophy is a broad summary of your values. It is the sum of your personal attributes and professional passions, and includes the following elements: Your method for teaching, coaching and motivating others.
+                </p>
+                <span class="social"><i class="fab fa-facebook"></i></span>
+                <span class="social"><i class="fab fa-facebook-messenger"></i></span>
+                <span class="social"><i class="fab fa-google-plus"></i></span>
+                <span class="social"><i class="fab fa-pinterest"></i></span>
+            </div>
+            <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
+                <h5 class="pb-4">INFORMATION</h5>
+                <p class="link"> <span><i class="fas fa-angle-double-right"></i>About Us</span></p>
+                <p class="link"> <span><i class="fas fa-angle-double-right"></i>Privacy Policy</span></p>
+                <p class="link"> <span><i class="fas fa-angle-double-right"></i>Terms & Conditions</span></p>
+                <p class="link"> <span><i class="fas fa-angle-double-right"></i>Contact Us</span></p>
+                @* <p class="link"> <span><i class="fas fa-angle-double-right"></i>About Us</span></p>
+                <p class="link"> <span><i class="fas fa-angle-double-right"></i>About Us</span></p>*@
+            </div>
+            <div class="col-lg-4">
+                <h5 class="pb-4">HOME LOCATION</h5>
+                <h4>Washington 6036 Richmond nwy., Alexandria, VA USA 22303</h4>
+                <p class="link pt-3">+1 (409) 987-5874</p>
+                <p class="link">info@info.com</p>
+            </div>
         </div>
-    </footer>
+    </div>
+
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

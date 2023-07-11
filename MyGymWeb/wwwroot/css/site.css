@@ -45,10 +45,11 @@ body {
     max-height: 42rem!important;
 }
 
-.fixed-background{
+.fixed-background {
     position: relative;
     width: 100%;
-    z-index: 1000!important;
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .4);
+    z-index: 1000 !important;
 }
 .fixed-wrap{
     clip: rect(0, auto, auto, 0);
@@ -72,8 +73,42 @@ body {
     will-change: transform;
 }
 .fixed{
-    background-image: url("../images/relax-girl2.jpg")
+    background-image: url("../images/wp4430084-massage-wallpapers.jpg")
 }
 .fixed-background{
     padding: 10rem 0;
+}
+.footer{
+    background-color: aqua;
+}
+.footer h4, h5{
+    font-weight: 900;
+}
+.footer p{
+    margin: 0;
+    color: teal;
+}
+.link{
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.link:hover{
+    color: rgb(236, 83, 83);
+    padding-left: 5px;
+    transition: all 0.5s;
+}
+.fas fa-angle-double-right{
+    font-size: 18px;
+    color: teal;
+}
+.social{
+    color: white;
+    font-size: 24px;
+    transition: all 0.4s;
+}
+
+.social:hover {
+    color: red;
+    transition: all 0.4s;
+    cursor: pointer;
 }
