@@ -1,51 +1,51 @@
 ﻿@model IEnumerable<ProductViewModel>
 
-@{
-    ViewBag.Title = "Our Products";
-}
 
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+
+<div class="MyProducts">
+    <div class="container">
+
+        <div class="text-center row">
+            @foreach (var product in Model)
+            {
+                <div class="card col-7" style="width: 18rem;">
+                    <img class="card-img-top" style="width: 17rem;"
+                         src="@product.ImageUrl" alt="Product Image">
+                    <div class="card-body">
+
+                        <h5 class="card-title mt-1">@product.Name</h5>
+                        <p class="mb-0">Mark: @product.Mark</p>
+                        <b class="mb-1">@product.Price$</b>
 
 
-<div class="container">
-
-    <div class="text-center row">
-        @foreach (var product in Model)
-        {
-            <div class="card col-7" style="width: 18rem;">
-                <img class="card-img-top" style="width: 17rem;"
-                     src="@product.ImageUrl" alt="Product Image">
-                <div class="card-body">
-
-                    <h5 class="card-title mt-1">@product.Name</h5>
-                    <p class="mb-0">Mark: @product.Mark</p>
-                    <b class="mb-1">@product.Price$</b>
-
-
-                </div>
-                @if (User?.Identity?.IsAuthenticated ?? false)
-                {
-                    <div class="d-flex justify-content-center">
-                        <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Details" method="post">
-                            <input type="submit" value="Details" class="btn btn-primary btn-sm" />
-                        </a>
-                        <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Buy" method="post">
-                            <input type="submit" value="Buy" class="btn btn-warning btn-sm" />
-                        </a>
-                        <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Edit" method="post">
-                            <input type="submit" value="EditProduct" class="btn btn-success btn-sm" />
-                        </a>
-                        <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Delete" method="get">
-                            <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
-                        </a>
                     </div>
+                    @if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <div class="d-flex justify-content-center">
+                            <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Details" method="post">
+                                <input type="submit" value="Details" class="btn btn-primary btn-sm" />
+                            </a>
+                            <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Buy" method="post">
+                                <input type="submit" value="Buy" class="btn btn-warning btn-sm" />
+                            </a>
 
-                }
-            </div>
-        }
+                            <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Edit" method="post">
+                                <input type="submit" value="EditProduct" class="btn btn-success btn-sm" />
+                            </a>
+                            <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Delete" method="get">
+                                <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+                            </a>
+
+
+                        </div>
+
+                    }
+                </div>
+            }
+        </div>
     </div>
+
 </div>
 
 

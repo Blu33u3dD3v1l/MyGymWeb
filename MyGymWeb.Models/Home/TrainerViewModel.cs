@@ -1,4 +1,6 @@
-﻿namespace MyGymWeb.Models.Home
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace MyGymWeb.Models.Home
 {
     public class TrainerViewModel
     {
@@ -18,5 +20,7 @@
 
         public string Type { get; set; } = null!;
         public bool IsAvailable { get; set; }
+        public string? UserId { get; set; }
+       public IdentityUser? User { get; set; }
     }
 }

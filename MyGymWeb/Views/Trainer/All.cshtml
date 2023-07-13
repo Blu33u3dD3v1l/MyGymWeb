@@ -1,54 +1,60 @@
 ﻿@model IEnumerable<TrainerViewModel>
+@using MyGymWeb.Infrastructure.Extensions;
 
-@{
+@*@{
     ViewBag.Title = "TRAINERS";
-}
+}*@
 
+<div class="TrainerContainer">
+    <div class="container">
+        <div class="row">
+            @foreach (var trainer in Model)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" style="width: 17rem; height:250px;"
+                         src="@trainer.ImageUrl" alt="Trainer Image">
+                    <div class="card-body text-center">
 
-<h2 class="text-center text-danger">@ViewBag.Title</h2>
-<hr />
+                        <h4 class="card-title mt-1">@trainer.Name</h4>
 
-
-<div class="container">
-    <div class="text-center row">
-        @foreach (var trainer in Model)
-        {
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" style="width: 17rem; height:230px;"
-                     src="@trainer.ImageUrl" alt="Trainer Image">
-                <div class="card-body">
-
-                    <h5 class="card-title mt-1">@trainer.Name</h5>
-
-                    @if (trainer.IsAvailable)
+                        @if (trainer.IsAvailable)
+                        {
+                            <img class="w-100" src="https://t4.ftcdn.net/jpg/02/19/01/15/360_F_219011565_RO9mdUz9DdQ9y8WMy8WZywx96wWnb6ct.jpg" alt="Error">
+                        }
+                        else
+                        {
+                            <img class="w-100" src="https://media.istockphoto.com/id/1398189751/vector/unavailable-grunge-rubber-stamp.jpg?s=612x612&w=0&k=20&c=rktpTaFVqS1AdEpcshO7S1Fc1AXYmg4i6opm_R2AohI=" alt="Error">
+                        }
+                    </div>
+                    @if (User?.Identity?.IsAuthenticated ?? false)
                     {
-                        <img class="w-100" src="https://t4.ftcdn.net/jpg/02/19/01/15/360_F_219011565_RO9mdUz9DdQ9y8WMy8WZywx96wWnb6ct.jpg" alt="Error">
-                    }
-                    else
-                    {
-                        <img class="w-100" src="https://media.istockphoto.com/id/1398189751/vector/unavailable-grunge-rubber-stamp.jpg?s=612x612&w=0&k=20&c=rktpTaFVqS1AdEpcshO7S1Fc1AXYmg4i6opm_R2AohI=" alt="Error">
+                        <div class="d-flex justify-content-center">
+                            <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
+                                <input type="submit" value="Details" class="btn btn-primary btn-sm" />
+                            </a>
+                            @if (trainer.UserId == ClaimsExtensions.GetId(User))
+                            {
+                                <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Edit" method="post">
+                                    <input type="submit" value="EditTrainer" class="btn btn-success btn-sm" />
+                                </a>
+                                <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Delete" method="get">
+                                    <input type="submit" value="Quit" class="btn btn-danger btn-sm" />
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-route-id="@trainer.Id" asp-controller="Athlete" asp-action="PickTrainer" method="post">
+                                    <input type="submit" value="PickTrainer" class="btn btn-warning btn-sm" />
+                                </a>
+                            }
+                        </div>
                     }
                 </div>
-                @if (User?.Identity?.IsAuthenticated ?? false)
-                {
-                    <div class="d-flex justify-content-center">
-                        <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
-                            <input type="submit" value="Details" class="btn btn-primary btn-sm" />
-                        </a>
-                        <a asp-route-id="@trainer.Id" asp-controller="Athlete" asp-action="PickTrainer" method="post">
-                            <input type="submit" value="PickTrainer" class="btn btn-warning btn-sm" />
-                        </a>
-                        <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Edit" method="post">
-                            <input type="submit" value="EditTrainer" class="btn btn-success btn-sm" />
-                        </a>
-                        <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Delete" method="get">
-                            <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
-                        </a>
-                    </div>
-
-                }
-            </div>
-        }
+            }
+        </div>
     </div>
+
 </div>
+
+
 

@@ -1,65 +1,67 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 12px;
-  }
+    html {
+        font-size: 12px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
-body {
 
-    margin-bottom: 100px;
-}
-.navbar{
+.navbar {
     font-size: 1.15rem;
     font-weight: 600;
     letter-spacing: .1rem;
     box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .9);
     z-index: 1;
-        
 }
-.nav-item{
+
+.nav-item {
     padding: .5rem;
 }
-.nav-link{
-    color: #5b5555!important;
-}
-.nav-link.active,
-.nav-link:hover{
 
-    color: #4981b3!important;
+.nav-link {
+    color: #5b5555 !important;
 }
-.top-bar{
+
+    .nav-link.active,
+    .nav-link:hover {
+        color: #4981b3 !important;
+    }
+
+.top-bar {
     background: #7aaec4;
     height: 2.8rem;
     padding: .5rem 0;
 }
-.carousel-inner{
-    max-height: 42rem!important;
+
+.carousel-inner {
+    max-height: 42rem !important;
 }
 
 .fixed-background {
     position: relative;
     width: 100%;
-    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .4);
-    z-index: 1000 !important;
+  /*  box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .4);*/
+   /* z-index: 1000 !important;*/
 }
-.fixed-wrap{
+
+.fixed-wrap {
     clip: rect(0, auto, auto, 0);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -999!important;
+    z-index: -999 !important;
 }
+
 .fixed {
     z-index: -999 !important;
     display: block;
@@ -72,43 +74,55 @@ body {
     -webkit-transform: translateZ(0);
     will-change: transform;
 }
-.fixed{
+
+.fixed {
     background-image: url("../images/wp4430084-massage-wallpapers.jpg")
 }
-.fixed-background{
+
+.fixed-background {
     padding: 10rem 0;
 }
-.footer{
-    background-color: aqua;
-}
-.footer h4, h5{
-    font-weight: 900;
-}
-.footer p{
-    margin: 0;
-    color: teal;
-}
-.link{
+
+.link {
     cursor: pointer;
     transition: all 0.5s;
-}
-.link:hover{
-    color: rgb(236, 83, 83);
-    padding-left: 5px;
-    transition: all 0.5s;
-}
-.fas fa-angle-double-right{
-    font-size: 18px;
-    color: teal;
-}
-.social{
-    color: white;
-    font-size: 24px;
-    transition: all 0.4s;
 }
 
-.social:hover {
-    color: red;
-    transition: all 0.4s;
-    cursor: pointer;
+.link:hover {
+        color: rgb(236, 83, 83);
+        padding-left: 5px;
+        transition: all 0.5s;
 }
+
+.MyFooter {
+    max-height: 30rem !important;
+    background-color: black;
+}
+
+.MyFooter p {
+    margin: 0;
+    color: teal;
+    font-weight: 700;
+}
+.MyFooter h5{
+     font-weight: 900;
+     color: white;
+}
+
+.TrainerContainer {
+    background-color: black;
+}
+
+.MyProducts {
+    background-color: black;
+}
+.MyLogin{
+    padding : 10rem 0;
+}
+.MyRegister {
+    padding: 10rem 0;
+}
+.TrainerDetails {
+    padding: 2rem 0;
+}
+
