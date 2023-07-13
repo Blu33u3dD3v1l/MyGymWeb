@@ -59,6 +59,8 @@ namespace MyGymWeb.Controllers
             return RedirectToAction("All", "Gym");
         }
 
+   
+
         public IActionResult Add()
         {
             var model =  new AddGymFormModel();

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyGymWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyGymWeb.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom">
+            <div class="container-fluid">
+                <img class="h-100" src="https://static.vecteezy.com/system/resources/thumbnails/000/595/983/small/04012019-25.jpg" style="width:5em; height:6em;" alt="./images/04012019-25.jpg" />
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Gym" asp-action="All">Gyms</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="All">Expert Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="All">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Athlete" asp-action="Mine">My Trainers</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="Become">Apply</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+    <div class="MyFooter">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>GYMFIT</h5>
+                    <p class="py-4">
+                        The fitness philosophy is a broad summary of your values. It is the sum of your personal attributes and professional passions, and includes the following elements: Your method for teaching, coaching and motivating others.
+                    </p>
+                </div>
+                <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
+                    <h5 class="pb-4">INFORMATION</h5>
+                    <p class="link"> <span><i class="fas fa-angle-double-right"></i>About Us</span></p>
+                    <p class="link"> <span><i class="fas fa-angle-double-right"></i>Privacy Policy</span></p>
+                    <p class="link"> <span><i class="fas fa-angle-double-right"></i>Terms & Conditions</span></p>
+                    <p class="link"> <span><i class="fas fa-angle-double-right"></i>Contact Us</span></p>
+                </div>
+
+                <div class="col-lg-4">
+                    <h5 class="pb-1">HOME LOCATION</h5>
+                    <p>Washington 6036 Richmond nwy., Alexandria, VA USA 22303</p>
+                    <p class="link pt-3">+1 (409) 987-5874</p>
+                    <p class="link">info@info.com</p>
+                </div  class="col-lg-4">
+            
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © @DateTime.Now.Year Copyright:
+        <a class="text-dark" href="#">MyGymWeb.com</a>
+    </div>
+</footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
@@ -27,8 +29,15 @@ namespace MyGymWeb
                 options.Password.RequireDigit = true;
 
             }).AddEntityFrameworkStores<MyGymProjectDbContext>();
-            builder.Services.AddControllersWithViews();
 
+          
+            builder.Services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
+
+            builder.Services.AddResponseCaching();
+            
             builder.Services.AddScoped<IGymService, GymService>();
             builder.Services.AddScoped<ITrainerService, TrainerService>();
             builder.Services.AddScoped<IProductService, ProductService>();
@@ -36,7 +45,9 @@ namespace MyGymWeb
 
             var app = builder.Build();
 
-          
+           
+
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
@@ -55,11 +66,27 @@ namespace MyGymWeb
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapControllerRoute(
+            app.UseEndpoints(endpoints =>
+            {
+                app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-            app.MapRazorPages();
 
+               app.MapControllerRoute(
+               name: "trainerDetails",
+               pattern: "Trainer/Details/{information}");
+
+              endpoints.MapControllerRoute(
+              name: "Admin",
+              pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+         );
+
+
+                endpoints.MapRazorPages();
+
+            });
+
+            app.UseResponseCaching();
             app.Run();
         }
     }

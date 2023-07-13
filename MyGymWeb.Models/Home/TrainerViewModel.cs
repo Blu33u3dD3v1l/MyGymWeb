@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
+
 namespace MyGymWeb.Models.Home
 {
-    public class TrainerViewModel
+    public class TrainerViewModel 
     {
         public Guid Id { get; set; }
 
