@@ -10,6 +10,7 @@ namespace MyGymWeb.Services.Interface
         Task<TestViewModel> GetEditProductAsync(int id);
         Task EditByIdAsync(int id, TestViewModel model);
         Task AddProductsAsync(AddProductsFormModel model);
+        Task DeleteProductAsync(int id);
 
     }
 }

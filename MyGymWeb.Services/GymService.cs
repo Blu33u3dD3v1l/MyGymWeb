@@ -142,6 +142,20 @@ namespace MyGymWeb.Services
                 Description = currGym.Description
             };
         }
+
+        public async Task RemoveGymAsync(int id)
+        {
+            var currentGym = await context.Gyms
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (currentGym == null)
+            {
+                throw new NullReferenceException();
+            }
+
+             context.Remove(currentGym);
+             await context.SaveChangesAsync();
+        }
     }
 }
 

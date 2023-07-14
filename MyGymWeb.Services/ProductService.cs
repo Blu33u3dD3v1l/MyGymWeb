@@ -32,6 +32,21 @@ namespace MyGymWeb.Services
             await this.context.SaveChangesAsync();
         }
 
+        public async Task DeleteProductAsync(int id)
+        {
+            var currentProduct = await context.Products
+                .FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
+
+            if (currentProduct == null)
+            {
+                throw new NullReferenceException();
+            }
+
+           
+            context.Remove(currentProduct);
+            await context.SaveChangesAsync();
+        }
+
         public async Task EditByIdAsync(int id, TestViewModel model)
         {
             var currProduct = await context.Products.

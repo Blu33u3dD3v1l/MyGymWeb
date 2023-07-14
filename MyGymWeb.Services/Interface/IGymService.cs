@@ -10,8 +10,9 @@ namespace MyGymWeb.Services.Interface
         Task<EditGymFormModel> GetEditGymAsync(int id);
         Task EditByIdAsync(int id, EditGymFormModel model);        
         Task AddGymAsync(AddGymFormModel model);
-     
-       
+        Task RemoveGymAsync(int id);
+
+
 
 
 

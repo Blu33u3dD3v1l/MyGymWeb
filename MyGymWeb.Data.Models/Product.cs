@@ -25,6 +25,8 @@ namespace MyGymWeb.Data.Models
         [Required]
         public string Description { get; set; } = null!;
 
+        public bool IsActive { get; set; } = true;
+
         [Required]
         public string ImageUrl { get; set; } = null!;
 

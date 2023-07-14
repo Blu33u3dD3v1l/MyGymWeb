@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
-using static MyGymWeb.Areas.Admin.AdminConstants;
+
 
 
 namespace MyGymWeb.Areas.Admin.Controllers
