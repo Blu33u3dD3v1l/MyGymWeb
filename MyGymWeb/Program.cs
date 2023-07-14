@@ -15,7 +15,7 @@ namespace MyGymWeb
         {
             var builder = WebApplication.CreateBuilder(args);
 
-          
+
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<MyGymProjectDbContext>(options =>
                 options.UseSqlServer(connectionString));
@@ -28,24 +28,26 @@ namespace MyGymWeb
                 options.Password.RequireUppercase = true;
                 options.Password.RequireDigit = true;
 
-            }).AddEntityFrameworkStores<MyGymProjectDbContext>();
 
-          
+            })  .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<MyGymProjectDbContext>();
+
+
             builder.Services.AddControllersWithViews(options =>
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
 
             builder.Services.AddResponseCaching();
-            
+
             builder.Services.AddScoped<IGymService, GymService>();
             builder.Services.AddScoped<ITrainerService, TrainerService>();
             builder.Services.AddScoped<IProductService, ProductService>();
-    
+
 
             var app = builder.Build();
 
-           
+
 
 
             if (app.Environment.IsDevelopment())
@@ -54,7 +56,7 @@ namespace MyGymWeb
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");                
+                app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
@@ -68,18 +70,20 @@ namespace MyGymWeb
 
             app.UseEndpoints(endpoints =>
             {
+
+
+
                 app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-               app.MapControllerRoute(
-               name: "trainerDetails",
-               pattern: "Trainer/Details/{information}");
+                endpoints.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-              endpoints.MapControllerRoute(
-              name: "Admin",
-              pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-         );
+                app.MapControllerRoute(
+                name: "trainerDetails",
+                pattern: "Trainer/Details/{information}");
 
 
                 endpoints.MapRazorPages();

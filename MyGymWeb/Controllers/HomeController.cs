@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
-using MyGymWeb.Services.Interface;
 using System.Diagnostics;
+using static MyGymWeb.Areas.Admin.AdminConstants;
 
 namespace MyGymWeb.Controllers
 {
@@ -13,7 +13,10 @@ namespace MyGymWeb.Controllers
         [ResponseCache(Duration = 60)]
         public IActionResult Index()
         {
-
+            if (User.IsInRole(AdminRolleName))
+            {
+                return RedirectToAction("Index", "Admin", new { area = AreaName });
+            }
             return View();
         }
 
