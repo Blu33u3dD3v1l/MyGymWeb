@@ -114,14 +114,14 @@
     </style>   
 </head>
 <body>
-    <div class="AdminAdd">
+    <div class="ManageAdmin">
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-8"><h2>Trainers <b>Details</b></h2></div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                            <a class="btn btn-info add-new" asp-area="Admin" asp-controller="Trainer" asp-action="Add"><i class="fa fa-plus"></i> Add New</a>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                @foreach (var item in Model)
+                @foreach (var item in Model.OrderByDescending(x => x.PricePerHour).ThenBy(x => x.Name))
                 {                  
                     <tbody>
                         <tr>
@@ -143,8 +143,8 @@
                             <td>@item.PricePerHour $</td>
                             <td>
                                 <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    <a asp-route-id="@item.Id" asp-area="Admin" asp-controller="Trainer" asp-action="Edit" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                    <a asp-route-id="@item.Id" asp-area="Admin" asp-controller="Trainer" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#xE872;</i></a>
                             </td>
                         </tr>                        
                     </tbody>               
