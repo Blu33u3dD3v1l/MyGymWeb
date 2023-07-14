@@ -2,7 +2,7 @@
 
 namespace MyGymWeb.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         public IActionResult Index()
         {
