@@ -39,14 +39,6 @@ namespace MyGymWeb.Controllers
             return View(t);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Edit(Guid id)
-        {
-            var view = await trainerService.GetEditTrainerAsync(id);
-            return View(view);
-        }
-
-       
 
         public async Task<IActionResult> Become()
         {

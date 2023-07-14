@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<ProductViewModel>
 
+@{
+    int totalProductCount = 0;
+    ViewBag.Title = "Products";
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -134,8 +138,11 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
+                   
+                   
                     @foreach (var item in Model.OrderByDescending(x => x.Price).ThenBy(x => x.Name))
                     {
+
                         <tbody>
                             <tr>
                                 <td>@item.Name</td>
@@ -148,8 +155,12 @@
                                 </td>
                             </tr>
                         </tbody>
+                        totalProductCount++;
+
                     }
                 </table>
+
+                <h3>Total count of products:  @totalProductCount </h3>
 
             </div>
         </div>

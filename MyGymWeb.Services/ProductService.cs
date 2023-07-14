@@ -85,6 +85,8 @@ namespace MyGymWeb.Services
             return products;
         }
 
+       
+
         public async Task<TestViewModel> GetEditProductAsync(int id)
         {
            var currPoduct = await context.Products

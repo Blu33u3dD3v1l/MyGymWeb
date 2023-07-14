@@ -30,69 +30,7 @@ namespace MyGymWeb.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Edit(int id)
-        {
-            var model = await productService.GetEditProductAsync(id);
-
-            return View(model);
-        }
-
-
-
-        [HttpPost]
-        public async Task<IActionResult> Edit(int id, TestViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            try
-            {
-                await this.productService.EditByIdAsync(id, model);
-
-            }
-            catch (Exception)
-            {
-
-                ModelState.AddModelError(string.Empty, "Unexpected Error");
-            }
-
-            return RedirectToAction("All", "Product");
-        }
-
-        [HttpGet]
-        public IActionResult Add()
-        {
-            var model = new AddProductsFormModel();
-            return View(model);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Add(AddProductsFormModel model)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            try
-            {
-                await this.productService.AddProductsAsync(model);
-
-            }
-            catch (Exception)
-            {
-
-                ModelState.AddModelError(string.Empty, "Unexpected Error");
-            }
-
-            return RedirectToAction("All", "Product");
-
-
-        }
+      
 
     }
 }

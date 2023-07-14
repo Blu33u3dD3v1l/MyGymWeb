@@ -18,7 +18,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
         public async Task<IActionResult> ManageProduct()
         {
-            var p = await productService.GetAllProductsAsync();
+            var p = await productService.GetAllProductsAsync();           
             return View(p);
 
         }

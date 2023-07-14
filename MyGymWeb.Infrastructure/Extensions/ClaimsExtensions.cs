@@ -10,6 +10,7 @@ namespace MyGymWeb.Infrastructure.Extensions
         {
             return user.FindFirstValue(ClaimTypes.NameIdentifier);
         } 
+     
     }
 }
 

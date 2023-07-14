@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<GymsViewModel>
 
+@{
+    int totalGymCount = 0;
+    ViewBag.Title = "Gyms";
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -146,9 +150,10 @@
                                 </td>
                             </tr>
                         </tbody>
+                        totalGymCount++;
                     }
                 </table>
-
+                <h4>Total Count of Gyms: @totalGymCount </h4>
             </div>
         </div>
     </div>

@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<TrainerViewModel>
 
+@{
+    int TotalTrainersCount = 0;
+    ViewBag.Title = "Trainers";
+}
+    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -147,10 +152,11 @@
                                     <a asp-route-id="@item.Id" asp-area="Admin" asp-controller="Trainer" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#xE872;</i></a>
                             </td>
                         </tr>                        
-                    </tbody>               
-                }
+                        </tbody>
+                        TotalTrainersCount++;
+                    }
                 </table>
-               
+                <h3>Total count of Trainers:  @TotalTrainersCount </h3>
             </div>
         </div>
     </div>
