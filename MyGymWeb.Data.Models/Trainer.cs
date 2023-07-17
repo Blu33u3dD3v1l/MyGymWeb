@@ -49,15 +49,17 @@ namespace MyGymWeb.Data.Models
         [MaxLength(MotoMaxValidation)]
         public string Moto { get; set; } = null!;
 
+        public string? PhoneNumber { get; set; }
+
         public string? UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
-        public IdentityUser? User { get; set; }
+        public ApplicationUser? User { get; set; }
 
         public string? GetTrainerId { get; set; }
 
         [ForeignKey(nameof(GetTrainerId))]
-        public IdentityUser? GetTrainer { get; set; }
+        public ApplicationUser? GetTrainer { get; set; }
 
         public bool IsActive { get; set; } = true;
 

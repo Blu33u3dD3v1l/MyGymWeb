@@ -34,5 +34,7 @@ namespace MyGymWeb.Models.Home
 
         [StringLength(MotoMaxValidation, MinimumLength = MotoMinValidation)]
         public string Moto { get; set; } = null!;
+
+        public string? PhoneNumber { get; set; }
     }
 }

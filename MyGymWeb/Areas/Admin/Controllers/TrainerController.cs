@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 
@@ -27,33 +28,29 @@ namespace MyGymWeb.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            var model = new AddTrainerFormModel();
-            return View(model);
+
+            return View();
         }
 
+        
         [HttpPost]
         public async Task<IActionResult> Add(AddTrainerFormModel model)
         {
+            string? userId = this.User.GetId();
 
-            if (!ModelState.IsValid)
+            if(userId != null)
             {
-                return View(model);
+                bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
+
+                if (isTrainer)
+                {
+                    return RedirectToAction("ManageTrainer", "Trainer", "Admin");
+                }
             }
 
-            try
-            {
-                await this.trainerService.AddTrainerAsync(model);
-
-            }
-            catch (Exception)
-            {
-
-                ModelState.AddModelError(string.Empty, "Unexpected Error");
-            }
+            await this.trainerService.AddTrainerAsync(model);
 
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
-
-
         }
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)

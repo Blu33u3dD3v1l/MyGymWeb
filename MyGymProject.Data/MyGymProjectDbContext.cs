@@ -6,7 +6,7 @@ using MyGymWeb.Data.Models;
 
 namespace MyGymWeb.Data
 {
-    public class MyGymProjectDbContext : IdentityDbContext<IdentityUser>
+    public class MyGymProjectDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
     {
         public MyGymProjectDbContext(DbContextOptions<MyGymProjectDbContext> options)
             : base(options)

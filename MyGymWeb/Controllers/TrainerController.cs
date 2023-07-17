@@ -53,7 +53,7 @@ namespace MyGymWeb.Controllers
 
             
 
-            if (isTrainer)
+            if (isTrainer) 
             {
 
                 return RedirectToAction("Index", "Home");

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230717142045_TrainerPhoneNumberAdded")]
+    partial class TrainerPhoneNumberAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,7 +267,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("GroupEvents", (string)null);
+                    b.ToTable("GroupEvents");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.GroupTrainerName", b =>
@@ -283,7 +285,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GroupTrainerNames", (string)null);
+                    b.ToTable("GroupTrainerNames");
 
                     b.HasData(
                         new
@@ -342,7 +344,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Gyms", (string)null);
+                    b.ToTable("Gyms");
 
                     b.HasData(
                         new
@@ -419,7 +421,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("GymId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
 
                     b.HasData(
                         new
@@ -659,7 +661,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Trainers", (string)null);
+                    b.ToTable("Trainers");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Type", b =>
@@ -677,7 +679,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types", (string)null);
+                    b.ToTable("Types");
 
                     b.HasData(
                         new

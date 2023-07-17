@@ -42,7 +42,7 @@ namespace MyGymWeb.Data.Models
         [ForeignKey(nameof(Athlete))]
         public string? AthleteId { get; set; }
 
-        public IdentityUser? Athlete { get; set; }
+        public ApplicationUser? Athlete { get; set; }
 
         public virtual IList<GroupEvents> GroupsEvents { get; set; }
 

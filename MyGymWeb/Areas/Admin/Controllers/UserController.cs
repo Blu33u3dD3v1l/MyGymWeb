@@ -1,12 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyGymWeb.Services.Admin;
+using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
-        public IActionResult Index()
+
+        private readonly IUserService userService;
+
+        public UserController(IUserService _userService)
         {
-            return View();
+            userService = _userService;
+        }
+
+      
+        public async Task<IActionResult> All()
+        {
+            var model = await userService.All();
+            return View(model);
         }
     }
 }
