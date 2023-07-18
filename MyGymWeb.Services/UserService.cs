@@ -23,9 +23,9 @@ namespace MyGymWeb.Services
         {
             List<UserServiceModel> result;
          
-
-           result = await data.Trainers
-                .Select(x => new UserServiceModel()
+            
+           
+           result = data.Trainers.Select(x => new UserServiceModel()
             {
                 UserId = x.UserId,
                 Email = x.User.Email,
@@ -33,9 +33,9 @@ namespace MyGymWeb.Services
                 PhoneNumber = x.PhoneNumber,
 
 
-            }).ToListAsync();
+            }).ToList();
 
-            string[] trainerIds = result.Select(x => x.UserId).ToArray();
+            var trainerIds = result.Select(x => x.UserId).ToArray();
             result.AddRange(await data.Users
                 .Where(u => trainerIds.Contains(u.Id) == false)
                 .Select(u => new UserServiceModel()

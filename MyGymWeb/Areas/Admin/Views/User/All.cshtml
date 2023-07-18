@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<UserServiceModel>
 
 @{
-    ViewBag.Title = "All Users"; 
+    ViewBag.Title = "All Users";
 
 
 }
@@ -10,34 +10,41 @@
 <hr />
 
 <div class="AllUsers">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th><label>Email</label></th>
-                <th><label>Full Name</label></th>
-                <th><label>PhoneNumber</label></th>
-                <th><label>User Is Trainer</label></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var user in Model.Where(x => x.Email != null))
-            {
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td><label>@user.Email</label></td>
-                    <td><label>@user.FullName</label></td>
-                    <td><label>@user.PhoneNumber</label></td>
-                    <td>
-                        @if (string.IsNullOrEmpty(user.PhoneNumber) == false)
-                        {
-                            <label>✔</label>
-                        }
-                        else
-                        {
-                            <label class="text-center">❌</label>
-                        }
-                    </td>
+                    <th><label>Email</label></th>
+                    <th><label>Full Name</label></th>
+                    <th><label>Phone Number</label></th>
+                    <th><label>User Is Trainer</label></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Where(x => x.Email != null))
+                {
+                    <tr>
+                        <td><label>@user.Email</label></td>
+                        <td><label>@user.FullName</label></td>
+                        <td><label>@user.PhoneNumber</label></td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(user.PhoneNumber))
+                            {
+                                <label>✔</label>
+                            }
+                            else if(user.Email == "Admin@Admins.bg")
+                            {
+                                <label>Admin</label>
+                            }
+                            else
+                            {
+                                <label class="text-center">❌</label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
 </div>
