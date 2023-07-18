@@ -1,0 +1,35 @@
+﻿@model TrainerViewModel
+@using MyGymWeb.Infrastructure.Extensions;
+
+@{
+    
+    ViewBag.Title = "Applier Details";
+}
+<div class="TrainerDetails">
+    <div class="container" style="display:inline">
+        <form method="post">
+            <div class="row">
+                <div class="col-4">
+
+                    <img class="card-img-top" style="width: 20rem; height: 280px"
+                         src="@Model.ImageUrl" alt="Trainer Image">
+                </div>
+                <div class="card col-8 border-0">
+                    <p style="font-size:25px;"><u>@Model.Name</u></p>
+                    <p>Personal Info: <b>@Model.Info</b></p>
+                    <p>Practis: <b>@Model.Practis</b></p>
+                    <p>Moto: <b>@Model.Moto</b></p>
+                    <p>PhoneNumber: <b>@Model.PhoneNumber</b></p>
+                    <p>Price: <b>@Model.PricePerHour</b></p>
+                    <div class="form-inline">
+
+                        <input asp-route-id="@Model.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete"  title="Delete" method="post" class="btn btn-primary" type="submit" value="Remove" />
+                      
+
+                    </div>
+                </div>
+            </div>
+        </form>
+      
+    </div>
+</div>

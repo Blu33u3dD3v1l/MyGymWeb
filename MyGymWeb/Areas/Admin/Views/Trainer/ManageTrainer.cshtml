@@ -18,7 +18,7 @@
         body {
             color: #404E67;
             background: #F5F7FA;
-            font-family: 'Open Sans', sans-serif;
+           
         }
 
         .table-wrapper {
@@ -36,7 +36,7 @@
 
             .table-title h2 {
                 margin: 6px 0 0;
-                font-size: 22px;
+                font-size: 26px;
             }
 
             .table-title .add-new {
@@ -143,9 +143,9 @@
                 {                  
                     <tbody>
                         <tr>
-                            <td>@item.Name</td>
-                            <td>@item.Moto</td>
-                            <td>@item.PricePerHour $</td>
+                                <td class="h5">@item.Name</td>
+                                <td class="h5">@item.Moto</td>
+                                <td class="h5">@item.PricePerHour $</td>
                             <td>
                                 <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                     <a asp-route-id="@item.Id" asp-area="Admin" asp-controller="Trainer" asp-action="Edit" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>

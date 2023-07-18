@@ -1,0 +1,141 @@
+﻿using Microsoft.EntityFrameworkCore;
+using MyGymWeb.Data;
+using MyGymWeb.Data.Models;
+using MyGymWeb.Models.Home;
+using MyGymWeb.Services.Interface;
+using MyGymWeb.Infrastructure.Extensions;
+using AutoMapper.Configuration.Annotations;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+
+namespace MyGymWeb.Services
+{
+    public class ApplyService : IApplyService
+    {
+        private readonly MyGymProjectDbContext context;
+
+        public ApplyService(MyGymProjectDbContext _context)
+        {
+            context = _context;
+        }
+        public async Task AddApplyAsync(string userId, AddTrainerFormModel model)
+        {
+
+
+
+            var apply = new Apply()
+            {
+                Name = model.Name,
+                PricePerHour = model.PricePerHour,
+                Type = model.Type,
+                ImageUrl = model.ImageUrl,
+                Info = model.Info,
+                Moto = model.Moto,
+                Practis = model.Practis,
+                PhoneNumber = model.PhoneNumber,
+                UserId = userId
+            
+
+            };
+
+            await context.Applies.AddAsync(apply);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task ApproveTrainerAsync(Guid id)
+        {
+            var currentTrainer = await context.Applies.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (currentTrainer == null)
+            {
+                throw new Exception();
+            }
+
+            var trainer = new Trainer()
+            {
+                Name = currentTrainer.Name,
+                PricePerHour = currentTrainer.PricePerHour,
+                Type = currentTrainer.Type,
+                ImageUrl = currentTrainer.ImageUrl,
+                Info = currentTrainer.Info,
+                Moto = currentTrainer.Moto,
+                Practis = currentTrainer.Practis,
+                UserId = currentTrainer.UserId,
+                PhoneNumber = currentTrainer.PhoneNumber,
+
+            };
+
+            await context.Trainers.AddAsync(trainer);
+            await context.SaveChangesAsync();
+
+
+        }
+
+        public async Task DeleteAppliersAsync(Guid id)
+        {
+           
+                var currentApplier = await context.Applies
+                    .FirstOrDefaultAsync(x => x.Id == id);
+
+                if (currentApplier == null)
+                {
+                    throw new NullReferenceException();
+                }
+
+            context.Applies.RemoveRange(currentApplier);
+            await context.SaveChangesAsync();
+            
+        }
+
+        public async Task<IEnumerable<TrainerViewModel>> GetAllAppliesAsync()
+        {
+             var applies = await context.Applies             
+              .Select(x => new TrainerViewModel()
+              {
+
+                  Id = x.Id,
+                  Name = x.Name,
+                  PhoneNumber = x.PhoneNumber,
+                  Practis = x.Practis,
+                  PricePerHour = x.PricePerHour,                
+             
+                  
+
+
+              })
+              .ToListAsync();
+
+            return applies;
+        }
+
+       
+
+        public async Task<TrainerViewModel> GetDeleteAppliersAsync(Guid id, TrainerViewModel model)
+        {
+            var currId = await context.Applies.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (currId == null)
+            {
+                throw new ArgumentNullException("Id Not Found!");
+            }
+
+               model = new TrainerViewModel()
+            {
+                Id = currId.Id,
+                Name = currId.Name,
+                ImageUrl = currId.ImageUrl,
+                Moto = currId.Moto,
+                Info = currId.Info,
+                Practis = currId.Practis,
+                PricePerHour = currId.PricePerHour,
+                Type = currId.Type,
+                PhoneNumber = currId.PhoneNumber,
+
+            };
+
+            return model;
+        }
+
+        
+    }
+}

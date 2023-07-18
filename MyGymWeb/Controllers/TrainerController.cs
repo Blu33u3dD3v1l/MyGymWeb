@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
-using System.Security.Claims;
 using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
 
 namespace MyGymWeb.Controllers
@@ -40,53 +39,55 @@ namespace MyGymWeb.Controllers
         }
 
 
-        public async Task<IActionResult> Become()
-        {
+        //public async Task<IActionResult> Become()
+        //{
 
-            string? userId = this.User.GetId();
-            if(userId == null)
-            {
-                return RedirectToAction("All", "Trainer");
-            }
+        //    string? userId = this.User.GetId();
+        //    if(userId == null)
+        //    {
+        //        return RedirectToAction("All", "Trainer");
+        //    }
 
-            bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
+        //    bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
 
             
 
-            if (isTrainer) 
-            {
+        //    if (isTrainer) 
+        //    {
 
-                return RedirectToAction("Index", "Home");
-            }
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            return View();
+        //    return View();
 
-        }
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> Become(AddTrainerFormModel model)
-        {
-            string? userId = this.User.GetId();
+        //[HttpPost]
+        //public async Task<IActionResult> Become(AddTrainerFormModel model)
+        //{
+        //    string? userId = this.User.GetId();
 
-            if (userId == null)
-            {
-                return RedirectToAction("All", "Trainer");
-            }
+        //    if (userId == null)
+        //    {
+        //        return RedirectToAction("All", "Trainer");
+        //    }
 
-            bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
+        //    bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
 
         
 
-            if (isTrainer)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+        //    if (isTrainer)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            await this.trainerService.BecomeTrainerAsync(userId, model);
+        //    await this.trainerService.BecomeTrainerAsync(userId, model);
 
-            return RedirectToAction("All", "Trainer");
-        }
+        //    return RedirectToAction("All", "Trainer");
+        //}
 
        
+
+
     }
 }

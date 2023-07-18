@@ -1,31 +1,22 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using static MyGymWeb.Common.Constants.ValidationConstants.ClasicTrainerValidations;
-
 
 namespace MyGymWeb.Data.Models
 {
-    public class Trainer
+    public class Apply
     {
-
-
-        public Trainer()
-        {
-            this.Gyms = new List<Gym>();
-        }
-
         [Key]
         public Guid Id { get; set; }
 
 
-       
+
         [MaxLength(NameMaxValidation)]
         [Required]
-        
+
         public string Name { get; set; } = null!;
 
-        
+
         [MaxLength(InfoMaxValidation)]
         [Required]
         public string Info { get; set; } = null!;
@@ -34,7 +25,7 @@ namespace MyGymWeb.Data.Models
         [Required]
         public string ImageUrl { get; set; } = null!;
 
-       
+
         [MaxLength(PractisMaxValidation)]
         [Required]
         public string Practis { get; set; } = null!;
@@ -45,7 +36,7 @@ namespace MyGymWeb.Data.Models
 
         [Required]
         public string Type { get; set; } = null!;
-      
+
         [MaxLength(MotoMaxValidation)]
         public string Moto { get; set; } = null!;
 
@@ -59,8 +50,5 @@ namespace MyGymWeb.Data.Models
         public bool IsActive { get; set; } = true;
 
         public bool IsAvailable = true;
-
-        public virtual List<Gym> Gyms { get; set; }
-       
     }
 }

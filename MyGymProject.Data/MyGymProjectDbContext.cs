@@ -25,6 +25,8 @@ namespace MyGymWeb.Data
 
         public DbSet<Models.Type> Types { get; set; } = null!;
 
+        public DbSet<Apply> Applies { get; set; } = null!;
+
        
        
 
@@ -44,7 +46,7 @@ namespace MyGymWeb.Data
            builder.ApplyConfiguration(new GymConfiguration());
            builder.ApplyConfiguration(new ProductConfiguration());
            builder.ApplyConfiguration(new TypeConfiguration());
-           //builder.ApplyConfiguration(new TrainerConfiguration());
+           builder.ApplyConfiguration(new TrainerConfiguration());
 
 
 

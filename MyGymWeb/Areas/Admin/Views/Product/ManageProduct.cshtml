@@ -17,9 +17,7 @@
         body {
             color: #404E67;
             background: #F5F7FA;
-            font-family: 'Open Sans', sans-serif;
         }
-
         .table-wrapper {
             width: 700px;
             margin: 30px auto;
@@ -145,9 +143,9 @@
 
                         <tbody>
                             <tr>
-                                <td>@item.Name</td>
-                                <td>@item.Mark</td>
-                                <td>@item.Price $</td>
+                                <td class="h5">@item.Name</td>
+                                <td class="h5">@item.Mark</td>
+                                <td class="h5">@item.Price $</td>
                                 <td>
                                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                     <a asp-route-id="@item.Id" asp-area="Admin" asp-controller="Product" asp-action="Edit" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>

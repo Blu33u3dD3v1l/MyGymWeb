@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230718142448_RemovedTable")]
+    partial class RemovedTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,59 +230,6 @@ namespace MyGymWeb.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("MyGymWeb.Data.Models.Apply", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Info")
-                        .IsRequired()
-                        .HasMaxLength(5000)
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Moto")
-                        .IsRequired()
-                        .HasMaxLength(5000)
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Practis")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<decimal>("PricePerHour")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Applies");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.GroupEvents", b =>
@@ -708,20 +657,6 @@ namespace MyGymWeb.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Trainers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("231e7e18-1e90-4080-a3a0-a298babc7857"),
-                            ImageUrl = ".\\Images\\Image.Jpg.jpg",
-                            Info = "gfgfgfgf",
-                            IsActive = true,
-                            Moto = "fdsdsf",
-                            Name = "Alabala",
-                            Practis = "gfgfgf",
-                            PricePerHour = 200m,
-                            Type = "gfgfgfgff"
-                        });
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Type", b =>
@@ -813,15 +748,6 @@ namespace MyGymWeb.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("MyGymWeb.Data.Models.Apply", b =>
-                {
-                    b.HasOne("MyGymWeb.Data.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.GroupEvents", b =>

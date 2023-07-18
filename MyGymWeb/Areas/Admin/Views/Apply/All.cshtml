@@ -1,9 +1,11 @@
-﻿@model IEnumerable<GymsViewModel>
+﻿@model IEnumerable<TrainerViewModel>
 
 @{
-    int totalGymCount = 0;
-    ViewBag.Title = "Gyms";
+    ViewBag.Title = "Aplications";
 }
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +21,7 @@
             color: #404E67;
             background: #F5F7FA;
         }
+
         .table-wrapper {
             width: 700px;
             margin: 30px auto;
@@ -116,47 +119,37 @@
             }
     </style>
 </head>
-<body>
-    <div class="ManageAdmin">
-        <div class="container">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-8"><h2>Products <b>Details</b></h2></div>
-                        <div class="col-sm-4">
-                            <a class="btn btn-info add-new" asp-area="Admin" asp-controller="Gym" asp-action="Add"><i class="fa fa-plus"></i> Add New</a>
-                        </div>
-                    </div>
-                </div>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>                         
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    @foreach (var item in Model)
-                    {
-                        <tbody>
-                            <tr>
-                                <td class="h5">@item.Name</td>
-                                <td class="h5">@item.Type</td>
-                                <td class="h5">
-                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                    <a asp-route-id="@item.Id" asp-area="Admin" asp-controller="Gym" asp-action="Edit" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                    <a asp-route-id="@item.Id" asp-area="Admin" asp-controller="Gym" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#xE872;</i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                        totalGymCount++;
-                    }
-                </table>
-                <h4>Total Count of Gyms: @totalGymCount </h4>
-            </div>
-        </div>
+
+<div class="AllUsers">
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    
+                    <th><label>Full Name</label></th>               
+                    <th><label>Practis</label></th>
+                    <th><label>Phone Number</label></th>                   
+                    <th><label>Actions</label></th>
+
+                    
+                </tr>
+            </thead>
+                @foreach (var user in Model)
+                {
+                <tbody>
+                    <tr>
+                        <td><label>@user.Name</label></td>                 
+                        <td><label>@user.Practis</label></td>
+                        <td><label>@user.PhoneNumber</label></td>                  
+                        <td>
+                           
+                            <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#xE872;</i></a>
+                            <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Approve" class="Approve" title="Approve" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+              
+                }            
+        </table>
     </div>
-
-</body>
-</html>
-
+</div>

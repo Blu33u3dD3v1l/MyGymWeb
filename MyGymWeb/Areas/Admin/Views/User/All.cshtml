@@ -18,6 +18,7 @@
                     <th><label>Full Name</label></th>
                     <th><label>Phone Number</label></th>
                     <th><label>User Is Trainer</label></th>
+                    <th><label>Actions</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -40,6 +41,10 @@
                             {
                                 <label class="text-center">❌</label>
                             }
+                        </td>
+                        <td>
+                            <button asp-route-id="@user.UserId" asp-area="Admin" asp-controller="Apply" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">Delete</i></button>
+                           
                         </td>
                     </tr>
                 }

@@ -20,10 +20,11 @@
                         <i class="fa fa-caret-down"></i>
                     </h5>
                     <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                        <a href="#">Link 4</a>
+                        <a asp-area="Admin" asp-controller="Product" asp-action="ManageProduct">Products</a>
+                        <a asp-area="Admin" asp-controller="Trainer" asp-action="ManageTrainer">Trainers</a>
+                        <a asp-area="Admin" asp-controller="Gym" asp-action="ManageGym">Gyms</a>
+                        <a asp-area="Admin" asp-controller="User" asp-action="All">Users</a>
+                        <a asp-area="Admin" asp-controller="Apply" asp-action="All">Applies</a>
                     </div>
                 </div>
             </li>
