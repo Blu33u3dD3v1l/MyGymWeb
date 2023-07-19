@@ -3,10 +3,7 @@ using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
-using MyGymWeb.Infrastructure.Extensions;
-using AutoMapper.Configuration.Annotations;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Http;
+
 
 namespace MyGymWeb.Services
 {
@@ -21,7 +18,12 @@ namespace MyGymWeb.Services
         public async Task AddApplyAsync(string userId, AddTrainerFormModel model)
         {
 
+            var currentUser = await context.Applies.FirstOrDefaultAsync(a => a.UserId == userId);
 
+            if(currentUser != null)
+            {
+                throw new Exception();
+            }
 
             var apply = new Apply()
             {
@@ -40,6 +42,12 @@ namespace MyGymWeb.Services
 
             await context.Applies.AddAsync(apply);
             await context.SaveChangesAsync();
+        }
+
+        public async Task<bool> ApplierExistByUserId(string userId)
+        {
+            bool applier = await context.Applies.AnyAsync(applies => applies.UserId == userId);
+            return applier;
         }
 
         public async Task ApproveTrainerAsync(Guid id)
@@ -86,6 +94,7 @@ namespace MyGymWeb.Services
             await context.SaveChangesAsync();
             
         }
+
 
         public async Task<IEnumerable<TrainerViewModel>> GetAllAppliesAsync()
         {

@@ -2,6 +2,7 @@
 using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
+using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
 
 
@@ -17,12 +18,12 @@ namespace MyGymWeb.Areas.Admin.Controllers
         }
 
         [HttpGet]
-       
+
         public async Task<IActionResult> ManageTrainer()
-        {          
-                var t = await trainerService.GetAllTrainersAsync();
-                return View(t);
-            
+        {
+            var t = await trainerService.GetAllTrainersAsync();
+            return View(t);
+
         }
 
         [HttpGet]
@@ -32,13 +33,13 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         public async Task<IActionResult> Add(AddTrainerFormModel model)
         {
             string? userId = this.User.GetId();
 
-            if(userId != null)
+            if (userId != null)
             {
                 bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
 
@@ -49,6 +50,8 @@ namespace MyGymWeb.Areas.Admin.Controllers
             }
 
             await this.trainerService.AddTrainerAsync(model);
+
+            TempData[SuccessMessage] = "You successfuly added a trainer!";
 
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
@@ -81,57 +84,14 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
 
-        //[HttpGet]
-
-        //public async Task<IActionResult> Delete(Guid id, TrainerDetailsRemoveViewModel model)
-        //{
-        //    string? userId = this.User.GetId();
-
-        //    if (userId == null)
-        //    {
-        //        return RedirectToAction("ManageTrainer", "Trainer", "Admin");
-        //    }
-
-        //    bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
-
-        //    if (!isTrainer)
-        //    {
-        //        return RedirectToAction("ManageTrainer", "Trainer", "Admin");
-        //    }
-
-
-        //    bool isTrue = await this.trainerService.GetTrainerUserId(id, userId);
-        //    if (isTrue)
-        //    {
-        //        var a = await trainerService.GetForDeleteAsync(id, model);
-        //        return View(a);
-        //    }
-        //    return RedirectToAction("ManageTrainer", "Trainer", "Admin");
-
-        //}
-
-       
         public async Task<IActionResult> Delete(Guid id)
         {
-            //string? userId = this.User.GetId();
-
-            //if (userId == null)
-            //{
-            //    return RedirectToAction("ManageTrainer", "Trainer", "Admin");
-            //}
-
-            //bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
-
-            //if (!isTrainer)
-            //{
-            //    return RedirectToAction("ManageTrainer", "Trainer", "Admin");
-            //}
 
 
-            //bool isTrue = await this.trainerService.GetTrainerUserId(id, userId);
-           
-                await trainerService.DeleteTrainerAsync(id);
-            
+            await trainerService.DeleteTrainerAsync(id);
+
+            TempData[SuccessMessage] = "You successfuly removed a trainer!";
+
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
     }

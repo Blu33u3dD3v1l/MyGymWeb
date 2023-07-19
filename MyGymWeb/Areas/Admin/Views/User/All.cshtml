@@ -43,7 +43,8 @@
                             }
                         </td>
                         <td>
-                            <button asp-route-id="@user.UserId" asp-area="Admin" asp-controller="Apply" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">Delete</i></button>
+                            
+                            <button asp-route-id="@user.UserId" asp-area="Admin" asp-controller="User" asp-action="Delete" class="btn btn-danger" method="get">Delete</button>
                            
                         </td>
                     </tr>

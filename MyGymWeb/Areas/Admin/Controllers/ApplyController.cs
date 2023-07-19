@@ -1,22 +1,45 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Build.ObjectModelRemoting;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
-using MyGymWeb.Services;
-using MyGymWeb.Services.Admin;
 using MyGymWeb.Services.Interface;
+using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
+
 
 namespace MyGymWeb.Areas.Admin.Controllers
 {
     public class ApplyController : BaseController
     {
 
-        private readonly IApplyService applyService;
 
-        public ApplyController(IApplyService _applyService)
+
+        private readonly IApplyService applyService;
+        //private readonly RoleManager<IdentityRole> roleManager;
+
+        public ApplyController(IApplyService _applyService) //RoleManager<IdentityRole> roleManager
         {
             applyService = _applyService;
+            //this.roleManager = roleManager;
         }
+
+        //public async Task<IActionResult> CreateTrainerRole()
+        //{
+
+        //    var currentId = User.GetId();
+        //    IdentityRole role = new IdentityRole()
+        //    {
+        //        Name = "Trainer",
+
+        //    };
+
+
+        //    await roleManager.CreateAsync(role);
+
+
+        //    return RedirectToAction("Index", "Home");
+
+
+        //}
 
         public async Task<IActionResult> All()
         {
@@ -27,7 +50,10 @@ namespace MyGymWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(Guid id, TrainerViewModel model)
         {
+
+
             var a = await applyService.GetDeleteAppliersAsync(id, model);
+          
 
             return View(a);
         }
@@ -38,6 +64,8 @@ namespace MyGymWeb.Areas.Admin.Controllers
           
             await applyService.DeleteAppliersAsync(id);
 
+            TempData[SuccessMessage] = "You successfuly removed an application!";
+
             return RedirectToAction("All", "Apply", "Admin");
         }
 
@@ -46,6 +74,9 @@ namespace MyGymWeb.Areas.Admin.Controllers
           
             await this.applyService.ApproveTrainerAsync(id);
             await this.applyService.DeleteAppliersAsync(id);
+            //await this.CreateTrainerRole();
+
+            TempData[SuccessMessage] = "You successfuly approved a trainer!";
 
             return RedirectToAction("All", "Apply", "Admin");
         }

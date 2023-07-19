@@ -7,6 +7,7 @@ namespace MyGymWeb.Services.Admin
 
         Task<string> UserFullName(string userId);
         Task<IEnumerable<UserServiceModel>> All();
+        Task DeleteUsersAsync(string userId);
 
     }
 }

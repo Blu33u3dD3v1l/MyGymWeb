@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyGymWeb.styles.css" asp-append-version="true" />
-
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js" integrity="sha512-ZlS5J2gISBLvfq0VJodIjOH0vVDwxHYpptXQyVn1gDUhb/cx3Etwex2NKgJHuWdjLZr7dRusviZPZ4cSBzJBYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css" integrity="sha512-7WgmPmlXKNOeWjNw4byqRirOElNPTYFHD5EFAVHoqIS2W9nej9mgZMwBfSyo+gbLty5wY1MAvZZV2FhMHjNofg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
@@ -58,6 +60,7 @@
 </head>
 <body>
 
+    <partial name="_NotificationsPartial"/>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom">
             <div class="container-fluid">
@@ -80,13 +83,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="All">Products</a>
                         </li>
+                         @if (!User.IsInRole("Administrator"))
+                        {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Athlete" asp-action="Mine">My Trainers</a>
                         </li>
-
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="Become">Apply</a>
-                        </li>                        
+                        </li> 
+                        }
+                                               
                     </ul>                   
                     <partial name="_LoginPartial" />
                 </div>
@@ -130,7 +136,7 @@
     </div>
 </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+ 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

@@ -2,21 +2,48 @@
 using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
-using System.Runtime.InteropServices;
+using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
 namespace MyGymWeb.Controllers
 {
     public class ApplyController : Controller
     {
         private readonly IApplyService applyService;
+        private readonly ITrainerService trainerService;
 
-        public ApplyController(IApplyService _applyService)
+
+        public ApplyController(IApplyService _applyService, ITrainerService _trainerService)
         {
+
             applyService = _applyService;
+            trainerService = _trainerService;
         }
-
-        public IActionResult Apply()
+        [HttpGet]
+        public async Task<IActionResult> Apply()
         {
+
+            string? currentId = this.User.GetId();
+            if(currentId == null)
+            {
+                throw new ArgumentNullException(nameof(currentId));
+            }
+           
+            bool isApplier = await this.applyService.ApplierExistByUserId(currentId);
+            if (isApplier)
+            {
+                TempData[WarningMessage] = "You allready have pending application!";
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            bool isTrainer = await this.trainerService.TrainerExistByUserId(currentId);
+            if (isTrainer)
+            {
+                TempData[WarningMessage] = "You are a trainer!";
+
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
@@ -25,11 +52,13 @@ namespace MyGymWeb.Controllers
         {
 
             var currentId = User.GetId();
-            if(currentId != null)
+
+
+            if (currentId != null)
             {
                 await this.applyService.AddApplyAsync(currentId, model);
             }
-          
+
 
             return RedirectToAction("All", "Trainer");
         }

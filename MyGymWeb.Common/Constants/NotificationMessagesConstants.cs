@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+namespace MyGymWeb.Common.Constants
+{
+    public static class NotificationMessagesConstants
+    {
+        public const string ErrorMessage = "ErrorMessage";
+
+        public const string WarningMessage = "WarningMessage";
+
+        public const string InformationMessage = "InformationMessage";
+
+        public const string SuccessMessage = "SuccessMessage";
+    }
+}

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using static MyGymWeb.Areas.Admin.AdminConstants;
+
 
 namespace MyGymWeb.Areas.Admin.Controllers
 {
@@ -10,5 +12,6 @@ namespace MyGymWeb.Areas.Admin.Controllers
     [Authorize(Roles = AdminRolleName)]
     public class BaseController : Controller
     {
+       
     }
 }

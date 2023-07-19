@@ -35,9 +35,7 @@
                             </a>
                             @if (trainer.UserId == ClaimsExtensions.GetId(User))
                             {
-                                <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Edit" method="post">
-                                    <input type="submit" value="EditTrainer" class="btn btn-success btn-sm" />
-                                </a>
+                                
                                 <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Delete" method="get">
                                     <input type="submit" value="Quit" class="btn btn-danger btn-sm" />
                                 </a>

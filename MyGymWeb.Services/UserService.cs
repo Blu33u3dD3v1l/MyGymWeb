@@ -3,7 +3,7 @@ using MyGymWeb.Data;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
 using System.Collections.Immutable;
-
+using System.Data.Common;
 
 namespace MyGymWeb.Services
 {
@@ -23,8 +23,6 @@ namespace MyGymWeb.Services
         {
             List<UserServiceModel> result;
          
-            
-           
            result = data.Trainers.Select(x => new UserServiceModel()
             {
                 UserId = x.UserId,
@@ -48,6 +46,20 @@ namespace MyGymWeb.Services
                 .ToListAsync());
 
             return result;
+        }
+
+        public async Task DeleteUsersAsync(string userId)
+        {
+           var a = await data.Users.FindAsync(userId);
+
+            if(a != null)
+            {
+                data.Users.RemoveRange(a);
+                await data.SaveChangesAsync();
+            }
+
+          
+           
         }
 
         public async Task<string> UserFullName(string userId)
