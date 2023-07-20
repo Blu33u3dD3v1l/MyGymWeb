@@ -46,7 +46,7 @@ namespace MyGymWeb.Data
            builder.ApplyConfiguration(new GymConfiguration());
            builder.ApplyConfiguration(new ProductConfiguration());
            builder.ApplyConfiguration(new TypeConfiguration());
-           builder.ApplyConfiguration(new TrainerConfiguration());
+           // builder.ApplyConfiguration(new TrainerConfiguration());
 
 
 

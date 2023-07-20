@@ -15,7 +15,7 @@ namespace MyGymWeb.Services
         {
             context = _context;
         }
-        public async Task AddApplyAsync(string userId, AddTrainerFormModel model)
+        public async Task AddApplyAsync(string userId, TrainerQuitViewModel model)
         {
 
             var currentUser = await context.Applies.FirstOrDefaultAsync(a => a.UserId == userId);
@@ -25,7 +25,7 @@ namespace MyGymWeb.Services
                 throw new Exception();
             }
 
-            var apply = new Apply()
+             var apply = new Apply()
             {
                 Name = model.Name,
                 PricePerHour = model.PricePerHour,
@@ -35,9 +35,8 @@ namespace MyGymWeb.Services
                 Moto = model.Moto,
                 Practis = model.Practis,
                 PhoneNumber = model.PhoneNumber,
-                UserId = userId
-            
-
+                UserId = userId,
+                ForApplication = "For Application"
             };
 
             await context.Applies.AddAsync(apply);
@@ -96,17 +95,18 @@ namespace MyGymWeb.Services
         }
 
 
-        public async Task<IEnumerable<TrainerViewModel>> GetAllAppliesAsync()
+        public async Task<IEnumerable<TrainerQuitViewModel>> GetAllAppliesAsync()
         {
              var applies = await context.Applies             
-              .Select(x => new TrainerViewModel()
+              .Select(x => new TrainerQuitViewModel()
               {
 
                   Id = x.Id,
                   Name = x.Name,
                   PhoneNumber = x.PhoneNumber,
                   Practis = x.Practis,
-                  PricePerHour = x.PricePerHour,                
+                  PricePerHour = x.PricePerHour,     
+                  ForApplication = x.ForApplication,
              
                   
 
@@ -119,7 +119,7 @@ namespace MyGymWeb.Services
 
        
 
-        public async Task<TrainerViewModel> GetDeleteAppliersAsync(Guid id, TrainerViewModel model)
+        public async Task<TrainerQuitViewModel> GetDeleteAppliersAsync(Guid id, TrainerQuitViewModel model)
         {
             var currId = await context.Applies.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -128,7 +128,7 @@ namespace MyGymWeb.Services
                 throw new ArgumentNullException("Id Not Found!");
             }
 
-               model = new TrainerViewModel()
+               model = new TrainerQuitViewModel()
             {
                 Id = currId.Id,
                 Name = currId.Name,

@@ -1,7 +1,7 @@
-﻿@model IEnumerable<TrainerViewModel>
+﻿@model IEnumerable<TrainerQuitViewModel>
 
 @{
-    ViewBag.Title = "Aplications";
+    ViewBag.Title = "Applications";
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
@@ -120,15 +120,17 @@
     </style>
 </head>
 
-<div class="AllUsers">
+<div class="ApplyUsers">
     <div class="container">
         <table class="table table-striped">
             <thead>
                 <tr>
                     
+
                     <th><label>Full Name</label></th>               
                     <th><label>Practis</label></th>
-                    <th><label>Phone Number</label></th>                   
+                    <th><label>Phone Number</label></th>
+                    <th><label>Reason</label></th>
                     <th><label>Actions</label></th>
 
                     
@@ -140,15 +142,27 @@
                     <tr>
                         <td><label>@user.Name</label></td>                 
                         <td><label>@user.Practis</label></td>
-                        <td><label>@user.PhoneNumber</label></td>                  
+                        <td><label>@user.PhoneNumber</label></td>
+                        <td><label>@user.ForApplication</label></td>                      
                         <td>
                            
-                            <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#xE872;</i></a>
-                            <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Approve" class="Approve" title="Approve" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
+                            @if(user.ForApplication == "For Application")
+                            {
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Approve" class="Approve" title="Approve" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
+                            }
+                            else
+                            {
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete" class="reject" title="Reject" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Trainer" asp-action="DeleteForApply" class="delete" title="Delete" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
+                               
+
+                            }
+
+                            
                         </td>
                     </tr>
                 </tbody>
-              
                 }            
         </table>
     </div>

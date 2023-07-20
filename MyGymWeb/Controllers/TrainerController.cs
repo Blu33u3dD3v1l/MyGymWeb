@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
+using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
 namespace MyGymWeb.Controllers
 {
@@ -39,20 +40,35 @@ namespace MyGymWeb.Controllers
         }
 
 
+        public async Task<IActionResult> Quit(TrainerQuitViewModel model)
+        {
+
+            var currentId = User.GetId();
+
+
+            if (currentId != null)
+            {
+                await this.trainerService.QuitTrainerAsync(currentId, model);
+            }
+
+            TempData[SuccessMessage] = "You successfuly apply for quit!";
+
+            return RedirectToAction("All", "Trainer");
+        }
         //public async Task<IActionResult> Become()
         //{
 
         //    string? userId = this.User.GetId();
-        //    if(userId == null)
+        //    if (userId == null)
         //    {
         //        return RedirectToAction("All", "Trainer");
         //    }
 
         //    bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
 
-            
 
-        //    if (isTrainer) 
+
+        //    if (isTrainer)
         //    {
 
         //        return RedirectToAction("Index", "Home");
@@ -74,7 +90,7 @@ namespace MyGymWeb.Controllers
 
         //    bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
 
-        
+
 
         //    if (isTrainer)
         //    {
@@ -86,7 +102,7 @@ namespace MyGymWeb.Controllers
         //    return RedirectToAction("All", "Trainer");
         //}
 
-       
+
 
 
     }

@@ -11,10 +11,13 @@ namespace MyGymWeb.Areas.Admin.Controllers
     public class TrainerController : BaseController
     {
         private readonly ITrainerService trainerService;
+        private readonly IApplyService applyService;
+      
 
-        public TrainerController(ITrainerService _trainerService)
+        public TrainerController(ITrainerService _trainerService, IApplyService _applyService)
         {
             trainerService = _trainerService;
+            applyService = _applyService;
         }
 
         [HttpGet]
@@ -94,5 +97,18 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
+
+        public async Task<IActionResult> DeleteForApply(Guid id)
+        {
+
+
+            await trainerService.DeleteTraineForApplyrAsync(id);
+            await applyService.DeleteAppliersAsync(id);
+
+            TempData[SuccessMessage] = "You successfuly removed a trainer!";
+
+            return RedirectToAction("All", "Apply", "Admin");
+        }
+
     }
 }

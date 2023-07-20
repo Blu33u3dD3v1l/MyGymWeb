@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using MyGymWeb.Infrastructure.Extensions;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
@@ -48,7 +46,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Delete(Guid id, TrainerViewModel model)
+        public async Task<IActionResult> Delete(Guid id, TrainerQuitViewModel model)
         {
 
 

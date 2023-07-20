@@ -48,7 +48,7 @@ namespace MyGymWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Apply(AddTrainerFormModel model)
+        public async Task<IActionResult> Apply(TrainerQuitViewModel model)
         {
 
             var currentId = User.GetId();
@@ -57,9 +57,11 @@ namespace MyGymWeb.Controllers
             if (currentId != null)
             {
                 await this.applyService.AddApplyAsync(currentId, model);
+
+                TempData[SuccessMessage] = "You successfuly post an application!";
             }
 
-
+            
             return RedirectToAction("All", "Trainer");
         }
 

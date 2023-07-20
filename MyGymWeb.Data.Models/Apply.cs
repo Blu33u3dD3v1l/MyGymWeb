@@ -47,6 +47,8 @@ namespace MyGymWeb.Data.Models
         [ForeignKey(nameof(UserId))]
         public ApplicationUser? User { get; set; }
 
+        public string? ForApplication { get; set; }
+
         public bool IsActive { get; set; } = true;
 
         public bool IsAvailable = true;
