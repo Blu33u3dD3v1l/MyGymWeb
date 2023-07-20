@@ -12,6 +12,10 @@ html {
     position: relative;
     min-height: 100%;
 }
+body {
+    margin: 0;
+    min-height: 100vh;
+}
 
 
 .navbar {
@@ -95,8 +99,12 @@ html {
 }
 
 .MyFooter {
-    max-height: 30rem !important;
-    background-color: black;
+     max-height: 30rem !important;
+     background-color: black;
+     
+
+
+    
 }
 
 .MyFooter p {
@@ -115,6 +123,7 @@ html {
 
 .MyProducts {
     background-color: black;
+  
    
 }
 .MyLogin{
@@ -144,4 +153,10 @@ html {
 .ApplyUsers {
     padding: 11.5rem 0;
     font-weight: 700;
+}
+.DetailsProducts {
+    padding: 3rem 0;
+}
+.MineNoProducts{
+    padding: 14rem 0;
 }

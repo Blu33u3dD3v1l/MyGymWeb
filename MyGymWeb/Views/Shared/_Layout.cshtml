@@ -1,4 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+@using MyGymWeb.Data.Models;
+@using MyGymWeb.Services.Admin
+@using MyGymWeb.Infrastructure.Extensions
+@using Microsoft.AspNetCore.Http;
+@inject  UserManager<ApplicationUser> userManager;
+@inject IHttpContextAccessor _context;
+
+
+@{
+    var user = await userManager.GetUserAsync(_context?.HttpContext?.User);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -59,6 +72,7 @@
   display: block;
 }
 </style>
+
 </head>
 <body>
   <partial name="_NotificationsPartial"/>
@@ -84,8 +98,24 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="All">Products</a>
                         </li>                       
-
-                      @if (!User.IsInRole("Administrator"))
+                        @if (!User.IsInRole("Administrator"))
+                        {
+                            
+                             <li>
+                                    <div class="dropdown">
+                                        <h5 class="dropbtn">
+                                                 Mine
+                                             <i class="fa fa-caret-down"></i>
+                                        </h5>
+                                        <div class="dropdown-content">
+                                            <a asp-controller="Apply" asp-action="Apply">Apply</a>
+                                            <a asp-controller="Trainer" asp-action="ManageTrainer">My Trainers</a>     
+                                            <a asp-controller="User" asp-action="Mine">My Products</a>
+                                         </div>
+                                    </div>
+                             </li>
+                        }
+                        @* @if (!User.IsInRole("Administrator"))
                         {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Athlete" asp-action="Mine">My Trainers</a>
@@ -93,7 +123,7 @@
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Apply" asp-action="Apply">Apply</a>
                         </li> 
-                        }
+                        }*@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

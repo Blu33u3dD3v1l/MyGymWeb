@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230720175214_GeneralExtensions")]
+    partial class GeneralExtensions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -474,9 +476,6 @@ namespace MyGymWeb.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductCount")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("GymId");
@@ -492,8 +491,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "WolvesFitness",
                             Name = "Wolves Fitness Shaker Bottle",
-                            Price = 30m,
-                            ProductCount = 0
+                            Price = 30m
                         },
                         new
                         {
@@ -503,8 +501,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Urban Fitness",
                             Name = "Urban Fitness 2in1 Protein Shaker",
-                            Price = 27m,
-                            ProductCount = 0
+                            Price = 27m
                         },
                         new
                         {
@@ -514,8 +511,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "ElephantSkin Fitness",
                             Name = "The Fitness Gloves",
-                            Price = 17m,
-                            ProductCount = 0
+                            Price = 17m
                         },
                         new
                         {
@@ -525,8 +521,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Goodlife",
                             Name = "Pro Nutrition and Fitness",
-                            Price = 50m,
-                            ProductCount = 0
+                            Price = 50m
                         },
                         new
                         {
@@ -536,8 +531,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Goodlife",
                             Name = "L-Carnitine",
-                            Price = 14m,
-                            ProductCount = 0
+                            Price = 14m
                         },
                         new
                         {
@@ -547,8 +541,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Force USA G20.",
                             Name = "New & Refurbished Gym & Fitness Equipment For Sale",
-                            Price = 150m,
-                            ProductCount = 0
+                            Price = 150m
                         },
                         new
                         {
@@ -558,8 +551,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Force USA G20.",
                             Name = "Smith Machine",
-                            Price = 880m,
-                            ProductCount = 0
+                            Price = 880m
                         },
                         new
                         {
@@ -569,8 +561,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "American Musle",
                             Name = "Body-Solid G9S Selectorized",
-                            Price = 880m,
-                            ProductCount = 0
+                            Price = 880m
                         },
                         new
                         {
@@ -580,8 +571,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Olympic Weight",
                             Name = "French Fitness FL70 Freeweight",
-                            Price = 1999m,
-                            ProductCount = 0
+                            Price = 1999m
                         },
                         new
                         {
@@ -591,8 +581,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Venum Aero Body Fitness Gloves Black Pink",
-                            Price = 34.95m,
-                            ProductCount = 0
+                            Price = 34.95m
                         },
                         new
                         {
@@ -602,8 +591,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Venum Challenger Resistance Band Purple",
-                            Price = 34.60m,
-                            ProductCount = 0
+                            Price = 34.60m
                         },
                         new
                         {
@@ -613,8 +601,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Challenger ABS Wheel",
-                            Price = 19.99m,
-                            ProductCount = 0
+                            Price = 19.99m
                         },
                         new
                         {
@@ -624,8 +611,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Bad Boy",
                             Name = "Bad Boy MMA Fightshorts Capo 2 White",
-                            Price = 19.99m,
-                            ProductCount = 0
+                            Price = 19.99m
                         },
                         new
                         {
@@ -635,8 +621,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Booster",
                             Name = "Booster Boxing Gloves Pro Shield 3 Green",
-                            Price = 129.00m,
-                            ProductCount = 0
+                            Price = 129.00m
                         },
                         new
                         {
@@ -646,8 +631,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Rafter Sweatshirt Dark Heather Grey",
-                            Price = 49.95m,
-                            ProductCount = 0
+                            Price = 49.95m
                         },
                         new
                         {
@@ -657,8 +641,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Hayabusa",
                             Name = "Hayabusa Kanpeki T3 LX Hybrid Sparring Gloves 7oz ",
-                            Price = 142.99m,
-                            ProductCount = 0
+                            Price = 142.99m
                         },
                         new
                         {
@@ -668,8 +651,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Venum Koi Rashguard Long Sleeves Black Blue",
-                            Price = 59.95m,
-                            ProductCount = 0
+                            Price = 59.95m
                         },
                         new
                         {
@@ -679,8 +661,7 @@ namespace MyGymWeb.Data.Migrations
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Venum Elite Boxing Gloves Microfiber White Silver",
-                            Price = 89.95m,
-                            ProductCount = 0
+                            Price = 89.95m
                         });
                 });
 

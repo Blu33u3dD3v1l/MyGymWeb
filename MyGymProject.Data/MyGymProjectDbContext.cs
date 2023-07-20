@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data.Models;
 
+
 namespace MyGymWeb.Data
 {
     public class MyGymProjectDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
@@ -27,21 +28,25 @@ namespace MyGymWeb.Data
 
         public DbSet<Apply> Applies { get; set; } = null!;
 
-       
-       
+        public DbSet<UserProduct> UsersProducts { get; set; } = null!;
+
+
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
-           
+            builder.Entity<UserProduct>()
+               .HasKey(x => new { x.UserId, x.ProductId });
 
             builder.Entity<Gym>()
                 .HasOne(x => x.Trainer)
                 .WithMany(y => y.Gyms)
                 .HasForeignKey(x => x.TrainerId)
                 .OnDelete(DeleteBehavior.Cascade);
-           
+       
+
            builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
            builder.ApplyConfiguration(new GymConfiguration());
            builder.ApplyConfiguration(new ProductConfiguration());

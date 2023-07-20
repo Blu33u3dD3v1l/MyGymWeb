@@ -1,9 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
+using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
 using System.Collections.Immutable;
 using System.Data.Common;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MyGymWeb.Services
 {
@@ -11,22 +16,23 @@ namespace MyGymWeb.Services
     {
 
         private readonly MyGymProjectDbContext data;
-        
+
 
         public UserService(MyGymProjectDbContext data)
         {
             this.data = data;
- 
+
         }
+
 
         public async Task<IEnumerable<UserServiceModel>> All()
         {
             List<UserServiceModel> result;
-         
-           result = data.Trainers.Select(x => new UserServiceModel()
+
+            result = data.Trainers.Select(x => new UserServiceModel()
             {
                 UserId = x.UserId,
-                Email = x.User.Email,
+                Email = x!.User!.Email,
                 FullName = $"{x.User.FirstName} {x.User.LastName}",
                 PhoneNumber = x.PhoneNumber,
 
@@ -48,24 +54,140 @@ namespace MyGymWeb.Services
             return result;
         }
 
-        public async Task DeleteUsersAsync(string userId)
+        public async Task BuyProductAsync(int id, string userId)
         {
-           var a = await data.Users.FindAsync(userId);
+            var currentUser = await data.Users
+                .Where(u => u.Id == userId)
+                .Include(x => x.UsersProducts)
+                .FirstOrDefaultAsync();
 
-            if(a != null)
+            var productForBuy = await data.Products
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+
+
+
+            if ((currentUser!.Amount - productForBuy!.Price) < 0)
             {
-                data.Users.RemoveRange(a);
-                await data.SaveChangesAsync();
+                throw new Exception("Amount is not enough!");
             }
 
+            if (!currentUser.UsersProducts.Any(m => m.ProductId == id))
+            {
+                currentUser.UsersProducts.Add(new UserProduct()
+                {
+                    ProductId = productForBuy.Id,
+                    UserId = currentUser.Id,
+                    Product = productForBuy,
+                    User = currentUser
+
+
+                });
+                productForBuy.ProductCount += 1;
+                currentUser.Amount -= productForBuy.Price;
+            }
+            else
+            {
+                productForBuy.ProductCount += 1;
+                currentUser.Amount -= productForBuy.Price;
+            }
           
-           
+            await data.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<ProductViewModel>> GetAllProductsForBuyAsync(string userId)
+        {
+            var user = await data.Users
+               .Where(u => u.Id == userId)
+               .Include(u => u.UsersProducts)
+                .ThenInclude(x => x.Product)
+               .FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                throw new ArgumentException("Invalid user ID");
+            }
+
+            return user.UsersProducts
+                .Select(m => new ProductViewModel()
+                {
+                    Description = m.Product.Description,
+                    Mark = m.Product.Mark,
+                    Id = m.ProductId,
+                    ImageUrl = m.Product.ImageUrl,
+                    Name = m.Product.Name,
+                    Price = m.Product.Price,
+                    ProductCount = m.Product.ProductCount,
+                });
+        }
+
+        public async Task ReturnProductAsync(string userId, int id)
+        {
+            var product = await data.Products
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+
+            var user = await data.Users
+                .Where(x => x.Id == userId)
+                .FirstOrDefaultAsync();
+
+            if (product == null || user == null)
+            {
+                throw new ArgumentException("Product or User not found!");
+
+            }
+
+            if (product.ProductCount > 1)
+            {
+                user.Amount += product.Price;
+                product.ProductCount--;
+
+            }
+            else
+            {
+                user.Amount += product.Price;
+                product.ProductCount--;
+
+                var productForReturn = await data.UsersProducts
+                .Where(x => x.ProductId == id && x.UserId == userId)
+                .FirstOrDefaultAsync();
+
+                if (productForReturn == null)
+                {
+                    throw new ArgumentException("Product or User not found!");
+                }
+                data.RemoveRange(productForReturn);
+               
+            }
+
+            await data.SaveChangesAsync();
+        }
+
+        //public async Task DeleteUserAsync(string id)
+        //{
+
+        //   var user = await data.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+
+        //    if(user != null)
+        //    {
+        //        if (user.Email == "Admin@Admin.bg")
+        //        {
+        //            throw new SystemException();
+        //        }
+
+        //        data.Users.RemoveRange(user);
+        //        await data.SaveChangesAsync();
+        //    }
+
+
+
+        //}
 
         public async Task<string> UserFullName(string userId)
         {
-           var user = await data.Users
-                .FirstOrDefaultAsync(x => x.Id == userId);
+            var user = await data.Users
+                 .FirstOrDefaultAsync(x => x.Id == userId);
 
             return $"{user?.FirstName} {user?.LastName}".Trim();
         }

@@ -21,6 +21,8 @@
        
         public string ImageUrl { get; set; } = null!;
 
+        public int ProductCount { get; set; }
+
         
     }
 }

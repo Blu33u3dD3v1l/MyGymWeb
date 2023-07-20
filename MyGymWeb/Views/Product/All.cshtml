@@ -10,7 +10,7 @@
             @foreach (var product in Model)
             {
                 <div class="card col-7" style="width: 18rem;">
-                    <img class="card-img-top" style="width: 17rem;"
+                    <img class="card-img-top" style="width: 17rem; height:250px;"
                          src="@product.ImageUrl" alt="Product Image">
                     <div class="card-body">
 
@@ -26,20 +26,10 @@
                             <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Details" method="post">
                                 <input type="submit" value="Details" class="btn btn-primary btn-sm" />
                             </a>
-                            <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Buy" method="post">
+                            <a asp-route-id="@product.Id" asp-controller="User" asp-action="Buy">
                                 <input type="submit" value="Buy" class="btn btn-warning btn-sm" />
                             </a>
-
-                            <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Edit" method="post">
-                                <input type="submit" value="EditProduct" class="btn btn-success btn-sm" />
-                            </a>
-                            <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Delete" method="get">
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
-                            </a>
-
-
                         </div>
-
                     }
                 </div>
             }

@@ -27,6 +27,7 @@ namespace MyGymWeb.Data.Models
 
         public bool IsActive { get; set; } = true;
 
+        public int ProductCount { get; set; }  
         [Required]
         public string ImageUrl { get; set; } = null!;
 

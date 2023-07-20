@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyGymWeb.Services;
 using MyGymWeb.Services.Admin;
 using MyGymWeb.Services.Interface;
+using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
+
 
 namespace MyGymWeb.Areas.Admin.Controllers
 {
@@ -9,10 +10,12 @@ namespace MyGymWeb.Areas.Admin.Controllers
     {
 
         private readonly IUserService userService;
+       
 
         public UserController(IUserService _userService)
         {
             userService = _userService;
+           
         }
 
       
@@ -22,13 +25,26 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Delete(string userId)
-        {
+        //public async Task<IActionResult> Delete(string id)
+        //{
+           
 
-            await userService.DeleteUsersAsync(userId);
+        //    try
+        //    {               
+        //            await userService.DeleteUserAsync(id);
+        //            TempData[SuccessMessage] = "Successful delete user!";
+                              
+        //    }
+        //    catch (Exception)
+        //    {
 
-            return RedirectToAction("All", "User", "Admin");
-        }
+        //        TempData[ErrorMessage] = "The Admin cannot be deleted!";
+        //    }
+           
+
+
+        //    return RedirectToAction("All", "User", "Admin");
+        //}
 
     }
 }

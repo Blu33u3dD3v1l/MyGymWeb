@@ -18,7 +18,7 @@
                     <th><label>Full Name</label></th>
                     <th><label>Phone Number</label></th>
                     <th><label>User Is Trainer</label></th>
-                    <th><label>Actions</label></th>
+                   
                 </tr>
             </thead>
             <tbody>
@@ -33,20 +33,15 @@
                             {
                                 <label>✔</label>
                             }
-                            else if(user.Email == "Admin@Admins.bg")
+                            else if(user.Email == "Admin@Admin.bg")
                             {
                                 <label>Admin</label>
-                            }
+                            }                        
                             else
                             {
                                 <label class="text-center">❌</label>
                             }
-                        </td>
-                        <td>
-                            
-                            <button asp-route-id="@user.UserId" asp-area="Admin" asp-controller="User" asp-action="Delete" class="btn btn-danger" method="get">Delete</button>
-                           
-                        </td>
+                        </td>                   
                     </tr>
                 }
             </tbody>
