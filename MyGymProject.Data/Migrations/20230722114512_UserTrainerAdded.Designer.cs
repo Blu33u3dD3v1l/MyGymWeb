@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230722114512_UserTrainerAdded")]
+    partial class UserTrainerAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -299,8 +301,9 @@ namespace MyGymWeb.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("AppointmentTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("AppointmentTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClientFullName")
                         .IsRequired()
@@ -840,7 +843,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("UsersTrainers");
+                    b.ToTable("UserTrainer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -997,7 +1000,7 @@ namespace MyGymWeb.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("MyGymWeb.Data.Models.ApplicationUser", "User")
-                        .WithMany("UsersTrainers")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1010,8 +1013,6 @@ namespace MyGymWeb.Data.Migrations
             modelBuilder.Entity("MyGymWeb.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("UsersProducts");
-
-                    b.Navigation("UsersTrainers");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Gym", b =>

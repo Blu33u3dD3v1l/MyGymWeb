@@ -80,7 +80,6 @@
         }
 
         public static class GymValidations
-
         {
             public const int NameMinValidation = 10;
             public const int NameMaxValidation = 50;
@@ -93,5 +92,22 @@
 
 
         }
+        public static class AppointmentValidation
+        {
+            public const int ClientNameMinValidation = 5;
+            public const int ClientNameMaxValidation = 50;
+
+            public const int TrainerNameMinValidation = 5;
+            public const int TrainerNameMaxValidation = 50;
+        }
+        public static class UserValidations
+        {
+            public const int UserFirstNameMinValidation = 1;
+            public const int UserFirstNameMaxValidation = 13;
+
+            public const int UserLastNameMinValidation = 4;
+            public const int UserLastNameMaxValidation = 20;
+        }
+
     }
 }

@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
 using System.Collections.Immutable;
-using System.Data.Common;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
+
 
 namespace MyGymWeb.Services
 {
@@ -24,9 +20,36 @@ namespace MyGymWeb.Services
 
         }
 
+        public async Task AddAppointmentAsync(string userId, AppointmentFormModel model)
+        {
+            var currentUser = await data.Appointments.FirstOrDefaultAsync(a => a.UserId == userId);
+            
+
+         
+            //var a = DateTime.Parse(model.AppointmentTime, CultureInfo.InvariantCulture);
+            //var b = $"{a.Day}/{a.Month}/{a.Year}";
+            //var c = $"{a.Hour}:{a.Minute}";
+
+            var appointment = new Appointment()
+            {
+                AppointmentTime = model.AppointmentTime,
+                ClientFullName = model.ClientFullName,            
+                Email = model.Email,
+                TrainerName = model.TrainerName,
+                UserId = userId,
+                
+            };
+
+
+
+
+            await data.Appointments.AddAsync(appointment);
+            await data.SaveChangesAsync();
+        }
 
         public async Task<IEnumerable<UserServiceModel>> All()
         {
+
             List<UserServiceModel> result;
 
             result = data.Trainers.Select(x => new UserServiceModel()
@@ -52,6 +75,17 @@ namespace MyGymWeb.Services
                 .ToListAsync());
 
             return result;
+        }
+
+        public async Task<bool> AppointmentExistByUserId(string userId, Guid id)
+        {
+            var trainer = await data.UsersTrainers.FirstOrDefaultAsync(x => x.TrainerId == id);
+            bool appointment = await data.UsersTrainers.AnyAsync(a => a.UserId == userId && a.TrainerId == id);
+            if(appointment == true)
+            {
+                throw new Exception();
+            }
+            return appointment;
         }
 
         public async Task BuyProductAsync(int id, string userId)
@@ -160,6 +194,38 @@ namespace MyGymWeb.Services
                
             }
 
+            await data.SaveChangesAsync();
+        }
+
+        public async Task TrainerUserRelationAsync(string userId, Guid id)
+        {
+            var currentUser = await data.Users
+               .Where(u => u.Id == userId)
+               .Include(x => x.UsersTrainers)
+               .FirstOrDefaultAsync();
+
+            var currentTrainer = await data.Trainers
+              .Where(u => u.Id == id)             
+              .FirstOrDefaultAsync();
+
+            if (!currentUser!.UsersTrainers.Any(m => m.TrainerId == id && m.UserId == userId))
+            {
+                currentUser.UsersTrainers.Add(new UserTrainer()
+                {
+                    TrainerId = currentTrainer!.Id,
+                    UserId = currentUser.Id,
+                    Trainer = currentTrainer,
+                    User = currentUser
+
+
+                });
+             
+            }
+            else
+            {
+                throw new InvalidOperationException("Wrong user");
+            }
+            
             await data.SaveChangesAsync();
         }
 

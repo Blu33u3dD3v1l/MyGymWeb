@@ -28,11 +28,11 @@
                         <i class="fa fa-caret-down"></i>
                     </h5>
                     <div class="dropdown-content">
-                        <a asp-area="Admin" asp-controller="Product" asp-action="ManageProduct">Products</a>
-                        <a asp-area="Admin" asp-controller="Trainer" asp-action="ManageTrainer">Trainers</a>
-                        <a asp-area="Admin" asp-controller="Gym" asp-action="ManageGym">Gyms</a>
-                        <a asp-area="Admin" asp-controller="User" asp-action="All">Users</a>
-                        <a asp-area="Admin" asp-controller="Apply" asp-action="All">Applies</a>
+                        <a asp-area="Admin" asp-controller="Product" asp-action="ManageProduct"><i>Products</i></a>
+                        <a asp-area="Admin" asp-controller="Trainer" asp-action="ManageTrainer"><i>Trainers</i></a>
+                        <a asp-area="Admin" asp-controller="Gym" asp-action="ManageGym"><i>Gyms</i></a>
+                        <a asp-area="Admin" asp-controller="User" asp-action="All"><i>Users</i></a>
+                        <a asp-area="Admin" asp-controller="Apply" asp-action="All"><i>Applies</i></a>
                     </div>
                 </div>
             </li>
@@ -40,16 +40,18 @@
       
         <li class="nav-item">
 
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i>Hello @User.Identity?.Name!</i></a>
 
         </li>
-        <li class="nav-item">
-
-            <a class="nav-link text-dark">Amount: <e class="text-warning">@user.Amount</e> $</a>
-        </li>
+        if (!User.IsInRole("Administrator"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark"><i>Amount: <e class="text-warning">@user.Amount</e> $</i></a>
+            </li>
+        }        
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                <button type="submit" class="nav-link btn btn-link text-dark"><i>Logout</i></button>
             </form>
         </li>
     }

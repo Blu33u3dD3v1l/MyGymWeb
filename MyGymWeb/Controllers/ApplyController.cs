@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
@@ -6,6 +7,7 @@ using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
 namespace MyGymWeb.Controllers
 {
+    [Authorize]
     public class ApplyController : Controller
     {
         private readonly IApplyService applyService;

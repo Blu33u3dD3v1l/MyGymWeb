@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230721185038_AppointmentChanged")]
+    partial class AppointmentChanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -828,21 +830,6 @@ namespace MyGymWeb.Data.Migrations
                     b.ToTable("UsersProducts");
                 });
 
-            modelBuilder.Entity("MyGymWeb.Data.Models.UserTrainer", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<Guid>("TrainerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("UserId", "TrainerId");
-
-                    b.HasIndex("TrainerId");
-
-                    b.ToTable("UsersTrainers");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -988,30 +975,9 @@ namespace MyGymWeb.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyGymWeb.Data.Models.UserTrainer", b =>
-                {
-                    b.HasOne("MyGymWeb.Data.Models.Trainer", "Trainer")
-                        .WithMany()
-                        .HasForeignKey("TrainerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyGymWeb.Data.Models.ApplicationUser", "User")
-                        .WithMany("UsersTrainers")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Trainer");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("MyGymWeb.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("UsersProducts");
-
-                    b.Navigation("UsersTrainers");
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Gym", b =>

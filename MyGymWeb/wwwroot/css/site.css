@@ -157,6 +157,15 @@ body {
 .DetailsProducts {
     padding: 3rem 0;
 }
-.MineNoProducts{
+.MineNoProducts {
     padding: 14rem 0;
+    background-color: black;
+}
+.MineProducts {
+    
+    background-color: black;
+}
+.MineNoProducts h3 {
+    
+    color: white;
 }

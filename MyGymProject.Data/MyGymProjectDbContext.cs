@@ -28,10 +28,11 @@ namespace MyGymWeb.Data
 
         public DbSet<Apply> Applies { get; set; } = null!;
 
+        public DbSet<Appointment> Appointments { get; set; } = null!;
+
         public DbSet<UserProduct> UsersProducts { get; set; } = null!;
 
-
-
+        public DbSet<UserTrainer> UsersTrainers { get; set; } = null!;
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -39,6 +40,9 @@ namespace MyGymWeb.Data
 
             builder.Entity<UserProduct>()
                .HasKey(x => new { x.UserId, x.ProductId });
+
+            builder.Entity<UserTrainer>()
+              .HasKey(x => new { x.UserId, x.TrainerId });
 
             builder.Entity<Gym>()
                 .HasOne(x => x.Trainer)

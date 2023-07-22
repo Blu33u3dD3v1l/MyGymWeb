@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MyGymWeb.Infrastructure.Extensions;
+using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
 using System.Security.Claims;
 using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
     
 namespace MyGymWeb.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
 
@@ -32,7 +36,7 @@ namespace MyGymWeb.Controllers
                 TempData[ErrorMessage] = "Not enough Money!";
             }
 
-            return RedirectToAction("All", "Product");
+            return RedirectToAction("Mine", "User");
         }
 
         public async Task<IActionResult> Mine()
@@ -58,5 +62,47 @@ namespace MyGymWeb.Controllers
 
             return RedirectToAction("Mine", "User");
         }
+
+        [HttpGet]
+        public  async Task<IActionResult> Appointment(Guid id)
+        {
+
+            string? currentId =  this.User.GetId();
+            if (currentId == null)
+            {
+                throw new ArgumentNullException(nameof(currentId));
+            }
+           
+            
+            try
+            {
+                await this.userService.AppointmentExistByUserId(currentId, id);
+            }
+            catch (Exception)
+            {
+
+                TempData[WarningMessage] = "You allready have pending appointment with this Trainer!";
+                return RedirectToAction("Index", "Home");
+            }
+           
+                return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Appointment(Guid id,  AppointmentFormModel model)
+        {
+
+                var currentId = User.GetId();
+                
+
+                await this.userService.TrainerUserRelationAsync(currentId!, id);
+                await this.userService.AddAppointmentAsync(currentId!, model);
+                TempData[SuccessMessage] = "You successfuly add an appointment!";
+
+           
+            return RedirectToAction("All", "Trainer");
+        }
+
+     
     }
 }

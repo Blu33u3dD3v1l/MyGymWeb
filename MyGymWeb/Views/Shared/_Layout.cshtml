@@ -87,16 +87,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" class="nav-link active">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" class="nav-link active"><i>Home</i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Gym" asp-action="All">Gyms</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Gym" asp-action="All"><i>Gyms</i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="All">Expert Team</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="All"><i>Expert Team</i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="All">Products</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="All"><i>Products</i></a>
                         </li>                       
                         @if (!User.IsInRole("Administrator"))
                         {
@@ -104,26 +104,17 @@
                              <li>
                                     <div class="dropdown">
                                         <h5 class="dropbtn">
-                                                 Mine
-                                             <i class="fa fa-caret-down"></i>
+                                        <i>Mine</i>
+                                        <i class="fa fa-caret-down"></i>
                                         </h5>
                                         <div class="dropdown-content">
-                                            <a asp-controller="Apply" asp-action="Apply">Apply</a>
-                                            <a asp-controller="Trainer" asp-action="ManageTrainer">My Trainers</a>     
-                                            <a asp-controller="User" asp-action="Mine">My Products</a>
+                                        <a asp-controller="Apply" asp-action="Apply"><i>Apply</i></a>
+                                        <a asp-controller="Trainer" asp-action="ManageTrainer"><i>My Trainers</i></a>
+                                        <a asp-controller="User" asp-action="Mine"><i>My Products</i></a>
                                          </div>
                                     </div>
                              </li>
-                        }
-                        @* @if (!User.IsInRole("Administrator"))
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Athlete" asp-action="Mine">My Trainers</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Apply" asp-action="Apply">Apply</a>
-                        </li> 
-                        }*@
+                        }                      
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -151,14 +142,13 @@
                     <p class="link"> <span><i class="fas fa-angle-double-right"></i>Contact Us</span></p>
                 </div>
 
-                <div class="col-lg-4">
-                    <h5 class="pb-1">HOME LOCATION</h5>
-                    <p>Washington 6036 Richmond nwy., Alexandria, VA USA 22303</p>
-                    <p class="link pt-3">+1 (409) 987-5874</p>
+                    <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
+                    <h5 class="pb-4">HOME LOCATION</h5>
+                    <p class="link">Washington 6036 Richmond nwy., Alexandria, VA USA 22303</p>
+                    <p class="link">+1 (409) 987-5874</p>
                     <p class="link">info@info.com</p>
-                </div  class="col-lg-4">
-            
-            </div>
+                </div>  
+           </div>
         </div>
     </div>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

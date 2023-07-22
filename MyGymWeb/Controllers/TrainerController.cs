@@ -18,13 +18,14 @@ namespace MyGymWeb.Controllers
             trainerService = _trainerService;
         }
 
-
+        [AllowAnonymous]
         public async Task<IActionResult> All()
         {
             var t = await trainerService.GetAllTrainersAsync();
             return View(t);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Details(Guid trainerId)
         {
@@ -55,55 +56,12 @@ namespace MyGymWeb.Controllers
 
             return RedirectToAction("All", "Trainer");
         }
-        //public async Task<IActionResult> Become()
-        //{
 
-        //    string? userId = this.User.GetId();
-        //    if (userId == null)
-        //    {
-        //        return RedirectToAction("All", "Trainer");
-        //    }
+        [HttpGet]
+        public IActionResult Form()
+        {
 
-        //    bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
-
-
-
-        //    if (isTrainer)
-        //    {
-
-        //        return RedirectToAction("Index", "Home");
-        //    }
-
-        //    return View();
-
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> Become(AddTrainerFormModel model)
-        //{
-        //    string? userId = this.User.GetId();
-
-        //    if (userId == null)
-        //    {
-        //        return RedirectToAction("All", "Trainer");
-        //    }
-
-        //    bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
-
-
-
-        //    if (isTrainer)
-        //    {
-        //        return RedirectToAction("Index", "Home");
-        //    }
-
-        //    await this.trainerService.BecomeTrainerAsync(userId, model);
-
-        //    return RedirectToAction("All", "Trainer");
-        //}
-
-
-
-
+            return View();
+        }
     }
 }
