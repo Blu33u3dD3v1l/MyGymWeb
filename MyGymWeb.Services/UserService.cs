@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
@@ -20,31 +21,38 @@ namespace MyGymWeb.Services
 
         }
 
-        public async Task AddAppointmentAsync(string userId, AppointmentFormModel model)
+        public async Task AddAppointmentAsync(Guid id, string userId, AppointmentFormModel model)
         {
             var currentUser = await data.Appointments.FirstOrDefaultAsync(a => a.UserId == userId);
-            
 
-         
+
+            if (data.Trainers.Any(x => x.Name == model.TrainerName))
+            {
+                var appointment = new Appointment()
+                {
+                    AppointmentTime = model.AppointmentTime,
+                    ClientFullName = model.ClientFullName,
+                    Email = model.Email,
+                    TrainerName = model.TrainerName,
+                    UserId = userId,
+                    TrainerId = id,
+                };
+
+                await data.Appointments.AddAsync(appointment);
+                await data.SaveChangesAsync();
+            }
+            else
+            {
+
+                throw new Exception();
+
+            }
+
             //var a = DateTime.Parse(model.AppointmentTime, CultureInfo.InvariantCulture);
             //var b = $"{a.Day}/{a.Month}/{a.Year}";
             //var c = $"{a.Hour}:{a.Minute}";
 
-            var appointment = new Appointment()
-            {
-                AppointmentTime = model.AppointmentTime,
-                ClientFullName = model.ClientFullName,            
-                Email = model.Email,
-                TrainerName = model.TrainerName,
-                UserId = userId,
-                
-            };
 
-
-
-
-            await data.Appointments.AddAsync(appointment);
-            await data.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<UserServiceModel>> All()
@@ -81,7 +89,7 @@ namespace MyGymWeb.Services
         {
             var trainer = await data.UsersTrainers.FirstOrDefaultAsync(x => x.TrainerId == id);
             bool appointment = await data.UsersTrainers.AnyAsync(a => a.UserId == userId && a.TrainerId == id);
-            if(appointment == true)
+            if (appointment == true)
             {
                 throw new Exception();
             }
@@ -125,8 +133,29 @@ namespace MyGymWeb.Services
                 productForBuy.ProductCount += 1;
                 currentUser.Amount -= productForBuy.Price;
             }
-          
+
             await data.SaveChangesAsync();
+        }
+
+
+
+        public async Task CancelUserApplicationAsync(Guid trainerId, string userId, UserTrainersFormModel model)
+        {
+
+            
+            var appointmenInUserTrainersForDelete = await data.UsersTrainers.FirstOrDefaultAsync(x => x.UserId == userId && x.TrainerId == trainerId);
+
+            var appointmentInAppointmentsForDelete = await data.Appointments.FirstOrDefaultAsync(x => x.UserId == userId && x.TrainerId == trainerId);
+
+            if(appointmenInUserTrainersForDelete == null ||  appointmentInAppointmentsForDelete == null)
+            {
+                throw new Exception();
+            }
+
+            data.UsersTrainers.RemoveRange(appointmenInUserTrainersForDelete);
+            data.Appointments.RemoveRange(appointmentInAppointmentsForDelete);
+            await data.SaveChangesAsync();
+
         }
 
         public async Task<IEnumerable<ProductViewModel>> GetAllProductsForBuyAsync(string userId)
@@ -134,7 +163,7 @@ namespace MyGymWeb.Services
             var user = await data.Users
                .Where(u => u.Id == userId)
                .Include(u => u.UsersProducts)
-                .ThenInclude(x => x.Product)
+               .ThenInclude(x => x.Product)
                .FirstOrDefaultAsync();
 
             if (user == null)
@@ -153,6 +182,28 @@ namespace MyGymWeb.Services
                     Price = m.Product.Price,
                     ProductCount = m.Product.ProductCount,
                 });
+        }
+
+        public async Task<IEnumerable<UserTrainersFormModel>> GetMyTrainersAsync(string userId)
+        {
+            var currenUser = await data.Users.FirstOrDefaultAsync();
+            List<UserTrainersFormModel> result = new List<UserTrainersFormModel>();
+
+
+            foreach (var item in data.Appointments.Where(x => x.UserId == userId))
+            {
+                var a = new UserTrainersFormModel()
+                {
+                    AppointmentTime = item.AppointmentTime.ToString(),
+                    ClientFullName = item.ClientFullName,
+                    Email = item.Email,
+                    TrainerName = item.TrainerName,
+                };
+
+                result.Add(a);
+            }
+
+            return result;
         }
 
         public async Task ReturnProductAsync(string userId, int id)
@@ -191,7 +242,7 @@ namespace MyGymWeb.Services
                     throw new ArgumentException("Product or User not found!");
                 }
                 data.RemoveRange(productForReturn);
-               
+
             }
 
             await data.SaveChangesAsync();
@@ -205,7 +256,7 @@ namespace MyGymWeb.Services
                .FirstOrDefaultAsync();
 
             var currentTrainer = await data.Trainers
-              .Where(u => u.Id == id)             
+              .Where(u => u.Id == id)
               .FirstOrDefaultAsync();
 
             if (!currentUser!.UsersTrainers.Any(m => m.TrainerId == id && m.UserId == userId))
@@ -219,36 +270,15 @@ namespace MyGymWeb.Services
 
 
                 });
-             
+
             }
             else
             {
                 throw new InvalidOperationException("Wrong user");
             }
-            
+
             await data.SaveChangesAsync();
         }
-
-        //public async Task DeleteUserAsync(string id)
-        //{
-
-        //   var user = await data.Users.FirstOrDefaultAsync(x => x.Id == id);
-
-
-        //    if(user != null)
-        //    {
-        //        if (user.Email == "Admin@Admin.bg")
-        //        {
-        //            throw new SystemException();
-        //        }
-
-        //        data.Users.RemoveRange(user);
-        //        await data.SaveChangesAsync();
-        //    }
-
-
-
-        //}
 
         public async Task<string> UserFullName(string userId)
         {

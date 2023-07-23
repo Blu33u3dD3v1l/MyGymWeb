@@ -10,6 +10,7 @@
         public string Email { get; init; } = null!;
   
         public string TrainerName { get; init; } = null!;
+        public Guid? TrainerId { get; set; }
       
 
 

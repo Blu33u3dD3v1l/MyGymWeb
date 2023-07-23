@@ -28,5 +28,12 @@ namespace MyGymWeb.Data.Models
 
         [ForeignKey(nameof(UserId))]
         public ApplicationUser? User { get; set; }
+
+        [ForeignKey(nameof(Trainer))]
+        public Guid? TrainerId { get; set; }
+      
+        public Trainer? Trainer { get; set; }
+
+
     }
 }

@@ -61,6 +61,9 @@ namespace MyGymWeb.Data.Models
         public bool IsAvailable = true;
 
         public virtual List<Gym> Gyms { get; set; }
-       
+
+        public ICollection<Appointment> Appointments { get; set; }
     }
+
 }
+

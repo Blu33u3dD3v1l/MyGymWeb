@@ -84,6 +84,7 @@ namespace MyGymWeb.Controllers
                 TempData[WarningMessage] = "You allready have pending appointment with this Trainer!";
                 return RedirectToAction("Index", "Home");
             }
+          
            
                 return View();
         }
@@ -92,17 +93,55 @@ namespace MyGymWeb.Controllers
         public async Task<IActionResult> Appointment(Guid id,  AppointmentFormModel model)
         {
 
-                var currentId = User.GetId();
-                
 
+            var currentId = User.GetId();
+            try
+            {
+                
+                await this.userService.AddAppointmentAsync(id, currentId!, model);
                 await this.userService.TrainerUserRelationAsync(currentId!, id);
-                await this.userService.AddAppointmentAsync(currentId!, model);
                 TempData[SuccessMessage] = "You successfuly add an appointment!";
+            }
+            catch (Exception)
+            {
+
+                TempData[ErrorMessage] = "The Name of the Trainer is Incorrect!";
+               
+            }
+              
 
            
             return RedirectToAction("All", "Trainer");
         }
 
-     
+        public async Task<IActionResult> MyApps()
+        {
+
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            var model = await userService.GetMyTrainersAsync(userId!);
+            return View(model);
+        }
+
+        public async Task<IActionResult> Cancel(Guid trainerId, UserTrainersFormModel model)
+        {
+
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            try
+            {
+                await userService.CancelUserApplicationAsync(trainerId, userId!, model);
+            }
+            catch (Exception)
+            {
+
+                TempData[ErrorMessage] = "There is no Appointment to remove!";
+            }
+
+            return RedirectToAction("MyApps","User");
+        }
+
+
+
+
     }
 }

@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data.Models;
-
+using System.Security.Cryptography.X509Certificates;
+using System.Reflection.Emit;
 
 namespace MyGymWeb.Data
 {
@@ -49,9 +50,16 @@ namespace MyGymWeb.Data
                 .WithMany(y => y.Gyms)
                 .HasForeignKey(x => x.TrainerId)
                 .OnDelete(DeleteBehavior.Cascade);
-       
 
-           builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
+            builder.Entity<Appointment>()
+           .HasOne(a => a.Trainer) 
+           .WithMany(t => t.Appointments) 
+           .HasForeignKey(a => a.TrainerId)
+           .OnDelete(DeleteBehavior.NoAction); 
+
+
+
+            builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
            builder.ApplyConfiguration(new GymConfiguration());
            builder.ApplyConfiguration(new ProductConfiguration());
            builder.ApplyConfiguration(new TypeConfiguration());

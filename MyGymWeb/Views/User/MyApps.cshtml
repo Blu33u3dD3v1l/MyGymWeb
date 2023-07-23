@@ -1,0 +1,46 @@
+﻿@model IEnumerable<UserTrainersFormModel>
+
+@{
+    ViewBag.Title = "My Applications";
+
+
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="AllUsers">
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                                       
+                    <th><label>Full Name</label></th>
+                    <th><label>Email</label></th>
+                    <th><label>AppointmentTime</label></th>
+                    <th><label>Trainer Name</label></th>
+                    <th><label>Action</label></th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Where(x => x.Email != null))
+                {
+                    <tr>
+                        <td><label>@user.ClientFullName</label></td>
+                        <td><label>@user.Email</label></td>
+                        <td><label>@user.AppointmentTime</label></td>
+                        <td><label>@user.TrainerName</label></td>
+                        <td>
+
+                            <a type="submit" class="btn btn-danger" asp-route-id="@user.UserId" asp-controller="User" asp-action="Cancel"  method="get">Cancel</a>
+                        </td>
+                      
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
