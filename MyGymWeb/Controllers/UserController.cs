@@ -99,7 +99,7 @@ namespace MyGymWeb.Controllers
             {
                 
                 await this.userService.AddAppointmentAsync(id, currentId!, model);
-                await this.userService.TrainerUserRelationAsync(currentId!, id);
+                //await this.userService.TrainerUserRelationAsync(currentId!, id);
                 TempData[SuccessMessage] = "You successfuly add an appointment!";
             }
             catch (Exception)
@@ -123,18 +123,20 @@ namespace MyGymWeb.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Cancel(Guid trainerId, UserTrainersFormModel model)
+        public async Task<IActionResult> Cancel(int id)
         {
 
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             try
             {
-                await userService.CancelUserApplicationAsync(trainerId, userId!, model);
+                await userService.CancelUserApplicationAsync(id);
+                TempData[SuccessMessage] = "Your Appointment is canceled successfuly!";
+
             }
             catch (Exception)
             {
 
-                TempData[ErrorMessage] = "There is no Appointment to remove!";
+                TempData[ErrorMessage] = "There is no Appointment or Trainer to remove!";
             }
 
             return RedirectToAction("MyApps","User");

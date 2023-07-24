@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
 using System.Collections.Immutable;
-
+using System.Runtime.Serialization.Formatters;
 
 namespace MyGymWeb.Services
 {
@@ -30,6 +29,7 @@ namespace MyGymWeb.Services
             {
                 var appointment = new Appointment()
                 {
+                    Id = model.Id,
                     AppointmentTime = model.AppointmentTime,
                     ClientFullName = model.ClientFullName,
                     Email = model.Email,
@@ -139,21 +139,23 @@ namespace MyGymWeb.Services
 
 
 
-        public async Task CancelUserApplicationAsync(Guid trainerId, string userId, UserTrainersFormModel model)
+        public async Task CancelUserApplicationAsync(int id)
         {
 
-            
-            var appointmenInUserTrainersForDelete = await data.UsersTrainers.FirstOrDefaultAsync(x => x.UserId == userId && x.TrainerId == trainerId);
 
-            var appointmentInAppointmentsForDelete = await data.Appointments.FirstOrDefaultAsync(x => x.UserId == userId && x.TrainerId == trainerId);
+           var currentAppointmentToCancel = await data.Appointments.FirstOrDefaultAsync(x => x.Id ==  id);
 
-            if(appointmenInUserTrainersForDelete == null ||  appointmentInAppointmentsForDelete == null)
+            if(currentAppointmentToCancel == null)
             {
-                throw new Exception();
+                throw new Exception("Appointment is null");
             }
+            // var userTrainerForDelete = await data.UsersTrainers.FirstOrDefaultAsync(x => x.UserId == currentAppointmentToCancel.UserId && x.TrainerId == currentAppointmentToCancel.TrainerId);
 
-            data.UsersTrainers.RemoveRange(appointmenInUserTrainersForDelete);
-            data.Appointments.RemoveRange(appointmentInAppointmentsForDelete);
+           
+
+
+            //data.UsersTrainers.RemoveRange(userTrainerForDelete);
+            data.Appointments.RemoveRange(currentAppointmentToCancel);
             await data.SaveChangesAsync();
 
         }
@@ -194,10 +196,12 @@ namespace MyGymWeb.Services
             {
                 var a = new UserTrainersFormModel()
                 {
+                    Id = item.Id,
                     AppointmentTime = item.AppointmentTime.ToString(),
                     ClientFullName = item.ClientFullName,
                     Email = item.Email,
                     TrainerName = item.TrainerName,
+                    TrainerId = item.TrainerId,
                 };
 
                 result.Add(a);
@@ -248,37 +252,7 @@ namespace MyGymWeb.Services
             await data.SaveChangesAsync();
         }
 
-        public async Task TrainerUserRelationAsync(string userId, Guid id)
-        {
-            var currentUser = await data.Users
-               .Where(u => u.Id == userId)
-               .Include(x => x.UsersTrainers)
-               .FirstOrDefaultAsync();
-
-            var currentTrainer = await data.Trainers
-              .Where(u => u.Id == id)
-              .FirstOrDefaultAsync();
-
-            if (!currentUser!.UsersTrainers.Any(m => m.TrainerId == id && m.UserId == userId))
-            {
-                currentUser.UsersTrainers.Add(new UserTrainer()
-                {
-                    TrainerId = currentTrainer!.Id,
-                    UserId = currentUser.Id,
-                    Trainer = currentTrainer,
-                    User = currentUser
-
-
-                });
-
-            }
-            else
-            {
-                throw new InvalidOperationException("Wrong user");
-            }
-
-            await data.SaveChangesAsync();
-        }
+       
 
         public async Task<string> UserFullName(string userId)
         {

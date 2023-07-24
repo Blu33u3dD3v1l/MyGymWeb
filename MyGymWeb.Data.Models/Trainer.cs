@@ -62,7 +62,7 @@ namespace MyGymWeb.Data.Models
 
         public virtual List<Gym> Gyms { get; set; }
 
-        public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
     }
 
 }
