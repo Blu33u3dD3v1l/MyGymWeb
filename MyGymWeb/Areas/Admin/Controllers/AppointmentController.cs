@@ -39,6 +39,11 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
             return RedirectToAction("All", "Appointment", "Admin");
         }
+        public async Task<IActionResult> Delete(int id)
+        {
+            await appointmentService.DeleteAppointmentsAsync(id);
+            return RedirectToAction("All", "Appointment", "Admin");
+        }
 
     }
 }
