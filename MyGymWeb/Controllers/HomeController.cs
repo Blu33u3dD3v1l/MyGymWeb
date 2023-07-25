@@ -1,4 +1,5 @@
 ﻿using Humanizer.DateTimeHumanizeStrategy;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -6,6 +7,7 @@ using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using System.Diagnostics;
 using static MyGymWeb.Areas.Admin.AdminConstants;
+using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
 namespace MyGymWeb.Controllers
 {
@@ -73,6 +75,38 @@ namespace MyGymWeb.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public async Task<IActionResult> Login(string? returnUrl = null)
+        {
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+
+            LoginFormModel model = new LoginFormModel()
+            {
+                ReturnUrl = returnUrl,
+            };
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginFormModel model)
+        {
+           if(!ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+
+          var result = await this.signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+
+            if (!result.Succeeded)
+            {
+                TempData[ErrorMessage] = "There was error while loggin!Please try again later or contact administrator!";
+                return View(model);
+            }
+
+            return this.Redirect(model.ReturnUrl ?? "/Home/Index");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

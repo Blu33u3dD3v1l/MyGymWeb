@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.FlowAnalysis;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
@@ -30,9 +31,13 @@ namespace MyGymWeb
                 options.Password.RequireDigit = true;
 
 
-            })  .AddRoles<IdentityRole>()
+            }).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<MyGymProjectDbContext>();
 
+            builder.Services.ConfigureApplicationCookie(cfg =>
+            {
+                cfg.LoginPath = "/Home/Login";  
+            });
 
             builder.Services.AddControllersWithViews(options =>
             {

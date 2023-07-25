@@ -4,6 +4,8 @@ using static MyGymWeb.Common.Constants.ValidationConstants.UserValidations;
 
 namespace MyGymWeb.Models.Home
 {
+
+
     public class RegisterFormModel
     {
         [Required]
@@ -13,7 +15,7 @@ namespace MyGymWeb.Models.Home
 
 
         [Required]
-        [StringLength(PasswordMaxLength, MinimumLength = PasswordMinLength,  ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.")]
+        [StringLength(PasswordMaxLength, MinimumLength = PasswordMinLength, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; } = null!;
