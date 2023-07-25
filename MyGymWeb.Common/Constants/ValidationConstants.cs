@@ -107,6 +107,9 @@
 
             public const int UserLastNameMinValidation = 4;
             public const int UserLastNameMaxValidation = 20;
+
+            public const int PasswordMaxLength = 100;
+            public const int PasswordMinLength = 6;
         }
 
     }

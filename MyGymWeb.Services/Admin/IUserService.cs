@@ -14,6 +14,9 @@ namespace MyGymWeb.Services.Admin
         Task<bool> AppointmentExistByUserId(string userId, Guid id);     
         Task<IEnumerable<UserTrainersFormModel>> GetMyTrainersAsync(string userId);
         Task CancelUserApplicationAsync(int id);
+        Task<IEnumerable<TrainerViewModel>> GetAllMyTrainersAsync(string userId);
+
+
 
 
         //Task DeleteUserAsync(string id);

@@ -13,6 +13,7 @@ namespace MyGymWeb.Data.Models
         public DateTime AppointmentTime { get; set; } 
 
         [Required]
+        [MaxLength(ClientNameMaxValidation)]
         public string ClientFullName { get; set; } = null!;
 
         [Required]

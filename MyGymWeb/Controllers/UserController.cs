@@ -143,7 +143,16 @@ namespace MyGymWeb.Controllers
         }
 
 
+        public async Task<IActionResult> AllMyTrainers()
+        {
 
+           var ids = this.User.GetId();
+           var model = await userService.GetAllMyTrainersAsync(ids!);
+           return View("AllMyTrainers", model);
+           
+        }
+
+     
 
     }
 }

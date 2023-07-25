@@ -160,6 +160,34 @@ namespace MyGymWeb.Services
 
         }
 
+        public async Task<IEnumerable<TrainerViewModel>> GetAllMyTrainersAsync(string userId)
+        {
+            var user = await data.Users
+               .Where(u => u.Id == userId)
+               .Include(u => u.UsersTrainers)
+               .ThenInclude(x => x.Trainer)
+               .FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                throw new ArgumentException("Invalid user ID");
+            }
+
+            return user.UsersTrainers
+                .Select(m => new TrainerViewModel()
+                {
+                    Id = m.Trainer.Id,
+                    Name = m.Trainer.Name,
+                    ImageUrl = m.Trainer.ImageUrl,
+                    Info = m.Trainer.Info,
+                    Moto = m.Trainer.Moto,
+                    PhoneNumber = m.Trainer.PhoneNumber,
+                    Practis = m.Trainer.Practis,
+                    PricePerHour = m.Trainer.PricePerHour,
+                    UserId = userId                    
+                });
+        }
+
         public async Task<IEnumerable<ProductViewModel>> GetAllProductsForBuyAsync(string userId)
         {
             var user = await data.Users

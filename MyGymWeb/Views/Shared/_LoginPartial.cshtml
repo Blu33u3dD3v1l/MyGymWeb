@@ -33,6 +33,7 @@
                         <a asp-area="Admin" asp-controller="Gym" asp-action="ManageGym"><i>Gyms</i></a>
                         <a asp-area="Admin" asp-controller="User" asp-action="All"><i>Users</i></a>
                         <a asp-area="Admin" asp-controller="Apply" asp-action="All"><i>Applies</i></a>
+                        <a asp-area="Admin" asp-controller="Appointment" asp-action="All">Appointments</a>
                     </div>
                 </div>
             </li>
@@ -58,7 +59,7 @@
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Sign up</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Register">Sign up</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Sign in</a>

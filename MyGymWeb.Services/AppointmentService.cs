@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
@@ -30,16 +31,21 @@ namespace MyGymWeb.Services
               .Where(u => u.Id == ids!.TrainerId)
               .FirstOrDefaultAsync();
 
-            if (!currentUser!.UsersTrainers.Any(m => m.TrainerId == ids!.TrainerId && m.UserId == ids!.UserId))
+            if(currentUser!.Amount - currentTrainer!.PricePerHour < 0)
+            {
+                throw new Exception("money is low");
+            }
+            if (!currentUser!.UsersTrainers.Any(m => m.TrainerId == ids!.TrainerId))
             {
                 currentUser.UsersTrainers.Add(new UserTrainer()
                 {
-                    TrainerId = currentTrainer!.Id,
+                    TrainerId = currentTrainer.Id,
                     UserId = currentUser.Id,
                     Trainer = currentTrainer,
                     User = currentUser
                 });
 
+                currentUser.Amount -= currentTrainer.PricePerHour;
             }
             else
             {
@@ -87,6 +93,5 @@ namespace MyGymWeb.Services
             return result;
         }
 
-     
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data.Models;
 using System.Security.Cryptography.X509Certificates;
 using System.Reflection.Emit;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MyGymWeb.Data
 {
@@ -35,9 +36,12 @@ namespace MyGymWeb.Data
 
         public DbSet<UserTrainer> UsersTrainers { get; set; } = null!;
 
+      
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+        
 
             builder.Entity<UserProduct>()
                .HasKey(x => new { x.UserId, x.ProductId });
@@ -55,15 +59,16 @@ namespace MyGymWeb.Data
            .HasOne(a => a.Trainer) 
            .WithMany(t => t.Appointments) 
            .HasForeignKey(a => a.TrainerId)
-           .OnDelete(DeleteBehavior.NoAction); 
+           .OnDelete(DeleteBehavior.NoAction);
 
 
-
-            builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
+          
+           builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
            builder.ApplyConfiguration(new GymConfiguration());
            builder.ApplyConfiguration(new ProductConfiguration());
            builder.ApplyConfiguration(new TypeConfiguration());
-           // builder.ApplyConfiguration(new TrainerConfiguration());
+
+            // builder.ApplyConfiguration(new TrainerConfiguration());
 
 
 

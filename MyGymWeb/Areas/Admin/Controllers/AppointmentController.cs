@@ -34,7 +34,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             catch (Exception)
             {
 
-                TempData[ErrorMessage] = "Fatal Error!";
+                TempData[ErrorMessage] = "Not Enough Money!";
             }
 
             return RedirectToAction("All", "Appointment", "Admin");
