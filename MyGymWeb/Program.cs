@@ -34,11 +34,6 @@ namespace MyGymWeb
             }).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<MyGymProjectDbContext>();
 
-            builder.Services.ConfigureApplicationCookie(cfg =>
-            {
-                cfg.LoginPath = "/Home/Login";  
-            });
-
             builder.Services.AddControllersWithViews(options =>
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();

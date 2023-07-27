@@ -33,9 +33,12 @@ namespace MyGymWeb.Controllers
             bool isApplier = await this.applyService.ApplierExistByUserId(currentId);
             if (isApplier)
             {
-                TempData[WarningMessage] = "You allready have pending application!";
+               
+                    TempData[WarningMessage] = "You allready have pending application!";
 
-                return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
+                
+                  
             }
 
             bool isTrainer = await this.trainerService.TrainerExistByUserId(currentId);
@@ -43,7 +46,7 @@ namespace MyGymWeb.Controllers
             {
                 TempData[WarningMessage] = "You are a trainer!";
 
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
             }
 
             return View();

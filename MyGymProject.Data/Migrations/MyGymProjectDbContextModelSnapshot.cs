@@ -288,7 +288,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Applies");
+                    b.ToTable("Applies", (string)null);
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Appointment", b =>
@@ -327,7 +327,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Appointments", (string)null);
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.GroupEvents", b =>
@@ -365,7 +365,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("GroupEvents");
+                    b.ToTable("GroupEvents", (string)null);
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.GroupTrainerName", b =>
@@ -383,7 +383,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GroupTrainerNames");
+                    b.ToTable("GroupTrainerNames", (string)null);
 
                     b.HasData(
                         new
@@ -442,7 +442,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Gyms");
+                    b.ToTable("Gyms", (string)null);
 
                     b.HasData(
                         new
@@ -522,7 +522,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("GymId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -775,7 +775,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Trainers");
+                    b.ToTable("Trainers", (string)null);
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.Type", b =>
@@ -793,7 +793,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types");
+                    b.ToTable("Types", (string)null);
 
                     b.HasData(
                         new
@@ -830,7 +830,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("UsersProducts");
+                    b.ToTable("UsersProducts", (string)null);
                 });
 
             modelBuilder.Entity("MyGymWeb.Data.Models.UserTrainer", b =>
@@ -845,7 +845,7 @@ namespace MyGymWeb.Data.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("UsersTrainers");
+                    b.ToTable("UsersTrainers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
