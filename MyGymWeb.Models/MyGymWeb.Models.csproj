@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyGymWeb.Common\MyGymWeb.Common.csproj" />
+    <ProjectReference Include="..\MyGymWeb.Data.Models\MyGymWeb.Data.Models.csproj" />
     <ProjectReference Include="..\MyGymWeb.Infrastructure\MyGymWeb.Infrastructure.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MyGymWeb.Data.Models;
 using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
@@ -13,11 +15,15 @@ namespace MyGymWeb.Controllers
     {
 
         private readonly IUserService userService;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
 
-        public UserController(IUserService _userService)
+        public UserController(IUserService _userService, UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager )
         {
             userService = _userService;
+            userManager = _userManager;
+            signInManager = _signInManager;
 
         }
         public async Task<IActionResult> Buy(int id)
@@ -152,7 +158,110 @@ namespace MyGymWeb.Controllers
            
         }
 
-     
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Register()
+        {
+           
+            if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
+            var model = new RegisterFormModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register(RegisterFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            ApplicationUser user = new ApplicationUser()
+            {
+                               
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+             
+
+            };
+
+            await this.userManager.SetEmailAsync(user, model.Email);
+            await this.userManager.SetUserNameAsync(user, model.Email);
+
+            IdentityResult result = await userManager.CreateAsync(user, model.Password);
+            
+
+            if (!result.Succeeded)
+            {
+
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+                return View(model);
+            }
+
+            await this.signInManager.SignInAsync(user, false);
+            return RedirectToAction("Index", "Home");
+           
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Login()
+        {
+            if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var model = new LoginFormModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(LoginFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await userManager.FindByNameAsync(model.Email);
+
+            if (user != null)
+            {
+                var result = await signInManager.PasswordSignInAsync(user, model.Password, false, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            ModelState.AddModelError("", "Invalid login");
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
     }
+
+
+
+
 }
+
