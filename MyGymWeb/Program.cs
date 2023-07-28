@@ -48,6 +48,11 @@ namespace MyGymWeb
             builder.Services.AddScoped<IApplyService, ApplyService>();
             builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
+            builder.Services.ConfigureApplicationCookie(cfg =>
+            {
+                cfg.LoginPath = "/User/Login";
+            });
+
             var app = builder.Build();
 
 

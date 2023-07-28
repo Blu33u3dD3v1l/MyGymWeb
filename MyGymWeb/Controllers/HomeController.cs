@@ -15,10 +15,6 @@ namespace MyGymWeb.Controllers
     public class HomeController : Controller
     {
 
-     
-
-      
-
         [ResponseCache(Duration = 60)]
         public IActionResult Index()
         {

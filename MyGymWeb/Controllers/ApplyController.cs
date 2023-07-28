@@ -46,7 +46,7 @@ namespace MyGymWeb.Controllers
             {
                 TempData[WarningMessage] = "You are a trainer!";
 
-                //return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
             }
 
             return View();

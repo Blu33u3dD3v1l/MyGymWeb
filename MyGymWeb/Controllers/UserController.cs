@@ -214,14 +214,21 @@ namespace MyGymWeb.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Login()
+        public IActionResult Login(string? returnUrl = null)
         {
+
+           
             if (User?.Identity?.IsAuthenticated ?? false)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            var model = new LoginFormModel();
+            var model = new LoginFormModel()
+            {
+                ReturnUrl = returnUrl,
+            };
+            
+
 
             return View(model);
         }

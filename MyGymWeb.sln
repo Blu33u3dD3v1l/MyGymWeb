@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.Services", "MyGymW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.Infrastructure", "MyGymWeb.Infrastructure\MyGymWeb.Infrastructure.csproj", "{3B05122F-5487-4DD5-9553-5013CC643105}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGymWeb.Tests", "MyGymWeb.Tests\MyGymWeb.Tests.csproj", "{B4ED8963-B4CF-41B0-BD5C-0D4F6ED2A41A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{3B05122F-5487-4DD5-9553-5013CC643105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B05122F-5487-4DD5-9553-5013CC643105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B05122F-5487-4DD5-9553-5013CC643105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4ED8963-B4CF-41B0-BD5C-0D4F6ED2A41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4ED8963-B4CF-41B0-BD5C-0D4F6ED2A41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4ED8963-B4CF-41B0-BD5C-0D4F6ED2A41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4ED8963-B4CF-41B0-BD5C-0D4F6ED2A41A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
