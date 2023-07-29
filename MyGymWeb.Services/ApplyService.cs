@@ -125,7 +125,7 @@ namespace MyGymWeb.Services
 
             if (currId == null)
             {
-                throw new ArgumentNullException("Id Not Found!");
+                throw new ArgumentNullException();
             }
 
                model = new TrainerQuitViewModel()
