@@ -17,14 +17,15 @@ namespace MyGymWeb.Controllers
         private readonly IUserService userService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly RoleManager<ApplicationUser> _roleManager;
 
 
-        public UserController(IUserService _userService, UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager )
+        public UserController(IUserService _userService, UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager, RoleManager<ApplicationUser> roleManager)
         {
             userService = _userService;
             userManager = _userManager;
             signInManager = _signInManager;
-
+            _roleManager = roleManager;
         }
         public async Task<IActionResult> Buy(int id)
         {

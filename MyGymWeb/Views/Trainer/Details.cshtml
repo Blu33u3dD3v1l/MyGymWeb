@@ -21,9 +21,12 @@
 
                     @if (this.User.Identity?.IsAuthenticated ?? false)
                     {
-
-                        <a class="ml-2 btn btn-danger" asp-controller="Trainer" asp-action="Pick Trainer"
+                        if (!this.User.IsInRole("Administrator"))
+                        {
+                              <a class="ml-2 btn btn-danger" asp-controller="Trainer" asp-action="Pick Trainer"
                        asp-route-trainerId="@Model.Id">Pick</a>
+                        }
+                        
                     }
                 </div>
             </div>

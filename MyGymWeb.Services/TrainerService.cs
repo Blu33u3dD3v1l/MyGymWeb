@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
-using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
-using System.Security.Claims;
 using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
 
 
