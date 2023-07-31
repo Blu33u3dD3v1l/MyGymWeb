@@ -1,13 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.FlowAnalysis;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
-using MyGymWeb.Services;
-using MyGymWeb.Services.Admin;
 using MyGymWeb.Services.Interface;
+using MyGymWeb.Web.Extensions.Extensions;
+using MyGymWeb.WebExtensions;
 
 namespace MyGymWeb
 {
@@ -39,14 +37,15 @@ namespace MyGymWeb
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
 
-            builder.Services.AddResponseCaching();
+            builder.Services.AddApplicationServices(typeof(ITrainerService));
+            //builder.Services.AddResponseCaching();
 
-            builder.Services.AddScoped<IGymService, GymService>();
-            builder.Services.AddScoped<ITrainerService, TrainerService>();
-            builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<IApplyService, ApplyService>();
-            builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+            //builder.Services.AddScoped<IGymService, GymService>();
+            //builder.Services.AddScoped<ITrainerService, TrainerService>();
+            //builder.Services.AddScoped<IProductService, ProductService>();
+            //builder.Services.AddScoped<IUserService, UserService>();
+            //builder.Services.AddScoped<IApplyService, ApplyService>();
+            //builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
             builder.Services.ConfigureApplicationCookie(cfg =>
             {
@@ -76,6 +75,7 @@ namespace MyGymWeb
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.SeedAdministrator(AdminConstants.AdminEmail);
             app.UseEndpoints(endpoints =>
             {
 

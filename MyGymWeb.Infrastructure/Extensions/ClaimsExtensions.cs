@@ -8,9 +8,12 @@ namespace MyGymWeb.Infrastructure.Extensions
 
         public static string? GetId(this ClaimsPrincipal user)
         {
-            return user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                return user.FindFirst(ClaimTypes.NameIdentifier).Value;            
+           
         } 
      
     }
+  
 }
 
