@@ -1,1 +1,1 @@
-#For Admin: Email- Admin@admin.bg, Password: Admin123!
+#For Admin: Email- Admin@admin.bg, Password: Viktor123!
