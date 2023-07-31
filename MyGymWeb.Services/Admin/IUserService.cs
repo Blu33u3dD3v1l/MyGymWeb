@@ -2,6 +2,9 @@
 
 namespace MyGymWeb.Services.Admin
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IUserService
     {
 

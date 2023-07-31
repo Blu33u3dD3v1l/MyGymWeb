@@ -1,5 +1,8 @@
 ﻿namespace MyGymWeb.Data.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UserTrainer
     {
         public string UserId { get; set; } = null!;

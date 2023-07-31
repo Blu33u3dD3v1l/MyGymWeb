@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MyGymWeb.Models.Home
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class TrainerQuitViewModel
     {
         public Guid Id { get; set; }

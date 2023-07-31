@@ -3,6 +3,9 @@
 
 namespace MyGymWeb.Infrastructure.Extensions
 {
+    /// <summary>
+    ///     
+    /// </summary>
     public static class ClaimsExtensions
     {
 

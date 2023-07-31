@@ -4,6 +4,9 @@ using MyGymWeb.Data.Models;
 
 namespace MyGymWeb.Data.Configuration
 {
+    /// <summary>
+    /// 
+    /// </summary>
     internal class GymConfiguration : IEntityTypeConfiguration<Gym>
     {
 

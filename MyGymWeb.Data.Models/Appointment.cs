@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyGymWeb.Data.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Appointment
     {
         [Key]

@@ -3,6 +3,9 @@ using static MyGymWeb.Common.Constants.ValidationConstants.ClasicTrainerValidati
 
 namespace MyGymWeb.Models.Home
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AddTrainerFormModel
     {
 

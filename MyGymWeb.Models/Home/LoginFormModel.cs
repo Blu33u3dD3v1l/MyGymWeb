@@ -3,6 +3,9 @@ using System.Xml.Linq;
 
 namespace MyGymWeb.Models.Home
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class LoginFormModel
     {
 

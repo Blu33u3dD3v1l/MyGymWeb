@@ -6,6 +6,9 @@ using MyGymWeb.Data.Models;
 
 namespace MyGymWeb.Data.Configuration
 {
+    /// <summary>
+    /// 
+    /// </summary>
     internal class AdminConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)

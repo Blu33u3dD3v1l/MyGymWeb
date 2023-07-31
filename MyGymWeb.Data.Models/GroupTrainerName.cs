@@ -3,6 +3,9 @@ using static MyGymWeb.Common.Constants.ValidationConstants.GroupTrainerNamesVali
 
 namespace MyGymWeb.Data.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class GroupTrainerName
     {
 

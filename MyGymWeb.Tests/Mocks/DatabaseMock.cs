@@ -3,6 +3,9 @@ using MyGymWeb.Data;
 
 namespace MyGymWeb.Tests.Mocks
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class DatabaseMock
     {
         public static MyGymProjectDbContext Instance

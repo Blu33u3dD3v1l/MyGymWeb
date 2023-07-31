@@ -8,6 +8,9 @@ using MyGymWeb.Tests.Mocks;
 
 namespace MyGymWeb.Tests.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ApplyServiceTest
     {
         [Fact]

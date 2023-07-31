@@ -7,6 +7,9 @@ using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ApplyService : IApplyService
     {
         private readonly MyGymProjectDbContext context;

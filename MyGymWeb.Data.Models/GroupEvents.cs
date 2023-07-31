@@ -5,6 +5,9 @@ namespace MyGymWeb.Data.Models
 {
     public class GroupEvents
     {
+        /// <summary>
+        /// 
+        /// </summary>
 
 
         [Key]

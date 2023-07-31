@@ -1,5 +1,8 @@
 ﻿namespace MyGymWeb.Common.Constants
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class NotificationMessagesConstants
     {
         public const string ErrorMessage = "ErrorMessage";

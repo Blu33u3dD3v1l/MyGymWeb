@@ -2,6 +2,9 @@
 using static MyGymWeb.Common.Constants.ValidationConstants.ClasicTrainerValidations;
 namespace MyGymWeb.Models.Home
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class EditTrainerFormModel
     {
 
