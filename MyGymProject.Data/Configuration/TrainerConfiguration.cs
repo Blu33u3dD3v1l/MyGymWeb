@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data.Models;
-using System.ComponentModel.Design.Serialization;
-using System.ComponentModel;
+
 
 
 namespace MyGymWeb.Data.Configuration

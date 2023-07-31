@@ -10,16 +10,12 @@
   <ItemGroup>
     <Compile Remove="Areas\Admin\Data\**" />
     <Compile Remove="Areas\Admin\Models\**" />
-    <Compile Remove="Areas\Identity\**" />
     <Content Remove="Areas\Admin\Data\**" />
     <Content Remove="Areas\Admin\Models\**" />
-    <Content Remove="Areas\Identity\**" />
     <EmbeddedResource Remove="Areas\Admin\Data\**" />
     <EmbeddedResource Remove="Areas\Admin\Models\**" />
-    <EmbeddedResource Remove="Areas\Identity\**" />
     <None Remove="Areas\Admin\Data\**" />
     <None Remove="Areas\Admin\Models\**" />
-    <None Remove="Areas\Identity\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,10 +44,6 @@
     <None Include="Areas\Admin\Identity\Pages\_ValidationScriptsPartial.cshtml" />
     <None Include="Areas\Admin\Identity\Pages\_ViewImports.cshtml" />
     <None Include="Areas\Admin\Identity\Pages\_ViewStart.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Identity\" />
   </ItemGroup>
 
 </Project>

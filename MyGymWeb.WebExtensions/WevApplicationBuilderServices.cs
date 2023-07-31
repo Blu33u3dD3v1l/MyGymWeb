@@ -6,7 +6,7 @@
     using MyGymWeb.Data.Models;
     using System;
     using System.Reflection;
-    using MyGymWeb.WebExtensions;
+    
     
     
 
@@ -41,12 +41,16 @@
         }
         public static IApplicationBuilder SeedAdministrator(this IApplicationBuilder app, string email)
         {
+
+
+            
             using IServiceScope scopreServies = app.ApplicationServices.CreateScope();
 
             IServiceProvider serviceProvider = scopreServies.ServiceProvider;
 
             UserManager<ApplicationUser> userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
 
             Task.Run(async () =>
             {
@@ -58,7 +62,9 @@
                 IdentityRole role = new IdentityRole(AdminConstants.AdminRolleName);
 
                 await roleManager.CreateAsync(role);
+
                 ApplicationUser adminUser = await userManager.FindByEmailAsync(email);
+                
 
                 await userManager.AddToRoleAsync(adminUser, AdminConstants.AdminRolleName);
 

@@ -1,4 +1,4 @@
-﻿namespace MyGymWeb.WebExtensions
+﻿namespace MyGymWeb.Web.Extensions.Extensions
 {
     public static class AdminConstants
     {

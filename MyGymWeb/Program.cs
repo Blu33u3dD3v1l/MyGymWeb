@@ -5,7 +5,7 @@ using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Services.Interface;
 using MyGymWeb.Web.Extensions.Extensions;
-using MyGymWeb.WebExtensions;
+
 
 namespace MyGymWeb
 {
