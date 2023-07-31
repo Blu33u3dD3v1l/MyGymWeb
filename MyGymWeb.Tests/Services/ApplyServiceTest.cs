@@ -28,11 +28,7 @@ namespace MyGymWeb.Tests.Services
 
             var result = await applyService.ApplierExistByUserId(userId);
 
-
             Assert.True(result);
-
-
-
 
         }
         [Fact]
