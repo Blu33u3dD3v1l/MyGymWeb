@@ -13,19 +13,20 @@ namespace MyGymWeb.Data.Models
         public Trainer()
         {
             this.Gyms = new List<Gym>();
+            this.Appointments = new List<Appointment>();
         }
 
         [Key]
         public Guid Id { get; set; }
 
 
-       
+
         [MaxLength(NameMaxValidation)]
         [Required]
-        
+
         public string Name { get; set; } = null!;
 
-        
+
         [MaxLength(InfoMaxValidation)]
         [Required]
         public string Info { get; set; } = null!;
@@ -34,7 +35,7 @@ namespace MyGymWeb.Data.Models
         [Required]
         public string ImageUrl { get; set; } = null!;
 
-       
+
         [MaxLength(PractisMaxValidation)]
         [Required]
         public string Practis { get; set; } = null!;
@@ -45,7 +46,7 @@ namespace MyGymWeb.Data.Models
 
         [Required]
         public string Type { get; set; } = null!;
-      
+
         [MaxLength(MotoMaxValidation)]
         public string Moto { get; set; } = null!;
 
@@ -62,8 +63,7 @@ namespace MyGymWeb.Data.Models
 
         public virtual List<Gym> Gyms { get; set; }
 
-        public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+        public ICollection<Appointment> Appointments { get; set; }
     }
-
 }
 

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MyGymWeb.Data.Models;
 using MyGymWeb.Services.Admin;
-using MyGymWeb.Services.Interface;
 using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
 

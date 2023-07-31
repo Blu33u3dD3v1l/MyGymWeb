@@ -38,8 +38,6 @@ namespace MyGymWeb.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
-           
-
             builder.Entity<UserProduct>()
                .HasKey(x => new { x.UserId, x.ProductId });
 

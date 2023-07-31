@@ -51,6 +51,7 @@ namespace MyGymWeb.Data.Models
 
         public bool IsActive { get; set; } = true;
 
+
         public bool IsAvailable = true;
     }
 }

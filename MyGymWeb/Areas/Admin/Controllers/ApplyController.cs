@@ -12,32 +12,13 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
 
         private readonly IApplyService applyService;
-        //private readonly RoleManager<IdentityRole> roleManager;
+       
 
-        public ApplyController(IApplyService _applyService) //RoleManager<IdentityRole> roleManager
+        public ApplyController(IApplyService _applyService) 
         {
             applyService = _applyService;
-            //this.roleManager = roleManager;
+            
         }
-
-        //public async Task<IActionResult> CreateTrainerRole()
-        //{
-
-        //    var currentId = User.GetId();
-        //    IdentityRole role = new IdentityRole()
-        //    {
-        //        Name = "Trainer",
-
-        //    };
-
-
-        //    await roleManager.CreateAsync(role);
-
-
-        //    return RedirectToAction("Index", "Home");
-
-
-        //}
 
         public async Task<IActionResult> All()
         {

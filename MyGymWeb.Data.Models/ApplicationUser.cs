@@ -8,6 +8,12 @@ namespace MyGymWeb.Data.Models
     public class ApplicationUser : IdentityUser
     {
 
+        public ApplicationUser()
+        {
+            this.UsersProducts = new List<UserProduct>();
+            this.UsersTrainers = new List<UserTrainer>();
+        }
+
         [MaxLength(UserFirstNameMaxValidation)]
         public string? FirstName { get; set; }
 
@@ -17,7 +23,7 @@ namespace MyGymWeb.Data.Models
         [Required]
         public decimal Amount { get; set; } = 1000;
 
-        public List<UserProduct> UsersProducts { get; set; } = new List<UserProduct>();
-        public List<UserTrainer> UsersTrainers { get; set; } = new List<UserTrainer>();
+        public List<UserProduct> UsersProducts { get; set; }
+        public List<UserTrainer> UsersTrainers { get; set; }
     }
 }

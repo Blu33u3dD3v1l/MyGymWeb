@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyGymWeb.Models.Home;
-using MyGymWeb.Services;
 using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Areas.Admin.Controllers

@@ -125,15 +125,11 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    
-
                     <th><label>Full Name</label></th>               
                     <th><label>Practis</label></th>
                     <th><label>Phone Number</label></th>
                     <th><label>Reason</label></th>
                     <th><label>Actions</label></th>
-
-                    
                 </tr>
             </thead>
                 @foreach (var user in Model)
@@ -154,12 +150,9 @@
                             else
                             {
                                 <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete" class="reject" title="Reject" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
-                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Trainer" asp-action="DeleteForApply" class="delete" title="Delete" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
-                               
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Trainer" asp-action="DeleteForApply" class="delete" title="Delete" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>                               
 
-                            }
-
-                            
+                            }                           
                         </td>
                     </tr>
                 </tbody>
