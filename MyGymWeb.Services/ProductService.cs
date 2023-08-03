@@ -20,6 +20,12 @@ namespace MyGymWeb.Services
 
         public async Task AddProductsAsync(AddProductsFormModel model)
         {
+
+            if(model == null)
+            {
+                throw new Exception();
+            }
+
             var entity = new Product()
             {
                 Name = model.Name,

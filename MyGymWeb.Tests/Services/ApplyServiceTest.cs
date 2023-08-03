@@ -1,5 +1,4 @@
 ﻿using Moq;
-using MyGymWeb.Areas.Admin.Controllers;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services;
