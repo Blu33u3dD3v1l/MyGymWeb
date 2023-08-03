@@ -51,11 +51,6 @@ namespace MyGymWeb.Services
 
             }
 
-            //var a = DateTime.Parse(model.AppointmentTime, CultureInfo.InvariantCulture);
-            //var b = $"{a.Day}/{a.Month}/{a.Year}";
-            //var c = $"{a.Hour}:{a.Minute}";
-
-
         }
 
         public async Task<IEnumerable<UserServiceModel>> All()
@@ -148,16 +143,11 @@ namespace MyGymWeb.Services
 
            var currentAppointmentToCancel = await data.Appointments.FirstOrDefaultAsync(x => x.Id ==  id);
 
-            if(currentAppointmentToCancel == null)
+            if (currentAppointmentToCancel == null)
             {
                 throw new Exception("Appointment is null");
             }
-            // var userTrainerForDelete = await data.UsersTrainers.FirstOrDefaultAsync(x => x.UserId == currentAppointmentToCancel.UserId && x.TrainerId == currentAppointmentToCancel.TrainerId);
-
            
-
-
-            //data.UsersTrainers.RemoveRange(userTrainerForDelete);
             data.Appointments.RemoveRange(currentAppointmentToCancel);
             await data.SaveChangesAsync();
 
@@ -220,6 +210,7 @@ namespace MyGymWeb.Services
         public async Task<IEnumerable<UserTrainersFormModel>> GetMyTrainersAsync(string userId)
         {
             var currenUser = await data.Users.FirstOrDefaultAsync();
+
             List<UserTrainersFormModel> result = new List<UserTrainersFormModel>();
 
 
@@ -289,6 +280,11 @@ namespace MyGymWeb.Services
         {
             var user = await data.Users
                  .FirstOrDefaultAsync(x => x.Id == userId);
+
+            if(user == null)
+            {
+                throw new NullReferenceException();
+            }
 
             return $"{user?.FirstName} {user?.LastName}".Trim();
         }
