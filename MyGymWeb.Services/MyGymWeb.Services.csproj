@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyGymProject.Data\MyGymWeb.Data.csproj" />
     <ProjectReference Include="..\MyGymWeb.Data.Models\MyGymWeb.Data.Models.csproj" />
+    <ProjectReference Include="..\MyGymWeb.Data\MyGymWeb.Data.csproj" />
     <ProjectReference Include="..\MyGymWeb.Models\MyGymWeb.Models.csproj" />
   </ItemGroup>
 
