@@ -104,7 +104,7 @@ namespace MyGymWeb.Services
             if (currPoduct == null)
             {
 
-                throw new Exception();
+                throw new NullReferenceException();
             }
 
             return new TestViewModel()
@@ -125,7 +125,7 @@ namespace MyGymWeb.Services
 
             if (currId == null)
             {
-                throw new ArgumentNullException("Id Not Found!");
+                throw new ArgumentNullException();
             }
 
             var entity = new ProductViewModel()

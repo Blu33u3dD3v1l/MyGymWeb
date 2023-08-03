@@ -17,7 +17,7 @@ namespace MyGymWeb.Services.Interface
         Task DeleteTrainerAsync(Guid id);
         Task AddTrainerAsync(AddTrainerFormModel model);
         Task QuitTrainerAsync(string userId, TrainerQuitViewModel model);
-        Task DeleteTraineForApplyrAsync(Guid id);
+        Task DeleteTrainerForApplyAsync(Guid id);
 
 
 

@@ -102,7 +102,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
         {
 
 
-            await trainerService.DeleteTraineForApplyrAsync(id);
+            await trainerService.DeleteTrainerForApplyAsync(id);
             await applyService.DeleteAppliersAsync(id);
 
             TempData[SuccessMessage] = "You successfuly removed a trainer!";

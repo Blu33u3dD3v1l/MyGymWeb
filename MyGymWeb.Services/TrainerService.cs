@@ -49,6 +49,12 @@ namespace MyGymWeb.Services
         {
 
             var currGym = await context.Gyms.FindAsync(gymId);
+            if(currGym == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+
             var entity = new List<TrainerViewModel>();
 
             if (currGym?.Type == "BigBoxGym")
@@ -127,7 +133,7 @@ namespace MyGymWeb.Services
 
             if (currId == null)
             {
-                throw new ArgumentNullException("Id Not Found!");
+                throw new ArgumentNullException();
             }
 
             var entity = new TrainerViewModel()
@@ -155,7 +161,7 @@ namespace MyGymWeb.Services
 
             if (currTrainer == null)
             {
-                throw new Exception();
+                throw new ArgumentNullException();
             }
 
             return new EditTrainerFormModel()
@@ -180,7 +186,7 @@ namespace MyGymWeb.Services
 
             if (currTrainer == null)
             {
-                throw new Exception();
+                throw new ArgumentNullException();
             }
 
             currTrainer.Id = id;
@@ -229,6 +235,7 @@ namespace MyGymWeb.Services
             var a = context.Trainers
                 .AnyAsync(x => x.Id == trainerId && x.UserId == userId);
 
+ 
             return a;
         }
 
@@ -303,7 +310,7 @@ namespace MyGymWeb.Services
             await context.SaveChangesAsync();
         }
 
-        public async Task DeleteTraineForApplyrAsync(Guid id)
+        public async Task DeleteTrainerForApplyAsync(Guid id)
         {
             var currentTrainer = await context.Trainers
                 .FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
