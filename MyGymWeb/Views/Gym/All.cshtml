@@ -15,8 +15,8 @@
     {
         
             <div class="card col-7 " style="width: 35rem;">
-                <img class="card-img-top form-check-inline " style="width: 34rem;"
-                     src="@gym.ImageUrl" alt="Gym Image">
+            <img class="card-img-top form-check-inline " style="width: 34rem; height:250px;"
+                 src="@gym.ImageUrl" alt="Gym Image" onclick="Infinity"}>
                 <div class="card-body">
 
                     <h5 class="card-title mt-1">@gym.Name</h5>
@@ -29,12 +29,12 @@
                         <a asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Details" method="post">
                             <input type="submit" value="Details" class="btn btn-primary btn-md" />
                         </a>
-                        <a asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Edit" method="post">
+                       @* <a asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Edit" method="post">
                             <input type="submit" value="Edit" class="btn btn-warning btn-md" />
                         </a>
                     <a asp-route-id="@gym.Id" asp-controller="Gym" asp-action="Delete" method="get">
                         <input type="submit" value="Delete" class="btn btn-warning btn-md" />
-                    </a>
+                    </a>*@
                     </div>
                 }
             </div>

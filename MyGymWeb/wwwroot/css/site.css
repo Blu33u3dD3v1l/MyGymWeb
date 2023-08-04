@@ -25,6 +25,7 @@ body {
     letter-spacing: .1rem;
     box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .2);
     z-index: 1;
+    
 }
 
 .nav-item {
@@ -176,3 +177,16 @@ body {
 .Login{
     padding: 6rem 0;
 }
+.GymDetails {
+
+    padding: 2rem 0;
+}
+.Appointments {
+
+    padding: 3rem 0;
+}
+.TrainerView {
+
+    background-color: black;
+}
+

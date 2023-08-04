@@ -100,21 +100,24 @@
                         </li>                       
                         @if (!User.IsInRole("Administrator"))
                         {
-                            
-                             <li>
+                            if(User?.Identity?.IsAuthenticated ?? false)
+                            {
+                                <li>
                                     <div class="dropdown">
                                         <h5 class="dropbtn">
-                                        <i>Mine</i>
-                                        <i class="fa fa-caret-down"></i>
+                                            <i>Mine</i>
+                                            <i class="fa fa-caret-down"></i>
                                         </h5>
                                         <div class="dropdown-content">
-                                        <a asp-controller="Apply" asp-action="Apply"><i>Apply</i></a>
-                                        <a asp-controller="User" asp-action="MyApps"><i>My Apps</i></a>
-                                        <a asp-controller="User" asp-action="Mine"><i>My Products</i></a>
-                                        <a asp-controller="User" asp-action="AllMyTrainers"><i>My Trainers</i></a>
-                                         </div>
+                                            <a asp-controller="Apply" asp-action="Apply"><i>Apply</i></a>
+                                            <a asp-controller="User" asp-action="MyApps"><i>My Apps</i></a>
+                                            <a asp-controller="User" asp-action="Mine"><i>My Products</i></a>
+                                            <a asp-controller="User" asp-action="AllMyTrainers"><i>My Trainers</i></a>
+                                        </div>
                                     </div>
-                             </li>
+                                </li>
+                            }
+                          
                         }                      
                     </ul>
                     <partial name="_LoginPartial" />

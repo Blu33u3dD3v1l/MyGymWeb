@@ -1,8 +1,9 @@
 ﻿@model AppointmentFormModel
 
 
-<!DOCTYPE html>
-<html lang="en">
+@{
+    ViewData["Title"] = "Appointment";
+}
 
 <head>
     <meta charset="UTF-8">
@@ -15,38 +16,41 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <form method="post">
-            <!-- Datetime field -->
-            <div class="form-group">
-                <label asp-for="@Model.AppointmentTime">Date</label>
-                <input asp-for="@Model.AppointmentTime" class="form-control" id="datetimeField" aria-required="true">
-                <span asp-validation-for="AppointmentTime" class="text-danger"></span>
-            </div>
+    <div class="Appointments">
+        <div class="container mt-5">
+            <form method="post">
+                <!-- Datetime field -->
+                <div class="form-group">
+                    <label asp-for="@Model.AppointmentTime">Date</label>
+                    <input asp-for="@Model.AppointmentTime" class="form-control" id="datetimeField" aria-required="true">
+                    <span asp-validation-for="AppointmentTime" class="text-danger"></span>
+                </div>
 
-            <!-- Fullname field -->
-            <div class="form-group">
-                <label asp-for="@Model.ClientFullName" class="form-label">Name</label>
-                <input asp-for="@Model.ClientFullName" class="form-control" aria-required="true" />
-                <span asp-validation-for="ClientFullName" class="text-danger"></span>
-            </div>
+                <!-- Fullname field -->
+                <div class="form-group">
+                    <label asp-for="@Model.ClientFullName" class="form-label">Name</label>
+                    <input asp-for="@Model.ClientFullName" class="form-control" aria-required="true" />
+                    <span asp-validation-for="ClientFullName" class="text-danger"></span>
+                </div>
 
-            <!-- Email field -->
-            <div class="form-group">
-                <label asp-for="@Model.Email" class="form-label">Email</label>
-                <input asp-for="@Model.Email" class="form-control" aria-required="true" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+                <!-- Email field -->
+                <div class="form-group">
+                    <label asp-for="@Model.Email" class="form-label">Email</label>
+                    <input asp-for="@Model.Email" class="form-control" aria-required="true" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="@Model.TrainerName" class="form-label">TrainerName</label>
-                <input asp-for="@Model.TrainerName" class="form-control" aria-required="true" />
-                <span asp-validation-for="TrainerName" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="@Model.TrainerName" class="form-label">TrainerName</label>
+                    <input asp-for="@Model.TrainerName" class="form-control" aria-required="true" />
+                    <span asp-validation-for="TrainerName" class="text-danger"></span>
+                </div>
 
-            <button  asp-controller="User" asp-action="Appointment"  type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                <button asp-controller="User" asp-action="Appointment" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
+
 
     <!-- Link to Bootstrap Icons (for the calendar icon) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -70,7 +74,7 @@
     </script>
 </body>
 
-</html>
+
 
 
 @section Scripts {

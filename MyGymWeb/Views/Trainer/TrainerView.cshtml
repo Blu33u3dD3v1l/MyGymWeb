@@ -4,27 +4,33 @@
     ViewBag.Title = "Trainers";
 }
 
+<div class="TrainerView">
+    <div class="text-center row">
+        @foreach (var trainer in Model)
+        {
+            <div class="card col-7" style="width: 20rem;">
+                <img class="card-img-top" style="width: 19rem;  height:280px"
+                     src="@trainer.ImageUrl" alt="Trainer Image">
+                <div class="card-body text-center">
 
-<div class="text-center row">
-    @foreach (var trainer in Model)
-    {
-        <div class="card col-7" style="width: 20rem;">
-            <img class="card-img-top" style="width: 19rem;  height:280px"
-                 src="@trainer.ImageUrl" alt="Trainer Image">
-            <div class="card-body">
+                    <h5 class="card-title mt-1">@trainer.Name</h5>
+                </div>
 
-                <h5 class="card-title mt-1">@trainer.Name</h5>
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <div class="d-flex justify-content-center">
+                        <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
+                            <input type="submit" value="Details" class="btn btn-primary btn-sm" />
+                        </a>
+
+                        <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post">
+                            <input type="submit" value="PickTrainer" class="btn btn-warning btn-sm" />
+                        </a>
+
+                    </div>
+                }
             </div>
-            @if (User?.Identity?.IsAuthenticated ?? false)
-            {
-                <a class="input-group-sm" asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
-                    <input type="submit" value="Details" class="btn btn-success mb-3 p-2" />
-                </a>
-                <form class="input-group-sm" asp-route-gymId="@trainer.Id" asp-controller="Trainer" asp-action="PickTrainer" method="post">
-                    <input type="submit" value="Pick Trainer" class="btn btn-success mb-3 p-2" />
-                </form>
-
-            }
-        </div>
-    }
+        }
+    </div>
 </div>
+

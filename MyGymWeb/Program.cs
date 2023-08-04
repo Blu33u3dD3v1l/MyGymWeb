@@ -32,20 +32,23 @@ namespace MyGymWeb
             }).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<MyGymProjectDbContext>();
 
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                
+                options.IdleTimeout = TimeSpan.FromSeconds(10);               
+                options.Cookie.HttpOnly = true;
+            });
+
             builder.Services.AddControllersWithViews(options =>
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
 
             builder.Services.AddApplicationServices(typeof(ITrainerService));
-            //builder.Services.AddResponseCaching();
+            builder.Services.AddResponseCaching();
 
-            //builder.Services.AddScoped<IGymService, GymService>();
-            //builder.Services.AddScoped<ITrainerService, TrainerService>();
-            //builder.Services.AddScoped<IProductService, ProductService>();
-            //builder.Services.AddScoped<IUserService, UserService>();
-            //builder.Services.AddScoped<IApplyService, ApplyService>();
-            //builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+  
 
             builder.Services.ConfigureApplicationCookie(cfg =>
             {

@@ -23,7 +23,7 @@
                     {
                         if (!this.User.IsInRole("Administrator"))
                         {
-                              <a class="ml-2 btn btn-danger" asp-controller="Trainer" asp-action="Pick Trainer"
+                              <a class="ml-2 btn btn-danger" asp-controller="User" asp-action="Appointment"
                        asp-route-trainerId="@Model.Id">Pick</a>
                         }
                         
