@@ -9,9 +9,9 @@
     
     
     
-    /// <summary>
-    /// 
-    /// </summary>
+ /// <summary>
+ /// 
+ /// </summary>
     public static class WevApplicationBuilderServices
     {
         public static void AddApplicationServices(this IServiceCollection services, System.Type ServiceType)
