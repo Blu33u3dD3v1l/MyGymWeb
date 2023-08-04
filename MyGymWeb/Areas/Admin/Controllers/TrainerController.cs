@@ -76,6 +76,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             try
             {
                 await this.trainerService.EditByIdAsync(id, model);
+                TempData[SuccessMessage] = "You Successfuly edited a trainer!";
 
             }
             catch (Exception)

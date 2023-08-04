@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
+using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
 namespace MyGymWeb.Areas.Admin.Controllers
 {
@@ -34,6 +35,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             try
             {
                 await this.gymService.EditByIdAsync(id, model);
+                TempData[SuccessMessage] = "You successfuly edited a Gym!";
 
             }
             catch (Exception)
@@ -63,12 +65,14 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
 
             await gymService.AddGymAsync(model);
+            TempData[SuccessMessage] = "You successfuly added a Gym!";
             return RedirectToAction("ManageGym", "Gym", "Admin");
         }
 
         public async Task<IActionResult> Delete(int id)
         {
             await gymService.RemoveGymAsync(id);
+            TempData[SuccessMessage] = "You successfuly deleted a Gym!";
             return RedirectToAction("ManageGym", "Gym", "Admin");
         }
     }

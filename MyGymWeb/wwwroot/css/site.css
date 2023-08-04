@@ -40,6 +40,11 @@ body {
         color: #4981b3 !important;
 }
 
+.logout {
+    font-weight: 400;
+    margin-top:auto
+}
+
 .top-bar {
     background: #7aaec4;
     height: 2.8rem;
@@ -188,4 +193,9 @@ body {
 
     background-color: black;
 }
+.AllUsersEmpty {
+    padding: 11rem 0;
+    font-weight: 700;
+}
+
 

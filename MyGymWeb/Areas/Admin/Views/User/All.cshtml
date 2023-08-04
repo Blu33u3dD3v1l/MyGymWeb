@@ -17,7 +17,7 @@
                     <th><label>Email</label></th>
                     <th><label>Full Name</label></th>
                     <th><label>Phone Number</label></th>
-                    <th><label>User Is Trainer</label></th>
+                    <th><label>State</label></th>
                    
                 </tr>
             </thead>
@@ -31,7 +31,7 @@
                         <td>
                             @if (!string.IsNullOrEmpty(user.PhoneNumber))
                             {
-                                <label>✔</label>
+                                <label>Trainer</label>
                             }
                             else if(user.Email == "Admin@admin.bg")
                             {
@@ -39,7 +39,7 @@
                             }                        
                             else
                             {
-                                <label class="text-center">❌</label>
+                                <label class="text-center">User</label>
                             }
                         </td>                   
                     </tr>

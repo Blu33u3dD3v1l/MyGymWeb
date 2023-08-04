@@ -122,38 +122,80 @@
     </style>
 </head>
 
-<div class="AllUsers">
-    <div class="container">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-
-                    <th><label>Full Name</label></th>
-                    <th><label>Email</label></th>
-                    <th><label>AppointmentTime</label></th>
-                    <th><label>Trainer Name</label></th>
-                    <th><label>Action</label></th>
-
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in Model.Where(x => x.Email != null))
-                {
+@if (!Model.Any())
+{
+    <div class="AllUsersEmpty">
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td><label>@user.ClientFullName</label></td>
-                        <td><label>@user.Email</label></td>
-                        <td><label>@user.AppointmentTime</label></td>
-                        <td><label>@user.TrainerName</label></td>
-                        <td>
 
-                            <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
-                            <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Approve" class="Approve" title="Approve" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
-                        </td>
+                        <th><label>Full Name</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>AppointmentTime</label></th>
+                        <th><label>Trainer Name</label></th>
+                        <th><label>Action</label></th>
+
 
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.Where(x => x.Email != null))
+                    {
+                        <tr>
+                            <td><label>@user.ClientFullName</label></td>
+                            <td><label>@user.Email</label></td>
+                            <td><label>@user.AppointmentTime</label></td>
+                            <td><label>@user.TrainerName</label></td>
+                            <td>
+
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Approve" class="Approve" title="Approve" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <div class="AllUsers">
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+
+                        <th><label>Full Name</label></th>
+                        <th><label>Email</label></th>
+                        <th><label>AppointmentTime</label></th>
+                        <th><label>Trainer Name</label></th>
+                        <th><label>Action</label></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.Where(x => x.Email != null))
+                    {
+                        <tr>
+                            <td><label>@user.ClientFullName</label></td>
+                            <td><label>@user.Email</label></td>
+                            <td><label>@user.AppointmentTime</label></td>
+                            <td><label>@user.TrainerName</label></td>
+                            <td>
+
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Approve" class="Approve" title="Approve" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
