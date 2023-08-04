@@ -157,6 +157,7 @@ namespace MyGymWeb.Services
              context.Remove(currentGym);
              await context.SaveChangesAsync();
         }
+
     }
 }
 

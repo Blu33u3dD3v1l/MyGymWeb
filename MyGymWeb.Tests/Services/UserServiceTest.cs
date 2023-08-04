@@ -1,9 +1,7 @@
-﻿using Moq;
-using MyGymWeb.Data.Models;
-using MyGymWeb.Models.Home;
+﻿using MyGymWeb.Data.Models;
 using MyGymWeb.Services;
 using MyGymWeb.Tests.Mocks;
-using System.Net.WebSockets;
+
 
 namespace MyGymWeb.Tests.Services
 {

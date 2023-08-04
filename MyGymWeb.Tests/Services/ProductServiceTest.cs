@@ -1,5 +1,4 @@
-﻿using Moq;
-using MyGymWeb.Data.Models;
+﻿using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services;
 using MyGymWeb.Tests.Mocks;
