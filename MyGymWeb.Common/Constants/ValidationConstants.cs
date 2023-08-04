@@ -45,7 +45,7 @@
             public const int NameMinValidation = 10;
             public const int NameMaxValidation = 500;
 
-            public const int MarkMinValidation = 10;
+            public const int MarkMinValidation = 2;
             public const int MarkMaxValidation = 500;
 
             public const int DescriptionMinValidation = 10;

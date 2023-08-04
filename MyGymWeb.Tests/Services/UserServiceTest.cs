@@ -464,7 +464,7 @@ namespace MyGymWeb.Tests.Services
 
         [Fact]
 
-        public async void UserFullNameShouldReturnCorrectValue()
+        public void UserFullNameShouldReturnCorrectValue()
         {
             using var data = DatabaseMock.Instance;
 

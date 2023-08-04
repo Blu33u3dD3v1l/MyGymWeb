@@ -23,9 +23,12 @@
                 <div class="form-inline">
                     @if (this.User.Identity?.IsAuthenticated ?? false)
                     {
+                        if (!User.IsInRole("Administrator"))
+                        {
 
-                        <a class="ml-2 btn btn-danger" asp-controller="Home" asp-action="Index"
-                       asp-route-id="@Model.Id">Buy</a>
+                            <a class="ml-2 btn btn-danger" asp-controller="Home" asp-action="Index"
+                               asp-route-id="@Model.Id">Buy</a>
+                        }
 
                     }
                 </div>

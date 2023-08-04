@@ -30,6 +30,8 @@ namespace MyGymWeb.Areas.Admin.Controllers
             {
                await appointmentService.ApproveAppointmentAsync(id);
                await appointmentService.DeleteAppointmentsAsync(id);
+
+                TempData[SuccessMessage] = "You Successfuly Approved an appointment!";
             }
             catch (Exception)
             {
