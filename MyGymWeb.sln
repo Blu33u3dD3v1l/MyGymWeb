@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.Tests", "MyGymWeb.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.WebExtensions", "MyGymWeb.WebExtensions\MyGymWeb.WebExtensions.csproj", "{88037A57-509A-4280-88F4-63712A2585CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGymWeb.Data", "MyGymWeb.Data\MyGymWeb.Data.csproj", "{BF9063C4-F73C-45D8-A280-E39411CE2F26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.Data", "MyGymWeb.Data\MyGymWeb.Data.csproj", "{BF9063C4-F73C-45D8-A280-E39411CE2F26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
