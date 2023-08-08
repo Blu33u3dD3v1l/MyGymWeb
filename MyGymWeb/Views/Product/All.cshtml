@@ -20,8 +20,7 @@
 
 
                     </div>
-                    @if (User?.Identity?.IsAuthenticated ?? false)
-                    {
+                  
                         <div class="d-flex justify-content-center">
                             <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Details" method="post">
                                 <input type="submit" value="Details" class="btn btn-primary btn-sm" />
@@ -34,7 +33,7 @@
                             }
                           
                         </div>
-                    }
+                    
                 </div>
             }
         </div>

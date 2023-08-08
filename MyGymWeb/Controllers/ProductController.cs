@@ -13,7 +13,7 @@ namespace MyGymWeb.Controllers
             => productService = _productService;
 
         [HttpGet]
-       
+        [AllowAnonymous]
         public async Task<IActionResult> All()
         {
             var model = await productService.GetAllProductsAsync();
@@ -23,6 +23,7 @@ namespace MyGymWeb.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var model = await productService.GetProductDescriptionAsync(id);
