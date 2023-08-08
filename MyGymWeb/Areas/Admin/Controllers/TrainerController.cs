@@ -58,6 +58,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
+
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {

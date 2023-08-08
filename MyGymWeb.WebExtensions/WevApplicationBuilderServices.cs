@@ -1,14 +1,13 @@
-﻿namespace MyGymWeb.Web.Extensions.Extensions
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using MyGymWeb.Data.Models;
+using System.Reflection;
+
+
+namespace MyGymWeb.Web.Extensions.Extensions
 {
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.DependencyInjection;
-    using MyGymWeb.Data.Models;
-    using System;
-    using System.Reflection;
-    
-    
-    
+
  /// <summary>
  /// 
  /// </summary>

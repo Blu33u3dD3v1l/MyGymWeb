@@ -173,7 +173,7 @@ namespace MyGymWeb.Services
                     Name = m.Trainer.Name,
                     ImageUrl = m.Trainer.ImageUrl,
                     Info = m.Trainer.Info,
-                    Moto = m.Trainer.Moto,
+                    Motto = m.Trainer.Motto,
                     PhoneNumber = m.Trainer.PhoneNumber,
                     Practis = m.Trainer.Practis,
                     PricePerHour = m.Trainer.PricePerHour,

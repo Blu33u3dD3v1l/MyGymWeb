@@ -50,7 +50,7 @@ namespace MyGymWeb.Data.Models
         public string Type { get; set; } = null!;
 
         [MaxLength(MotoMaxValidation)]
-        public string Moto { get; set; } = null!;
+        public string Motto { get; set; } = null!;
 
         public string? PhoneNumber { get; set; }
 

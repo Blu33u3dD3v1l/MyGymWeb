@@ -21,7 +21,7 @@ namespace MyGymWeb.Models.Home
         public decimal PricePerHour { get; set; }
 
         public string? PhoneNumber { get; set; }
-        public string Moto { get; set; } = null!;
+        public string Motto { get; set; } = null!;
         public string Type { get; set; } = null!;
         public bool IsAvailable { get; set; }
         public string? UserId { get; set; }

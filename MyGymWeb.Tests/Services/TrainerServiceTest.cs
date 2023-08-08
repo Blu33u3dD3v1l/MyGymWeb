@@ -27,7 +27,7 @@ namespace MyGymWeb.Tests.Services
 
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", });
+            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -48,7 +48,7 @@ namespace MyGymWeb.Tests.Services
             using var data = DatabaseMock.Instance;
             Guid guid = Guid.Parse("11223344-5566-7788-99AA-BBCCDDEEFF00");
 
-            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = guid });
+            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = guid });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -116,7 +116,7 @@ namespace MyGymWeb.Tests.Services
             var data = DatabaseMock.Instance;
             var trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
-            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = trainerId });
+            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = trainerId });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -133,7 +133,7 @@ namespace MyGymWeb.Tests.Services
             var data = DatabaseMock.Instance;
             var trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
-            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = Guid.NewGuid() });
+            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -150,7 +150,7 @@ namespace MyGymWeb.Tests.Services
             var data = DatabaseMock.Instance;
             var trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
-            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = trainerId });
+            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = trainerId });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -167,7 +167,7 @@ namespace MyGymWeb.Tests.Services
             var data = DatabaseMock.Instance;
             var trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
-            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = Guid.NewGuid() });
+            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -184,7 +184,7 @@ namespace MyGymWeb.Tests.Services
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = trainerId });
+            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = trainerId });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -203,7 +203,7 @@ namespace MyGymWeb.Tests.Services
                     Name = a.Name,
                     Practis = a.Practis,
                     Type = a.Type,
-                    Moto = a.Moto,
+                    Motto = a.Motto,
                     Id = a.Id
 
                 };
@@ -221,7 +221,7 @@ namespace MyGymWeb.Tests.Services
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = Guid.NewGuid() });
+            await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -240,7 +240,7 @@ namespace MyGymWeb.Tests.Services
                     Name = a.Name,
                     Practis = a.Practis,
                     Type = a.Type,
-                    Moto = a.Moto,
+                    Motto = a.Motto,
                     Id = a.Id
 
                 };
@@ -259,7 +259,7 @@ namespace MyGymWeb.Tests.Services
             const string userId = "My UserId";
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto" });
+            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto" });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -273,7 +273,7 @@ namespace MyGymWeb.Tests.Services
         {
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = "UserId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto" });
+            await data.Trainers.AddAsync(new Trainer { UserId = "UserId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto" });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -290,7 +290,7 @@ namespace MyGymWeb.Tests.Services
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = "UserId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = trainerId });
+            await data.Trainers.AddAsync(new Trainer { UserId = "UserId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = trainerId });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
          
@@ -316,7 +316,7 @@ namespace MyGymWeb.Tests.Services
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = "UserId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = Guid.NewGuid() });
+            await data.Trainers.AddAsync(new Trainer { UserId = "UserId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
           
@@ -336,7 +336,7 @@ namespace MyGymWeb.Tests.Services
             string userId = "UserId";
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = trainerId });
+            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = trainerId });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -354,7 +354,7 @@ namespace MyGymWeb.Tests.Services
             string userId = "UserId";
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = "another", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = trainerId });
+            await data.Trainers.AddAsync(new Trainer { UserId = "another", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = trainerId });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -372,7 +372,7 @@ namespace MyGymWeb.Tests.Services
             string userId = "UserId";
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = Guid.NewGuid() });
+            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -390,7 +390,7 @@ namespace MyGymWeb.Tests.Services
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
             using var data = DatabaseMock.Instance;
-            await data.Trainers.AddAsync(new Trainer { UserId = "User", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = Guid.NewGuid() });
+            await data.Trainers.AddAsync(new Trainer { UserId = "User", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -427,7 +427,7 @@ namespace MyGymWeb.Tests.Services
                     Info = "Info",
                     Practis = "Practis",
                     Type = "Type",
-                    Moto = "Moto"
+                    Motto = "Moto"
                 };
 
 
@@ -447,7 +447,7 @@ namespace MyGymWeb.Tests.Services
 
             var userId = "userId";
 
-            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = Guid.NewGuid() });
+            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -462,7 +462,7 @@ namespace MyGymWeb.Tests.Services
                     Info = "Info",
                     Practis = "Practis",
                     Type = "Type",
-                    Moto = "Moto"
+                    Motto = "Moto"
                 };
 
 
@@ -485,7 +485,7 @@ namespace MyGymWeb.Tests.Services
 
             var userId = "userId";
 
-            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = Guid.NewGuid() });
+            await data.Trainers.AddAsync(new Trainer { UserId = userId, ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -500,7 +500,7 @@ namespace MyGymWeb.Tests.Services
                     Info = "Info",
                     Practis = "Practis",
                     Type = "Type",
-                    Moto = "Moto"
+                    Motto = "Moto"
                 };
 
                 var result = trainerService.QuitTrainerAsync(userId, m);
@@ -519,7 +519,7 @@ namespace MyGymWeb.Tests.Services
 
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
-            await data.Trainers.AddAsync(new Trainer { UserId = "UserID", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = trainerId });
+            await data.Trainers.AddAsync(new Trainer { UserId = "UserID", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = trainerId });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
@@ -543,7 +543,7 @@ namespace MyGymWeb.Tests.Services
 
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
 
-            await data.Trainers.AddAsync(new Trainer { UserId = "UserID", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Moto = "Moto", Id = Guid.NewGuid() });
+            await data.Trainers.AddAsync(new Trainer { UserId = "UserID", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 

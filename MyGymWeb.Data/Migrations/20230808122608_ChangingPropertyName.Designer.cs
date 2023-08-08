@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,10 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230808122608_ChangingPropertyName")]
+    partial class ChangingPropertyName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,7 +242,7 @@ namespace MyGymWeb.Data.Migrations
                             Id = "bdb57211-855c-470a-b0f4-817d9335a26b",
                             AccessFailedCount = 0,
                             Amount = 1000m,
-                            ConcurrencyStamp = "790c830f-1047-4f6c-b602-418f405c9e73",
+                            ConcurrencyStamp = "b29f2416-212c-4b33-93aa-7fbb3b6d3ee6",
                             Email = "Admin@admin.bg",
                             EmailConfirmed = false,
                             FirstName = "George",
@@ -248,9 +250,9 @@ namespace MyGymWeb.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@admin.bg",
                             NormalizedUserName = "Admin@admin.bg",
-                            PasswordHash = "AQAAAAEAACcQAAAAELt31jnsRcS9M0gcViRfZqzu0Z4feGN4hbA16tkEjb8QCNT9AGbVfPBGx7z/lO4eCA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK3vajHDutlD9kMxnfdDNakCbf7sH6RMwi2/ltVz6eE5RXxi2Nc3a0F5gsm5HPlENQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "11dc7dd9-5b67-4cab-a12b-3c7a394c670a",
+                            SecurityStamp = "0ac934e8-b3c3-4e89-8548-4680b2386ef2",
                             TwoFactorEnabled = false,
                             UserName = "Admin@admin.bg"
                         });
@@ -803,7 +805,7 @@ namespace MyGymWeb.Data.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Motto")
+                    b.Property<string>("Moto")
                         .IsRequired()
                         .HasMaxLength(5000)
                         .HasColumnType("nvarchar(max)");
@@ -840,11 +842,11 @@ namespace MyGymWeb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a5bd9648-1bdb-403e-88be-abdd3837f953"),
+                            Id = new Guid("06419fd1-ca93-48ce-8efe-c53d9782f17a"),
                             ImageUrl = "https://i.ebayimg.com/images/g/yDkAAOSw7vtjPegV/s-l1200.webp",
                             Info = "Arnold Alois Schwarzenegger is an Austrian and American actor, businessman, filmmaker, politician, and retired professional bodybuilder best known for his roles in high-profile action movies. He served as the 38th governor of California from 2003 to 2011 and was among Time magazine's 100 most influential people in the world in 2004 and 2007.",
                             IsActive = true,
-                            Motto = "I'll be back!",
+                            Moto = "I'll be back!",
                             Name = "Arnold Schvarzenegger",
                             Practis = "Above 30 years.",
                             PricePerHour = 200m,
@@ -852,11 +854,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("91f2bb41-b893-4bab-959a-a6e3680511f3"),
+                            Id = new Guid("e55425e1-7427-47ce-a328-6ec09f3e7c1a"),
                             ImageUrl = "https://e0.pxfuel.com/wallpapers/609/537/desktop-wallpaper-chris-bumstead.jpg",
                             Info = "Christopher Adam Bumstead, known by his fans as CBum, is a Canadian IFBB professional bodybuilder. Bumstead is the reigning Mr. Olympia Classic Physique winner, having won the competition in 2019, 2020, 2021 and 2022. He was also the runner-up in 2017 and 2018.Bumstead maintains a large online presence with content focusing on his lifestyle and bodybuilding.",
                             IsActive = true,
-                            Motto = "More Weight.",
+                            Moto = "More Weight.",
                             Name = "Chris Bumstead",
                             Practis = "Above 15 years.",
                             PricePerHour = 150m,
@@ -864,11 +866,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9c715267-391c-48ff-92c9-dfed98fbaa00"),
+                            Id = new Guid("c42e364a-b8b1-4f43-8017-a7ec6768101d"),
                             ImageUrl = "https://pagesix.com/wp-content/uploads/sites/3/2022/08/Russell-Hornsby-Mike-Tyson_99-1.jpg?quality=75&strip=all&w=413",
                             Info = "Michael Gerard Tyson is an American former professional boxer who competed from 1985 to 2005. Nicknamed 'Iron Mike' and 'Kid Dynamite' in his early career, and later known as 'The Baddest Man on the Planet',Tyson is regarded as one of the greatest heavyweight boxers of all time.[6] He reigned as the undisputed world heavyweight champion from.Tyson won his first 19 professional fights by knockout, 12 of them in the first round. Claiming his first belt at 20 years, four months, and 22 days old, Tyson holds the record as the youngest boxer ever to win a heavyweight title. He was the first heavyweight boxer to simultaneously hold the WBA, WBC and IBF titles, as well as the only heavyweight to unify them in succession. The following year, Tyson became the lineal champion when he knocked out Michael Spinks in 91 seconds of the first round.Tyson was knocked out by underdog Buster Douglas in one of the biggest upsets in boxing history.",
                             IsActive = true,
-                            Motto = "Give me all the weed in the world.",
+                            Moto = "Give me all the weed in the world.",
                             Name = "Mike Tyson",
                             Practis = "Above 30 years.",
                             PricePerHour = 200m,
@@ -876,11 +878,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4f46a948-0024-4000-a0a8-1bcbdbebe59e"),
+                            Id = new Guid("ca09c139-e851-430a-9c2a-b92c5af45193"),
                             ImageUrl = "https://ronniecoleman.net/cdn/shop/products/ronnie-coleman-signature-series-light-weight-baby-tee-apparel-accessories-shirt-29983544049777_1024x1024.jpg?v=1655495689",
                             Info = "Ronald Dean Coleman  is an American retired professional bodybuilder. The winner of the Mr. Olympia title for eight consecutive years, he is widely regarded as either the greatest bodybuilder of all time or one of the two greatest along with Arnold Schwarzenegger and as the most dominant bodybuilding physique ever to grace the stage.Winner of 26 IFBB professional titles, he is also renowned for his combination of size and conditioning,dominant body-parts and extremely heavy workouts,making him the strongest",
                             IsActive = true,
-                            Motto = "I pump 200 for chest!",
+                            Moto = "I pump 200 for chest!",
                             Name = "Ronnie Coleman",
                             Practis = "Above 30 years.",
                             PricePerHour = 200m,
@@ -888,11 +890,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c4fc6ca4-49d7-4bec-8f14-d2b56315bba2"),
+                            Id = new Guid("2a601c65-abd6-4ce8-a830-a7e229ea9e11"),
                             ImageUrl = "https://www.fitnessindiashow.com/wp-content/uploads/2018/11/Screen-Shot-2018-11-06-at-3.58.11-PM.png",
                             Info = "Michelle Lewin is a Venezuelan fitness coach, model, and YouTube star.She became famous because of her hourglass figure that she flaunts whenever she models.Michelle Lewin began her modeling career on a very small scale. She first discovered it by a photographer and it began her journey as a model.As a model, it is common that they take care of their body and Michelle is no exception. She takes care of her body and keeps in shape by going to the gym.",
                             IsActive = true,
-                            Motto = "My baby is better than your!",
+                            Moto = "My baby is better than your!",
                             Name = "Michelle Lewin",
                             Practis = "Above 15 years.",
                             PricePerHour = 150m,
@@ -900,11 +902,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4495ab8a-0f9f-4b76-9f64-6cc09a82568c"),
+                            Id = new Guid("2d24f3cd-947c-4dbf-8809-c0bd1a3d4280"),
                             ImageUrl = "https://i.pinimg.com/originals/a0/07/34/a00734047b571a8573c6a83f03c6a1fe.jpg",
                             Info = "Wladimir Klitschko is a Ukrainian former professional boxer who competed from 1996 to 2017. He held the world heavyweight championship twice, including the unified WBA (Super), IBF, WBO, IBO, and Ring magazine titles. A strategic and intelligent boxer, Klitschko is considered to be one of the best heavyweight champions of all time.He was known for his exceptional knockout power, using a strong jab, straight right hand and left hook, quick hand speed, as well as athletic footwork and mobility, unusual for boxers of his size.",
                             IsActive = true,
-                            Motto = "My Hammer will destroy you!",
+                            Moto = "My Hammer will destroy you!",
                             Name = "Wladimir Klitschko",
                             Practis = "Above 20 years!",
                             PricePerHour = 190m,
@@ -912,11 +914,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d5c68bff-5326-4ad9-b211-cbbbe180adcf"),
+                            Id = new Guid("9cb082c5-252f-4e41-befa-70f6d738eea0"),
                             ImageUrl = "https://img.freepik.com/free-photo/young-adult-doing-indoor-sport-gym_23-2149205542.jpg?w=2000",
                             Info = "Brad Schoenfeld considered one of greatest trainers of all time is a respected trainer, author and professor of exercise science who specialises in the science of bodybuilding and nutritionso he's often referred to as the gym trainer for men. He has spent over 30 years researching in the area of human performance, exercise physiology and muscle hypertrophy, and his work has been featured in major publications such as Men’s Health. He is also the author of numerous best-selling books on strength training and sports nutrition. His legacy lives on with his ongoing commitment to helping people achieve their fitness goals through his knowledge and experience from training thousands of athletes around the world.",
                             IsActive = true,
-                            Motto = "Im The Best!",
+                            Moto = "Im The Best!",
                             Name = "Brad Schoenfeld",
                             Practis = "Above 20 years.",
                             PricePerHour = 190m,
@@ -924,11 +926,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2ed8878c-fd0c-46f0-b229-e71883d0ad3e"),
+                            Id = new Guid("257d31fd-b40e-4b0f-8d86-192ac5ad500c"),
                             ImageUrl = "https://firstclasspt.se/____impro/1/onewebmedia/Bigstock/professionella%20manliga%20skola%20sport%20coach%20ger%20tumme.jpg?etag=%22a97572-59303a63%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=321%2B481&extract=28%2B37%2B280%2B421&quality=85",
                             Info = "Matt trains a roster of celebrity clients, is a published author and has his own brand of fitness clothing. But despite this borderline celebrity trainer status, he remains grounded. He knows that working with regular people and helping them to achieve the results they’re looking for is what gets referrals, and word of mouth business. After 23 years of experience in the fitness industry, Matt knows something about being able to relate to others and considers interpersonal skills to be one of the most important assets an aspiring trainer can possess.",
                             IsActive = true,
-                            Motto = "I can teach u to fly!",
+                            Moto = "I can teach u to fly!",
                             Name = "Matt Roberts",
                             Practis = "Above 15 years.",
                             PricePerHour = 150m,
@@ -936,11 +938,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f58c65f2-e5ba-49d2-bde5-808eaba56975"),
+                            Id = new Guid("75961a5e-d776-4d25-8a0c-27d4dcf1a5d4"),
                             ImageUrl = "https://xcal.com/wp-content/uploads/2023/02/Rachel.webp",
                             Info = "Exercise professional and sports nutrition specialist, Louise, has published a number of books which have become Sunday Times bestsellers. This isn’t a common achievement, and is evidence of the relatable and compassionate way that Louise discusses the relationship between nourishing your body with food and staying “lean for life”. Since starting her company in 2007, Louise has helped close to 20,000 individuals - a phenomenal number! Louise has taught her methods to a team of coaches so that she’s able to impact even more people each year. Louise is an advocate of connecting goals with values. Both from the perspective of a client connecting with their goal, and also from the perspective of a business owner. Operating from a place of vision means that you’re able to genuinely help people in a way which is meaningful and valuable to them.",
                             IsActive = true,
-                            Motto = "Be yourself!",
+                            Moto = "Be yourself!",
                             Name = "Louise Parker",
                             Practis = "Above 12 years.",
                             PricePerHour = 130m,
@@ -948,11 +950,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c771b706-4bb7-4611-b0ee-a31eec49e699"),
+                            Id = new Guid("be2871d4-213b-476f-be94-8612aabe3c6c"),
                             ImageUrl = "https://nathealth-assets.s3-eu-west-1.amazonaws.com/articles/Rachel_Brathen.jpg",
                             Info = "Yoga social media star and author Rachel Brathen is well-known for her openness and authenticity. She tells Stacey Carter why she wanted to write her book and how she navigates sharing her life with the world",
                             IsActive = true,
-                            Motto = "Let yoga be your life!",
+                            Moto = "Let yoga be your life!",
                             Name = "Rachel Braten",
                             Practis = "Above 8 years.",
                             PricePerHour = 100m,
@@ -960,11 +962,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("68dbf656-a6af-42e9-b501-5986337c05ad"),
+                            Id = new Guid("a0c15e20-fdb1-44d8-b01e-47856d44554f"),
                             ImageUrl = "https://www.hfe.co.uk/wp-content/uploads/2018/12/Shaun-Stafford-Headshot1-copy-2-703x1024.jpg",
                             Info = "With a Masters degree in strength and conditioning from Oxford University, Shaun left university and went into a bodybuilding career. He followed that with a semi-professional rugby career and more recently focused on personal training. He supports a number of clients, notably those in a rugby arena from his performance gym and has a huge presence of social media. But despite this level of influence, he encourages aspiring trainers to focus their energy into what’s important to them. He reminds them that an online following isn’t necessary to have a profoundly important impact on someone’s life and to double down on those things that you’re good at and that make you happy.",
                             IsActive = true,
-                            Motto = "Train Harder!",
+                            Moto = "Train Harder!",
                             Name = "Shaun Stafford",
                             Practis = "Above 8 years.",
                             PricePerHour = 110m,
@@ -972,11 +974,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2ac78b0a-825c-4af4-a53f-347f607f9fe2"),
+                            Id = new Guid("edc9a2cc-6896-4f3a-89ac-3e06a379b839"),
                             ImageUrl = "https://www.greatestphysiques.com/wp-content/uploads/2018/04/Anna-Victoria.01.jpg",
                             Info = "Anna Victoria is a personal transformation coach and fitness star from the United States of America. Although she's now famous for her healthy and fit figure, Anna's early life looked completely different. She grew up being unaware of the importance of a healthy diet and regular exercise.",
                             IsActive = true,
-                            Motto = "Train Even Harder!",
+                            Moto = "Train Even Harder!",
                             Name = "Anna Victoria",
                             Practis = "Above 8 years.",
                             PricePerHour = 110m,
@@ -984,11 +986,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("74a6793f-9dbf-4e4b-928b-914d8306f403"),
+                            Id = new Guid("abe8079c-62b5-4781-b8df-3b810ad1385c"),
                             ImageUrl = "https://storage.googleapis.com/pai-images/803e7f4cfb964082a057d3db348f18b2.jpeg",
                             Info = "Anllela Sagra is a Colombian fitness model, trainer, bodybuilder, and social media personality. Blessed with inherent beauty and strict work ethics, she has emerged as one of the most influential figures in her industry in the recent years. Initially, her aspiration was to become a regular model and fashion designer. She even earned a degree in fashion design from the University of Colombia. However, she decided to become a fitness model after meeting a fitness enthusiast in the gym. The concept of female bodybuilders is still quite novel in her home country as muscles on women are not considered attractive in Colombia. Despite this, Sagra started undergoing weight training and began to put on muscles on her slim frame. Soon enough, she was attending fitness competitions and garnering fans from all over the world on social media. She has over 10 million followers on Instagram and more than one million followers on Facebook. On Twitter and YouTube, the social media platforms on which she is rarely active these days, she has 22.5 thousand followers and 265 thousand subscribers respectively. She has her own app listed on both Apple App Store and Google Play.",
                             IsActive = true,
-                            Motto = "The world is mine!",
+                            Moto = "The world is mine!",
                             Name = "Anllela Sagra",
                             Practis = "Above 8 years.",
                             PricePerHour = 110m,
@@ -996,11 +998,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fadcc87b-a682-47d9-853b-ab6cd32ce06a"),
+                            Id = new Guid("60a45c10-b08c-4062-9b7a-0fe63e1aa1b8"),
                             ImageUrl = "https://www.the-sun.com/wp-content/uploads/sites/6/2023/03/karina-elle-lisenbee-fitness-model-801547146.jpg",
                             Info = "Karina Elle Lisenbee is an American Instagram Pilates model, gym instructor and former cross-country runner. She was a cheerleader and cross-country runner during her high school years. At the age of 16, she was spotted by a photographer in a mall, after which she started modeling. She then began to participate in bikini competitions, often winning them. Soon after that, she launched her Instagram account where she started posting her intense gym workouts, which are enough to put the fittest among us to shame. Known for her plyometrics, hack squats and deadlifts, Karina went on to win the ‘World Fitness Federation Pro Bikini Championship’. The famous fitness model has also graced the pages of magazines like ‘Racked’, ‘Hers’, ‘Self’ and ‘Shape’. Additionally, not only does she have brand endorsement deals with major brands like ‘Gymshark’ and ‘Nike’, but she also has her own line of merchandise called ‘Gym Bae’. Needless to say, she is one of the most followed fitness models and instructors on the popular photo-sharing app, Instagram.",
                             IsActive = true,
-                            Motto = "If u need a trainer, call me!",
+                            Moto = "If u need a trainer, call me!",
                             Name = "Karina Elle",
                             Practis = "Above 8 years.",
                             PricePerHour = 110m,
@@ -1008,11 +1010,11 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d2e98e09-a7a9-493f-a307-be83cca28379"),
+                            Id = new Guid("c48950fb-0f32-42b4-bfd6-8695948103f9"),
                             ImageUrl = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2015%2F06%2Fdwayne-johnson-1-2000.jpg&q=60",
                             Info = "Dwayne Douglas Johnson, also known by his ring name the Rock, is an American actor, film producer, and retired professional wrestler. Widely regarded as one of the greatest professional wrestlers of all time,he was integral to the development and success of the World Wrestling Federation (WWF, now WWE) during the Attitude Era, an industry boom period in the late 1990s and early 2000s. Johnson wrestled for the WWF for eight years prior to pursuing an acting career. His films have grossed over $3.5 billion in North America and over $10.5 billion worldwide, making him one of the world's highest-grossing and highest-paid actors.",
                             IsActive = true,
-                            Motto = "Just Bring It!",
+                            Moto = "Just Bring It!",
                             Name = "Dwayne Johnson",
                             Practis = "Above 8 years.",
                             PricePerHour = 200m,

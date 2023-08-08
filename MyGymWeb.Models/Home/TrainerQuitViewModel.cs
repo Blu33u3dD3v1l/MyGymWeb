@@ -23,7 +23,7 @@ namespace MyGymWeb.Models.Home
         public string Type { get; set; } = null!;
 
 
-        public string Moto { get; set; } = null!;
+        public string Motto { get; set; } = null!;
 
         public string? PhoneNumber { get; set; }
 

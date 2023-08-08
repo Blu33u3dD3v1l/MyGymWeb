@@ -30,7 +30,7 @@ namespace MyGymWeb.Services
                    Name = x.Name,
                    ImageUrl = x.ImageUrl,
                    Info = x.Info,
-                   Moto = x.Moto,
+                   Motto = x.Motto,
                    Practis = x.Practis,
                    PricePerHour = x.PricePerHour,
                    IsAvailable = x.IsAvailable,
@@ -67,7 +67,7 @@ namespace MyGymWeb.Services
                         Name = x.Name,
                         ImageUrl = x.ImageUrl,
                         Info = x.Info,
-                        Moto = x.Moto,
+                        Motto = x.Motto,
                         Practis = x.Practis,
                         PricePerHour = x.PricePerHour,
                         PhoneNumber = x.PhoneNumber,
@@ -83,7 +83,7 @@ namespace MyGymWeb.Services
                         Name = x.Name,
                         ImageUrl = x.ImageUrl,
                         Info = x.Info,
-                        Moto = x.Moto,
+                        Motto = x.Motto,
                         Practis = x.Practis,
                         PricePerHour = x.PricePerHour,
                         PhoneNumber = x.PhoneNumber,
@@ -99,7 +99,7 @@ namespace MyGymWeb.Services
                         Name = x.Name,
                         ImageUrl = x.ImageUrl,
                         Info = x.Info,
-                        Moto = x.Moto,
+                        Motto = x.Motto,
                         Practis = x.Practis,
                         PricePerHour = x.PricePerHour,
                         PhoneNumber = x.PhoneNumber,
@@ -116,7 +116,7 @@ namespace MyGymWeb.Services
                         Name = x.Name,
                         ImageUrl = x.ImageUrl,
                         Info = x.Info,
-                        Moto = x.Moto,
+                        Motto = x.Motto,
                         Practis = x.Practis,
                         PricePerHour = x.PricePerHour,
                         PhoneNumber = x.PhoneNumber,
@@ -141,7 +141,7 @@ namespace MyGymWeb.Services
                 Id = currId.Id,
                 Name = currId.Name,
                 ImageUrl = currId.ImageUrl,
-                Moto = currId.Moto,
+                Motto = currId.Motto,
                 Info = currId.Info,
                 Practis = currId.Practis,
                 PricePerHour = currId.PricePerHour,
@@ -169,7 +169,7 @@ namespace MyGymWeb.Services
                 Id = currTrainer.Id,
                 Name = currTrainer.Name,
                 ImageUrl = currTrainer.ImageUrl,
-                Moto = currTrainer.Moto,
+                Motto = currTrainer.Motto,
                 Info = currTrainer.Info,
                 Practis = currTrainer.Practis,
                 PricePerHour = currTrainer.PricePerHour,
@@ -194,7 +194,7 @@ namespace MyGymWeb.Services
             currTrainer.PricePerHour = model.PricePerHour;
             currTrainer.Info = model.Info;
             currTrainer.Practis = model.Practis;
-            currTrainer.Moto = model.Moto;
+            currTrainer.Motto = model.Motto;
             currTrainer.ImageUrl = model.ImageUrl;
             currTrainer.Type = model.Type;
             currTrainer.PhoneNumber = model.PhoneNumber;
@@ -268,7 +268,7 @@ namespace MyGymWeb.Services
                 Type = model.Type,
                 ImageUrl = model.ImageUrl,
                 Info = model.Info,
-                Moto = model.Moto,
+                Motto = model.Motto,
                 Practis = model.Practis,                
                 PhoneNumber = model.PhoneNumber,
 
@@ -295,7 +295,7 @@ namespace MyGymWeb.Services
                 Type = currentTrainer.Type,
                 ImageUrl = currentTrainer.ImageUrl,
                 Info = currentTrainer.Info,
-                Moto = currentTrainer.Moto,
+                Motto = currentTrainer.Motto,
                 Practis = currentTrainer.Practis,
                 PhoneNumber = currentTrainer.PhoneNumber,
                 UserId = userId,

@@ -33,6 +33,7 @@ namespace MyGymWeb
                 .AddEntityFrameworkStores<MyGymProjectDbContext>();
 
             builder.Services.AddDistributedMemoryCache();
+
             builder.Services.AddSession(options =>
             {
                 
@@ -79,10 +80,9 @@ namespace MyGymWeb
             app.UseAuthorization();
 
             app.SeedAdministrator(AdminConstants.AdminEmail);
+
             app.UseEndpoints(endpoints =>
             {
-
-
 
                 app.MapControllerRoute(
                 name: "default",
