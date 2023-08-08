@@ -1,4 +1,4 @@
-## Web Project for the "ASP.NET Advanced" course @ SoftUni (In Development)
+## Web Project for the "ASP.NET Advanced" course @ SoftUni 
 
 
 Test account:
