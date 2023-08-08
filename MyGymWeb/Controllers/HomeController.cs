@@ -1,9 +1,4 @@
-﻿using Humanizer.DateTimeHumanizeStrategy;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using MyGymWeb.Data.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using static MyGymWeb.Web.Extensions.Extensions.AdminConstants;
 
 namespace MyGymWeb.Controllers
