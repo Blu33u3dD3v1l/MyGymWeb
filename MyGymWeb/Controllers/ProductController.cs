@@ -13,7 +13,7 @@ namespace MyGymWeb.Controllers
             => productService = _productService;
 
         [HttpGet]
-        [ResponseCache(Duration = 30)]
+       
         public async Task<IActionResult> All()
         {
             var model = await productService.GetAllProductsAsync();

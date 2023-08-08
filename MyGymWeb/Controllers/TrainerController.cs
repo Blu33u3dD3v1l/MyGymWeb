@@ -18,8 +18,7 @@ namespace MyGymWeb.Controllers
             trainerService = _trainerService;
         }
 
-        [AllowAnonymous]
-        [ResponseCache(Duration = 30)]
+        [AllowAnonymous]       
         public async Task<IActionResult> All()
         {
             var t = await trainerService.GetAllTrainersAsync();
