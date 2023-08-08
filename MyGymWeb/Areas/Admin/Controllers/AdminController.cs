@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Microsoft.AspNetCore.Mvc;
+
 
 namespace MyGymWeb.Areas.Admin.Controllers
 {
