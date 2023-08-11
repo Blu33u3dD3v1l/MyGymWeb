@@ -25,12 +25,12 @@ namespace MyGymWeb.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            var model = new AddProductsFormModel();
+            var model = new AddProductValidationModel();
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(AddProductsFormModel model)
+        public async Task<IActionResult> Add(AddProductValidationModel model)
         {
 
             if (!ModelState.IsValid)

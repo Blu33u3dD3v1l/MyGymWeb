@@ -161,7 +161,8 @@ body {
     margin: 70px 0px 70px;
 }
 .GymAdd {
-    padding: 1rem 0;
+
+    padding: 4rem 0;
 }
 .AdmnIndex{
     padding: 5.5rem 0;
@@ -259,6 +260,23 @@ body {
 .AllUsers {
     padding: 11rem 0;
     font-weight: 700;
+}
+.EditProducts {
+    padding: 5rem 0;
+    font-weight: 600;
+}
+.AddProducts {
+    padding: 5rem 0;
+    font-weight: 600;
+}
+.AddTrainer {
+    padding: 5rem 0;
+}
+.EditTrainers {
+    padding: 10rem 0;
+}
+.GymEdit {
+    padding: 5rem;
 }
 
 

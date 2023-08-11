@@ -16,7 +16,7 @@ namespace MyGymWeb.Tests.Services
 
 
             using var data = DatabaseMock.Instance;
-            AddProductsFormModel product = new AddProductsFormModel()
+            AddProductValidationModel product = new AddProductValidationModel()
             {
                 Name = "Name",
                 Description = "Description",
@@ -40,7 +40,7 @@ namespace MyGymWeb.Tests.Services
 
 
             using var data = DatabaseMock.Instance;
-            AddProductsFormModel product = new AddProductsFormModel()
+            AddProductValidationModel product = new AddProductValidationModel()
             {
 
             };

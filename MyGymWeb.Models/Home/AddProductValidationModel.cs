@@ -3,17 +3,14 @@ using static MyGymWeb.Common.Constants.ValidationConstants.ProductValidations;
 
 namespace MyGymWeb.Models.Home
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class AddProductsFormModel
+    public class AddProductValidationModel
     {
 
-        [MaxLength(MarkMaxValidation)]
+        [StringLength(MarkMaxValidation, MinimumLength = MarkMinValidation)]
         [Required]
         public string Mark { get; set; } = null!;
 
-        [MaxLength(NameMaxValidation)]
+        [StringLength(NameMaxValidation, MinimumLength = NameMinValidation)]
         [Required]
         public string Name { get; set; } = null!;
 
@@ -21,7 +18,7 @@ namespace MyGymWeb.Models.Home
         [Required]
         public decimal Price { get; set; }
 
-        [MaxLength(DescriptionMaxValidation)]
+        [StringLength(DescriptionMaxValidation, MinimumLength = DescriptionMinValidation)]
         [Required]
         public string Description { get; set; } = null!;
 

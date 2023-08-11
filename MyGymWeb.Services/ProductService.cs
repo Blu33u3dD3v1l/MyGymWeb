@@ -18,7 +18,7 @@ namespace MyGymWeb.Services
             context = _context;
         }
 
-        public async Task AddProductsAsync(AddProductsFormModel model)
+        public async Task AddProductsAsync(AddProductValidationModel model)
         {
 
             if(model == null)

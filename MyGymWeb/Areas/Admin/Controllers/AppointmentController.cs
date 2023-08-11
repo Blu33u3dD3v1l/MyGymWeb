@@ -44,6 +44,9 @@ namespace MyGymWeb.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await appointmentService.DeleteAppointmentsAsync(id);
+
+            TempData[SuccessMessage] = "You Successfuly rejected an appointment!";
+
             return RedirectToAction("All", "Appointment", "Admin");
         }
 

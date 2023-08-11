@@ -24,6 +24,8 @@ namespace MyGymWeb.Services
 
             var ids = await data.Appointments.FirstOrDefaultAsync(x => x.Id == id);
 
+          
+
             var currentUser = await data.Users
                    .Where(u => u.Id == ids!.UserId)
                    .Include(x => x.UsersTrainers)
