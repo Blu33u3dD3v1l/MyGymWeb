@@ -11,12 +11,14 @@ html {
 html {
     position: relative;
     min-height: 100%;
-    
 }
+
 body {
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
+
+
 }
 
 
@@ -36,14 +38,12 @@ body {
     color: #5b5555 !important;
 }
 
-.nav-link.active,
-.nav-link:hover {
+    .nav-link.active,
+    .nav-link:hover {
         color: red !important;
-}
+    }
 
-.dropbtn:hover
- {
-
+.dropbtn:hover {
     color: red !important;
 }
 
@@ -54,10 +54,10 @@ body {
 
 
 
-    .logout {
-        font-weight: 400;
-        margin-top: auto
-    }
+.logout {
+    font-weight: 400;
+    margin-top: auto
+}
 
 .top-bar {
     background: #7aaec4;
@@ -67,15 +67,12 @@ body {
 
 .carousel-inner {
     max-height: 47rem !important;
-    margin:70px 0px;
-    
-
+    margin: 70px 0px;
 }
 
 .fixed-background {
     position: relative;
     width: 100%;
-
 }
 
 .fixed-wrap {
@@ -114,35 +111,31 @@ body {
     transition: all 0.5s;
 }
 
-.link:hover {
+    .link:hover {
         color: rgb(236, 83, 83);
         padding-left: 5px;
         transition: all 0.5s;
-}
+    }
 
 .MyFooter {
-     max-height: 30rem !important;
-     background-color: black;
-     
-
-
-    
+    max-height: 30rem !important;
+    background-color: black;
 }
 
-.MyFooter p {
-    margin: 0;
-    color: teal;
-    font-weight: 700;
-}
-.MyFooter h5{
-     font-weight: 900;
-     color: white;
-}
+    .MyFooter p {
+        margin: 0;
+        color: teal;
+        font-weight: 700;
+    }
+
+    .MyFooter h5 {
+        font-weight: 900;
+        color: white;
+    }
 
 .TrainerContainer {
     background-color: black;
-    margin: 73px 0px 0px; 
-   
+    margin: 73px 0px 0px;
 }
 
 
@@ -150,36 +143,42 @@ body {
     background-color: black;
     margin: 73px 0px 0px;
 }
-.MyLogin{
-    padding : 10rem 0;
+
+.MyLogin {
+    padding: 10rem 0;
 }
+
 .MyRegister {
     padding: 10rem 0;
 }
+
 .TrainerDetails {
     padding: 2.2rem 0;
     margin: 70px 0px 70px;
 }
-.GymAdd {
 
+.GymAdd {
     padding: 4rem 0;
 }
-.AdmnIndex{
+
+.AdmnIndex {
     padding: 5.5rem 0;
-    
 }
+
 .ManageAdmin {
     padding: 3rem 0;
 }
+
 .AllUsers {
     padding: 6.6rem 0;
     font-weight: 700;
-   
 }
+
 .ApplyUsers {
     padding: 14rem 0;
     font-weight: 700;
 }
+
 .DetailsProducts {
     padding: 3rem 0;
     margin: 45px 0px;
@@ -188,51 +187,60 @@ body {
 .MineProducts {
     background-color: black;
     margin: 73px 0px 0px;
-    margin-bottom:auto;
+    margin-bottom: auto;
 }
+
 .MineNoProducts {
-   
     margin: 70px 0px 350px;
 }
+
 .productsForMe {
     background-color: black;
     padding-bottom: 100px
 }
+
 .MineNoProducts h3 {
     color: white;
-    position:relative;
+    position: relative;
     bottom: -200px;
 }
-.AllAppointments {
 
+.AllAppointments {
     margin: 150px 0px 220px;
 }
-.Login{
+
+.Login {
     padding: 6rem 0;
 }
-.GymDetails {
 
+.GymDetails {
     padding: 2rem 0;
 }
+
 .Appointments {
     padding: 3rem 0;
     margin: 60px 0px 100px;
 }
+
 .TrainerView {
     background-color: black;
     margin: 73px 0px 0px;
     padding-bottom: 100px
 }
+
 .AllUsersEmpty {
     padding: 13.8rem 0;
     font-weight: 700;
 }
+
 .AllGyms {
     margin: 45px 0px 0px;
 }
+
 .GymDetails {
     margin: 45px 0px;
 }
+
 .App {
     margin: 70px 0px 100px;
 }
@@ -252,31 +260,44 @@ body {
     margin: 70px 0px 350px;
 }
 
-.MineNoTrainers h3 {
-    color: white;
-    position: relative;
-   
-}
+    .MineNoTrainers h3 {
+        color: white;
+        position: relative;
+    }
+
 .AllUsers {
     padding: 11rem 0;
     font-weight: 700;
 }
+
 .EditProducts {
     padding: 5rem 0;
     font-weight: 600;
 }
+
 .AddProducts {
     padding: 5rem 0;
     font-weight: 600;
 }
+
 .AddTrainer {
     padding: 5rem 0;
 }
+
 .EditTrainers {
     padding: 10rem 0;
 }
+
 .GymEdit {
     padding: 5rem;
 }
+
+.NeonText {
+   
+}
+
+
+
+
 
 
