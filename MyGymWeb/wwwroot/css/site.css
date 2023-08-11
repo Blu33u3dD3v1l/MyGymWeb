@@ -220,6 +220,7 @@ body {
 .TrainerView {
     background-color: black;
     margin: 73px 0px 0px;
+    padding-bottom: 100px
 }
 .AllUsersEmpty {
     padding: 13.8rem 0;
