@@ -1,6 +1,6 @@
 ## Web Project for the "ASP.NET Advanced" course @ SoftUni 
 
-<a href="mybestgymsite.azurewebsites.net">Click here!</a>
+<a href="http://bit.ly/Bestgymsite">Click here!</a>
 
 Test account:
 
