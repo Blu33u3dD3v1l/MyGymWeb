@@ -1,5 +1,6 @@
 ## Web Project for the "ASP.NET Advanced" course @ SoftUni 
 
+mybestgymsite.azurewebsites.net
 
 Test account:
 
