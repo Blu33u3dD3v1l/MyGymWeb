@@ -56,12 +56,6 @@ namespace MyGymWeb.Controllers
 
             return RedirectToAction("All", "Trainer");
         }
-
-        [HttpGet]
-        public IActionResult Form()
-        {
-
-            return View();
-        }
+   
     }
 }
