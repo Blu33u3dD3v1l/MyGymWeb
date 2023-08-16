@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.WebExtensions", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGymWeb.Data", "MyGymWeb.Data\MyGymWeb.Data.csproj", "{BF9063C4-F73C-45D8-A280-E39411CE2F26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGymWeb.Services.Models", "MyGymWeb.Services.Models\MyGymWeb.Services.Models.csproj", "{7C0688A3-5C3B-44D3-A987-4708E4BD6E74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{BF9063C4-F73C-45D8-A280-E39411CE2F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF9063C4-F73C-45D8-A280-E39411CE2F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF9063C4-F73C-45D8-A280-E39411CE2F26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0688A3-5C3B-44D3-A987-4708E4BD6E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0688A3-5C3B-44D3-A987-4708E4BD6E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0688A3-5C3B-44D3-A987-4708E4BD6E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0688A3-5C3B-44D3-A987-4708E4BD6E74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{E9300F43-5027-47AD-9194-0B6838B140A6} = {6A5CD5C6-403F-404D-8C3D-3DDF635F7978}
 		{63304BA1-A531-4F34-A6A7-8B703000916F} = {E16BFD74-81D2-4CDF-BCFB-4F87B089AE85}
 		{BF9063C4-F73C-45D8-A280-E39411CE2F26} = {6A5CD5C6-403F-404D-8C3D-3DDF635F7978}
+		{7C0688A3-5C3B-44D3-A987-4708E4BD6E74} = {E16BFD74-81D2-4CDF-BCFB-4F87B089AE85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62E2A91A-BACD-47B3-8E49-069A09F51B6F}

@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MathNet.Numerics;
+using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
+using MyGymWeb.Models.Enums;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
-
-
+using MyGymWeb.Services.Models.Trainer;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MyGymWeb.Services
 {
@@ -322,6 +324,51 @@ namespace MyGymWeb.Services
 
             context.Remove(currentTrainer);
             await context.SaveChangesAsync();
+        }
+
+        public async Task<AllTrainersFilteredAndPagedServiceModel> AllAsync(AllTrainersQueryModel model)
+        {
+            IQueryable<Trainer> trainerQuery = this.context.Trainers.AsQueryable();
+
+            if (!string.IsNullOrEmpty(model.SeachString))
+            {
+                string wildCard = $"%{model.SeachString.ToLower()}%";
+
+                trainerQuery = trainerQuery.Where(h => EF.Functions.Like(h.Name, wildCard));
+                                                      
+
+            }
+
+            trainerQuery = model.TrainerSorting switch
+            {
+                TrainerSorting.PriceAscending => trainerQuery.OrderBy(x => x.PricePerHour),              
+                _ => trainerQuery.OrderBy(x => x.PricePerHour)
+            };
+
+           
+                IEnumerable<AllTrainersViewModel> allTrainers = await trainerQuery.Skip((model.CurrentPage - 1) * model.TrainersPerPage).Take(model.TrainersPerPage)
+               .Select(x => new AllTrainersViewModel()
+               {
+
+                   Id = x.Id,
+                   ImageUrl = x.ImageUrl,
+                   Info = x.Info,
+                   Motto = x.Motto,
+                   Name = x.Name,
+                   Practis = x.Practis,
+                   PricePerHour = x.PricePerHour,
+                   Type = x.Type,
+
+               }).ToArrayAsync();
+
+
+                int totalTrainers = trainerQuery.Count();
+
+                return new AllTrainersFilteredAndPagedServiceModel()
+                {
+                    TotalTrainersCount = totalTrainers,
+                    Trainers = allTrainers
+                };
         }
     }
 }

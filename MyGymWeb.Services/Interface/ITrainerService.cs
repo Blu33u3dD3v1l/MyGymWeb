@@ -1,4 +1,5 @@
 ﻿using MyGymWeb.Models.Home;
+using MyGymWeb.Services.Models.Trainer;
 
 namespace MyGymWeb.Services.Interface
 {
@@ -18,7 +19,7 @@ namespace MyGymWeb.Services.Interface
         Task AddTrainerAsync(AddTrainerFormModel model);
         Task QuitTrainerAsync(string userId, TrainerQuitViewModel model);
         Task DeleteTrainerForApplyAsync(Guid id);
-
+        Task<AllTrainersFilteredAndPagedServiceModel> AllAsync(AllTrainersQueryModel model);
 
 
     }

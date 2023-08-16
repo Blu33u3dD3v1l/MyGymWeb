@@ -34,6 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MyGymWeb.Common\MyGymWeb.Common.csproj" />
     <ProjectReference Include="..\MyGymWeb.Models\MyGymWeb.Models.csproj" />
+    <ProjectReference Include="..\MyGymWeb.Services.Models\MyGymWeb.Services.Models.csproj" />
     <ProjectReference Include="..\MyGymWeb.Services\MyGymWeb.Services.csproj" />
     <ProjectReference Include="..\MyGymWeb.WebExtensions\MyGymWeb.WebExtensions.csproj" />
   </ItemGroup>

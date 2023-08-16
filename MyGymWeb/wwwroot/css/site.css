@@ -298,6 +298,14 @@ body {
 .Error401 {
     padding: 12rem 0;
 }
+.SearchTable {
+    padding: 2rem 0;
+    background-color: black;
+    margin-right: 0;
+}
+.searchNoTrainers {
+    padding: 12rem 0;
+}
 
 
 
