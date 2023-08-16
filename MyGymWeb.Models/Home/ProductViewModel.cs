@@ -1,8 +1,6 @@
 ﻿namespace MyGymWeb.Models.Home
 {
-    /// <summary>
-    /// 
-    /// </summary>
+
     public class ProductViewModel
     {
 

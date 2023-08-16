@@ -2,9 +2,7 @@
 
 namespace MyGymWeb.Models.Home
 {
-    /// <summary>
-    /// 
-    /// </summary>
+  
     public class UserServiceModel
     {
         public string? UserId { get; init; } = null;

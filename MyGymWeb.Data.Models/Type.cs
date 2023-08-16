@@ -5,10 +5,7 @@ namespace MyGymWeb.Data.Models
 {
     public class Type
     {
-        /// <summary>
-        /// 
-        /// </summary>
-
+       
         public Type()
         {
             this.GroupsEvents = new List<GroupEvents>();

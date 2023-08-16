@@ -3,9 +3,6 @@ using static MyGymWeb.Common.Constants.ValidationConstants.ProductValidations;
 
 namespace MyGymWeb.Models.Home
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class AddProductsFormModel
     {
 

@@ -8,9 +8,7 @@ using System.Collections.Immutable;
 
 namespace MyGymWeb.Services
 {
-    /// <summary>
-    /// 
-    /// </summary>
+
     public class UserService : IUserService
     {
 

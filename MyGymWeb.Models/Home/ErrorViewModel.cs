@@ -1,8 +1,6 @@
 namespace MyGymWeb.Models.Home
 {
-    /// <summary>
-    /// 
-    /// </summary>
+   
     public class ErrorViewModel
     {
         public string? RequestId { get; set; }

@@ -6,9 +6,7 @@ using MyGymWeb.Data.Models;
 
 namespace MyGymWeb.Data.Configuration
 {
-    /// <summary>
-    /// 
-    /// </summary>
+
     internal class TrainerConfiguration : IEntityTypeConfiguration<Trainer>
     {
         public void Configure(EntityTypeBuilder<Trainer> builder)

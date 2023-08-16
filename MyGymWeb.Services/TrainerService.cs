@@ -8,9 +8,7 @@ using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Services
 {
-    /// <summary>
-    /// 
-    /// </summary>
+
     public class TrainerService : ITrainerService
     {
         private readonly MyGymProjectDbContext context;

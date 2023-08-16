@@ -6,9 +6,7 @@ using static MyGymWeb.Common.Constants.ValidationConstants.UserValidations;
 
 namespace MyGymWeb.Data.Models
 {
-    /// <summary>
-    /// 
-    /// </summary>
+  
     public class ApplicationUser : IdentityUser
     {
 

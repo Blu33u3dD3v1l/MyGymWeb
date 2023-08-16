@@ -3,9 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MyGymWeb.Data.Configuration
 {
-    /// <summary>
-    /// 
-    /// </summary>
+   
     internal class TypeConfiguration : IEntityTypeConfiguration<Models.Type>
     {
         public void Configure(EntityTypeBuilder<Models.Type> builder)

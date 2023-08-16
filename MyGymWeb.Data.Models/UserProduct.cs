@@ -1,8 +1,6 @@
 ﻿namespace MyGymWeb.Data.Models
 {
-    /// <summary>
-    /// 
-    /// </summary>
+  
     public class UserProduct
     {
       

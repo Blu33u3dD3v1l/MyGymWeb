@@ -5,9 +5,7 @@ using static MyGymWeb.Common.Constants.ValidationConstants.UserValidations;
 
 namespace MyGymWeb.Models.Home
 {
-    /// <summary>
-    /// 
-    /// </summary>
+   
 
     public class RegisterFormModel
     {

@@ -8,9 +8,7 @@ namespace MyGymWeb.Data.Models
 {
     public class Trainer
     {
-        /// <summary>
-        /// 
-        /// </summary>
+      
 
         public Trainer()
         {

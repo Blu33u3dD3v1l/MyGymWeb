@@ -8,9 +8,6 @@ using System.Reflection;
 namespace MyGymWeb.Web.Extensions.Extensions
 {
 
- /// <summary>
- /// 
- /// </summary>
     public static class WevApplicationBuilderServices
     {
         public static void AddApplicationServices(this IServiceCollection services, System.Type ServiceType)

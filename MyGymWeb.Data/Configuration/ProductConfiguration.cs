@@ -4,9 +4,7 @@ using MyGymWeb.Data.Models;
 
 namespace MyGymWeb.Data.Configuration
 {
-    /// <summary>
-    /// 
-    /// </summary>
+
     internal class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)

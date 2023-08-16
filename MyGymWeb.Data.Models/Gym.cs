@@ -5,9 +5,7 @@ using static MyGymWeb.Common.Constants.ValidationConstants.GymValidations;
 
 namespace MyGymWeb.Data.Models
 {
-    /// <summary>
-    /// 
-    /// </summary>
+  
     public class Gym
     {
 

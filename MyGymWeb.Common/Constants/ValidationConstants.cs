@@ -1,8 +1,6 @@
 ﻿namespace MyGymWeb.Common.Constants
 {
-    /// <summary>
-    /// 
-    /// </summary>
+   
     public class ValidationConstants
     {
 

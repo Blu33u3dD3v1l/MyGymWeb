@@ -3,9 +3,7 @@
 
 namespace MyGymWeb.Models.Home
 {
-    /// <summary>
-    /// 
-    /// </summary>
+   
     public class TrainerViewModel 
     {
         public Guid Id { get; set; }

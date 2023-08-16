@@ -1,8 +1,5 @@
 ﻿namespace MyGymWeb.Models.Home
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class UserTrainersFormModel
     {
         public int Id { get; set; }

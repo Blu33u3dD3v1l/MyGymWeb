@@ -4,9 +4,7 @@ using static MyGymWeb.Common.Constants.ValidationConstants.ClasicTrainerValidati
 
 namespace MyGymWeb.Data.Models
 {
-    /// <summary>
-    /// 
-    /// </summary>
+   
     public class Apply
     {
         [Key]
