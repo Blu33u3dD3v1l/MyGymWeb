@@ -20,6 +20,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             
         }
 
+        [HttpGet]
         public async Task<IActionResult> All()
         {
             var model = await applyService.GetAllAppliesAsync();
@@ -30,11 +31,25 @@ namespace MyGymWeb.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(Guid id, TrainerQuitViewModel model)
         {
 
+            if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-            var a = await applyService.GetDeleteAppliersAsync(id, model);
-          
+            try
+            {
+                var a = await applyService.GetDeleteAppliersAsync(id, model);
+                
+            }
+            catch (ArgumentNullException)
+            {
 
-            return View(a);
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View(model);
+            }
+
+            return View(model);
+
         }
 
         [HttpPost]
@@ -48,12 +63,13 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return RedirectToAction("All", "Apply", "Admin");
         }
 
+        [HttpGet]
         public async Task<IActionResult> Approve(Guid id)
         {
           
             await this.applyService.ApproveTrainerAsync(id);
             await this.applyService.DeleteAppliersAsync(id);
-            //await this.CreateTrainerRole();
+        
 
             TempData[SuccessMessage] = "You successfuly approved a trainer!";
 

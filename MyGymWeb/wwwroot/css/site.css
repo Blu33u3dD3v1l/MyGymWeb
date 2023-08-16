@@ -292,7 +292,10 @@ body {
     padding: 5rem;
 }
 
-.Error {
+.Error404 {
+    padding: 12rem 0;
+}
+.Error401 {
     padding: 12rem 0;
 }
 

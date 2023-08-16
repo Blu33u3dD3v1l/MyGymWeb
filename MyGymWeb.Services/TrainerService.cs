@@ -259,6 +259,8 @@ namespace MyGymWeb.Services
 
         public async Task AddTrainerAsync(AddTrainerFormModel model)
         {
+
+           
             var trainer = new Trainer()
             {
                 Name = model.Name,

@@ -17,12 +17,15 @@ namespace MyGymWeb.Areas.Admin.Controllers
             appointmentService = _appointmentService;
            
         }
+
+        [HttpGet]
         public async Task<IActionResult> All()
         {
             var model = await appointmentService.GetAllAsync();
             return View(model); 
         }
 
+        [HttpGet]
         public async Task<IActionResult> Approve(int id)
         {
 
@@ -41,6 +44,8 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
             return RedirectToAction("All", "Appointment", "Admin");
         }
+
+        [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             await appointmentService.DeleteAppointmentsAsync(id);

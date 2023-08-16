@@ -40,6 +40,11 @@ namespace MyGymWeb.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(AddTrainerFormModel model)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             string? userId = this.User.GetId();
 
             if (userId != null)
@@ -89,6 +94,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
 
+        [HttpPost]
         public async Task<IActionResult> Delete(Guid id)
         {
 
@@ -100,6 +106,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
 
+        [HttpPost]
         public async Task<IActionResult> DeleteForApply(Guid id)
         {
 

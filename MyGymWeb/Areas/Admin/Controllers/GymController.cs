@@ -12,12 +12,15 @@ namespace MyGymWeb.Areas.Admin.Controllers
         public GymController(IGymService _gymService)
             => gymService = _gymService;
 
+        [HttpGet]
         public async Task<IActionResult> ManageGym()
         {
             var model = await gymService.GetAllGymsAsync();
 
             return View(model);
         }
+
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var view = await gymService.GetEditGymAsync(id);
@@ -48,7 +51,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
         }
 
 
-
+        [HttpGet]
         public IActionResult Add()
         {
             var model = new AddGymFormModel();
@@ -69,6 +72,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return RedirectToAction("ManageGym", "Gym", "Admin");
         }
 
+        [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             await gymService.RemoveGymAsync(id);

@@ -17,7 +17,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
            
         }
 
-      
+        [HttpGet]
         public async Task<IActionResult> All()
         {
             var model = await userService.All();

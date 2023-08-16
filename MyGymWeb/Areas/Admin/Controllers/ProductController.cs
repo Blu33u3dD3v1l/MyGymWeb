@@ -87,6 +87,8 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
             return RedirectToAction("ManageProduct", "Product", "Admin");
         }
+
+        [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {           
             await productService.DeleteProductAsync(id);

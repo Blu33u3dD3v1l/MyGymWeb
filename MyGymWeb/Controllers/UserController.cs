@@ -75,12 +75,7 @@ namespace MyGymWeb.Controllers
         {
 
             string? currentId =  this.User.GetId();
-            if (currentId == null)
-            {
-                throw new ArgumentNullException(nameof(currentId));
-            }
-           
-            
+
             try
             {
                 await this.userService.AppointmentExistByUserId(currentId, id);

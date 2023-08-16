@@ -98,6 +98,8 @@ namespace MyGymWeb.Services
 
         public async Task<IEnumerable<TrainerQuitViewModel>> GetAllAppliesAsync()
         {
+
+            
              var applies = await context.Applies             
               .Select(x => new TrainerQuitViewModel()
               {

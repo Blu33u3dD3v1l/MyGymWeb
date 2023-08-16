@@ -23,13 +23,9 @@ namespace MyGymWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> Apply()
         {
-
-            string? currentId = this.User.GetId();
-            if(currentId == null)
-            {
-                throw new ArgumentNullException(nameof(currentId));
-            }
            
+            string? currentId = this.User.GetId();
+
             bool isApplier = await this.applyService.ApplierExistByUserId(currentId);
             if (isApplier)
             {
@@ -56,14 +52,28 @@ namespace MyGymWeb.Controllers
         public async Task<IActionResult> Apply(TrainerQuitViewModel model)
         {
 
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var currentId = User.GetId();
 
 
             if (currentId != null)
             {
-                await this.applyService.AddApplyAsync(currentId, model);
+                try
+                {
+                    await this.applyService.AddApplyAsync(currentId, model);
+                    TempData[SuccessMessage] = "You successfuly post an application!";
+                }
+                catch (Exception)
+                {
 
-                TempData[SuccessMessage] = "You successfuly post an application!";
+                    ModelState.AddModelError(string.Empty, "Unexpected Error");
+                    return View(model);
+                }
+               
             }
 
             
