@@ -27,6 +27,12 @@ namespace MyGymWeb.Controllers
             signInManager = _signInManager;
            
         }
+
+        public  IActionResult Chat()
+        {
+            return this.View();
+        }
+
         public async Task<IActionResult> Buy(int id)
         {
             try
