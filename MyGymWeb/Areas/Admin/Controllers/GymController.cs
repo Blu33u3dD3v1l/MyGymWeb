@@ -72,7 +72,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return RedirectToAction("ManageGym", "Gym", "Admin");
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             await gymService.RemoveGymAsync(id);

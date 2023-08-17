@@ -4,7 +4,7 @@ using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
 using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
-using MyGymWeb.Services.Models.Trainer;
+
 
 namespace MyGymWeb.Controllers
 {
@@ -23,6 +23,8 @@ namespace MyGymWeb.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Search([FromQuery] AllTrainersQueryModel model)
         {
+
+
             var serviceModel
                = await this.trainerService.AllAsync(model);
 

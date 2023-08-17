@@ -94,7 +94,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
         {
 

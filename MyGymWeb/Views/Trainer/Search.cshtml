@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "All Houses";
-    var currentString = "";
+    
 }
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
@@ -31,9 +31,10 @@
                 <div class="form-group">
                     <label asp-for="TrainerSorting" style="color:white"><i>Sorting by</i></label>
                     <select asp-for="TrainerSorting" class="form-control">  
-                        <option value="0">Price</option>
-
-                       @currentString = @Model.TrainerSorting
+                        <option value="0">Name</option>
+                        <option value="1">Price Ascending</option>
+                        <option value="2">Price Descending</option>
+                      
 
                     </select>
                 </div>
@@ -65,8 +66,10 @@ string.Empty)"
                asp-route-currentPage="@previousPage"
                asp-route-searchTerm="@Model.SeachString"
                asp-route-sorting="@((int)Model.TrainerSorting)"><<</a>
+                 
         </div>
         @{
+           
             var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
             !Model.Trainers.Any();
         }

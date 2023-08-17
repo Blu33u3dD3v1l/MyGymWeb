@@ -1,53 +1,10 @@
 ﻿@model AllTrainersViewModel
+@using MyGymWeb.Infrastructure.Extensions;
 
 
 @{
     ViewBag.Title = "Trainers";
 }
-
-@*<div class="TrainerContainer">
-    <div class="container">
-        <div class="row">
-
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" style="width: 17rem; height:280px;"
-                     src="@Model.ImageUrl" alt="Trainer Image">
-                <div class="card-body text-center">
-
-                    <h4 class="card-title mt-1">@Model.Name</h4>
-                    <img class="w-100" src="https://t4.ftcdn.net/jpg/02/19/01/15/360_F_219011565_RO9mdUz9DdQ9y8WMy8WZywx96wWnb6ct.jpg" alt="Error">
-
-                </div>
-                <div class="d-flex justify-content-center">
-                    <a asp-route-trainerId="@Model.Id" asp-controller="Trainer" asp-action="Details" method="post">
-                        <input type="submit" value="Details" class="btn btn-primary btn-sm" />
-                    </a>
-                    @if (!User!.IsInRole("Administrator"))
-                    {
-                        <a asp-route-id="@Model.Id" asp-controller="User" asp-action="Appointment" method="post">
-                            <input type="submit" value="PickTrainer" class="btn btn-warning btn-sm" />
-                        </a>
-                    }
-
-                    @if (User?.Identity?.IsAuthenticated ?? false)
-                    {
-                    @if (trainer.UserId == ClaimsExtensions.GetId(User))
-                    {
-
-                    <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Quit">
-                    <input type="submit" value="Quit" class="btn btn-danger btn-sm" />
-                    </a>
-                    }
-
-                    }
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</div>
-*@
 
 
     <div class="col-md-4">
@@ -63,27 +20,10 @@
                 <br />
                 <a asp-controller="Trainer" asp-action="Details" asp-route-trainerId="@Model.Id"
                    class="btn btn-success">Details</a>
-                @if (this.User?.Identity?.IsAuthenticated ?? false)
+                @if (!User!.IsInRole("Administrator"))
                 {
-                    @*<a asp-controller="Trainer" asp-action="Edit" asp-route-id="@Model.Id"
-                class="btn btn-warning">Edit</a>
-                <a asp-controller="Trainer" asp-action="Delete" asp-routeid="@Model.Id"
-                class="btn btn-danger">Delete</a>
-                <p></p>
-                @if (!Model.IsRented)
-                {
-                <form class="input-group-sm" asp-controller="House"
-                asp-action="Rent" asp-route-id="@Model.Id" method="post">
-                <input class="btn btn-primary" type="submit" value="Rent" />
-                </form>
-                }
-                else
-                {
-                <form asp-controller="House" asp-action="Leave"
-                asp-route-id="@Model.Id" method="post">
-                <input class="btn btn-primary" type="submit" value="Leave" />
-                </form>
-                }*@
+                    <a asp-controller="User" asp-action="Appointment" asp-route-id="@Model.Id"
+                    class="btn btn-warning">PickTrainer</a>
                 }
             </div>
         </div>

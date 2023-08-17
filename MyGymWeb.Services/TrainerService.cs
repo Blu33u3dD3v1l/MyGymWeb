@@ -1,4 +1,5 @@
 ﻿using MathNet.Numerics;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
@@ -328,6 +329,7 @@ namespace MyGymWeb.Services
 
         public async Task<AllTrainersFilteredAndPagedServiceModel> AllAsync(AllTrainersQueryModel model)
         {
+
             IQueryable<Trainer> trainerQuery = this.context.Trainers.AsQueryable();
 
             if (!string.IsNullOrEmpty(model.SeachString))
@@ -335,17 +337,35 @@ namespace MyGymWeb.Services
                 string wildCard = $"%{model.SeachString.ToLower()}%";
 
                 trainerQuery = trainerQuery.Where(h => EF.Functions.Like(h.Name, wildCard));
-                                                      
+
 
             }
 
-            trainerQuery = model.TrainerSorting switch
-            {
-                TrainerSorting.PriceAscending => trainerQuery.OrderBy(x => x.PricePerHour),              
-                _ => trainerQuery.OrderBy(x => x.PricePerHour)
-            };
 
-           
+
+            if (model.TrainerSorting == 0)
+            {
+                model.TrainersPerPage = 3;
+                trainerQuery = model.TrainerSorting switch
+                {
+                    TrainerSorting.Name => trainerQuery.OrderBy(x => x.Name),                  
+                    _ => trainerQuery.OrderBy(x => x.Name)
+                };
+
+
+            }
+            else
+            {
+                model.TrainersPerPage = 60;
+                trainerQuery = model.TrainerSorting switch
+                {
+                   
+                    TrainerSorting.PriceAscending => trainerQuery.OrderBy(x => x.PricePerHour),
+                    TrainerSorting.PriceDescending => trainerQuery.OrderByDescending(x => x.PricePerHour),                   
+                    _ => trainerQuery
+                };
+            }
+
                 IEnumerable<AllTrainersViewModel> allTrainers = await trainerQuery.Skip((model.CurrentPage - 1) * model.TrainersPerPage).Take(model.TrainersPerPage)
                .Select(x => new AllTrainersViewModel()
                {
@@ -369,6 +389,8 @@ namespace MyGymWeb.Services
                     TotalTrainersCount = totalTrainers,
                     Trainers = allTrainers
                 };
-        }
+            }
+          
+                
     }
 }

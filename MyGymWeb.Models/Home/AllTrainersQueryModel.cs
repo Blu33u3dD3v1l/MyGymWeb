@@ -10,9 +10,7 @@ namespace MyGymWeb.Models.Home
         public AllTrainersQueryModel()
         {
 
-                this.CurrentPage = 1;
-                this.TrainersPerPage = 3;
-
+                this.CurrentPage = 1;              
                 this.Trainers = new HashSet<AllTrainersViewModel>();
         }
 

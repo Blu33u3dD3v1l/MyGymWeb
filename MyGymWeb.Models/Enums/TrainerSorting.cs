@@ -2,9 +2,9 @@
 {
     public enum TrainerSorting
     {
-
-        PriceAscending = 0,
-        
-
+        Name = 0,
+        PriceAscending = 1,
+        PriceDescending = 2,
+     
     }
 }
