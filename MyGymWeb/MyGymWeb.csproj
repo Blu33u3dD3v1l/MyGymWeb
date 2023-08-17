@@ -41,7 +41,6 @@
     <ProjectReference Include="..\MyGymWeb.Models\MyGymWeb.Models.csproj" />
     <ProjectReference Include="..\MyGymWeb.Services.Models\MyGymWeb.Services.Models.csproj" />
     <ProjectReference Include="..\MyGymWeb.Services\MyGymWeb.Services.csproj" />
-    <ProjectReference Include="..\MyGymWeb.SignalR.Chat\MyGymWeb.SignalR.Chat.csproj" />
     <ProjectReference Include="..\MyGymWeb.WebExtensions\MyGymWeb.WebExtensions.csproj" />
   </ItemGroup>
 

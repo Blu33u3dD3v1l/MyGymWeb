@@ -3,8 +3,8 @@
     public class Message
     {
 
-        public string User { get; set; } = null!;
+        public string? User { get; set; } 
 
-        public string Text { get; set; } = null!;
+        public string? Text { get; set; } 
     }
 }

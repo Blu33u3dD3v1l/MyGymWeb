@@ -5,7 +5,7 @@ using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Services.Interface;
 using MyGymWeb.Web.Extensions.Extensions;
-using MyGymWeb.SignalR.Chat.Hubs;
+
 
 
 
@@ -34,7 +34,7 @@ namespace MyGymWeb
             }).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<MyGymProjectDbContext>();
 
-            builder.Services.AddSignalR();
+          
 
             builder.Services.AddDistributedMemoryCache();
 
@@ -90,7 +90,7 @@ namespace MyGymWeb
             app.UseEndpoints(endpoints =>
             {
 
-                endpoints.MapHub<ChatHub>("/MyGymWeb");
+               
 
                 app.MapControllerRoute(
                 name: "default",
