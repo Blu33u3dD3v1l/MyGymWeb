@@ -7,8 +7,6 @@ using MyGymWeb.Services.Interface;
 using MyGymWeb.Web.Extensions.Extensions;
 
 
-
-
 namespace MyGymWeb
 {
     public class Program
@@ -41,7 +39,7 @@ namespace MyGymWeb
             builder.Services.AddSession(options =>
             {
                 
-                options.IdleTimeout = TimeSpan.FromSeconds(10);               
+                options.IdleTimeout = TimeSpan.FromMinutes(5);               
                 options.Cookie.HttpOnly = true;
             });
 

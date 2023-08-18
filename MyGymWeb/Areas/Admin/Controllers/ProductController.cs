@@ -25,8 +25,24 @@ namespace MyGymWeb.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            var model = new AddProductValidationModel();
-            return View(model);
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            try
+            {
+                var model = new AddProductValidationModel();
+                return View(model);
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
+            }
+
         }
 
         [HttpPost]
@@ -58,9 +74,24 @@ namespace MyGymWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var model = await productService.GetEditProductAsync(id);
 
-            return View(model);
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            try
+            {
+                var model = await productService.GetEditProductAsync(id);
+                return View(model);
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
+            }
+
         }
 
 
@@ -83,6 +114,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             {
 
                 ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
             }
 
             return RedirectToAction("ManageProduct", "Product", "Admin");
@@ -90,9 +122,25 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
-        {           
-            await productService.DeleteProductAsync(id);
-            TempData[WarningMessage] = "You Successfuly deleted a product!";
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            try
+            {
+                await productService.DeleteProductAsync(id);
+                TempData[WarningMessage] = "You Successfuly deleted a product!";
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
+            }
+         
             return RedirectToAction("ManageProduct", "Product", "Admin");
         }
     }

@@ -7,20 +7,6 @@
     <UserSecretsId>aspnet-MyGymWeb-c4ebbe76-cdd8-42b7-9799-977f9e0361db</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Areas\Admin\Data\**" />
-    <Compile Remove="Areas\Admin\Models\**" />
-    <Compile Remove="wwwroot\lib\signalr\**" />
-    <Content Remove="Areas\Admin\Data\**" />
-    <Content Remove="Areas\Admin\Models\**" />
-    <Content Remove="wwwroot\lib\signalr\**" />
-    <EmbeddedResource Remove="Areas\Admin\Data\**" />
-    <EmbeddedResource Remove="Areas\Admin\Models\**" />
-    <EmbeddedResource Remove="wwwroot\lib\signalr\**" />
-    <None Remove="Areas\Admin\Data\**" />
-    <None Remove="Areas\Admin\Models\**" />
-    <None Remove="wwwroot\lib\signalr\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="5.3.1" />

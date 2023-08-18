@@ -56,22 +56,52 @@ namespace MyGymWeb.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(Guid id)
         {
           
-            await applyService.DeleteAppliersAsync(id);
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
 
-            TempData[SuccessMessage] = "You successfuly removed an application!";
+            try
+            {
+                await applyService.DeleteAppliersAsync(id);
+
+                TempData[SuccessMessage] = "You successfuly removed an application!";
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
+            }
+            
+            
 
             return RedirectToAction("All", "Apply", "Admin");
         }
 
-        [HttpGet]
+      
         public async Task<IActionResult> Approve(Guid id)
         {
-          
-            await this.applyService.ApproveTrainerAsync(id);
-            await this.applyService.DeleteAppliersAsync(id);
-        
 
-            TempData[SuccessMessage] = "You successfuly approved a trainer!";
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+
+            try
+            {
+                await this.applyService.ApproveTrainerAsync(id);
+                await this.applyService.DeleteAppliersAsync(id);
+
+                TempData[SuccessMessage] = "You successfuly approved a trainer!";
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
+            }
 
             return RedirectToAction("All", "Apply", "Admin");
         }

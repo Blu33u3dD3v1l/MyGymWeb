@@ -53,22 +53,21 @@
                 <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
                 <div class="card bg-glass">
-                    <div class="card-body px-4 py-5 px-md-5">
+                    <div class="card-body px-4 py-5 px-md-5">                       
                         <form method="post">
-                            <hr />
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <hr />                           
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
                                         <label asp-for="@Model.Email" class="form-label"></label>
-                                        <input asp-for="@Model.Email" class="form-control" autocomplete="Email" aria-required="true" />
+                                        <input asp-for="@Model.Email" class="form-control" autocomplete="email" aria-required="true" />
                                         <span asp-validation-for="Email" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
                                         <label asp-for="@Model.Password" class="form-label"></label>
-                                        <input asp-for="@Model.Password" class="form-control" autocomplete="username" aria-required="true" />
+                                        <input asp-for="@Model.Password" class="form-control" autocomplete="current-password" aria-required="true" />
                                         <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                 </div>

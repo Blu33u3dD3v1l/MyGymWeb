@@ -21,11 +21,16 @@ namespace MyGymWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> All()
         {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+
             var model = await appointmentService.GetAllAsync();
             return View(model); 
         }
 
-        [HttpGet]
+      
         public async Task<IActionResult> Approve(int id)
         {
 
@@ -45,12 +50,28 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return RedirectToAction("All", "Appointment", "Admin");
         }
 
-        [HttpPost]
+      
         public async Task<IActionResult> Delete(int id)
         {
-            await appointmentService.DeleteAppointmentsAsync(id);
 
-            TempData[SuccessMessage] = "You Successfuly rejected an appointment!";
+            if(!ModelState.IsValid)
+            {
+                return View();  
+            }
+
+            try
+            {
+                await appointmentService.DeleteAppointmentsAsync(id);
+
+                TempData[SuccessMessage] = "You Successfuly rejected an appointment!";
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
+            }
+          
 
             return RedirectToAction("All", "Appointment", "Admin");
         }

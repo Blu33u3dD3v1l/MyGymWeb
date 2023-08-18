@@ -23,6 +23,10 @@ namespace MyGymWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
+            if (!ModelState.IsValid)
+            {
+              return View();
+            }
             var view = await gymService.GetEditGymAsync(id);
             return View(view);
         }
@@ -54,6 +58,11 @@ namespace MyGymWeb.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             var model = new AddGymFormModel();
             return View(model);
         }
@@ -66,18 +75,46 @@ namespace MyGymWeb.Areas.Admin.Controllers
                 throw new Exception();
             }
 
+            try
+            {
+                await gymService.AddGymAsync(model);
+                TempData[SuccessMessage] = "You successfuly added a Gym!";
+            }
+            catch (Exception)
+            {
 
-            await gymService.AddGymAsync(model);
-            TempData[SuccessMessage] = "You successfuly added a Gym!";
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View(model);
+            }
+
+          
             return RedirectToAction("ManageGym", "Gym", "Admin");
         }
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            await gymService.RemoveGymAsync(id);
-            TempData[SuccessMessage] = "You successfuly deleted a Gym!";
+
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            try
+            {
+                await gymService.RemoveGymAsync(id);
+                TempData[SuccessMessage] = "You successfuly deleted a Gym!";
+               
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
+            }
+
             return RedirectToAction("ManageGym", "Gym", "Admin");
+
         }
     }
 }

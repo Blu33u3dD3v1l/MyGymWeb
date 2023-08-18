@@ -24,8 +24,24 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
         public async Task<IActionResult> ManageTrainer()
         {
-            var t = await trainerService.GetAllTrainersAsync();
-            return View(t);
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+
+            try
+            {
+                var t = await trainerService.GetAllTrainersAsync();
+                return View(t);
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
+            }
+            
 
         }
 
@@ -47,19 +63,31 @@ namespace MyGymWeb.Areas.Admin.Controllers
             }
             string? userId = this.User.GetId();
 
-            if (userId != null)
+
+
+            try
             {
-                bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
-
-                if (isTrainer)
+                if (userId != null)
                 {
-                    return RedirectToAction("ManageTrainer", "Trainer", "Admin");
+                    bool isTrainer = await this.trainerService.TrainerExistByUserId(userId);
+
+                    if (isTrainer)
+                    {
+                        return RedirectToAction("ManageTrainer", "Trainer", "Admin");
+                    }
                 }
+
+                await this.trainerService.AddTrainerAsync(model);
+
+                TempData[SuccessMessage] = "You successfuly added a trainer!";
             }
+            catch (Exception)
+            {
 
-            await this.trainerService.AddTrainerAsync(model);
-
-            TempData[SuccessMessage] = "You successfuly added a trainer!";
+                ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
+            }
+          
 
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
@@ -89,6 +117,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             {
 
                 ModelState.AddModelError(string.Empty, "Unexpected Error");
+                return View();
             }
 
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
@@ -106,7 +135,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return RedirectToAction("ManageTrainer", "Trainer", "Admin");
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> DeleteForApply(Guid id)
         {
 

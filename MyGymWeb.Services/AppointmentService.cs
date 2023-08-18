@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
@@ -16,6 +17,7 @@ namespace MyGymWeb.Services
             data = _data;
         }
 
+       
         public async Task ApproveAppointmentAsync(int id)
         {
 
@@ -57,6 +59,7 @@ namespace MyGymWeb.Services
             await data.SaveChangesAsync();
         }
 
+       
         public async Task DeleteAppointmentsAsync(int id)
         {
             var currentApplier = await data.Appointments
@@ -71,6 +74,7 @@ namespace MyGymWeb.Services
             await data.SaveChangesAsync();
         }
 
+        
         public async Task<IEnumerable<UserTrainersFormModel>> GetAllAsync()
         {
             var currenUser = await data.Users.FirstOrDefaultAsync();

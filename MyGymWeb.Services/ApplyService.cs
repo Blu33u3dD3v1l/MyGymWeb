@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
@@ -16,6 +17,8 @@ namespace MyGymWeb.Services
         {
             context = _context;
         }
+
+       
         public async Task AddApplyAsync(string userId, TrainerQuitViewModel model)
         {
 
@@ -44,12 +47,14 @@ namespace MyGymWeb.Services
             await context.SaveChangesAsync();
         }
 
+       
         public async Task<bool> ApplierExistByUserId(string userId)
         {
             bool applier = await context.Applies.AnyAsync(applies => applies.UserId == userId);
             return applier;
         }
 
+       
         public async Task ApproveTrainerAsync(Guid id)
         {
             var currentTrainer = await context.Applies.FirstOrDefaultAsync(x => x.Id == id);
@@ -79,6 +84,7 @@ namespace MyGymWeb.Services
 
         }
 
+       
         public async Task DeleteAppliersAsync(Guid id)
         {
            
@@ -95,7 +101,7 @@ namespace MyGymWeb.Services
             
         }
 
-
+      
         public async Task<IEnumerable<TrainerQuitViewModel>> GetAllAppliesAsync()
         {
 
