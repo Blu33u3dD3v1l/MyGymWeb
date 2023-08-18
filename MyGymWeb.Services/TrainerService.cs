@@ -330,6 +330,8 @@ namespace MyGymWeb.Services
         public async Task<AllTrainersFilteredAndPagedServiceModel> AllAsync(AllTrainersQueryModel model)
         {
 
+
+
             IQueryable<Trainer> trainerQuery = this.context.Trainers.AsQueryable();
 
             if (!string.IsNullOrEmpty(model.SeachString))

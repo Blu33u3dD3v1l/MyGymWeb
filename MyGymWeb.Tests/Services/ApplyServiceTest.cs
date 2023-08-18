@@ -278,34 +278,7 @@ namespace MyGymWeb.Tests.Services
             await Assert.ThrowsAsync<Exception>(() => result);
         }
 
-        [Fact]
-
-        public async void GetDeleteAppliersAsyncShouldReturnView()
-        {
-            using var data = DatabaseMock.Instance;
-            Guid guid = Guid.Parse("11223344-5566-7788-99AA-BBCCDDEEFF00");
-            var userId = "userId";
-            var m = new TrainerQuitViewModel()
-            {
-                Id = guid,
-                UserId = userId,
-                Name = "Name",
-                ImageUrl = "1",
-                Info = "Info",
-                Practis = "Practis",
-                Type = "Type",
-                Motto = "Moto"
-            };
-
-            await data.Applies.AddAsync(new Apply { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = guid });
-            await data.SaveChangesAsync();
-            var applyService = new ApplyService(data);
-
-            var result = await applyService.GetDeleteAppliersAsync(guid, m);
-
-            Assert.NotNull(result);
-
-        }
+       
 
       
 

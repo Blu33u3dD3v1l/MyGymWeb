@@ -24,6 +24,10 @@ namespace MyGymWeb.Controllers
         public async Task<IActionResult> Search([FromQuery] AllTrainersQueryModel model)
         {
 
+            if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
             var serviceModel
                = await this.trainerService.AllAsync(model);

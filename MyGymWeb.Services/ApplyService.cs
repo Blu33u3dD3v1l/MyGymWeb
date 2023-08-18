@@ -125,35 +125,5 @@ namespace MyGymWeb.Services
 
             return applies;
         }
-
-       
-
-        public async Task<TrainerQuitViewModel> GetDeleteAppliersAsync(Guid id, TrainerQuitViewModel model)
-        {
-            var currId = await context.Applies.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (currId == null)
-            {
-                throw new ArgumentNullException();
-            }
-
-               model = new TrainerQuitViewModel()
-            {
-                Id = currId.Id,
-                Name = currId.Name,
-                ImageUrl = currId.ImageUrl,
-                Motto = currId.Motto,
-                Info = currId.Info,
-                Practis = currId.Practis,
-                PricePerHour = currId.PricePerHour,
-                Type = currId.Type,
-                PhoneNumber = currId.PhoneNumber,
-
-            };
-
-            return model;
-        }
-
-        
     }
 }

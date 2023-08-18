@@ -27,32 +27,8 @@ namespace MyGymWeb.Areas.Admin.Controllers
             return View(model);
         }
 
+
         [HttpGet]
-        public async Task<IActionResult> Delete(Guid id, TrainerQuitViewModel model)
-        {
-
-            if(!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            try
-            {
-                var a = await applyService.GetDeleteAppliersAsync(id, model);
-                
-            }
-            catch (ArgumentNullException)
-            {
-
-                ModelState.AddModelError(string.Empty, "Unexpected Error");
-                return View(model);
-            }
-
-            return View(model);
-
-        }
-
-        [HttpPost]
         public async Task<IActionResult> Delete(Guid id)
         {
           
