@@ -11,12 +11,12 @@
                 <img class="card-img-top" style="width: 20rem; height: 280px"
                      src="@Model.ImageUrl" alt="Trainer Image">
             </div>
-            <div class="card col-8 border-0">
-                <p style="font-size:25px;"><u>@Model.Name</u></p>
-                <p>Personal Info: <b>@Model.Info</b></p>
-                <p>Practis: <b>@Model.Practis</b></p>
-                <p>Motto: <b>@Model.Motto</b></p>
-                <p>Price: <b>@Model.PricePerHour</b></p>
+            <div class="card-body col-8 border-0" style="padding-right:20rem">
+                <p style="font-size:25px; color:white"><u>@Model.Name</u></p>
+                <p style="color:white">Personal Info: <b>@Model.Info</b></p>
+                <p style="color:white">Practis: <b>@Model.Practis</b></p>
+                <p style="color:white">Motto: <b>@Model.Motto</b></p>
+                <p style="color:wheat">Price: <b>@Model.PricePerHour</b></p>
                 <div class="form-inline">
 
                     @if (this.User.Identity?.IsAuthenticated ?? false)

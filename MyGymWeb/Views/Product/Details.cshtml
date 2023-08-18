@@ -14,24 +14,11 @@
                 <img class="card-img-top" style="width: 20rem;"
                      src="@Model.ImageUrl" alt="Gym Image">
             </div>
-            <div class="card col-8 border-0">
-                <p style="font-size:25px;"><u>@Model.Name</u></p>
-                <p>Mark: <b>@Model.Mark</b></p>
-                <p>Description: <b>@Model.Description</b></p>
-                <p>Price: <b>@Model.Price</b>$</p>
-
-                <div class="form-inline">
-                    @if (this.User.Identity?.IsAuthenticated ?? false)
-                    {
-                        if (!User.IsInRole("Administrator"))
-                        {
-
-                            <a class="ml-2 btn btn-danger" asp-controller="Home" asp-action="Index"
-                               asp-route-id="@Model.Id">Buy</a>
-                        }
-
-                    }
-                </div>
+            <div class="card-body col-8 border-0">
+                <p style="font-size:25px; color:white"><u>@Model.Name</u></p>
+                <p style="color:white">Mark: <b>@Model.Mark</b></p>
+                <p style="color:white">Description: <b>@Model.Description</b></p>
+                <p style="color:wheat">Price: <b>@Model.Price</b>$</p>
 
             </div>
         </div>

@@ -13,22 +13,23 @@
         <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
             <form method="post">
                 <div class="mb-3">
-                    <label asp-for="@Model.Name"><h5><i>Name</i></h5></label>
+                    <label asp-for="@Model.Name"><h5 class="text-white"><i>Name</i></h5></label>
+                  
                     <input asp-for="@Model.Name" class="form-control" aria-required="true" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.Description"><h5><i>Description</i></h5></label>
+                    <label asp-for="@Model.Description"><h5 class="text-white"><i>Description</i></h5></label>
                     <input asp-for="@Model.Description" class="form-control" aria-required="true" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.ImageUrl"><h5><i>Image</i></h5></label>
+                    <label asp-for="@Model.ImageUrl"><h5 class="text-white"><i>Image</i></h5></label>
                     <input asp-for="@Model.ImageUrl" class="form-control" aria-required="true" />
                     <span asp-validation-for="ImageUrl" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.Type"><h5><i>Type</i></h5></label>
+                    <label asp-for="@Model.Type"><h5 class="text-white"><i>Type</i></h5></label>
                     <input asp-for="@Model.Type" class="form-control" value="" />
                     <span asp-validation-for="Type" class="text-danger"></span>
                 </div>

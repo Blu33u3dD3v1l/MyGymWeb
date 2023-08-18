@@ -21,6 +21,7 @@ namespace MyGymWeb.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {

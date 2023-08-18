@@ -14,23 +14,26 @@
             <div class="col-4">
                 <img class="card-img-top" @*style="width: 20rem;"*@
                      src="@Model.ImageUrl" alt="Gym Image">
-            </div>
-            <div class="card col-8 border-0">
-                <p style="font-size:25px;"><u>@Model.Name</u></p>
-                <p>Description: <b>@Model.Description</b></p>
-                <p>Type: <b>@Model.Type</b></p>
-                <div class="form-inline">
-                    @if (this.User.Identity?.IsAuthenticated ?? false)
-                    {
-                        if (!User.IsInRole("Administrator"))
+            </div>         
+                <div class="card-body col-8 border-0" style="color:black">
+                    <div class="color">
+                    <p style="font-size:25px; color:white"><u>@Model.Name</u></p>
+                    <p style="color:white">Description: <b>@Model.Description</b></p>
+                    <p style="color:wheat">Type: <b>@Model.Type</b></p>
+                    <div class="form-inline">
+                        @if (this.User.Identity?.IsAuthenticated ?? false)
                         {
-                            <a class="ml-2 btn btn-danger" asp-controller="Trainer" asp-action="TrainerView"
-                               asp-route-gymId="@Model.Id">Choose Trainer</a>
-                        }
+                            if (!User.IsInRole("Administrator"))
+                            {
+                                <a class="ml-2 btn btn-danger" asp-controller="Trainer" asp-action="TrainerView"
+                                   asp-route-gymId="@Model.Id">Choose Trainer</a>
+                            }
 
-                    }
+                        }
+                    </div>
                 </div>
-            </div>
+                   
+            </div>                      
         </div>
     </div>
 </div>

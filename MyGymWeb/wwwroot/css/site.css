@@ -17,6 +17,7 @@ body {
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
+    background-color:black;
 
 
 }
@@ -135,13 +136,13 @@ body {
 
 .TrainerContainer {
     background-color: black;
-    margin: 73px 0px 0px;
+    margin: 90px 0px 0px;
 }
 
 
 .MyProducts {
     background-color: black;
-    margin: 73px 0px 0px;
+    margin: 90px 0px 0px;
 }
 
 .MyLogin {
@@ -185,9 +186,9 @@ body {
 }
 
 .MineProducts {
-    background-color: black;
-    margin: 73px 0px 0px;
+    background-color: black; 
     margin-bottom: auto;
+    margin: 100px 50px 0px;
 }
 
 .MineNoProducts {
@@ -196,7 +197,8 @@ body {
 
 .productsForMe {
     background-color: black;
-    padding-bottom: 100px
+    padding-bottom: 100px;
+    
 }
 
 .MineNoProducts h3 {
@@ -234,7 +236,10 @@ body {
 }
 
 .AllGyms {
-    margin: 45px 0px 0px;
+    margin: 100px 50px 0px;
+    background-color:black;
+
+
 }
 
 .GymDetails {
@@ -253,7 +258,8 @@ body {
 
 .AllMyTrainers {
     background-color: black;
-    padding-bottom: 100px
+    padding-bottom: 100px;
+    
 }
 
 .MineNoTrainers {
@@ -268,6 +274,7 @@ body {
 .AllUsers {
     padding: 11rem 0;
     font-weight: 700;
+    background-color: white;
 }
 
 .EditProducts {
@@ -311,6 +318,9 @@ body {
 }
 .Error {
     padding: 12rem 0;
+}
+.color{
+    background-color: black;
 }
 
 
