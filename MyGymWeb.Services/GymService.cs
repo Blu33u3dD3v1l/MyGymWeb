@@ -25,13 +25,11 @@ namespace MyGymWeb.Services
                Description = model.Description,
                Type = model.Type,
             };
-
-            
+           
             await context.Gyms.AddAsync(entity);
             await context.SaveChangesAsync();
             
         }
-
         public async Task DeleteGymAsync(int id)
         {
            var gym = await context.Gyms
@@ -59,10 +57,7 @@ namespace MyGymWeb.Services
 
             await this.context.SaveChangesAsync();
 
-        }
-
-       
-
+        }     
         public async Task<IEnumerable<GymsViewModel>> GetAllGymsAsync()
         {
             var entity = await context.Gyms
@@ -94,12 +89,7 @@ namespace MyGymWeb.Services
             
 
             return allGyms;
-        }
-
-      
-
-       
-
+        }           
         public async Task<GymsViewModel> GetDescriptionAsync(int id)
         {
             var currId = await context.Gyms.FindAsync(id);
@@ -117,8 +107,7 @@ namespace MyGymWeb.Services
                 Description = currId.Description,
                 ImageUrl = currId.ImageUrl,
                 Type = currId.Type
-            };                                                                                                                                                                                             
-
+            };                                                                                                                                                                                     
             return entity;
         }
 

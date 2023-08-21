@@ -12,7 +12,6 @@
                 <img class="card-img-top" style="width: 19rem;  height:280px"
                      src="@trainer.ImageUrl" alt="Trainer Image">
                 <div class="card-body text-center">
-
                     <h5 class="card-title mt-1">@trainer.Name</h5>
                 </div>
 
@@ -22,17 +21,13 @@
                         <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
                             <input type="submit" value="Details" class="btn btn-primary btn-sm" />
                         </a>
-
                         <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post">
                             <input type="submit" value="PickTrainer" class="btn btn-warning btn-sm" />
                         </a>
-
                     </div>
                 }
             </div>
         }
     </div>
-
-
 </div>
 

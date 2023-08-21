@@ -3,7 +3,9 @@
     public class UserTrainersFormModel
     {
         public int Id { get; set; }
+
         public string UserId { get; set; } = null!;
+
         public string AppointmentTime { get; set; } = null!;
 
         public string ClientFullName { get; set; } = null!;

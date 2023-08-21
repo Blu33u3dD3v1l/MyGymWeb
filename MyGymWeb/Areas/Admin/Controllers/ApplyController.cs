@@ -50,12 +50,9 @@ namespace MyGymWeb.Areas.Admin.Controllers
                 return View();
             }
             
-            
-
             return RedirectToAction("All", "Apply", "Admin");
         }
-
-      
+   
         public async Task<IActionResult> Approve(Guid id)
         {
 
@@ -63,7 +60,6 @@ namespace MyGymWeb.Areas.Admin.Controllers
             {
                 return View();
             }
-
 
             try
             {

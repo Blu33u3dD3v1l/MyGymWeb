@@ -36,6 +36,5 @@ namespace MyGymWeb.Data.Models
         [ForeignKey(nameof(TrainerId))]
         public Trainer? Trainer { get; set; }
 
-
     }
 }

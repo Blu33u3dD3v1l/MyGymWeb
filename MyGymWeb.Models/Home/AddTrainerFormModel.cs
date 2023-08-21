@@ -12,16 +12,12 @@ namespace MyGymWeb.Models.Home
 
         public string Name { get; set; } = null!;
 
-
         [StringLength(InfoMaxValidation, MinimumLength = InfoMinValidation)]
         [Required]
         public string Info { get; set; } = null!;
 
-
-
         [Required]
         public string ImageUrl { get; set; } = null!;
-
 
         [StringLength(PractisMaxValidation, MinimumLength = PractisMinValidation)]
         [Required]
@@ -30,7 +26,6 @@ namespace MyGymWeb.Models.Home
         [Range(typeof(decimal), PriceMinValidation, PriceMaxValidation)]
         [Required]
         public decimal PricePerHour { get; set; }
-
 
         public string Type { get; set; } = null!;
 

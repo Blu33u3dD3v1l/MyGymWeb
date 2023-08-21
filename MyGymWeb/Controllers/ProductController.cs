@@ -21,7 +21,6 @@ namespace MyGymWeb.Controllers
             return View(model);
         }
 
-
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
@@ -29,9 +28,7 @@ namespace MyGymWeb.Controllers
             var model = await productService.GetProductDescriptionAsync(id);
 
             return View(model);
-        }
-
-      
+        }     
 
     }
 }

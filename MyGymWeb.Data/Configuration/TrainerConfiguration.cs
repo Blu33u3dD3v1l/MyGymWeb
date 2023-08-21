@@ -14,9 +14,7 @@ namespace MyGymWeb.Data.Configuration
             builder
               .HasData(CreateTypes());
 
-
         }
-
         private List<Trainer> CreateTypes()
         {
             var types = new List<Trainer>()

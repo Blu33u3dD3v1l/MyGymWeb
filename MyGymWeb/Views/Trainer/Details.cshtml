@@ -7,7 +7,6 @@
     <div class="container" style="display:inline">
         <div class="row">
             <div class="col-4">
-
                 <img class="card-img-top" style="width: 20rem; height: 280px"
                      src="@Model.ImageUrl" alt="Trainer Image">
             </div>
@@ -18,15 +17,13 @@
                 <p style="color:white">Motto: <b>@Model.Motto</b></p>
                 <p style="color:wheat">Price: <b>@Model.PricePerHour</b></p>
                 <div class="form-inline">
-
                     @if (this.User.Identity?.IsAuthenticated ?? false)
                     {
                         if (!this.User.IsInRole("Administrator"))
                         {
                               <a class="ml-2 btn btn-danger" asp-controller="User" asp-action="Appointment"
                        asp-route-trainerId="@Model.Id">Pick</a>
-                        }
-                        
+                        }                       
                     }
                 </div>
             </div>

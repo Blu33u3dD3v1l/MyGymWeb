@@ -35,7 +35,5 @@ namespace MyGymWeb.Data.Configuration
             };
             return groupTrainers;
         }
-
-
     }
  }

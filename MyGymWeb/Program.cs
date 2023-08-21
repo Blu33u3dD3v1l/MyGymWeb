@@ -15,7 +15,6 @@ namespace MyGymWeb
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<MyGymProjectDbContext>(options =>
                 options.UseSqlServer(connectionString));
@@ -30,9 +29,7 @@ namespace MyGymWeb
 
 
             }).AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<MyGymProjectDbContext>();
-
-          
+                .AddEntityFrameworkStores<MyGymProjectDbContext>();         
 
             builder.Services.AddDistributedMemoryCache();
 
@@ -50,18 +47,13 @@ namespace MyGymWeb
 
             builder.Services.AddApplicationServices(typeof(ITrainerService));
             builder.Services.AddResponseCaching();
-
-  
-
+ 
             builder.Services.ConfigureApplicationCookie(cfg =>
             {
                 cfg.LoginPath = "/User/Login";
             });
 
             var app = builder.Build();
-
-
-
 
             if (app.Environment.IsDevelopment())
             {
@@ -87,9 +79,7 @@ namespace MyGymWeb
 
             app.UseEndpoints(endpoints =>
             {
-
-               
-
+              
                 app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
@@ -107,7 +97,6 @@ namespace MyGymWeb
 
             });
 
- 
             app.UseResponseCaching();
             app.Run();
         }

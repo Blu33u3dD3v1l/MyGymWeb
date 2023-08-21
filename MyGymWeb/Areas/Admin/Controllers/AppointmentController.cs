@@ -8,10 +8,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
     public class AppointmentController : BaseController
     {
 
-
-        private readonly IAppointmentService appointmentService;
-        
-
+        private readonly IAppointmentService appointmentService;        
         public AppointmentController(IAppointmentService _appointmentService)
         {
             appointmentService = _appointmentService;
@@ -28,9 +25,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
             var model = await appointmentService.GetAllAsync();
             return View(model); 
-        }
-
-      
+        }     
         public async Task<IActionResult> Approve(int id)
         {
 
@@ -49,8 +44,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
             return RedirectToAction("All", "Appointment", "Admin");
         }
-
-      
+     
         public async Task<IActionResult> Delete(int id)
         {
 

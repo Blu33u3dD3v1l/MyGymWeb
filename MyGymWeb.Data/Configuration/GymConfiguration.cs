@@ -7,7 +7,6 @@ namespace MyGymWeb.Data.Configuration
   
     internal class GymConfiguration : IEntityTypeConfiguration<Gym>
     {
-
         public void Configure(EntityTypeBuilder<Gym> builder)
         {
             builder.HasData(CreateGym());

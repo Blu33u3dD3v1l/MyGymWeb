@@ -23,6 +23,7 @@ namespace MyGymWeb.Models.Home
         [Required]
         public string Description { get; set; } = null!;
 
+        [Required]
         public string ImageUrl { get; set; } = null!;
 
     }

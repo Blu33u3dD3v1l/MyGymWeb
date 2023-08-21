@@ -30,6 +30,7 @@ namespace MyGymWeb.Models.Home
         [Required]
         public decimal PricePerHour { get; set; }
 
+        [Required]
         public string Type { get; set; } = null!;
 
 

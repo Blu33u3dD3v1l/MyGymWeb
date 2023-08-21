@@ -13,15 +13,12 @@
     <div class="container">
         <table class="table table-striped">
             <thead>
-                <tr>
-                                       
+                <tr>                                       
                     <th><label>Full Name</label></th>
                     <th><label>Email</label></th>
                     <th><label>AppointmentTime</label></th>
                     <th><label>Trainer Name</label></th>
                     <th><label>Action</label></th>
-
-
                 </tr>
             </thead>
             <tbody>
@@ -33,10 +30,8 @@
                         <td><label>@user.AppointmentTime</label></td>
                         <td><label>@user.TrainerName</label></td>
                         <td>
-
                             <a type="submit" class="btn btn-danger" asp-route-id="@user.Id"  asp-controller="User" asp-action="Cancel"  method="get">Cancel</a>
-                        </td>
-                      
+                        </td>                      
                     </tr>
                 }
             </tbody>

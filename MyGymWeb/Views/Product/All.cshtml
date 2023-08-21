@@ -7,7 +7,6 @@
 
 <div class="MyProducts">
     <div class="container">
-
         <div class="text-center row">
             @foreach (var product in Model)
             {
@@ -15,14 +14,10 @@
                     <img class="card-img-top" style="width: 17rem; height:250px;"
                          src="@product.ImageUrl" alt="Product Image">
                     <div class="card-body">
-
                         <h5 class="card-title mt-1">@product.Name</h5>
                         <p class="mb-0">Mark: @product.Mark</p>
                         <b class="mb-1">@product.Price$</b>
-
-
-                    </div>
-                  
+                    </div>                  
                         <div class="d-flex justify-content-center">
                             <a asp-route-id="@product.Id" asp-controller="Product" asp-action="Details" method="post">
                                 <input type="submit" value="Details" class="btn btn-primary btn-sm" />
@@ -32,11 +27,9 @@
                                 <a asp-route-id="@product.Id" asp-controller="User" asp-action="Buy">
                                     <input type="submit" value="Buy" class="btn btn-warning btn-sm" />
                                 </a>
-                            }
-                          
-                        </div>
-                    
-                </div>
+                            }                          
+                        </div>                   
+               </div>
             }
         </div>
     </div>

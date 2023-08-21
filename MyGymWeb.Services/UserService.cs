@@ -14,7 +14,6 @@ namespace MyGymWeb.Services
 
         private readonly MyGymProjectDbContext data;
 
-
         public UserService(MyGymProjectDbContext data)
         {
             this.data = data;
@@ -104,7 +103,6 @@ namespace MyGymWeb.Services
                 .FirstOrDefaultAsync();
 
 
-
             if ((currentUser!.Amount - productForBuy!.Price) < 0)
             {
                 throw new Exception("Amount is not enough!");
@@ -133,11 +131,8 @@ namespace MyGymWeb.Services
             await data.SaveChangesAsync();
         }
 
-
-
         public async Task CancelUserApplicationAsync(int id)
         {
-
 
            var currentAppointmentToCancel = await data.Appointments.FirstOrDefaultAsync(x => x.Id ==  id);
 
@@ -271,9 +266,7 @@ namespace MyGymWeb.Services
 
             await data.SaveChangesAsync();
         }
-
        
-
         public async Task<string> UserFullName(string userId)
         {
             var user = await data.Users

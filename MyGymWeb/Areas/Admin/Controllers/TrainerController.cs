@@ -42,7 +42,6 @@ namespace MyGymWeb.Areas.Admin.Controllers
                 return View();
             }
             
-
         }
 
         [HttpGet]
@@ -62,8 +61,6 @@ namespace MyGymWeb.Areas.Admin.Controllers
                 return View(model);
             }
             string? userId = this.User.GetId();
-
-
 
             try
             {

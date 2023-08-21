@@ -14,9 +14,7 @@
                     <img class="card-img-top" style="width: 17rem; height:280px;"
                          src="@trainer.ImageUrl" alt="Trainer Image">
                     <div class="card-body text-center">
-
                         <h4 class="card-title mt-1">@trainer.Name</h4>
-
                         @if (trainer.IsAvailable)
                         {
                             <img class="w-100" src="https://t4.ftcdn.net/jpg/02/19/01/15/360_F_219011565_RO9mdUz9DdQ9y8WMy8WZywx96wWnb6ct.jpg" alt="Error">
@@ -35,8 +33,7 @@
                             <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post">
                                 <input type="submit" value="PickTrainer" class="btn btn-warning btn-sm" />
                             </a>
-                        }
-                        
+                        }                       
                         @if (User?.Identity?.IsAuthenticated ?? false)
                         {
                             @if (trainer.UserId == ClaimsExtensions.GetId(User))
@@ -45,8 +42,7 @@
                                 <a asp-route-id="@trainer.Id" asp-controller="Trainer" asp-action="Quit">
                                     <input type="submit" value="Quit" class="btn btn-danger btn-sm" />
                                 </a>
-                            }
-                       
+                            }                      
                         }
                     </div>
                 </div>

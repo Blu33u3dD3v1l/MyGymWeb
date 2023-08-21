@@ -26,7 +26,6 @@ namespace MyGymWeb.Data.Configuration
                 Price = 30,
                 Description = "Introducing our sleek and stylish protein shaker bottle - the perfect companion for your workouts and active lifestyle!, Crafted with a perfect size.",
 
-
             },
             new Product()
             {

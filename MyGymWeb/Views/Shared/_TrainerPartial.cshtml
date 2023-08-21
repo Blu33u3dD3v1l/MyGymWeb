@@ -6,30 +6,27 @@
     ViewBag.Title = "Trainers";
 }
 
-
-
-
-    <div class="col-md-4 mb-4">
-        <div class="card mb-3 h-100">
-            <img class="card-img-top h-100" src="@Model.ImageUrl" alt="House Image">
-            <div class="card-body text-center">
-                <h4>@Model.Name</h4>
-                <h6>Motto: <b>@Model.Motto</b></h6>
-                <h6>
-                    Price Per Hour:
-                    <b>@Model.PricePerHour $</b>
-                </h6>
-                <br />
-                <a asp-controller="Trainer" asp-action="Details" asp-route-trainerId="@Model.Id"
-                   class="btn btn-success">Details</a>
-                @if (!User!.IsInRole("Administrator"))
-                {
-                    <a asp-controller="User" asp-action="Appointment" asp-route-id="@Model.Id"
-                    class="btn btn-warning">PickTrainer</a>
-                }
-            </div>
+<div class="col-md-4 mb-4">
+    <div class="card mb-3 h-100">
+        <img class="card-img-top h-100" src="@Model.ImageUrl" alt="House Image">
+        <div class="card-body text-center">
+            <h4>@Model.Name</h4>
+            <h6>Motto: <b>@Model.Motto</b></h6>
+            <h6>
+                Price Per Hour:
+                <b>@Model.PricePerHour $</b>
+            </h6>
+            <br />
+            <a asp-controller="Trainer" asp-action="Details" asp-route-trainerId="@Model.Id"
+               class="btn btn-success">Details</a>
+            @if (!User!.IsInRole("Administrator"))
+            {
+                <a asp-controller="User" asp-action="Appointment" asp-route-id="@Model.Id"
+                   class="btn btn-warning">PickTrainer</a>
+            }
         </div>
     </div>
+</div>
 
 
 

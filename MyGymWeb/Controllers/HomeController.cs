@@ -22,7 +22,6 @@ namespace MyGymWeb.Controllers
         public IActionResult Error(int statusCode)
         {
 
-
             if(statusCode == 404)
             {
                 return this.View("Error404");
@@ -31,7 +30,6 @@ namespace MyGymWeb.Controllers
             {
                 return this.View("Error401");
             }
-
 
             return View();
         }

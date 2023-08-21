@@ -16,16 +16,13 @@ namespace MyGymWeb.Services
         {
             data = _data;
         }
-
-       
+      
         public async Task ApproveAppointmentAsync(int id)
         {
 
 
             var ids = await data.Appointments.FirstOrDefaultAsync(x => x.Id == id);
-
-          
-
+         
             var currentUser = await data.Users
                    .Where(u => u.Id == ids!.UserId)
                    .Include(x => x.UsersTrainers)
@@ -58,8 +55,7 @@ namespace MyGymWeb.Services
 
             await data.SaveChangesAsync();
         }
-
-       
+      
         public async Task DeleteAppointmentsAsync(int id)
         {
             var currentApplier = await data.Appointments
@@ -73,13 +69,11 @@ namespace MyGymWeb.Services
             data.Appointments.RemoveRange(currentApplier);
             await data.SaveChangesAsync();
         }
-
         
         public async Task<IEnumerable<UserTrainersFormModel>> GetAllAsync()
         {
             var currenUser = await data.Users.FirstOrDefaultAsync();
             List<UserTrainersFormModel> result = new List<UserTrainersFormModel>();
-
 
             foreach (var item in data.Appointments)
             {

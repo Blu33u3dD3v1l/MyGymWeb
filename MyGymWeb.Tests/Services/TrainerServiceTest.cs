@@ -9,7 +9,6 @@ namespace MyGymWeb.Tests.Services
     {
 
         [Fact]
-
         public void GetAllTrainersAsyncShouldBeEmpty()
         {
             using var data = DatabaseMock.Instance;
@@ -21,7 +20,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetAllTrainersAsyncShouldReturnValueIfExist()
         {
 
@@ -31,18 +29,13 @@ namespace MyGymWeb.Tests.Services
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
 
-
-
             var result = trainerService.GetAllTrainersAsync();
 
-
             Assert.True(result.Result.Count() == 1);
-
 
         }
 
         [Fact]
-
         public async void GetAllTrainersAsyncShouldReturnView()
         {
             using var data = DatabaseMock.Instance;
@@ -84,7 +77,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetTypeTrainersAsyncShouldReturnException()
         {
             var data = DatabaseMock.Instance;
@@ -110,7 +102,6 @@ namespace MyGymWeb.Tests.Services
 
 
         [Fact]
-
         public async void GetTrainerDescriptionAsyncShouldReturnCorrectValue()
         {
             var data = DatabaseMock.Instance;
@@ -127,7 +118,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetTrainerDescriptionAsyncShouldThrowException()
         {
             var data = DatabaseMock.Instance;
@@ -144,7 +134,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetEditTrainerAsyncShouldReturnCorrectValue()
         {
             var data = DatabaseMock.Instance;
@@ -161,7 +150,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetEditTrainerAsyncShouldThrowException()
         {
             var data = DatabaseMock.Instance;
@@ -178,7 +166,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void EditByIdAsyncShoudReturnCorrectValue()
         {
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
@@ -187,7 +174,6 @@ namespace MyGymWeb.Tests.Services
             await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = trainerId });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
-
 
             await data.SaveChangesAsync();
             var producService = new ProductService(data);
@@ -215,7 +201,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void EditByIdAsyncShoudTrowException()
         {
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
@@ -224,7 +209,6 @@ namespace MyGymWeb.Tests.Services
             await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = Guid.NewGuid() });
             await data.SaveChangesAsync();
             var trainerService = new TrainerService(data);
-
 
             await data.SaveChangesAsync();
             var producService = new ProductService(data);
@@ -252,7 +236,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void TrainerExistByUserIdShouldReturnCorrectValue()
         {
             //Arrange
@@ -283,7 +266,6 @@ namespace MyGymWeb.Tests.Services
 
         }
 
-
         [Fact]
         public async void DeleteTrainerAsyncShouldReturnCorrectValue()
         {
@@ -308,7 +290,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void DeleteProductAsyncShouldReturnException()
         {
 
@@ -328,7 +309,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetTrainerUserIdShouldReturnCorrectValue()
         {
 
@@ -347,7 +327,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetTrainerUserIdShouldThrowExeptionForNotExistingUserId()
         {
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
@@ -365,7 +344,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetTrainerUserIdShouldThrowExeptionForNotExistingTrainerId()
         {
             Guid trainerId = new Guid("67815888-A8F4-4A91-99E5-C02716CFA397");
@@ -383,7 +361,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetForDeleteAsyncShouldReturnCorrectValue()
         {
 
@@ -413,7 +390,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public  void AddTrainersAsyncShouldReturnCorrectValue()
         {
 
@@ -440,7 +416,6 @@ namespace MyGymWeb.Tests.Services
 
 
         [Fact]
-
         public async void QuitTrainerAsyncShouldReturnCorrectValue()
         {
             using var data = DatabaseMock.Instance;
@@ -476,9 +451,7 @@ namespace MyGymWeb.Tests.Services
 
         }
 
-
         [Fact]
-
         public async void QuitTrainerAsyncShouldThrowException()
         {
             using var data = DatabaseMock.Instance;
@@ -512,7 +485,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void DeleteTrainerForApplyAsyncShouldReturnCorrectValue()
         {
             using var data = DatabaseMock.Instance;
@@ -536,7 +508,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void DeleteTrainerForApplyAsyncShouldTrowException()
         {
             using var data = DatabaseMock.Instance;

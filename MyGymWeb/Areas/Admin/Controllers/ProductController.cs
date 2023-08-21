@@ -94,8 +94,6 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
         }
 
-
-
         [HttpPost]
         public async Task<IActionResult> Edit(int id, TestViewModel model)
         {

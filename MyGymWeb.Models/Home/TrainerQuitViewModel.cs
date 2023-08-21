@@ -17,7 +17,7 @@ namespace MyGymWeb.Models.Home
 
         public decimal PricePerHour { get; set; }
 
-        [Required]
+     
         public string Type { get; set; } = null!;
 
 

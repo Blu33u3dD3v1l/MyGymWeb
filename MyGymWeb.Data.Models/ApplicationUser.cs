@@ -9,7 +9,6 @@ namespace MyGymWeb.Data.Models
   
     public class ApplicationUser : IdentityUser
     {
-
         public ApplicationUser()
         {
             this.UsersProducts = new List<UserProduct>();

@@ -16,9 +16,7 @@ namespace MyGymWeb.Services
         public ApplyService(MyGymProjectDbContext _context)
         {
             context = _context;
-        }
-
-       
+        }      
         public async Task AddApplyAsync(string userId, TrainerQuitViewModel model)
         {
 
@@ -46,15 +44,13 @@ namespace MyGymWeb.Services
             await context.Applies.AddAsync(apply);
             await context.SaveChangesAsync();
         }
-
        
         public async Task<bool> ApplierExistByUserId(string userId)
         {
             bool applier = await context.Applies.AnyAsync(applies => applies.UserId == userId);
             return applier;
         }
-
-       
+      
         public async Task ApproveTrainerAsync(Guid id)
         {
             var currentTrainer = await context.Applies.FirstOrDefaultAsync(x => x.Id == id);
@@ -83,7 +79,6 @@ namespace MyGymWeb.Services
 
 
         }
-
        
         public async Task DeleteAppliersAsync(Guid id)
         {
@@ -99,9 +94,7 @@ namespace MyGymWeb.Services
             context.Applies.RemoveRange(currentApplier);
             await context.SaveChangesAsync();
             
-        }
-
-      
+        }      
         public async Task<IEnumerable<TrainerQuitViewModel>> GetAllAppliesAsync()
         {
 
@@ -116,9 +109,6 @@ namespace MyGymWeb.Services
                   Practis = x.Practis,
                   PricePerHour = x.PricePerHour,     
                   ForApplication = x.ForApplication,
-             
-                  
-
 
               })
               .ToListAsync();

@@ -14,7 +14,6 @@ namespace MyGymWeb.Tests.Services
         public void AddProductAsyncShouldReturnCorrectView()
         {
 
-
             using var data = DatabaseMock.Instance;
             AddProductValidationModel product = new AddProductValidationModel()
             {
@@ -38,7 +37,6 @@ namespace MyGymWeb.Tests.Services
         public void AddProductAsyncShouldReturnNoView()
         {
 
-
             using var data = DatabaseMock.Instance;
             AddProductValidationModel product = new AddProductValidationModel()
             {
@@ -57,7 +55,6 @@ namespace MyGymWeb.Tests.Services
         public async void DeleteProductAsyncShouldReturnCorrectId()
         {
 
-
             int appId = 1;
 
             using var data = DatabaseMock.Instance;
@@ -73,11 +70,9 @@ namespace MyGymWeb.Tests.Services
             await data.SaveChangesAsync();
             var producService = new ProductService(data);
 
-
             var a = data.Products.FirstOrDefault(x => x.Id == appId);
 
             Assert.NotNull(a);
-
 
             var result = producService.DeleteProductAsync(appId);
 
@@ -85,14 +80,12 @@ namespace MyGymWeb.Tests.Services
 
             Assert.Null(b);
 
-
         }
 
         [Fact]
 
         public async void DeleteProductAsyncShouldReturnException()
         {
-
 
             int appId = 1;
 
@@ -131,7 +124,6 @@ namespace MyGymWeb.Tests.Services
                 Price = 100,
             });
 
-
             await data.SaveChangesAsync();
             var producService = new ProductService(data);
 
@@ -160,7 +152,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void EditProductByIdAsyncShouldReturnIncorrectId()
         {
             int appId = 1;
@@ -193,7 +184,6 @@ namespace MyGymWeb.Tests.Services
 
             };
 
-
             var result = producService.EditByIdAsync(appId, model);
             Assert.True(result.IsFaulted);
 
@@ -216,7 +206,6 @@ namespace MyGymWeb.Tests.Services
 
             });
 
-
             await data.SaveChangesAsync();
 
             var productService = new ProductService(data);
@@ -224,7 +213,6 @@ namespace MyGymWeb.Tests.Services
             var result = await productService.GetAllProductsAsync();
 
             Assert.Single(result);
-
 
         }
 
@@ -236,8 +224,6 @@ namespace MyGymWeb.Tests.Services
             using var data = DatabaseMock.Instance;
 
             await data.SaveChangesAsync();
-
-
 
             var productService = new ProductService(data);
 
@@ -277,7 +263,6 @@ namespace MyGymWeb.Tests.Services
 
             });
 
-
             await data.SaveChangesAsync();
             var productService = new ProductService(data);
 
@@ -286,7 +271,6 @@ namespace MyGymWeb.Tests.Services
             var count = result.Count();
 
             Assert.True(count > 1);
-
 
         }
 
@@ -313,8 +297,6 @@ namespace MyGymWeb.Tests.Services
             var result = await producService.GetEditProductAsync(appId);
 
             Assert.NotNull(result);
-
-
           
         }
 

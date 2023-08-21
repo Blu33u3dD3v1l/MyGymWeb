@@ -47,9 +47,7 @@ namespace MyGymWeb.Data.Models
 
         public virtual IList<GroupEvents> GroupsEvents { get; set; }
 
-        public virtual IList<Product> Products { get; set; }
-
-      
+        public virtual IList<Product> Products { get; set; }      
 
     }
 }

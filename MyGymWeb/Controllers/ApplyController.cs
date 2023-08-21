@@ -32,8 +32,7 @@ namespace MyGymWeb.Controllers
                
                     TempData[WarningMessage] = "You allready have pending application!";
 
-                    return RedirectToAction("Index", "Home");
-                
+                    return RedirectToAction("Index", "Home");               
                   
             }
 
@@ -75,8 +74,7 @@ namespace MyGymWeb.Controllers
                 }
                
             }
-
-            
+           
             return RedirectToAction("All", "Trainer");
         }
 

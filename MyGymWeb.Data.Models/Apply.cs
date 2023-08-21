@@ -10,13 +10,9 @@ namespace MyGymWeb.Data.Models
         [Key]
         public Guid Id { get; set; }
 
-
-
         [MaxLength(NameMaxValidation)]
         [Required]
-
         public string Name { get; set; } = null!;
-
 
         [MaxLength(InfoMaxValidation)]
         [Required]

@@ -13,7 +13,5 @@ namespace MyGymWeb.Models.Home
 
         public string? PhoneNumber { get; init; } = null;
 
-
-
     }
 }

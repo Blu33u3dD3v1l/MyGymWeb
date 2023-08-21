@@ -9,6 +9,5 @@
 
         public const string AdminEmail = "Admin@admin.bg";
 
-
     }
 }

@@ -18,8 +18,6 @@ namespace MyGymWeb.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
        
-
-
         public UserController(IUserService _userService, UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager)
         {
             userService = _userService;
@@ -27,8 +25,6 @@ namespace MyGymWeb.Controllers
             signInManager = _signInManager;
            
         }
-
-
         public async Task<IActionResult> Buy(int id)
         {
             try
@@ -88,22 +84,23 @@ namespace MyGymWeb.Controllers
                 TempData[WarningMessage] = "You allready have pending appointment with this Trainer!";
                 return RedirectToAction("Index", "Home");
             }
-          
-           
+                   
                 return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Appointment(Guid id,  AppointmentFormModel model)
         {
-
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
             var currentId = User.GetId();
             try
             {
                 
-                await this.userService.AddAppointmentAsync(id, currentId!, model);
-                //await this.userService.TrainerUserRelationAsync(currentId!, id);
+                await this.userService.AddAppointmentAsync(id, currentId!, model);             
                 TempData[SuccessMessage] = "You successfuly add an appointment!";
             }
             catch (Exception)
@@ -112,9 +109,7 @@ namespace MyGymWeb.Controllers
                 TempData[ErrorMessage] = "The Name of the Trainer is Incorrect!";
                
             }
-              
-
-           
+                       
             return RedirectToAction("All", "Trainer");
         }
 
@@ -194,7 +189,6 @@ namespace MyGymWeb.Controllers
 
             IdentityResult result = await userManager.CreateAsync(user, model.Password);
             
-
             if (!result.Succeeded)
             {
 
@@ -226,8 +220,6 @@ namespace MyGymWeb.Controllers
                 ReturnUrl = returnUrl,
             };
             
-
-
             return View(model);
         }
 
@@ -264,9 +256,5 @@ namespace MyGymWeb.Controllers
             return RedirectToAction("Index", "Home");
         }
     }
-
-
-
-
 }
 

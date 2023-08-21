@@ -17,10 +17,5 @@ namespace MyGymWeb.Services.Admin
         Task CancelUserApplicationAsync(int id);
         Task<IEnumerable<TrainerViewModel>> GetAllMyTrainersAsync(string userId);
 
-
-
-
-        //Task DeleteUserAsync(string id);
-
     }
 }

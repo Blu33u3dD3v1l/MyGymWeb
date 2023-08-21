@@ -3,7 +3,6 @@
    
     public class ValidationConstants
     {
-
         public static class ClasicTrainerValidations
         {
             public const int NameMinValidation = 10;
@@ -22,7 +21,6 @@
             public const string PriceMaxValidation = "200";
 
         }
-
         public static class BoxingTrainerValidations
         {
             public const int NameMinValidation = 10;
@@ -37,7 +35,6 @@
             public const int MotoMinValidation = 10;
             public const int MotoMaxValidation = 5000;
         }
-
         public static class ProductValidations
         {
             public const int NameMinValidation = 10;
@@ -49,9 +46,7 @@
             public const int DescriptionMinValidation = 10;
             public const int DescriptionMaxValidation = 5000;
 
-
         }
-
         public static class GroupEventsValidations
         {
             public const int NameMinValidation = 5;
@@ -90,7 +85,6 @@
 
             public const int DesriptionMinValidation = 10;
             public const int DesriptionMaxValidation = 5000;
-
 
         }
         public static class AppointmentValidation

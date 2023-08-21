@@ -14,8 +14,6 @@ namespace MyGymWeb.Tests.Services
         public async void ApplierExistByUserIdReturnCorrectValue()
         {
 
-
-            //Arrange
             const string userId = "My UserId";
 
             using var data = DatabaseMock.Instance;
@@ -50,7 +48,6 @@ namespace MyGymWeb.Tests.Services
         public void AddApplyShouldReturnCorrectId()
         {
 
-
             using var data = DatabaseMock.Instance;
 
             const string userId = "My UserId";
@@ -71,7 +68,6 @@ namespace MyGymWeb.Tests.Services
             var result = applyService.AddApplyAsync(userId, model);
 
             Assert.True(data.Applies.Count() != 0);
-
         }
 
         [Fact]
@@ -84,7 +80,6 @@ namespace MyGymWeb.Tests.Services
             var applyService = new ApplyService(data);
 
             var result = await applyService.ApplierExistByUserId("Another UserId");
-
 
             Assert.False(result);
 
@@ -107,7 +102,6 @@ namespace MyGymWeb.Tests.Services
                 Motto = "Moto"
             };
 
-
             var applyService = new ApplyService(data);
 
             var result = applyService.AddApplyAsync("UserId", m);
@@ -121,7 +115,6 @@ namespace MyGymWeb.Tests.Services
         public async void ApplierExistByUserIdShouldExist()
         {
 
-
             const string userId = "My UserId";
 
             using var data = DatabaseMock.Instance;
@@ -129,10 +122,7 @@ namespace MyGymWeb.Tests.Services
             await data.SaveChangesAsync();
             var applyService = new ApplyService(data);
 
-
-
             var result = await applyService.ApplierExistByUserId(userId);
-
 
             Assert.True(result);
 
@@ -141,7 +131,6 @@ namespace MyGymWeb.Tests.Services
         public async void ApplierExistByUserIdDidntExist()
         {
 
-
             const string userId = "My UserId";
 
             using var data = DatabaseMock.Instance;
@@ -149,10 +138,7 @@ namespace MyGymWeb.Tests.Services
             await data.SaveChangesAsync();
             var applyService = new ApplyService(data);
 
-
-
             var result = await applyService.ApplierExistByUserId("Another Id");
-
 
             Assert.False(result);
 
@@ -169,15 +155,11 @@ namespace MyGymWeb.Tests.Services
             await data.SaveChangesAsync();
             var applyService = new ApplyService(data);
 
-
-
             var result = applyService.DeleteAppliersAsync(guid);
-
 
             var a = data.Applies.FirstOrDefault(x => x.Id == guid);
 
             Assert.Null(a);
-
 
         }
 
@@ -193,8 +175,6 @@ namespace MyGymWeb.Tests.Services
             await data.SaveChangesAsync();
             var applyService = new ApplyService(data);
 
-
-
             var result = applyService.DeleteAppliersAsync(guid);
 
             await Assert.ThrowsAsync<NullReferenceException>(() => result);
@@ -206,19 +186,14 @@ namespace MyGymWeb.Tests.Services
         public async void GetAllAppliersAsyncShouldReturnValueIfExist()
         {
 
-
             using var data = DatabaseMock.Instance;
             await data.Applies.AddAsync(new Apply { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", });
             await data.SaveChangesAsync();
             var applyService = new ApplyService(data);
 
-
-
             var result = applyService.GetAllAppliesAsync();
 
-
             Assert.True(result.Result.Count() != 0);
-
 
         }
 
@@ -233,7 +208,6 @@ namespace MyGymWeb.Tests.Services
 
             Assert.True(result.Result.Count() == 0);
 
-
         }
 
         [Fact]
@@ -247,10 +221,7 @@ namespace MyGymWeb.Tests.Services
             await data.SaveChangesAsync();
             var applyService = new ApplyService(data);
 
-
-
             var result = applyService.ApproveTrainerAsync(guid);
-
 
             var a = data.Trainers.FirstOrDefault(x => x.Id == guid);
 
@@ -270,8 +241,6 @@ namespace MyGymWeb.Tests.Services
             await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", Id = guid2 });
             await data.SaveChangesAsync();
             var applyService = new ApplyService(data);
-
-
 
             var result = applyService.ApproveTrainerAsync(guid);
 

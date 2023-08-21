@@ -31,7 +31,6 @@ namespace MyGymWeb.Tests.Services
 
             var a = data.Appointments.FirstOrDefault(x => x.Id == appId);
 
-
             Assert.Equal(a?.Id, appId);
 
         }
@@ -54,8 +53,6 @@ namespace MyGymWeb.Tests.Services
             });
             await data.SaveChangesAsync();
             var appointmentService = new AppointmentService(data);
-
-
 
             var result = appointmentService.ApproveAppointmentAsync(appId);
 
@@ -84,11 +81,9 @@ namespace MyGymWeb.Tests.Services
             await data.SaveChangesAsync();
             var appointmentService = new AppointmentService(data);
 
-
             var a = data.Appointments.FirstOrDefault(x => x.Id == appId);
 
             Assert.NotNull(a);
-
 
             var result = appointmentService.DeleteAppointmentsAsync(appId);
 
@@ -120,7 +115,6 @@ namespace MyGymWeb.Tests.Services
 
            await Assert.ThrowsAsync<NullReferenceException>(() => result);
 
-
         }
 
         [Fact]
@@ -140,21 +134,17 @@ namespace MyGymWeb.Tests.Services
 
             });
             
-
             await data.SaveChangesAsync();
             var appointmentService = new AppointmentService(data);
 
             var result = await appointmentService.GetAllAsync();
 
             Assert.Single(result);
-
-
         }
 
         [Fact]
         public async void GetAllAsyncShouldNotReturnViews()
         {
-
 
             using var data = DatabaseMock.Instance;
 
@@ -166,13 +156,11 @@ namespace MyGymWeb.Tests.Services
 
             Assert.True(count == 0);
 
-
         }
 
         [Fact]
         public async void GetAllAsyncShouldReturnMoreThanOneView()
         {
-
 
             using var data = DatabaseMock.Instance;
             await data.Appointments.AddAsync(new Appointment
@@ -196,7 +184,6 @@ namespace MyGymWeb.Tests.Services
 
             });
 
-
             await data.SaveChangesAsync();
             var appointmentService = new AppointmentService(data);
 
@@ -205,7 +192,6 @@ namespace MyGymWeb.Tests.Services
             var count = result.Count();
 
             Assert.True(count > 1);
-
 
         }
 

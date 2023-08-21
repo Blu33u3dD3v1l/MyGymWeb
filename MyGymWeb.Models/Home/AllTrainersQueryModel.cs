@@ -5,15 +5,12 @@ namespace MyGymWeb.Models.Home
 {
     public class AllTrainersQueryModel
     {
-
-
         public AllTrainersQueryModel()
         {
 
                 this.CurrentPage = 1;              
                 this.Trainers = new HashSet<AllTrainersViewModel>();
         }
-
 
         public string? SeachString { get; set; }
         

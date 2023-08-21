@@ -11,8 +11,7 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace MyGymWeb.Services
 {
-
-    public class TrainerService : ITrainerService
+   public class TrainerService : ITrainerService
     {
         private readonly MyGymProjectDbContext context;
 
@@ -204,8 +203,6 @@ namespace MyGymWeb.Services
 
 
         }
-
-
         public async Task<bool> TrainerExistByUserId(string userId)
         {
             bool result = await this.context.Trainers
@@ -213,9 +210,7 @@ namespace MyGymWeb.Services
 
             return result;
         }
-
       
-
         public async Task DeleteTrainerAsync(Guid id)
         {
             var currentTrainer = await context.Trainers
@@ -330,8 +325,6 @@ namespace MyGymWeb.Services
         public async Task<AllTrainersFilteredAndPagedServiceModel> AllAsync(AllTrainersQueryModel model)
         {
 
-
-
             IQueryable<Trainer> trainerQuery = this.context.Trainers.AsQueryable();
 
             if (!string.IsNullOrEmpty(model.SeachString))
@@ -343,14 +336,12 @@ namespace MyGymWeb.Services
 
             }
 
-
-
             if (model.TrainerSorting == 0)
             {
                 model.TrainersPerPage = 3;
                 trainerQuery = model.TrainerSorting switch
                 {
-                    TrainerSorting.Name => trainerQuery.OrderBy(x => x.Name),                  
+                    TrainerSorting.Name => trainerQuery.OrderBy(x => x.Name),
                     _ => trainerQuery.OrderBy(x => x.Name)
                 };
 
@@ -361,38 +352,37 @@ namespace MyGymWeb.Services
                 model.TrainersPerPage = 60;
                 trainerQuery = model.TrainerSorting switch
                 {
-                   
+
                     TrainerSorting.PriceAscending => trainerQuery.OrderBy(x => x.PricePerHour),
-                    TrainerSorting.PriceDescending => trainerQuery.OrderByDescending(x => x.PricePerHour),                   
+                    TrainerSorting.PriceDescending => trainerQuery.OrderByDescending(x => x.PricePerHour),
                     _ => trainerQuery
                 };
             }
 
-                IEnumerable<AllTrainersViewModel> allTrainers = await trainerQuery.Skip((model.CurrentPage - 1) * model.TrainersPerPage).Take(model.TrainersPerPage)
-               .Select(x => new AllTrainersViewModel()
-               {
+            IEnumerable<AllTrainersViewModel> allTrainers = await trainerQuery.Skip((model.CurrentPage - 1) * model.TrainersPerPage).Take(model.TrainersPerPage)
+           .Select(x => new AllTrainersViewModel()
+           {
 
-                   Id = x.Id,
-                   ImageUrl = x.ImageUrl,
-                   Info = x.Info,
-                   Motto = x.Motto,
-                   Name = x.Name,
-                   Practis = x.Practis,
-                   PricePerHour = x.PricePerHour,
-                   Type = x.Type,
+               Id = x.Id,
+               ImageUrl = x.ImageUrl,
+               Info = x.Info,
+               Motto = x.Motto,
+               Name = x.Name,
+               Practis = x.Practis,
+               PricePerHour = x.PricePerHour,
+               Type = x.Type,
 
-               }).ToArrayAsync();
+           }).ToArrayAsync();
 
 
-                int totalTrainers = trainerQuery.Count();
+            int totalTrainers = trainerQuery.Count();
 
-                return new AllTrainersFilteredAndPagedServiceModel()
-                {
-                    TotalTrainersCount = totalTrainers,
-                    Trainers = allTrainers
-                };
-            }
-          
+            return new AllTrainersFilteredAndPagedServiceModel()
+            {
+                TotalTrainersCount = totalTrainers,
+                Trainers = allTrainers
+            };
+        }       
                 
     }
 }

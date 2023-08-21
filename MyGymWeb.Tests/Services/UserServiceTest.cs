@@ -9,7 +9,6 @@ namespace MyGymWeb.Tests.Services
     {
 
         [Fact]
-
         public async void AppointmentExistByUserIdShouldThrowException()
         {
             using var data = DatabaseMock.Instance;
@@ -23,12 +22,9 @@ namespace MyGymWeb.Tests.Services
                 UserId = userId
             };
 
-
             await data.UsersTrainers.AddAsync(userTrainer);
             await data.SaveChangesAsync();
             var userService = new UserService(data);
-
-
 
             var result = userService.AppointmentExistByUserId(userId, trainerId);
 
@@ -36,7 +32,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void AppointmentExistByUserIdShouldReturnCorrectValue()
         {
             using var data = DatabaseMock.Instance;
@@ -50,12 +45,9 @@ namespace MyGymWeb.Tests.Services
                 UserId = "otherUserId"
             };
 
-
             await data.UsersTrainers.AddAsync(userTrainer);
             await data.SaveChangesAsync();
             var userService = new UserService(data);
-
-
 
             var result = await userService.AppointmentExistByUserId(userId, trainerId);
 
@@ -63,10 +55,8 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void BuyProductAsyncShoudReturnCorrectValue()
         {
-
 
             using var data = DatabaseMock.Instance;
 
@@ -92,10 +82,8 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void BuyProductAsyncAmountShouldTrowException()
         {
-
 
             using var data = DatabaseMock.Instance;
 
@@ -108,7 +96,6 @@ namespace MyGymWeb.Tests.Services
                 Amount = 1000
             });
            
-
             await data.Products.AddAsync(new Product
             {
                 Id = productId,
@@ -135,13 +122,11 @@ namespace MyGymWeb.Tests.Services
 
             await Assert.ThrowsAsync<Exception>(() => result);
 
-
         }
 
         [Fact]
         public async void BuyProductAsyncAmountShouldReturnCorrectValue()
         {
-
 
             using var data = DatabaseMock.Instance;
 
@@ -153,7 +138,6 @@ namespace MyGymWeb.Tests.Services
                 Id = userId,
                 Amount = 1000
             });
-
 
             await data.Products.AddAsync(new Product
             {
@@ -187,7 +171,6 @@ namespace MyGymWeb.Tests.Services
         public async void CancelUserApplicationAsyncShouldReturnCorrectValues()
         {
 
-
             using var data = DatabaseMock.Instance;
 
             int id = 1;
@@ -210,13 +193,11 @@ namespace MyGymWeb.Tests.Services
 
         }
 
-
         [Fact]
         public async void CancelUserApplicationAsyncShouldThrowException()
         {
 
             using var data = DatabaseMock.Instance;
-
 
             int id = 1;
 
@@ -273,7 +254,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetAllProductsForBuyAsyncShouldReturnCorrectValue()
         {
             using var data = DatabaseMock.Instance;
@@ -293,7 +273,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetAllProductsForBuyAsyncShouldThrowException()
         {
             using var data = DatabaseMock.Instance;
@@ -311,7 +290,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetMyTrainersAsyncShouldReturnCorrectValue()
         {
             using var data = DatabaseMock.Instance;
@@ -331,7 +309,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void ReturnProductAsyncShouldReturnCorrectValue()
         {
             using var data = DatabaseMock.Instance;
@@ -344,7 +321,6 @@ namespace MyGymWeb.Tests.Services
                 Id = userId,
                 Amount = 1000
             });
-
 
             await data.Products.AddAsync(new Product
             {
@@ -375,7 +351,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void ReturnProductAsyncShouldTrowExceptionWhenUserIdIsNull()
         {
             using var data = DatabaseMock.Instance;
@@ -388,7 +363,6 @@ namespace MyGymWeb.Tests.Services
                 Id = "AnotherID",
                 Amount = 1000
             });
-
 
             await data.Products.AddAsync(new Product
             {
@@ -418,7 +392,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void ReturnProductAsyncShouldTrowExceptionWhenProductIdIsNull()
         {
             using var data = DatabaseMock.Instance;
@@ -431,7 +404,6 @@ namespace MyGymWeb.Tests.Services
                 Id = userId,
                 Amount = 1000
             });
-
 
             await data.Products.AddAsync(new Product
             {
@@ -461,7 +433,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public void UserFullNameShouldReturnCorrectValue()
         {
             using var data = DatabaseMock.Instance;
@@ -479,7 +450,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public void UserFullNameShouldReturnNull()
         {
             using var data = DatabaseMock.Instance;
@@ -494,7 +464,6 @@ namespace MyGymWeb.Tests.Services
             var result = userService.UserFullName(userId);
 
             Assert.ThrowsAsync<NullReferenceException>(() => result);
-
 
         }
     }

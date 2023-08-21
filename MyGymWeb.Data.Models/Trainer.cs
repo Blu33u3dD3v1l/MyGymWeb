@@ -9,7 +9,6 @@ namespace MyGymWeb.Data.Models
     public class Trainer
     {
       
-
         public Trainer()
         {
             this.Gyms = new List<Gym>();

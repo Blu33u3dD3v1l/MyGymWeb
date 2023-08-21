@@ -39,8 +39,7 @@ namespace MyGymWeb.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]      
-        
+        [HttpGet]             
         public async Task<IActionResult> All()
         {
 
@@ -63,10 +62,12 @@ namespace MyGymWeb.Controllers
             return View(t);
         }
 
-
         public async Task<IActionResult> Quit(TrainerQuitViewModel model)
         {
-
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             var currentId = User.GetId();
 
 

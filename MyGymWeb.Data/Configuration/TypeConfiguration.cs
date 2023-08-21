@@ -9,8 +9,7 @@ namespace MyGymWeb.Data.Configuration
         public void Configure(EntityTypeBuilder<Models.Type> builder)
         {
             builder
-              .HasData(CreateTypes());
-             
+              .HasData(CreateTypes());            
 
         }
         private List<Models.Type> CreateTypes()

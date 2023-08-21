@@ -19,8 +19,6 @@ namespace MyGymWeb.Tests.Services
            
             var gymService = new GymService(data);
 
-
-
             var result =  gymService.AddGymAsync(a);
 
             Assert.NotNull(result);
