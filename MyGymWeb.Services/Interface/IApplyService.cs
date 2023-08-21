@@ -11,6 +11,5 @@ namespace MyGymWeb.Services.Interface
         Task ApproveTrainerAsync(Guid id);
         Task<bool>  ApplierExistByUserId(string userId);
 
-
     }
 }

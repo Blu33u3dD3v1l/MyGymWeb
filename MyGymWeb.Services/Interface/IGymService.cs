@@ -12,9 +12,5 @@ namespace MyGymWeb.Services.Interface
         Task AddGymAsync(AddGymFormModel model);
         Task RemoveGymAsync(int id);     
 
-
-
-
-
     }
 }

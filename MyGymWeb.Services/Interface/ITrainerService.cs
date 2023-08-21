@@ -11,8 +11,7 @@ namespace MyGymWeb.Services.Interface
         Task<IEnumerable<TrainerViewModel>> GetTypeTrainersAsync(int gymId);
         Task<EditTrainerFormModel> GetEditTrainerAsync(Guid id);
         Task EditByIdAsync(Guid id, EditTrainerFormModel model);      
-        Task<bool> TrainerExistByUserId(string userId);
-      
+        Task<bool> TrainerExistByUserId(string userId);      
         Task<TrainerDetailsRemoveViewModel> GetForDeleteAsync(Guid id, TrainerDetailsRemoveViewModel model);
         Task<bool> GetTrainerUserId(Guid trainerId, string UserId);
         Task DeleteTrainerAsync(Guid id);
@@ -20,7 +19,6 @@ namespace MyGymWeb.Services.Interface
         Task QuitTrainerAsync(string userId, TrainerQuitViewModel model);
         Task DeleteTrainerForApplyAsync(Guid id);
         Task<AllTrainersFilteredAndPagedServiceModel> AllAsync(AllTrainersQueryModel model);
-
 
     }
 }

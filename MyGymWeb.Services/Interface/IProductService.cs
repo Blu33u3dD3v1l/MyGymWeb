@@ -4,7 +4,6 @@ namespace MyGymWeb.Services.Interface
 {
     public interface IProductService
     {
-
         Task<IEnumerable<ProductViewModel>> GetAllProductsAsync();
         Task<ProductViewModel> GetProductDescriptionAsync(int id);
         Task<TestViewModel> GetEditProductAsync(int id);
@@ -12,6 +11,5 @@ namespace MyGymWeb.Services.Interface
         Task AddProductsAsync(AddProductValidationModel model);
         Task DeleteProductAsync(int id);
        
-
     }
 }

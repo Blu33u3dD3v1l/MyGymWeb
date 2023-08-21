@@ -29,7 +29,6 @@ namespace MyGymWeb.Models.Home
 
         public string Type { get; set; } = null!;
 
-
         [StringLength(MotoMaxValidation, MinimumLength = MotoMinValidation)]
         public string Motto { get; set; } = null!;
 
