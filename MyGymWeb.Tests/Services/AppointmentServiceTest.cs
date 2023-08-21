@@ -8,7 +8,6 @@ namespace MyGymWeb.Tests.Services
     public class AppointmentServiceTest
     {
         [Fact]
-
         public async void ApproveAppointmentShouldReturnRightValues()
         {
 
@@ -121,7 +120,6 @@ namespace MyGymWeb.Tests.Services
         public async void GetAllAsyncShouldReturnCorrectView()
         {
             
-
             using var data = DatabaseMock.Instance;
             await data.Appointments.AddAsync(new Appointment
             {

@@ -9,7 +9,6 @@ namespace MyGymWeb.Tests.Services
     {
 
         [Fact]
-
         public void AddGymAsyncReturnCorrectValue()
         {
 

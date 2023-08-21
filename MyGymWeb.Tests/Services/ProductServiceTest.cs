@@ -10,7 +10,6 @@ namespace MyGymWeb.Tests.Services
     {
 
         [Fact]
-
         public void AddProductAsyncShouldReturnCorrectView()
         {
 
@@ -33,7 +32,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public void AddProductAsyncShouldReturnNoView()
         {
 
@@ -51,7 +49,6 @@ namespace MyGymWeb.Tests.Services
 
         }
         [Fact]
-
         public async void DeleteProductAsyncShouldReturnCorrectId()
         {
 
@@ -83,7 +80,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void DeleteProductAsyncShouldReturnException()
         {
 
@@ -108,7 +104,6 @@ namespace MyGymWeb.Tests.Services
 
         }
         [Fact]
-
         public async void EditProductByIdAsyncShouldReturnCorrectId()
         {
             int appId = 1;

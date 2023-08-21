@@ -23,7 +23,6 @@ namespace MyGymWeb.Tests.Services
         public async void GetAllTrainersAsyncShouldReturnValueIfExist()
         {
 
-
             using var data = DatabaseMock.Instance;
             await data.Trainers.AddAsync(new Trainer { UserId = "userId", ImageUrl = "1", Info = "Info", Name = "Name", Practis = "Practis", Type = "Type", Motto = "Moto", });
             await data.SaveChangesAsync();
@@ -52,7 +51,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetTypeTrainersAsyncShouldReturnCorrectValue()
         {
             var data = DatabaseMock.Instance;

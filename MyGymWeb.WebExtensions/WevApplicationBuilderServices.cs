@@ -7,7 +7,6 @@ using System.Reflection;
 
 namespace MyGymWeb.Web.Extensions.Extensions
 {
-
     public static class WevApplicationBuilderServices
     {
         public static void AddApplicationServices(this IServiceCollection services, System.Type ServiceType)
@@ -61,13 +60,8 @@ namespace MyGymWeb.Web.Extensions.Extensions
 
                 await roleManager.CreateAsync(role);
 
-                ApplicationUser adminUser = await userManager.FindByEmailAsync(email);
-                
-
-                await userManager.AddToRoleAsync(adminUser, AdminConstants.AdminRolleName);
-
-                
-
+                ApplicationUser adminUser = await userManager.FindByEmailAsync(email);               
+                await userManager.AddToRoleAsync(adminUser, AdminConstants.AdminRolleName);            
             })
              .GetAwaiter()
              .GetResult();

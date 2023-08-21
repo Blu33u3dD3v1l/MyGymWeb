@@ -35,6 +35,5 @@ namespace MyGymWeb.Data.Configuration
             return admin;
         }
 
-
     }
 }

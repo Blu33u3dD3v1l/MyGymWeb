@@ -34,7 +34,6 @@ namespace MyGymWeb.Data
 
         public DbSet<UserTrainer> UsersTrainers { get; set; } = null!;
 
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
 

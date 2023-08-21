@@ -10,7 +10,6 @@ namespace MyGymWeb.Tests.Services
     public class ApplyServiceTest
     {
         [Fact]
-
         public async void ApplierExistByUserIdReturnCorrectValue()
         {
 
@@ -44,7 +43,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public void AddApplyShouldReturnCorrectId()
         {
 
@@ -86,7 +84,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public void AddApplyShouldReturnView()
         {
 
@@ -111,7 +108,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void ApplierExistByUserIdShouldExist()
         {
 
@@ -145,7 +141,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void DeleteApplierAsyncShouldReturnCorrectGuid()
         {
             Guid guid = Guid.NewGuid();
@@ -164,7 +159,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void DeleteApplierAsyncThrowsExeption()
         {
             Guid guid = Guid.NewGuid();
@@ -182,7 +176,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void GetAllAppliersAsyncShouldReturnValueIfExist()
         {
 
@@ -230,7 +223,6 @@ namespace MyGymWeb.Tests.Services
         }
 
         [Fact]
-
         public async void ApproveTrainerShouldThrowException()
         {
 
@@ -246,10 +238,5 @@ namespace MyGymWeb.Tests.Services
 
             await Assert.ThrowsAsync<Exception>(() => result);
         }
-
-       
-
-      
-
     }
 }

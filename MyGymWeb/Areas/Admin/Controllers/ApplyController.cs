@@ -9,8 +9,6 @@ namespace MyGymWeb.Areas.Admin.Controllers
     public class ApplyController : BaseController
     {
 
-
-
         private readonly IApplyService applyService;
        
 

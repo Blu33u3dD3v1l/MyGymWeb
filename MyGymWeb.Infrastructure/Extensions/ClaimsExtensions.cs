@@ -2,8 +2,7 @@
 
 
 namespace MyGymWeb.Infrastructure.Extensions
-{
-   
+{  
     public static class ClaimsExtensions
     {
         public static string GetId(this ClaimsPrincipal user)

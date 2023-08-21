@@ -1,6 +1,5 @@
 ﻿namespace MyGymWeb.Web.Extensions.Extensions
 {
- 
     public static class AdminConstants
     {
         public const string AreaName = "Admin";
