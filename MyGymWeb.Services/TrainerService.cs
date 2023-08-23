@@ -338,7 +338,7 @@ namespace MyGymWeb.Services
 
             if (model.TrainerSorting == 0)
             {
-                model.TrainersPerPage = 3;
+                model.TrainersPerPage = 4;
                 trainerQuery = model.TrainerSorting switch
                 {
                     TrainerSorting.Name => trainerQuery.OrderBy(x => x.Name),

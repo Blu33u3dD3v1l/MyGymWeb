@@ -39,8 +39,6 @@ namespace MyGymWeb.Web.Extensions.Extensions
         public static IApplicationBuilder SeedAdministrator(this IApplicationBuilder app, string email)
         {
 
-
-            
             using IServiceScope scopreServies = app.ApplicationServices.CreateScope();
 
             IServiceProvider serviceProvider = scopreServies.ServiceProvider;
