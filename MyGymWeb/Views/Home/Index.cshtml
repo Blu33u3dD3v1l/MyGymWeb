@@ -34,19 +34,19 @@
 <div class="container">
     <div class="row my-5">
         <div class="col-md-4 my-4">
-            <img src="./images/Yogateachertraining.jpg" class="w-100" alt="" />
+            <img class="w-100" src="~/images/Yogateachertraining.jpg" alt="image" />
             <h4 class="my-4 text-white">"In-Person Classes"</h4>
             <p style="color:wheat">Teaching of pop up style yoga classes from Goddess and Gods Yoga, to a powerful vinyasa flow called Powerhouse Flow, along with yin yoga, ad blindfold yoga.</p>
             <a asp-controller="Trainer" asp-action="All" class="btn btn-outline-light btn-md">Our Team</a>
         </div>
         <div class="col-md-4 my-4">
-            <img src="./images/Gym3.jpg" class="w-100" alt="" />
+            <img class="w-100" src="~/images/Gym3.jpg" alt="image" />
             <h4 class="my-4 text-white">"Switch Beast Mode"</h4>
             <p style="color:wheat">Bodybuilding, a regimen of exercises designed to enhance the human body's muscular development and promote general health and fitness.</p>
             <a asp-controller="Trainer" asp-action="All" class="btn btn-outline-light btn-md">Our Team</a>
         </div>
         <div class="col-md-4 my-4">
-            <img src="./images/BoxingTraining.jpg" class="w-100" alt="" />
+            <img class="w-100" src="~/images/BoxingTraining.jpg"  alt="" />
             <h4 class="my-4 text-white">"Small group classes."</h4>
             <p style="color:wheat">Small group training is a unique way to help hoan your boxing skills and overall conditioning in a more personalized setting.Mitt work will help teach the proper boxing fundamentals.</p>
             <a asp-controller="Trainer" asp-action="All" class="btn btn-outline-light btn-md">Our Team</a>
@@ -54,21 +54,36 @@
     </div>
 </div>
 
-<div class="fixed-background">
+<div class="col-12 text-center mt-5">
+    <h1 class="text-white pt-4">Taste your limits</h1>
+    <div class="border-top border-warning w-25 mx-auto my-3"></div>
+    <p class="lead text-white">Find Yourself!</p>
+</div>
 
-    <div class="row text-light py-5">
-        <div class="col-12 text-center">
-            <h1>PROMO!</h1>
-            <h3 class="py-4" style="color: aqua">Sport Massage!</h3>
-            <h1>35 min/ 35 $</h1>
-            <h3 style="color: yellow">For Reservations: 555-123-456</h3>
-        </div>
-    </div>
-    <div class="fixed-wrap">
-        <div class="fixed">
+<div class="fixed-background">
+    <div class="videoClass">
+        <div class="row my-5">
+            <div class="col-md-6 my-4">
+                    <div class="modal-body">
+                        <video style="width:100vh; height:100vh;"
+                            src="~/clips/clip.mp4" type="video/mp4" loading="lazy" autoplay="autoplay">
+                        </video>
+                    </div>              
+            </div>
+            <div class="col-md-6 my-4">
+                <div class="modal-body">
+                    <video style="width:100vh; height:100vh;" 
+                            src="~/clips/clip2.mp4" type="video/mp4" loading="lazy" autoplay="autoplay" loop="loop" >
+                    </video>
+                </div>
+            </div>           
         </div>
     </div>
 </div>
+
+
+
+
 
 
 

@@ -11,6 +11,5 @@
 
         public const string SuccessMessage = "SuccessMessage";
 
-
     }
 }
