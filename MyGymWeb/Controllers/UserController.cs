@@ -91,11 +91,7 @@ namespace MyGymWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> Appointment(Guid id,  AppointmentFormModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
+           
             var currentId = User.GetId();
             try
             {
@@ -103,13 +99,19 @@ namespace MyGymWeb.Controllers
                 await this.userService.AddAppointmentAsync(id, currentId!, model);             
                 TempData[SuccessMessage] = "You successfuly add an appointment!";
             }
-            catch (Exception)
+            catch (InvalidOperationException)
             {
 
-                TempData[ErrorMessage] = "The Name of the Trainer is Incorrect!";
+                TempData[ErrorMessage] = "The Name of the Trainer is Incorrect!Please try again.";
                
             }
-                       
+            catch (InvalidDataException)
+            {
+
+                TempData[ErrorMessage] = "The Date is Expired!Please try again.";
+
+            }
+
             return RedirectToAction("All", "Trainer");
         }
 

@@ -38,13 +38,17 @@ namespace MyGymWeb.Services
                     TrainerId = id,
                 };
 
+                if(appointment.AppointmentTime <  DateTime.Now)
+                {
+                    throw new InvalidDataException();
+                }
                 await data.Appointments.AddAsync(appointment);
                 await data.SaveChangesAsync();
             }
             else
             {
 
-                throw new Exception();
+                throw new InvalidOperationException();
 
             }
 

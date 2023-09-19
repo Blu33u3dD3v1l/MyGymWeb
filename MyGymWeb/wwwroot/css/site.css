@@ -182,7 +182,7 @@ body {
 }
 
 .ApplyUsers {
-    padding: 14rem 0;
+    padding: 14.4rem 0;
     font-weight: 700;
 }
 
@@ -237,15 +237,13 @@ body {
 }
 
 .AllUsersEmpty {
-    padding: 13.8rem 0;
+    padding: 14.4rem 0;
     font-weight: 700;
 }
 
 .AllGyms {
     margin: 100px 50px 0px;
     background-color:black;
-
-
 }
 
 .GymDetails {
