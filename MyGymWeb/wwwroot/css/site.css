@@ -24,11 +24,12 @@ body {
 
 
 .navbar {
+    background-color: red;
     font-size: 1.3rem;
     font-weight: 500;
     letter-spacing: .1rem;
     box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .2);
-    z-index: 100 !important;
+    z-index: 100 !important;  
 }
 
 

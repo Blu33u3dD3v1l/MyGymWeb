@@ -108,7 +108,7 @@ namespace MyGymWeb.Controllers
             catch (InvalidDataException)
             {
 
-                TempData[ErrorMessage] = "The Date is Expired!Please try again.";
+                TempData[ErrorMessage] = "The Date has Expired! Please try again.";
 
             }
 
