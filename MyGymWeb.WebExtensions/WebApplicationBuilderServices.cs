@@ -5,9 +5,9 @@ using MyGymWeb.Data.Models;
 using System.Reflection;
 
 
-namespace MyGymWeb.Web.Extensions.Extensions
+namespace MyGymWeb.WebExtensions
 {
-    public static class WevApplicationBuilderServices
+    public static class WebApplicationBuilderServices
     {
         public static void AddApplicationServices(this IServiceCollection services, System.Type ServiceType)
         {

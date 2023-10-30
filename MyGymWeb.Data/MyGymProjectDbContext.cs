@@ -55,7 +55,7 @@ namespace MyGymWeb.Data
            .HasForeignKey(a => a.TrainerId)
            .OnDelete(DeleteBehavior.NoAction);
 
-           
+
             builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
             builder.ApplyConfiguration(new GymConfiguration());
             builder.ApplyConfiguration(new ProductConfiguration());

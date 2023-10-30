@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using static MyGymWeb.Web.Extensions.Extensions.AdminConstants;
+using static MyGymWeb.WebExtensions.AdminConstants;
 
 namespace MyGymWeb.Controllers
 {
@@ -16,6 +16,8 @@ namespace MyGymWeb.Controllers
             }
             return View();
         }
+
+     
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

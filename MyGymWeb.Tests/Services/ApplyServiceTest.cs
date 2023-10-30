@@ -65,7 +65,7 @@ namespace MyGymWeb.Tests.Services
 
             var result = applyService.AddApplyAsync(userId, model);
 
-            Assert.True(data.Applies.Count() != 0);
+            Assert.True(data?.Applies.Count() != 0);
         }
 
         [Fact]

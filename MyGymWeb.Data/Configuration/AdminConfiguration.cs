@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MyGymWeb.Data.Admin;
 using MyGymWeb.Data.Models;
 
 
@@ -30,7 +31,7 @@ namespace MyGymWeb.Data.Configuration
                 LastName = "Bush"
             };
 
-            admin.PasswordHash = hasher.HashPassword(admin, "Viktor123!");
+            admin.PasswordHash = hasher.HashPassword(admin, AdminPass.AdminPassword);
             
             return admin;
         }

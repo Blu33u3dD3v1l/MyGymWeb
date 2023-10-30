@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using static MyGymWeb.Web.Extensions.Extensions.AdminConstants;
+using static MyGymWeb.WebExtensions.AdminConstants;
 
 
 namespace MyGymWeb.Areas.Admin.Controllers
