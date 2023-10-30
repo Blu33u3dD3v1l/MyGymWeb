@@ -124,12 +124,12 @@ namespace MyGymWeb.Services
 
                 });
                 productForBuy.ProductCount += 1;
-                currentUser.Amount -= productForBuy.Price;
+                //currentUser.Amount -= productForBuy.Price;
             }
             else
             {
                 productForBuy.ProductCount += 1;
-                currentUser.Amount -= productForBuy.Price;
+                //currentUser.Amount -= productForBuy.Price;
             }
 
             await data.SaveChangesAsync();
@@ -247,13 +247,13 @@ namespace MyGymWeb.Services
 
             if (product.ProductCount > 1)
             {
-                user.Amount += product.Price;
+                //user.Amount += product.Price;
                 product.ProductCount--;
 
             }
             else
             {
-                user.Amount += product.Price;
+                //user.Amount += product.Price;
                 product.ProductCount--;
 
                 var productForReturn = await data.UsersProducts

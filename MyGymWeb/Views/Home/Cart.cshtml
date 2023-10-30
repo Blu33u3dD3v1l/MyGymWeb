@@ -1,14 +1,6 @@
 ﻿@model IEnumerable<ProductViewModel>
 
 
-
-@{
-    ViewBag.Title = "My Products";
-    decimal cost = 0;
-    decimal shiping = 0;
-
-}
-
 <div class="cart">
     <section class="h-100 h-custom" style="background-color: #eee;">
         <div class="container py-5 h-100">
@@ -25,12 +17,17 @@
                                         </a>
                                     </h5>
                                     <hr>
+
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div>
                                             <p class="mb-1">Shopping cart</p>
-                                            <p class="mb-0">"You have @Model.Count() items in your cart"</p>
+                                            <p class="mb-0">You have 4 items in your cart</p>
                                         </div>
-                                        <div>           
+                                        <div>
+                                            <p class="mb-0">
+                                                <span class="text-muted">Sort by:</span> <a href="#!"
+                                                                                            class="text-body">price <i class="fas fa-angle-down mt-1"></i></a>
+                                            </p>
                                         </div>
                                     </div>
 
@@ -39,7 +36,6 @@
                                     {
                                         @foreach (var product in Model)
                                         {
-                                           
                                             <div class="card mb-3">
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between">
@@ -54,42 +50,28 @@
                                                             </div>
                                                         </div>
                                                         <div class="d-flex flex-row align-items-center">
-                                                            @if (User?.Identity?.IsAuthenticated ?? false)
-                                                            {
-                                                                <div class="d-flex justify-content-center mx-2">
-                                                                    <a asp-route-id="@product.Id" asp-controller="User" asp-action="Return" method="post">
-                                                                        <input type="submit" value="Return" class="btn btn-primary btn-sm" />
-                                                                    </a>
-                                                                </div>
-                                                            }
-                                                          
                                                             <div style="width: 50px;">
                                                                 <h5 class="fw-normal mb-0">@product.ProductCount</h5>
                                                             </div>
                                                             <div style="width: 80px;">
-                                                                @{
-                                                                    var a = product.Price * product.ProductCount;
-                                                                    cost += a;
-                                                                }
-                                                                <h5 class="mb-0">$@a</h5>
+                                                                <h5 class="mb-0">$@product.Price</h5>
                                                             </div>
                                                             <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        }                                        
+                                        }
+                                        
                                     }                                 
                                 </div>
                                 <div class="col-lg-5">
 
                                     <div class="card bg-primary text-white rounded-3">
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center mb-4">                                   
-                                                <div class="d-flex justify-content-between">
-                                                    <h5 class="mb-2">If your buyed product is equal or above 100$ shipping will be free!</h5>
-                                                </div>                                               
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFg0vALj7wnJ-W6SbdUr7vhA278f3BPsMnQQ&usqp=CAU"
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                <h5 class="mb-0">Details</h5>
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
                                                      class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
                                             </div>
 
@@ -97,52 +79,33 @@
 
                                             <div class="d-flex justify-content-between">
                                                 <p class="mb-2">Subtotal</p>
-                                                <p class="mb-2">$@cost</p>
+                                                <p class="mb-2">$4798.00</p>
                                             </div>
 
                                             <div class="d-flex justify-content-between">
                                                 <p class="mb-2">Shipping</p>
-                                                @if(cost >= 100)
-                                                {
-                                                    <p class="mb-2">Free</p>
-                                                }
-                                                else
-                                                {
-                                                    if(Model.Count() > 0)
-                                                    {
-                                                        <p class="mb-2">$20.00</p>
-                                                        shiping = 20;
-                                                    }
-                                                    else
-                                                    {
-                                                        <p class="mb-2">$0</p>
-                                                       
-                                                    }
-
-                                                }
-
+                                                <p class="mb-2">free</p>
                                             </div>
-
-                                            @{
-                                                var totalCost = cost + shiping;
-                                            }
 
                                             <div class="d-flex justify-content-between mb-4">
                                                 <p class="mb-2">Total(Incl. taxes)</p>
-                                               
-                                                <p class="mb-2">$@totalCost</p>
+                                                <p class="mb-2">$4818.00</p>
                                             </div>
 
                                             <button type="button" class="btn btn-info btn-block btn-lg">
                                                 <div class="d-flex justify-content-between">
-
-                                                    <span>$@totalCost Buy</span>                                                  
+                                                    <span>$4818.00</span>
+                                                    <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                                                 </div>
                                             </button>
+
                                         </div>
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -150,7 +113,3 @@
         </div>
     </section>
 </div>
-
-
-
-

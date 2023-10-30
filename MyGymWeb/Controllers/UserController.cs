@@ -31,20 +31,16 @@ namespace MyGymWeb.Controllers
             {
                 var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
                 await userService.BuyProductAsync(id, userId!);
-
-                TempData[SuccessMessage] = "You Successfully buy a product!";
-                
-
             }
             catch (Exception)
             {
                 TempData[ErrorMessage] = "Not enough Money!";
             }
 
-            return RedirectToAction("Mine", "User");
+            return RedirectToAction("Cart", "User");
         }
 
-        public async Task<IActionResult> Mine()
+        public async Task<IActionResult> Cart()
         {
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             var model = await userService.GetAllProductsForBuyAsync(userId!);
@@ -57,7 +53,7 @@ namespace MyGymWeb.Controllers
             try
             {
                 await userService.ReturnProductAsync(userId!, id);
-                TempData[SuccessMessage] = "You Successfully returned product!";
+               
             }
             catch (Exception)
             {
@@ -65,7 +61,7 @@ namespace MyGymWeb.Controllers
                 TempData[ErrorMessage] = "User or Product not found!";
             }
 
-            return RedirectToAction("Mine", "User");
+            return RedirectToAction("Cart", "User");
         }
 
         [HttpGet]
@@ -256,7 +252,7 @@ namespace MyGymWeb.Controllers
             await signInManager.SignOutAsync();
 
             return RedirectToAction("Index", "Home");
-        }
+        } 
     }
 }
 

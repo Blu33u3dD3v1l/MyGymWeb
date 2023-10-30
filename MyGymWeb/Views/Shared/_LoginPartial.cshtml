@@ -20,7 +20,7 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i>Hello @user.FirstName!</i></a>
+            <a class="nav-link text-dark" asp-controller="User" asp-action="Cart"><i>My Cart</i></a>
         </li>      
         if (!string.IsNullOrEmpty(user.Email))
         {
