@@ -7,7 +7,7 @@ using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
 using System.Security.Claims;
 using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
-    
+
 namespace MyGymWeb.Controllers
 {
     [Authorize]
@@ -17,25 +17,20 @@ namespace MyGymWeb.Controllers
         private readonly IUserService userService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
-       
+
         public UserController(IUserService _userService, UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager)
         {
             userService = _userService;
             userManager = _userManager;
             signInManager = _signInManager;
-           
+
         }
         public async Task<IActionResult> Buy(int id)
         {
-            try
-            {
-                var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-                await userService.BuyProductAsync(id, userId!);
-            }
-            catch (Exception)
-            {
-                TempData[ErrorMessage] = "Not enough Money!";
-            }
+
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            await userService.BuyProductAsync(id, userId!);
+
 
             return RedirectToAction("Cart", "User");
         }
@@ -53,7 +48,7 @@ namespace MyGymWeb.Controllers
             try
             {
                 await userService.ReturnProductAsync(userId!, id);
-               
+
             }
             catch (Exception)
             {
@@ -65,10 +60,10 @@ namespace MyGymWeb.Controllers
         }
 
         [HttpGet]
-        public  async Task<IActionResult> Appointment(Guid id)
+        public async Task<IActionResult> Appointment(Guid id)
         {
 
-            string? currentId =  this.User.GetId();
+            string? currentId = this.User.GetId();
 
             try
             {
@@ -80,26 +75,26 @@ namespace MyGymWeb.Controllers
                 TempData[WarningMessage] = "You allready have pending appointment with this Trainer!";
                 return RedirectToAction("Index", "Home");
             }
-                   
-                return View();
+
+            return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Appointment(Guid id,  AppointmentFormModel model)
+        public async Task<IActionResult> Appointment(Guid id, AppointmentFormModel model)
         {
-           
+
             var currentId = User.GetId();
             try
             {
-                
-                await this.userService.AddAppointmentAsync(id, currentId!, model);             
+
+                await this.userService.AddAppointmentAsync(id, currentId!, model);
                 TempData[SuccessMessage] = "You successfuly add an appointment!";
             }
             catch (InvalidOperationException)
             {
 
                 TempData[ErrorMessage] = "The Name of the Trainer is Incorrect!Please try again.";
-               
+
             }
             catch (InvalidDataException)
             {
@@ -136,24 +131,24 @@ namespace MyGymWeb.Controllers
                 TempData[ErrorMessage] = "There is no Appointment or Trainer to remove!";
             }
 
-            return RedirectToAction("MyApps","User");
+            return RedirectToAction("MyApps", "User");
         }
 
 
         public async Task<IActionResult> AllMyTrainers()
         {
 
-           var ids = this.User.GetId();
-           var model = await userService.GetAllMyTrainersAsync(ids!);
-           return View("AllMyTrainers", model);
-           
+            var ids = this.User.GetId();
+            var model = await userService.GetAllMyTrainersAsync(ids!);
+            return View("AllMyTrainers", model);
+
         }
 
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register()
         {
-           
+
             if (User?.Identity?.IsAuthenticated ?? false)
             {
                 return RedirectToAction("Index", "Home");
@@ -175,10 +170,10 @@ namespace MyGymWeb.Controllers
 
             ApplicationUser user = new ApplicationUser()
             {
-                               
+
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-             
+
 
             };
 
@@ -186,7 +181,7 @@ namespace MyGymWeb.Controllers
             await this.userManager.SetUserNameAsync(user, model.Email);
 
             IdentityResult result = await userManager.CreateAsync(user, model.Password);
-            
+
             if (!result.Succeeded)
             {
 
@@ -199,7 +194,7 @@ namespace MyGymWeb.Controllers
 
             await this.signInManager.SignInAsync(user, false);
             return RedirectToAction("Index", "Home");
-           
+
         }
 
         [HttpGet]
@@ -207,7 +202,7 @@ namespace MyGymWeb.Controllers
         public IActionResult Login(string? returnUrl = null)
         {
 
-           
+
             if (User?.Identity?.IsAuthenticated ?? false)
             {
                 return RedirectToAction("Index", "Home");
@@ -217,7 +212,7 @@ namespace MyGymWeb.Controllers
             {
                 ReturnUrl = returnUrl,
             };
-            
+
             return View(model);
         }
 
@@ -247,12 +242,30 @@ namespace MyGymWeb.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> BuyProducts(int productId)
+        {
+
+            var ids = this.User.GetId();
+
+            try
+            {
+                await userService.BuyProducts(productId, ids);
+                TempData[SuccessMessage] = "You bought a product!";
+            }
+            catch (Exception)
+            {
+
+                TempData[ErrorMessage] = "Not Enaught Money!";
+            }
+
+            return RedirectToAction("Cart", "User");
+        }
+
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
 
             return RedirectToAction("Index", "Home");
-        } 
+        }
     }
 }
-

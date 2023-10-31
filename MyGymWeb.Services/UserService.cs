@@ -4,7 +4,8 @@ using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
 using System.Collections.Immutable;
-
+using System.ComponentModel;
+using System.Runtime.InteropServices;
 
 namespace MyGymWeb.Services
 {
@@ -38,7 +39,7 @@ namespace MyGymWeb.Services
                     TrainerId = id,
                 };
 
-                if(appointment.AppointmentTime <  DateTime.Now)
+                if (appointment.AppointmentTime < DateTime.Now)
                 {
                     throw new InvalidDataException();
                 }
@@ -107,45 +108,82 @@ namespace MyGymWeb.Services
                 .FirstOrDefaultAsync();
 
 
-            if ((currentUser!.Amount - productForBuy!.Price) < 0)
-            {
-                throw new Exception("Amount is not enough!");
-            }
-
-            if (!currentUser.UsersProducts.Any(m => m.ProductId == id))
+            if (!currentUser!.UsersProducts.Any(m => m.ProductId == id))
             {
                 currentUser.UsersProducts.Add(new UserProduct()
                 {
-                    ProductId = productForBuy.Id,
+                    ProductId = productForBuy!.Id,
                     UserId = currentUser.Id,
                     Product = productForBuy,
                     User = currentUser,
                     TotalCost = productForBuy.Price
-                   
                 });
 
-                productForBuy.ProductCount += 1;                
-                
+                productForBuy.ProductCount = 1;
+                //currentUser.Amount -= productForBuy.Price;
             }
             else
             {
-                productForBuy.ProductCount += 1;
-               
+                var a = currentUser.UsersProducts.FirstOrDefault(x => x.ProductId == id);
+                a!.TotalCost += productForBuy!.Price;
+
+                productForBuy.ProductCount++;
+                //currentUser.Amount -= productForBuy.Price;
             }
 
             await data.SaveChangesAsync();
         }
 
+        public async Task BuyProducts(int productId, string userId)
+        {
+            var currentUser = await data.Users
+                .Where(u => u.Id == userId)
+                .Include(x => x.UsersProducts)
+                .FirstOrDefaultAsync();
+
+
+            decimal count = 0;
+
+
+            foreach (var item in currentUser!.UsersProducts)
+            {
+
+                count += item.TotalCost;
+
+            }
+
+            if (count < 100)
+            {
+                count += 20;
+            }
+
+            if (currentUser.Amount - count < 0)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                currentUser.Amount -= count;
+                foreach (var item in currentUser.UsersProducts)
+                {
+                    data.RemoveRange(item);
+                }
+            }
+
+            await data.SaveChangesAsync();
+
+        }
+
         public async Task CancelUserApplicationAsync(int id)
         {
 
-           var currentAppointmentToCancel = await data.Appointments.FirstOrDefaultAsync(x => x.Id ==  id);
+            var currentAppointmentToCancel = await data.Appointments.FirstOrDefaultAsync(x => x.Id == id);
 
             if (currentAppointmentToCancel == null)
             {
                 throw new Exception("Appointment is null");
             }
-           
+
             data.Appointments.RemoveRange(currentAppointmentToCancel);
             await data.SaveChangesAsync();
 
@@ -175,7 +213,7 @@ namespace MyGymWeb.Services
                     PhoneNumber = m.Trainer.PhoneNumber,
                     Practis = m.Trainer.Practis,
                     PricePerHour = m.Trainer.PricePerHour,
-                    UserId = userId                    
+                    UserId = userId
                 });
         }
 
@@ -202,6 +240,7 @@ namespace MyGymWeb.Services
                     Name = m.Product.Name,
                     Price = m.Product.Price,
                     ProductCount = m.Product.ProductCount,
+
                 });
         }
 
@@ -238,6 +277,7 @@ namespace MyGymWeb.Services
 
             var user = await data.Users
                 .Where(x => x.Id == userId)
+                .Include(x => x.UsersProducts)
                 .FirstOrDefaultAsync();
 
             if (product == null || user == null)
@@ -246,38 +286,30 @@ namespace MyGymWeb.Services
 
             }
 
-            if (product.ProductCount > 1)
+            var a = user.UsersProducts.FirstOrDefault(x => x.ProductId == id);
+
+            if (a?.Product.ProductCount > 1)
             {
-                
+
+                a!.TotalCost = a.TotalCost - product.Price;
                 product.ProductCount--;
 
             }
             else
             {
-                
-                product.ProductCount--;
-
-                var productForReturn = await data.UsersProducts
-                .Where(x => x.ProductId == id && x.UserId == userId)
-                .FirstOrDefaultAsync();
-
-                if (productForReturn == null)
-                {
-                    throw new ArgumentException("Product or User not found!");
-                }
-                data.RemoveRange(productForReturn);
-
+                a!.TotalCost = a.TotalCost - product.Price;
+                data.RemoveRange(a);
             }
 
             await data.SaveChangesAsync();
         }
-       
+
         public async Task<string> UserFullName(string userId)
         {
             var user = await data.Users
                  .FirstOrDefaultAsync(x => x.Id == userId);
 
-            if(user == null)
+            if (user == null)
             {
                 throw new NullReferenceException();
             }

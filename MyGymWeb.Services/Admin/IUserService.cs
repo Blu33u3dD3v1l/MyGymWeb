@@ -16,6 +16,7 @@ namespace MyGymWeb.Services.Admin
         Task<IEnumerable<UserTrainersFormModel>> GetMyTrainersAsync(string userId);
         Task CancelUserApplicationAsync(int id);
         Task<IEnumerable<TrainerViewModel>> GetAllMyTrainersAsync(string userId);
+        Task BuyProducts(int productId, string userId);
 
     }
 }

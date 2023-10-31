@@ -6,6 +6,7 @@
     ViewBag.Title = "My Products";
     decimal cost = 0;
     decimal shiping = 0;
+    var productId = 0;
 
 }
 
@@ -15,7 +16,7 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col">
                     <div class="card">
-                        <div class="card-body p-4">                        
+                        <div class="card-body p-4">
                             <div class="row">
 
                                 <div class="col-lg-7">
@@ -30,16 +31,17 @@
                                             <p class="mb-1">Shopping cart</p>
                                             <p class="mb-0">"You have @Model.Count() items in your cart"</p>
                                         </div>
-                                        <div>           
+                                        <div>
                                         </div>
                                     </div>
 
 
-                                    @if(Model.Count() > 0)
+                                    @if (Model.Count() > 0)
                                     {
                                         @foreach (var product in Model)
                                         {
-                                           
+                                            productId = product.Id;
+
                                             <div class="card mb-3">
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between">
@@ -62,7 +64,7 @@
                                                                     </a>
                                                                 </div>
                                                             }
-                                                          
+
                                                             <div style="width: 50px;">
                                                                 <h5 class="fw-normal mb-0">@product.ProductCount</h5>
                                                             </div>
@@ -78,17 +80,17 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        }                                        
-                                    }                                 
+                                        }
+                                    }
                                 </div>
                                 <div class="col-lg-5">
 
                                     <div class="card bg-primary text-white rounded-3">
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center mb-4">                                   
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
                                                 <div class="d-flex justify-content-between">
-                                                    <h5 class="mb-2">If your buyed product is equal or above 100$ shipping will be free!</h5>
-                                                </div>                                               
+                                                    <h5 class="mb-2">If your purchased products are equal or above 100$ shipping will be free!</h5>
+                                                </div>
                                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFg0vALj7wnJ-W6SbdUr7vhA278f3BPsMnQQ&usqp=CAU"
                                                      class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
                                             </div>
@@ -96,27 +98,27 @@
                                             <hr class="my-4">
 
                                             <div class="d-flex justify-content-between">
-                                                <p class="mb-2">Subtotal</p>
-                                                <p class="mb-2">$@cost</p>
+                                                <h5 class="mb-2">Subtotal</h5>
+                                                <h5 class="mb-2">$@cost</h5>
                                             </div>
 
                                             <div class="d-flex justify-content-between">
-                                                <p class="mb-2">Shipping</p>
-                                                @if(cost >= 100)
+                                                <h5 class="mb-2">Shipping</h5>
+                                                @if (cost >= 100)
                                                 {
-                                                    <p class="mb-2">Free</p>
+                                                    <h5 class="mb-2">Free</h5>
                                                 }
                                                 else
                                                 {
-                                                    if(Model.Count() > 0)
+                                                    if (Model.Count() > 0)
                                                     {
-                                                        <p class="mb-2">$20.00</p>
+                                                        <h5 class="mb-2">$20.00</h5>
                                                         shiping = 20;
                                                     }
                                                     else
                                                     {
-                                                        <p class="mb-2">$0</p>
-                                                       
+                                                        <h5 class="mb-2">$0</h5>
+
                                                     }
 
                                                 }
@@ -128,17 +130,22 @@
                                             }
 
                                             <div class="d-flex justify-content-between mb-4">
-                                                <p class="mb-2">Total(Incl. taxes)</p>
-                                               
-                                                <p class="mb-2">$@totalCost</p>
+                                                <h5 class="mb-2">Total(Incl. taxes)</h5>
+
+                                                <h5 class="mb-2">$@totalCost</h5>
                                             </div>
 
-                                            <button type="button" class="btn btn-info btn-block btn-lg">
-                                                <div class="d-flex justify-content-between">
+                                            <div class="d-flex justify-content-center mx-2">
 
-                                                    <span>$@totalCost Buy</span>                                                  
-                                                </div>
-                                            </button>
+                                                @if (totalCost > 0)
+                                                {
+                                                    <button type="button" class="btn btn-info btn-block btn-lg">
+                                                        <div class="d-flex justify-content-between">
+                                                            <a asp-route-id="@productId" asp-controller="User" asp-action="BuyProducts">$@totalCost Buy</a>
+                                                        </div>
+                                                    </button>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +157,3 @@
         </div>
     </section>
 </div>
-
-
-
-
