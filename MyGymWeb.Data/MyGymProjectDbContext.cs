@@ -56,14 +56,14 @@ namespace MyGymWeb.Data
            .OnDelete(DeleteBehavior.NoAction);
 
 
-            builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
-            builder.ApplyConfiguration(new GymConfiguration());
-            builder.ApplyConfiguration(new ProductConfiguration());
-            builder.ApplyConfiguration(new TypeConfiguration());
-            builder.ApplyConfiguration(new TrainerConfiguration());
-            builder.ApplyConfiguration(new AdminConfiguration());
+           builder.ApplyConfiguration(new GroupTrainerNamesConfiguration());
+           builder.ApplyConfiguration(new GymConfiguration());
+           builder.ApplyConfiguration(new ProductConfiguration());
+           builder.ApplyConfiguration(new TypeConfiguration());
+           builder.ApplyConfiguration(new TrainerConfiguration());
+           builder.ApplyConfiguration(new AdminConfiguration());
 
-            base.OnModelCreating(builder);
+           base.OnModelCreating(builder);
 
         }
        

@@ -119,17 +119,18 @@ namespace MyGymWeb.Services
                     ProductId = productForBuy.Id,
                     UserId = currentUser.Id,
                     Product = productForBuy,
-                    User = currentUser
-
-
+                    User = currentUser,
+                    TotalCost = productForBuy.Price
+                   
                 });
-                productForBuy.ProductCount += 1;
-                //currentUser.Amount -= productForBuy.Price;
+
+                productForBuy.ProductCount += 1;                
+                
             }
             else
             {
                 productForBuy.ProductCount += 1;
-                //currentUser.Amount -= productForBuy.Price;
+               
             }
 
             await data.SaveChangesAsync();
@@ -247,13 +248,13 @@ namespace MyGymWeb.Services
 
             if (product.ProductCount > 1)
             {
-                //user.Amount += product.Price;
+                
                 product.ProductCount--;
 
             }
             else
             {
-                //user.Amount += product.Price;
+                
                 product.ProductCount--;
 
                 var productForReturn = await data.UsersProducts
