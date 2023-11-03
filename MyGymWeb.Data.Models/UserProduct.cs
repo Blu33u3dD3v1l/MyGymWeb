@@ -13,5 +13,6 @@
         public Product Product { get; set; } = null!;
 
         public decimal TotalCost { get; set; }
+        public string? PromoCode { get; set; }
     }
 }

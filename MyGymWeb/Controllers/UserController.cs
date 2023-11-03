@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
+using System.ComponentModel;
 using System.Security.Claims;
 using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
@@ -246,11 +248,25 @@ namespace MyGymWeb.Controllers
         {
 
             var ids = this.User.GetId();
+            var prod = this.userService.GetAllProductsForBuyAsync(ids).Result;
+
+            
+
+            await Task.Delay(1500);
 
             try
             {
+                
                 await userService.BuyProducts(productId, ids);
-                TempData[SuccessMessage] = "You bought a product!";
+                if (prod?.Count() == 0)
+                {
+                    TempData[SuccessMessage] = "You bought a product!";
+                }
+                else
+                {
+                    TempData[SuccessMessage] = $"You bought {prod?.Count()} products!";
+                }
+
             }
             catch (Exception)
             {
@@ -267,5 +283,18 @@ namespace MyGymWeb.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+
+      
+        public async Task<IActionResult> SaveCoupon(string couponCode)
+        {
+
+            var ids = this.User.GetId();            
+            await userService.Code(ids, couponCode);
+
+            return RedirectToAction("Cart", "User");
+           
+        }
+
     }
 }

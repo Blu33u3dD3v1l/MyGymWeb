@@ -437,6 +437,11 @@ body {
     margin: 70px 0px 0px;
    
 }
-/*.mycart {
-    padding-bottom: 200px;
-}*/
+
+.newcart {
+    background: #eecda3;
+    background: -webkit-linear-gradient(to right, #eecda3, #ef629f);
+    background: linear-gradient(to right, #eecda3, #ef629f);
+    min-height: 100vh;
+    margin: 70px 0px 0px;
+}

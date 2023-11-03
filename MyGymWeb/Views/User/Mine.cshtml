@@ -5,10 +5,12 @@
     decimal cost = 0;
     decimal shiping = 0;
     var productId = 0;
+   
 
 }
 
-<div class="cart">
+
+@* <div class="cart">
     <section class="h-100 h-custom" style="background-color: #eee;">
         <div class="mycart">
             <div class="container py-5 h-100">
@@ -64,15 +66,15 @@
                                                                     </div>
                                                                 }
 
-                                                                <div style="width: 50px;">
-                                                                    <h5 class="fw-normal mb-0">@product.ProductCount</h5>
+                                                                <div style="width: 50px;">  
+                                                                    <h5 class="fw-normal mx-4">@product.ProductCount</h5>
                                                                 </div>
                                                                 <div style="width: 80px;">
                                                                     @{
                                                                         var a = product.Price * product.ProductCount;
                                                                         cost += a;
                                                                     }
-                                                                    <h5 class="mb-0">$@a</h5>
+                                                                    <h5 class="mb-2">$@a</h5>
                                                                 </div>
                                                                 <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                                                             </div>
@@ -103,24 +105,7 @@
 
                                                 <div class="d-flex justify-content-between">
                                                     <h5 class="mb-2">Shipping</h5>
-                                                    @if (cost >= 100)
-                                                    {
-                                                        <h5 class="mb-2">Free</h5>
-                                                    }
-                                                    else
-                                                    {
-                                                        if (Model.Count() > 0)
-                                                        {
-                                                            <h5 class="mb-2">$20.00</h5>
-                                                            shiping = 20;
-                                                        }
-                                                        else
-                                                        {
-                                                            <h5 class="mb-2">$0</h5>
-
-                                                        }
-
-                                                    }
+                                                    
 
                                                 </div>
 
@@ -156,5 +141,141 @@
             </div>
         </div>                
     </section>   
+</div> *@
+
+
+<div class="newcart">
+    <div class="container px-4 px-lg-0">
+        <!-- For demo purpose -->
+        <div class="container text-white py-5 text-center">
+            <h1 class="display-4">You have @Model.Count() items in your cart!</h1>
+            <p class="lead mb-0">If your purchased products are equal or above 100$ shipping will be free! </p>
+            <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic"><u>Bootstrapious</u></a></p>
+        </div>
+        <!-- End -->
+
+        <div class="pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+
+                        <!-- Shopping cart table -->
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="p-2 px-3 text-uppercase">Product</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Price</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Quantity</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Remove</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                @if (Model.Count() > 0)
+                                {
+                                    foreach (var product in Model)
+                                    {
+                                        productId = product.Id;
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="border-0">
+                                                    <div class="p-2">
+                                                        <img src="@product.ImageUrl" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                                        <div class="ml-3 d-inline-block align-middle">
+                                                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">@product.Name</a></h5>
+                                                            <span class="text-muted font-weight-normal font-italic d-block">@product.Mark</span>
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                @{
+                                                    var a = product.Price * product.ProductCount;
+                                                    cost += a;
+                                                }
+                                                <td class="border-0 align-middle"><strong>$@a</strong></td>
+                                                <td class="border-0 align-middle"><strong>@product.ProductCount</strong></td>
+                                                <td class="border-0 align-middle"><a asp-route-id="@product.Id" asp-controller="User" asp-action="Return" method="post" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                                            </tr>
+                                        </tbody>
+                                    }
+                                }
+                            </table>
+                        </div>
+                        <!-- End -->
+                    </div>
+                </div>
+
+                <div class="row py-5 p-4 bg-white rounded shadow-sm">
+                    <div class="col-lg-6">
+                        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
+                        <div class="p-4">
+                            <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+                            <div class="container">
+                                <form id="couponForm" action="/User/SaveCoupon">
+                                    <div class="input-group mb-4 border rounded shadow-sm p-2">
+                                        <input name="couponCode" type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
+                                        <div class="input-group-append border-0">
+                                            <button id="button-addon3" type="submit" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
+                        <div class="p-4">
+                            <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
+                            <textarea name="" cols="30" rows="2" class="form-control"></textarea>                           
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+                        <div class="p-4">
+                            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$@cost</strong></li>          
+                                <li class="d-flex justify-content-between py-3 border-bottom">
+                                    <strong class="text-muted">Shipping and handling</strong> @if (cost >= 100)
+                                    {
+                                        <strong>Free</strong>
+                                    }
+                                    else
+                                    {
+                                        if (Model.Count() > 0)
+                                        {
+                                            <strong>$20.00</strong>
+                                            shiping = 20;
+                                        }
+                                        else
+                                        {
+                                            <strong>$0.00</strong>
+
+                                        }
+
+                                    }
+                                    @{
+                                        var totalCost = cost + shiping;
+                                    }
+                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li>
+                                <li class="d-flex justify-content-between py-3 border-bottom">
+                                    <strong class="text-muted">Total</strong>
+                                    <h5 class="font-weight-bold">@totalCost</h5>
+                                </li>
+                            </ul>
+                            <a asp-route-id="@productId" asp-controller="User" asp-action="BuyProducts" class="btn btn-dark rounded-pill py-2 btn-block">Buy Products</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 

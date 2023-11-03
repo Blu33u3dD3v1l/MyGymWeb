@@ -132,6 +132,9 @@ namespace MyGymWeb.Services
             }
 
             await data.SaveChangesAsync();
+
+
+
         }
 
         public async Task BuyProducts(int productId, string userId)
@@ -187,6 +190,21 @@ namespace MyGymWeb.Services
             data.Appointments.RemoveRange(currentAppointmentToCancel);
             await data.SaveChangesAsync();
 
+        }
+
+        public async Task Code(string userId, string code)
+        {
+
+            var a = data.UsersProducts.FirstOrDefault(x => x.UserId == userId);
+
+            if (code == "AAA-12345")
+            {
+                a!.PromoCode = code;
+
+            }
+
+
+            await data.SaveChangesAsync(); 
         }
 
         public async Task<IEnumerable<TrainerViewModel>> GetAllMyTrainersAsync(string userId)
