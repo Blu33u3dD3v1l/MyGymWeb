@@ -250,13 +250,11 @@ namespace MyGymWeb.Controllers
             var ids = this.User.GetId();
             var prod = this.userService.GetAllProductsForBuyAsync(ids).Result;
 
-            
-
             await Task.Delay(1500);
 
             try
             {
-                
+               
                 await userService.BuyProducts(productId, ids);
                 if (prod?.Count() == 0)
                 {
@@ -268,10 +266,14 @@ namespace MyGymWeb.Controllers
                 }
 
             }
-            catch (Exception)
+            catch (ArgumentException)
             {
 
                 TempData[ErrorMessage] = "Not Enaught Money!";
+            }
+            catch (NullReferenceException)
+            {
+                TempData[ErrorMessage] = "No products added!";
             }
 
             return RedirectToAction("Cart", "User");

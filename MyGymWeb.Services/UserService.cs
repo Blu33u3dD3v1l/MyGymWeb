@@ -147,6 +147,10 @@ namespace MyGymWeb.Services
 
             decimal count = 0;
 
+            if (!currentUser!.UsersProducts.Any())
+            {
+                throw new NullReferenceException();
+            }
 
             foreach (var item in currentUser!.UsersProducts)
             {
@@ -162,7 +166,7 @@ namespace MyGymWeb.Services
 
             if (currentUser.Amount - count < 0)
             {
-                throw new Exception();
+                throw new ArgumentException();
             }
             else
             {
