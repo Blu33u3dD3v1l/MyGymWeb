@@ -2,11 +2,13 @@
 
 <a href="http://bit.ly/Bestgymsite">Click here!</a>
 
-Test account:
+Admin account:
 
 username: Admin@admin.bg
 
 password: Viktor123!
+
+Discount code: AAA-12345
 
 ## Functionality
 
