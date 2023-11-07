@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
 using System.Collections.Immutable;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
+
 
 namespace MyGymWeb.Services
 {
@@ -20,6 +20,8 @@ namespace MyGymWeb.Services
             this.data = data;
 
         }
+
+
 
         public async Task AddAppointmentAsync(Guid id, string userId, AppointmentFormModel model)
         {
@@ -116,11 +118,12 @@ namespace MyGymWeb.Services
                     UserId = currentUser.Id,
                     Product = productForBuy,
                     User = currentUser,
-                    TotalCost = productForBuy.Price
+                    TotalCost = productForBuy.Price,
                 });
 
                 productForBuy.ProductCount = 1;
-                //currentUser.Amount -= productForBuy.Price;
+
+
             }
             else
             {
@@ -128,7 +131,7 @@ namespace MyGymWeb.Services
                 a!.TotalCost += productForBuy!.Price;
 
                 productForBuy.ProductCount++;
-                //currentUser.Amount -= productForBuy.Price;
+
             }
 
             await data.SaveChangesAsync();
@@ -144,8 +147,8 @@ namespace MyGymWeb.Services
                 .Include(x => x.UsersProducts)
                 .FirstOrDefaultAsync();
 
-
             decimal count = 0;
+
 
             if (!currentUser!.UsersProducts.Any())
             {
@@ -159,9 +162,15 @@ namespace MyGymWeb.Services
 
             }
 
+
             if (count < 100)
             {
                 count += 20;
+            }
+
+            if (currentUser.DiscountPrice > 0)
+            {
+                count -= currentUser.DiscountPrice;
             }
 
             if (currentUser.Amount - count < 0)
@@ -176,6 +185,14 @@ namespace MyGymWeb.Services
                     data.RemoveRange(item);
                 }
             }
+
+            var discountForDeletion = currentUser.UsersProducts.FirstOrDefault(x => x.PromoCode != null);
+            if (discountForDeletion != null)
+            {
+                discountForDeletion.PromoCode = null;
+            }
+
+            currentUser.DiscountPrice = 0;
 
             await data.SaveChangesAsync();
 
@@ -199,16 +216,40 @@ namespace MyGymWeb.Services
         public async Task Code(string userId, string code)
         {
 
+
             var a = data.UsersProducts.FirstOrDefault(x => x.UserId == userId);
+
+            var b = data.Users.FirstOrDefault(x => x.Id == userId);
+
+            if (b != null)
+            {
+                if (b.UseCode == true)
+                {
+                    throw new InvalidOperationException();
+                }
+            }
 
             if (code == "AAA-12345")
             {
                 a!.PromoCode = code;
 
+
+            }
+
+            var productId = a?.ProductId;
+            var currProduct = data.Products.FirstOrDefault(x => x.Id == productId);
+
+            if (a?.PromoCode == "AAA-12345")
+            {
+
+                b!.DiscountPrice = 5;
+
             }
 
 
-            await data.SaveChangesAsync(); 
+            b!.UseCode = true;
+
+            await data.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<TrainerViewModel>> GetAllMyTrainersAsync(string userId)
@@ -262,6 +303,7 @@ namespace MyGymWeb.Services
                     Name = m.Product.Name,
                     Price = m.Product.Price,
                     ProductCount = m.Product.ProductCount,
+                    //DiscountPrice = m.Product.DiscountPrice
 
                 });
         }
@@ -310,6 +352,10 @@ namespace MyGymWeb.Services
 
             var a = user.UsersProducts.FirstOrDefault(x => x.ProductId == id);
 
+            var usr = this.data.Users.FirstOrDefault(x => x.Id == userId);
+
+
+
             if (a?.Product.ProductCount > 1)
             {
 
@@ -320,7 +366,15 @@ namespace MyGymWeb.Services
             else
             {
                 a!.TotalCost = a.TotalCost - product.Price;
-                data.RemoveRange(a);
+                data.RemoveRange(a!);
+                await data.SaveChangesAsync();
+            }
+
+
+            if (!usr!.UsersProducts.Any())
+            {
+                usr!.DiscountPrice = 0;
+                usr.UseCode = false;
             }
 
             await data.SaveChangesAsync();
@@ -337,6 +391,33 @@ namespace MyGymWeb.Services
             }
 
             return $"{user?.FirstName} {user?.LastName}".Trim();
+        }
+
+        public async Task<IEnumerable<DiscountViewModel>> GetAllProductsForRefresh(string userId)
+        {
+            var user = await data.Users
+               .Where(u => u.Id == userId)
+               .Include(u => u.UsersProducts)
+               .ThenInclude(x => x.Product)
+               .FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                throw new ArgumentException("Invalid user ID");
+            }
+
+            return user.UsersProducts
+                .Select(m => new DiscountViewModel
+                {
+                    Description = m.Product.Description,
+                    Mark = m.Product.Mark,
+                    Id = m.ProductId,
+                    ImageUrl = m.Product.ImageUrl,
+                    Name = m.Product.Name,
+                    Price = m.Product.Price,
+                    ProductCount = m.Product.ProductCount,
+
+                });
         }
     }
 }

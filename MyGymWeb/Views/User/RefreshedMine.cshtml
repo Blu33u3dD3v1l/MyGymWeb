@@ -1,32 +1,44 @@
-﻿@model IEnumerable<ProductViewModel>
+﻿@model IEnumerable<DiscountViewModel>
+@using Microsoft.AspNetCore.Identity
+@using MyGymWeb.Data.Models;
+@using MyGymWeb.Services.Admin
+@using MyGymWeb.Infrastructure.Extensions
+@inject UserManager<ApplicationUser> UserManager
+
 
 @{
     ViewBag.Title = "My Products";
     decimal cost = 0;
     decimal shiping = 0;
     var productId = 0;
+    decimal totalDiscount = 0;
+    decimal realDiscount = 0;
 
 
 }
 
-
 <div class="newcart">
     <div class="container px-4 px-lg-0">
-
-
+        @{
+            var cnter = 0;
+            foreach (var item in Model)
+            {
+                cnter += item.ProductCount;
+            }
+        }
         @if (!Model.Any())
         {
             <div class="container text-white py-5 text-center">
                 <h1 class="display-4">You do not have any items in your cart yet!</h1>
-                <p class="lead mb-0">If your purchased products are equal or above 100$ shipping will be free! </p>              
+                <p class="lead mb-0">If your purchased products are equal or above 100$ shipping will be free! </p>
             </div>
         }
         else
         {
-            if(Model.Count() == 1)
+            if (Model.Count() == 1)
             {
                 <div class="container text-white py-5 text-center">
-                    <h1 class="display-4">You have @Model.Count() item in your cart!</h1>
+                    <h1 class="display-4">You have @cnter in your cart!</h1>
                     <p class="lead mb-0">If your purchased products are equal or above 100$ shipping will be free! </p>
                     @*  <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic"><u>Bootstrapious</u></a></p> *@
                 </div>
@@ -34,15 +46,15 @@
             else
             {
                 <div class="container text-white py-5 text-center">
-                    <h1 class="display-4">You have @Model.Count() items in your cart!</h1>
+                    <h1 class="display-4">You have @cnter items in your cart!</h1>
                     <p class="lead mb-0">If your purchased products are equal or above 100$ shipping will be free! </p>
                     @*  <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic"><u>Bootstrapious</u></a></p> *@
                 </div>
-            }           
+            }
         }
 
-        
-     
+
+
         <div class="pb-5">
             <div class="container">
                 <div class="row">
@@ -66,11 +78,12 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                @if (Model.Count() > 0)
-                                {
-                                    foreach (var product in Model)
+                              
+                                    @foreach (var product in Model)
                                     {
                                         productId = product.Id;
+                                   
+
                                         <tbody>
                                             <tr>
                                                 <th scope="row" class="border-0">
@@ -82,19 +95,32 @@
                                                         </div>
                                                     </div>
                                                 </th>
-                                                @{
-                                                    var a = product.Price * product.ProductCount;
-                                                    cost += a;
+                                            @{
+                                                string? currentId = this.User.GetId();
+                                                var currentUser = UserManager.Users.FirstOrDefault(x => x.Id == currentId); 
+                                                if(currentUser != null)
+                                                {
+                                                    totalDiscount = currentUser.DiscountPrice;
                                                 }
+                                                var a = product.Price * product.ProductCount;
+                                                cost += a;
+
+                                                if(totalDiscount != 0)
+                                                {
+                                                    realDiscount = cost - totalDiscount;
+                                                }
+                                              
+
+                                            }
                                                 <td class="border-0 align-middle"><strong>$@a</strong></td>
                                                 <td class="border-0 align-middle"><strong>@product.ProductCount</strong></td>
                                                 <td class="border-0 align-middle"><a asp-route-id="@product.Id" asp-controller="User" asp-action="Return" method="post" class="text-dark"><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                         </tbody>
                                     }
-                                }
+                                
                             </table>
-                        </div>                     
+                        </div>
                     </div>
                 </div>
 
@@ -118,7 +144,7 @@
                         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
                         <div class="p-4">
                             <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
-                            <textarea name="" cols="30" rows="2" class="form-control"></textarea>                           
+                            <textarea name="" cols="30" rows="2" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -126,7 +152,7 @@
                         <div class="p-4">
                             <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
                             <ul class="list-unstyled mb-4">
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$@cost</strong></li>          
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$@cost</strong></li>
                                 <li class="d-flex justify-content-between py-3 border-bottom">
                                     <strong class="text-muted">Shipping and handling</strong>
                                     @if (cost >= 100)
@@ -149,12 +175,21 @@
                                     }
                                     @{
                                         var totalCost = cost + shiping;
+                                        var totalCostDiscount = realDiscount + shiping;
+
                                     }
                                 </li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Discount</strong><strong>$@totalDiscount</strong></li>
                                 <li class="d-flex justify-content-between py-3 border-bottom">
                                     <strong class="text-muted">Total</strong>
-                                    <h5 class="font-weight-bold">@totalCost</h5>
+                                    @if(totalDiscount != 0)
+                                    {
+                                        <h5 class="font-weight-bold">@totalCostDiscount</h5>
+                                    }
+                                    else
+                                    {
+                                        <h5 class="font-weight-bold">@totalCost</h5>
+                                    }                                                                      
                                 </li>
                             </ul>
                             <a asp-route-id="@productId" asp-controller="User" asp-action="BuyProducts" class="btn btn-dark rounded-pill py-2 btn-block">Buy Products</a>
@@ -164,6 +199,4 @@
             </div>
         </div>
     </div>
-
 </div>
-

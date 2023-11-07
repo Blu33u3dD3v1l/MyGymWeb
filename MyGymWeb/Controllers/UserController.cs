@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
-using System.ComponentModel;
 using System.Security.Claims;
 using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
@@ -40,9 +38,9 @@ namespace MyGymWeb.Controllers
         public async Task<IActionResult> Cart()
         {
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            var model = await userService.GetAllProductsForBuyAsync(userId!);
+            var model = await userService.GetAllProductsForRefresh(userId!);
 
-            return View("Mine", model);
+            return View("RefreshedMine", model);
         }
         public async Task<IActionResult> Return(int id)
         {
@@ -269,7 +267,7 @@ namespace MyGymWeb.Controllers
             catch (ArgumentException)
             {
 
-                TempData[ErrorMessage] = "Not Enaught Money!";
+                TempData[ErrorMessage] = "Not enough money!";
             }
             catch (NullReferenceException)
             {
@@ -291,12 +289,35 @@ namespace MyGymWeb.Controllers
         public async Task<IActionResult> SaveCoupon(string couponCode)
         {
 
-            var ids = this.User.GetId();            
-            await userService.Code(ids, couponCode);
+            var ids = this.User.GetId();
 
-            return RedirectToAction("Cart", "User");
+            if(couponCode != null && couponCode == "AAA-12345")
+            {
+                try
+                {
+                    await userService.Code(ids, couponCode);
+                }
+                catch (InvalidOperationException)
+                {
+
+                    TempData[ErrorMessage] = "You have already used a promo code!";
+
+                }
+            }
+
+            return RedirectToAction("RefreshedMine", "User");
            
         }
+
+        public async Task<IActionResult> RefreshedMine()
+        {
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var model = await userService.GetAllProductsForRefresh(userId!);
+
+            return View("RefreshedMine", model);
+        }
+
+
 
     }
 }

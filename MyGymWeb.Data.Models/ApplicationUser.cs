@@ -23,6 +23,12 @@ namespace MyGymWeb.Data.Models
         [Required]
         public decimal Amount { get; set; } = 1000;
 
+        public bool UseCode { get; set; }
+
+        [Range(1.0, 10000.0)]
+        [Required]
+        public decimal DiscountPrice { get; set; }
+
         public List<UserProduct> UsersProducts { get; set; }
         public List<UserTrainer> UsersTrainers { get; set; }
     }
