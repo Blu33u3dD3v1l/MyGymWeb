@@ -53,7 +53,7 @@ namespace MyGymWeb.Data.Configuration
               {
                   Id = 4,
                   Name = "Pro Nutrition and Fitness",
-                  ImageUrl = "https://cdn.shopify.com/s/files/1/0233/6459/9885/products/51v0EC9aP5L._SL1080.jpg?v=1666270776",
+                  ImageUrl = "https://gonobs.com/cdn/shop/files/raging-whey-listing-creative-1.png?v=1696973140",
                   Mark = "Goodlife",
                   Price = 50,
                   Description = "Keep your hard-earned muscles fed, whether youre at home or at the gym. Stay fit & consistent with your protein supplementation & stay strong around the clock, in the gym or at home. Pro series whey has a scientific combination of whey isolate (fast) for immediate absorption and whey concentrate (slow digesting) to give feed your muscles for longer time a protein drink thats richer & tastier than any whey protein in india",
@@ -102,7 +102,7 @@ namespace MyGymWeb.Data.Configuration
                 {
                     Id = 9,
                     Name = "French Fitness FL70 Freeweight",
-                    ImageUrl = "https://cdn3.volusion.com/aqyor.dadrn/v/vspfiles/photos/FF-FL70-2.jpg?v-cache=1624149541",
+                    ImageUrl = "https://cdn11.bigcommerce.com/s-47lrg8qzg0/images/stencil/500x659/products/16275/375950/ff-x10__80072.1698736148.jpg?c=1",
                     Mark = "Olympic Weight",
                     Price = 1999,
                     Description = "The French Fitness FL70 Freeweight Leverage Gym System is a multifunctional training device that can be used by three people at the same time. The FL70 guarantees a complete heavy-duty workout without the need for a spotter. Perform high pulls, kicks, biceps/triceps, standing calves, press training and a lot more on this versatile leverage free weight gym.",
