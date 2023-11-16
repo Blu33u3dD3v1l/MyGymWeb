@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyGymWeb.Data.Models;
 
@@ -102,7 +103,7 @@ namespace MyGymWeb.Data.Configuration
                 {
                     Id = 9,
                     Name = "French Fitness FL70 Freeweight",
-                    ImageUrl = "https://cdn11.bigcommerce.com/s-47lrg8qzg0/images/stencil/500x659/products/16275/375950/ff-x10__80072.1698736148.jpg?c=1",
+                    ImageUrl = "https://cdn11.bigcommerce.com/s-47lrg8qzg0/images/stencil/640w/products/16275/378734/ff-x10__12566.1700116344.jpg?c=1",
                     Mark = "Olympic Weight",
                     Price = 1999,
                     Description = "The French Fitness FL70 Freeweight Leverage Gym System is a multifunctional training device that can be used by three people at the same time. The FL70 guarantees a complete heavy-duty workout without the need for a spotter. Perform high pulls, kicks, biceps/triceps, standing calves, press training and a lot more on this versatile leverage free weight gym.",
