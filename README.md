@@ -1,7 +1,5 @@
 ## Web Project for the "ASP.NET Advanced" course @ SoftUni 
 
-<a href="http://bit.ly/Bestgymsite">Click here!</a>
-
 Admin account:
 
 username: Admin@admin.bg
