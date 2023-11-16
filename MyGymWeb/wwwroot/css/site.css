@@ -122,8 +122,12 @@ body {
     }
 
 .videoClass {
-    margin: -260px 0px 0px;
+    margin: -268px 0px 0px;
     margin-right: 20px;
+}
+
+.spaClass {
+    margin: -220px 0px 0px;
 }
 
 .MyFooter {
@@ -469,7 +473,7 @@ body {
     border-radius: 10px;
     width: 80%;
     max-width: 600px;
-    margin: 0px 369px 0px;
+    margin: 0px 350px 0px;
 }
 
 :root {
@@ -685,9 +689,17 @@ body {
 }
 
 .pic1 {
-    margin: 0px 20px 0px;
+    margin: 0px 10px 0px;
 }
 
 .pic2 {
     margin-right: 20px;
+}
+
+.contactus h1{
+   margin-left: 20px;
+}
+
+.contactus p{
+    margin-left: 20px;
 }
