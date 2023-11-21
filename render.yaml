@@ -1,4 +1,0 @@
-﻿services:
-  - name: web
-    env: dotnet
-    startCommand: ./MyGymWeb.dll
