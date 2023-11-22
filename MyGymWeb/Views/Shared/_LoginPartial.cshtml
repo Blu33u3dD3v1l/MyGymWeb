@@ -33,17 +33,17 @@
         }         
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark"><i class="logout">Sign Out</i></button>
+                <button type="submit" class="nav-link btn btn-link text-white"><i class="logout">Sign Out</i></button>
             </form>
         </li>
     }
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="User" asp-action="Register"><i>Sign Up</i></a>
+            <a class="nav-link text-dark" asp-controller="User" asp-action="Register"><i style="color: white">Sign Up</i></a>
     </li>
     <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="User" asp-action="Login"><i>Sign In</i></a>
+            <a class="nav-link text-dark" asp-controller="User" asp-action="Login"><i style="color: white">Sign In</i></a>
     </li>
     }
 </ul>
