@@ -20,30 +20,30 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="User" asp-action="Cart"><i>My Cart</i></a>
+            <a class="nav-link" asp-controller="User" asp-action="Cart"><i>My Cart</i></a>
         </li>      
         if (!string.IsNullOrEmpty(user.Email))
         {
              if (!User.IsInRole("Administrator"))
             {
             <li class="nav-item">
-                <a class="nav-link text-dark"><i>Balance: <e class="text-warning">@user.Amount</e> $</i></a>
+                <a class="nav-link"><i>Balance: <e class="text-primary">@user.Amount</e> $</i></a>
             </li>
             }      
         }         
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-white"><i class="logout">Sign Out</i></button>
+                <button type="submit" class="nav-link btn btn-link text-black"><i class="logout">Sign Out</i></button>
             </form>
         </li>
     }
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="User" asp-action="Register"><i style="color: white">Sign Up</i></a>
+            <a class="nav-link text-dark" asp-controller="User" asp-action="Register"><i style="color: black">Sign Up</i></a>
     </li>
     <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="User" asp-action="Login"><i style="color: white">Sign In</i></a>
+            <a class="nav-link text-dark" asp-controller="User" asp-action="Login"><i style="color: black">Sign In</i></a>
     </li>
     }
 </ul>
