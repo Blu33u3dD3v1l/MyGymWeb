@@ -34,10 +34,9 @@ body {
 
 
 .nav-item {
-    padding: .5rem;
-    
+    padding: .6rem;
+    margin-top: 2px
 }
-
 
 
 
@@ -409,7 +408,7 @@ body {
         border: none;
         outline: none;
         color: dimgrey;
-        padding: 15px 15px;
+        padding: 18px 15px;
         background-color: inherit;
         font-family: inherit;
         margin: 0;
@@ -716,5 +715,9 @@ body {
 .blue-border {
     border: 2px solid blue;
 }
+
+
+
+
 
 

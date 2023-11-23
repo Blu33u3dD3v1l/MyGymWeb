@@ -26,86 +26,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-
-.dropdown {
-  float: left;
-  
-  
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: dimgrey;
-  padding: 15px 15px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-</style>
 </head>
-<body>
 
-    <partial name="_NotificationsPartial"/>
-     
-    <header>
-        <nav  class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom fixed-top">
+
+<body>
+    <style>
+
+        .dropdown {
+            float: left;
+        }
+
+            .dropdown .dropbtn {
+                font-size: 16px;
+                border: none;
+                outline: none;
+                color: dimgrey;
+                padding: 15px 15px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                float: none;
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+    <partial name="_NotificationsPartial" />
+    <header>      
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm fixed-top">
             <div class="container-fluid">
-                <img class="h-100" src="https://static.vecteezy.com/system/resources/thumbnails/000/595/983/small/04012019-25.jpg" style="width:5em; height:6em;" alt="./images/04012019-25.jpg" />
+                <img class="h-100" src="~/images/Gym Logo.jpg" style="width:5em; height:6em;" alt="./images/04012019-25.jpg" />
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                       <li class="nav-item">                         
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i>Home</i></a>
+                </button> 
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">                 
+                    <ul class="navbar-nav m-lg-auto">                        
+                        <li class="nav-item">                         
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><h3 class="fw-bold"><i>HOME</i></h3></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Gym" asp-action="All"><i>Gyms</i></a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Gym" asp-action="All"><h3 class="fw-bold"><i>GYMS</i></h3></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="All"><i>Expert Team</i></a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="All"><h3 class="fw-bold"><i>TEAM</i></h3></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="All"><i>Products</i></a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="All"><h3 class="fw-bold"><i>PRODUCTS</i></></h3></a>
                         </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="Search"><i>Search</i></a>
-                        </li>
-                       
-                         
-                        <li>
-                             <div class="dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Trainer" asp-action="Search"><h3 class="fw-bold"><i>SEARCH</i></h3></a>
+                        </li>                                         
+                            <li>
+                                <div class="dropdown">
                                     <h5 class="dropbtn">
                                         Admin
                                         <i class="fa fa-caret-down"></i>
@@ -118,57 +113,55 @@
                                         <a asp-area="Admin" asp-controller="Apply" asp-action="All"><i>Applies</i></a>
                                         <a asp-area="Admin" asp-controller="Appointment" asp-action="All">Appointments</a>
                                     </div>
-                             </div>
-                        </li>                        
-                    </ul>                   
-                    <partial name="_LoginPartial" />                   
+                                </div>
+                            </li>                                           
+                    </ul>
+                    <partial name="_AdminLoginPartial" />
                 </div>
             </div>
         </nav>
-    
     </header>
     <main>
-        @RenderBody()
+        @RenderBody()      
     </main>
+   
     <footer>
-    <div class="MyFooter">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-lg-4">
-                    <h5>GYMFIT</h5>
-                    <p class="py-4">
-                        The fitness philosophy is a broad summary of your values. It is the sum of your personal attributes and professional passions, and includes the following elements: Your method for teaching, coaching and motivating others.
-                    </p>
-                </div>
-                <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
-                    <h5 class="pb-4">INFORMATION</h5>
-                    <p class="link"> <span><i class="fas fa-angle-double-right"></i>About Us</span></p>
-                    <p class="link"> <span><i class="fas fa-angle-double-right"></i>Privacy Policy</span></p>
-                    <p class="link"> <span><i class="fas fa-angle-double-right"></i>Terms & Conditions</span></p>
-                    <p class="link"> <span><i class="fas fa-angle-double-right"></i>Contact Us</span></p>
-                </div>
+        <div class="MyFooter">
+            <div class="container py-4">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h5>GYMFIT</h5>
+                        <p class="py-4">
+                            The fitness philosophy is a broad summary of your values. It is the sum of your personal attributes and professional passions, and includes the following elements: Your method for teaching, coaching and motivating others.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
+                        <h5 class="pb-4">INFORMATION</h5>
+                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>About Us</span></p>
+                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>Privacy Policy</span></p>
+                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>Terms & Conditions</span></p>
+                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>Contact Us</span></p>
+                    </div>
 
-                <div class="col-lg-4">
-                    <h5 class="pb-1">HOME LOCATION</h5>
-                    <p>Washington 6036 Richmond nwy., Alexandria, VA USA 22303</p>
-                    <p class="link pt-3">+1 (409) 987-5874</p>
-                    <p class="link">info@info.com</p>
-                </div  class="col-lg-4">
-            
+                    <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
+                        <h5 class="pb-4">HOME LOCATION</h5>
+                        <p class="link">Washington 6036 Richmond nwy., Alexandria, VA USA 22303</p>
+                        <p class="link">+1 (409) 987-5874</p>
+                        <p class="link">info@info.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center p-3" style="background-color: black;">
+                <a class="text-white" href="#"> © @DateTime.Now.Year Copyright: MyGymWeb.com</a>
             </div>
         </div>
-        <div class="text-center p-3" style="background-color: black;">       
-        <a class="text-white" href="#">© @DateTime.Now.Year Copyright: MyGymWeb.com</a>
-    </div>
-    </div>
-    
-</footer>
- 
-    
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>  
+      
+    </footer>
+      
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>   
+    <script src="~/js/site.js" asp-append-version="true"></script>   
    
-    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
