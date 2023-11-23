@@ -30,49 +30,6 @@
 
 
 <body>
-    <style>
-
-        .dropdown {
-            float: left;
-        }
-
-            .dropdown .dropbtn {
-                font-size: 16px;
-                border: none;
-                outline: none;
-                color: dimgrey;
-                padding: 15px 15px;
-                background-color: inherit;
-                font-family: inherit;
-                margin: 0;
-            }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-            .dropdown-content a {
-                float: none;
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-                text-align: left;
-            }
-
-                .dropdown-content a:hover {
-                    background-color: #ddd;
-                }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-    </style>
     <partial name="_NotificationsPartial" />
     <header>      
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm fixed-top">
@@ -124,7 +81,7 @@
     <main>
         @RenderBody()      
     </main>
-   
+
     <footer>
         <div class="MyFooter">
             <div class="container py-4">
@@ -132,30 +89,50 @@
                     <div class="col-lg-4">
                         <h5>GYMFIT</h5>
                         <p class="py-4">
-                            The fitness philosophy is a broad summary of your values. It is the sum of your personal attributes and professional passions, and includes the following elements: Your method for teaching, coaching and motivating others.
+                            The fitness philosophy is a broad summary of your values. It is the sum of your personal attributes and professional passions, and includes the following elements: Your method for teaching, coaching, and motivating others.
                         </p>
                     </div>
-                    <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-12 mb-2 text-center">
                         <h5 class="pb-4">INFORMATION</h5>
-                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>About Us</span></p>
-                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>Privacy Policy</span></p>
-                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>Terms & Conditions</span></p>
-                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>Contact Us</span></p>
+                        <p class="link"><span><i class="fas fa-angle-double-right"></i>About Us</span></p>
+                        <p class="link"><span><i class="fas fa-angle-double-right"></i>Privacy Policy</span></p>
+                        <p class="link"><span><i class="fas fa-angle-double-right"></i>Terms & Conditions</span></p>
+                        <p class="link"><span><i class="fas fa-angle-double-right"></i>Contact Us</span></p>
                     </div>
 
-                    <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
                         <h5 class="pb-4">HOME LOCATION</h5>
                         <p class="link">Washington 6036 Richmond nwy., Alexandria, VA USA 22303</p>
                         <p class="link">+1 (409) 987-5874</p>
                         <p class="link">info@info.com</p>
                     </div>
                 </div>
+
+
+                <div class="container py-4 logos">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img class="h-100" src="~/images/maxresdefault.jpg" style="width:25em; height:26em;" alt="./images/04012019-25.jpg" />
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-12 mb-2 text-center">
+                            <img class="h-100" src="~/images/fitnesslogo.jpg" style="width:25em; height:26em;" alt="./images/04012019-25.jpg" />
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
+                            <img class="h-100" src="~/images/boxlogo.jpg" style="width:25em; height:26em;" alt="./images/04012019-25.jpg" />
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="text-center p-3" style="background-color: black;">
-                <a class="text-white" href="#"> © @DateTime.Now.Year Copyright: MyGymWeb.com</a>
+
+            <div class=" footer-container">
+                <img class="tradelogo" src="~/images/tradelogo.jpg" alt="./images/04012019-25.jpg" />
+                <a class="text-white trademark" href="#"> © @DateTime.Now.Year Copyright: MyGymWeb.com</a>
             </div>
         </div>
-      
     </footer>
       
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>   

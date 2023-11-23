@@ -9,36 +9,36 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<div class="AllUsers">
+<div class="AllUsers" style="background-color: black">
     <div class="container">
-        <table class="table table-striped">
+        <table class="table table-striped" style="color: white">
             <thead>
                 <tr>
-                    <th><label>Email</label></th>
-                    <th><label>Full Name</label></th>
-                    <th><label>Phone Number</label></th>
-                    <th><label>State</label></th>                  
+                    <th><label class="text-white">Email</label></th>
+                    <th><label class="text-white">Full Name</label></th>
+                    <th><label class="text-white">Phone Number</label></th>
+                    <th><label class="text-white">State</label></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var user in Model.Where(x => x.Email != null))
                 {
                     <tr>
-                        <td><label>@user.Email</label></td>
-                        <td><label>@user.FullName</label></td>
-                        <td><label>@user.PhoneNumber</label></td>
+                        <td><label class="text-white">@user.Email</label></td>
+                        <td><label class="text-white">@user.FullName</label></td>
+                        <td><label class="text-white">@user.PhoneNumber</label></td>
                         <td>
                             @if (!string.IsNullOrEmpty(user.PhoneNumber))
                             {
-                                <label>Trainer</label>
+                                <label class="text-white">Trainer</label>
                             }
                             else if(user.Email == "Admin@admin.bg")
                             {
-                                <label>Admin</label>
+                                <label class="text-danger">Admin</label>
                             }                        
                             else
                             {
-                                <label class="text-center">User</label>
+                                <label class="text-center text-white">User</label>
                             }
                         </td>                   
                     </tr>

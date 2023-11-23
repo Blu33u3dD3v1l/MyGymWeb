@@ -30,7 +30,7 @@ namespace MyGymWeb.Controllers
             if (isApplier)
             {
                
-                    TempData[WarningMessage] = "You allready have pending application!";
+                    TempData[ErrorMessage] = "You allready have pending application!";
 
                     return RedirectToAction("Index", "Home");               
                   

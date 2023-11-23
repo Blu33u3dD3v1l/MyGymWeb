@@ -276,37 +276,6 @@ namespace MyGymWeb.Services
             await context.SaveChangesAsync();
         }
 
-        public async Task QuitTrainerAsync(string userId, TrainerQuitViewModel model)
-        {
-            Trainer? currentTrainer = await context.Trainers.FirstOrDefaultAsync(a => a.UserId == userId);
-
-            if (currentTrainer == null)
-            {
-                throw new Exception();
-            }
-
-            var trainer = new Apply()
-            {
-                Id = currentTrainer.Id,
-                Name = currentTrainer.Name,
-                PricePerHour = currentTrainer.PricePerHour,
-                Type = currentTrainer.Type,
-                ImageUrl = currentTrainer.ImageUrl,
-                Info = currentTrainer.Info,
-                Motto = currentTrainer.Motto,
-                Practis = currentTrainer.Practis,
-                PhoneNumber = currentTrainer.PhoneNumber,
-                UserId = userId,
-                ForApplication = "For Quit"
-
-
-
-            };
-
-         
-            await context.Applies.AddAsync(trainer);
-            await context.SaveChangesAsync();
-        }
 
         public async Task DeleteTrainerForApplyAsync(Guid id)
         {

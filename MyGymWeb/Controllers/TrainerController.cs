@@ -62,24 +62,5 @@ namespace MyGymWeb.Controllers
             return View(t);
         }
 
-        public async Task<IActionResult> Quit(TrainerQuitViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            var currentId = User.GetId();
-
-
-            if (currentId != null)
-            {
-                await this.trainerService.QuitTrainerAsync(currentId, model);
-            }
-
-            TempData[SuccessMessage] = "You successfuly apply for quit!";
-
-            return RedirectToAction("All", "Trainer");
-        }
-   
     }
 }

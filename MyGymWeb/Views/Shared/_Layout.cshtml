@@ -28,7 +28,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> 
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">                 
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav m-lg-auto">                        
                         <li class="nav-item">                         
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><h3 class="fw-bold"><i>HOME</i></h3></a>
@@ -51,14 +51,14 @@
                             {
                                 <li>
                                     <div class="dropdown">
-                                        <h5 class="dropbtn" style="color:black">
+                                        <h5 class="dropbtn">
                                             <i>Mine</i>
                                             <i class="fa fa-caret-down"></i>
                                         </h5>
                                         <div class="dropdown-content">
-                                            <a style="background-color: rgba(255, 255, 255, 0)" asp-controller="Apply" asp-action="Apply"><i>Apply</i></a>
-                                            <a style="background-color: rgba(255, 255, 255, 0)" asp-controller="User" asp-action="MyApps"><i>My Apps</i></a>
-                                            <a style="background-color: rgba(255, 255, 255, 0)" asp-controller="User" asp-action="AllMyTrainers"><i>My Trainers</i></a>
+                                            <a asp-controller="Apply" asp-action="Apply"><i>Apply</i></a>
+                                            <a asp-controller="User" asp-action="MyApps"><i>My Apps</i></a>
+                                            <a asp-controller="User" asp-action="AllMyTrainers"><i>My Trainers</i></a>
                                         </div>
                                     </div>
                                 </li>
@@ -93,38 +93,62 @@
         @RenderBody()      
     </main>
    
-    <footer>
-        <div class="MyFooter">
-            <div class="container py-4">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h5>GYMFIT</h5>
-                        <p class="py-4">
-                            The fitness philosophy is a broad summary of your values. It is the sum of your personal attributes and professional passions, and includes the following elements: Your method for teaching, coaching and motivating others.
-                        </p>
-                    </div>
-                    <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
-                        <h5 class="pb-4">INFORMATION</h5>
-                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>About Us</span></p>
-                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>Privacy Policy</span></p>
-                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>Terms & Conditions</span></p>
-                        <p class="link"> <span><i class="fas fa-angle-double-right"></i>Contact Us</span></p>
+    @if (ViewBag.Title != "My Products")
+    {
+        <footer>
+            <div class="MyFooter">
+                <div class="container py-4">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h5>GYMFIT</h5>
+                            <p class="py-4">
+                                The fitness philosophy is a broad summary of your values. It is the sum of your personal attributes and professional passions, and includes the following elements: Your method for teaching, coaching, and motivating others.
+                            </p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-12 mb-2 text-center">
+                            <h5 class="pb-4">INFORMATION</h5>
+                            <p class="link"><span><i class="fas fa-angle-double-right"></i>About Us</span></p>
+                            <p class="link"><span><i class="fas fa-angle-double-right"></i>Privacy Policy</span></p>
+                            <p class="link"><span><i class="fas fa-angle-double-right"></i>Terms & Conditions</span></p>
+                            <p class="link"><span><i class="fas fa-angle-double-right"></i>Contact Us</span></p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
+                            <h5 class="pb-4">HOME LOCATION</h5>
+                            <p class="link">Washington 6036 Richmond nwy., Alexandria, VA USA 22303</p>
+                            <p class="link">+1 (409) 987-5874</p>
+                            <p class="link">info@info.com</p>
+                        </div>
                     </div>
 
-                    <div class="col-lg-3 0ffset col-md-3 col-sm-4 col-11 mb-2">
-                        <h5 class="pb-4">HOME LOCATION</h5>
-                        <p class="link">Washington 6036 Richmond nwy., Alexandria, VA USA 22303</p>
-                        <p class="link">+1 (409) 987-5874</p>
-                        <p class="link">info@info.com</p>
+
+                    <div class="container py-4 logos">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img class="h-100" src="~/images/maxresdefault.jpg" style="width:25em; height:26em;" alt="./images/04012019-25.jpg" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 mb-2 text-center">
+                                <img class="h-100" src="~/images/fitnesslogo.jpg" style="width:25em; height:26em;" alt="./images/04012019-25.jpg" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
+                                <img class="h-100" src="~/images/boxlogo.jpg" style="width:25em; height:26em;" alt="./images/04012019-25.jpg" />
+                            </div>
+                        </div>
                     </div>
+
+                </div>
+
+                <div class=" footer-container">
+                    <img class="tradelogo" src="~/images/tradelogo.jpg" alt="./images/04012019-25.jpg" />
+                    <a class="text-white trademark" href="#"> © @DateTime.Now.Year Copyright: MyGymWeb.com</a>
                 </div>
             </div>
-            <div class="text-center p-3" style="background-color: black;">
-                <a class="text-white" href="#"> © @DateTime.Now.Year Copyright: MyGymWeb.com</a>
-            </div>
-        </div>
-      
-    </footer>
+        </footer>
+    }
+    
       
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>   
     <script src="~/js/site.js" asp-append-version="true"></script>   
