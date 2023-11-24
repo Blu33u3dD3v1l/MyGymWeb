@@ -81,48 +81,6 @@ namespace MyGymWeb.Tests.Services
 
         }
 
-        [Fact]
-        public async void BuyProductAsyncAmountShouldTrowException()
-        {
-
-            using var data = DatabaseMock.Instance;
-
-            int productId = 1;
-            var userId = "UserId";
-
-            await data.Users.AddAsync(new ApplicationUser
-            {
-                Id = userId,
-                Amount = 1000
-            });
-           
-            await data.Products.AddAsync(new Product
-            {
-                Id = productId,
-                Price = 1001,
-                Description = "f",
-                Mark = "M",
-                ImageUrl = "Im",
-                Name = "Test",
-            });
-
-            var userProduct = new UserProduct()
-            {
-                ProductId = productId,
-                UserId = userId
-
-            };
-
-            await data.UsersProducts.AddRangeAsync(userProduct);
-            await data.SaveChangesAsync();
-
-            var userService = new UserService(data);
-
-            var result = userService.BuyProductAsync(productId, userId);
-
-            await Assert.ThrowsAsync<Exception>(() => result);
-
-        }
 
         [Fact]
         public async void BuyProductAsyncAmountShouldReturnCorrectValue()

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MyGymWeb.Views.Home.IndexModelDto
+
+@{
     ViewData["Title"] = "Home Page";
 
 }
@@ -132,37 +134,65 @@
 </div>
 
 
+@* <div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h2>Contact</h2>
+            <form method="post" asp-controller="Home" asp-action="ContactUs">
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" type="text" class="form-control" placeholder="Your name" name="name" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Subject">Subject</label>
+                    <input asp-for="Subject" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message">Message</label>
+                    <textarea asp-for="Message" class="form-control" rows="3" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send email</button>
+            </form>
+        </div>
+    </div>
+</div> *@
+
+
+
 <div class="contactus">
     <div class="container">
         <h1 class="text-center text-white">Contact Us</h1>
         <p class="text-center text-white">Feel free to reach out to us using the form below.</p>
 
-        <form class="mt-4">
+        <form method="post" class="mt-4">
             <div class="form-group input-group m-3">
                 <div class="input-group-prepend">
+                   
                     <span class="input-group-text"> <i class="fa fa-user" style="line-height: inherit; width: 12px;"></i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Full name" type="text">
+                <input name="Name" class="form-control" placeholder="Full name" type="text">
             </div>
 
             <div class="form-group input-group m-3">
+              
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope" style="line-height: inherit"></i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Email address">
+                <input name="Subject" class="form-control" placeholder="Subject">
             </div>
 
             <div class="textMessage">
+               
                 <div class="form-group input-group">
-                    <textarea name="msg" id="msg" class="form-control" placeholder="Write your message" cols="30" rows="4" required></textarea>
+                    <textarea name="Message" class="form-control" placeholder="Write your message" cols="30" rows="4" required></textarea>
                 </div>
             </div>
 
-            <button class="glowing-btn"><span class='glowing-txt'>S<span class='faulty-letter'>E</span>ND</span></button>
+            <button asp-controller="Home" asp-action="ContactUs" class="glowing-btn"><span class='glowing-txt'>S<span class='faulty-letter'>E</span>ND</span></button>
         </form>
     </div>
 </div>
-
+ 
 
 
 
