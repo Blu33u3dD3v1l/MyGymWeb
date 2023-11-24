@@ -30,6 +30,43 @@
 
 
 <body>
+    <style>
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            padding: 18px 15px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FF7518;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                float: none;
+                color: white;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: rgba(221, 221, 221, 0.1);
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
     <partial name="_NotificationsPartial" />
     <header>      
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm fixed-top">
