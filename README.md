@@ -1,3 +1,5 @@
+![Visitors](https://img.shields.io/badge/dynamic/json?color=green&label=Visitors&query=%24.value&url=https%3A%2F%2Fapi.countapi.xyz%2Fget%2FBlu33u3dD3v1l%2FMyGymWeb%2F%3Fcallback%3D)
+
 ## Web Project for the "ASP.NET Advanced" course @ SoftUni 
 
 Admin account:
