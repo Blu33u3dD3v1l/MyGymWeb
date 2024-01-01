@@ -1,8 +1,3 @@
-<p align="center"> 
-  Visitor count<br>
-  <img src="https://profile-counter.glitch.me/MyGymWeb/count.svg?exclude=Blu33u3dD3v1l" />
-</p>
-
 ## Web Project for the "ASP.NET Advanced" course @ SoftUni 
 
 Admin account:
