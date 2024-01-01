@@ -1,4 +1,7 @@
-![Visitors](https://img.shields.io/badge/dynamic/json?color=green&label=Visitors&query=%24.value&url=https%3A%2F%2Fapi.countapi.xyz%2Fget%2FBlu33u3dD3v1l%2FMyGymWeb%2F%3Fcallback%3D)
+<p align="center"> 
+  Visitor count<br>
+  <img src="https://profile-counter.glitch.me/Blu33u3dD3v1l/count.svg" />
+</p>
 
 ## Web Project for the "ASP.NET Advanced" course @ SoftUni 
 
