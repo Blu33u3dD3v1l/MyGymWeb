@@ -1,6 +1,6 @@
 ## Web Project for the "ASP.NET Advanced" course @ SoftUni 
 
-[Visit My Website](https://mygymweb20240103185738.azurewebsites.net/)
+[Visit My Website](https://mygymweb.azurewebsites.net)
 
 Admin account:
 
