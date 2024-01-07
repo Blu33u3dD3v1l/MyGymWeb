@@ -14,17 +14,20 @@
                 <div class="row">
                     @foreach (var trainer in Model)
                     {
-                        <div class="card m-1" style="width: 18rem;">
-                            <img class="card-img-top" style="width: 17rem; height:280px;"
-                                 src="@trainer.ImageUrl" alt="Trainer Image">
-                            <div class="card-body text-center">
-                                <h4 class="card-title mt-1">@trainer.Name</h4>
-                                <p class="logo-1">You have an apointment with this trainer!</p>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
-                                    <input type="submit" value="Details" class="btn btn-primary btn-sm" />
-                                </a>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div class="card mb-2 h-100 red-border" style="width: auto">
+                                <img class="card-img-top h-100 img-fluid;"
+                                     src="@trainer.ImageUrl" alt="Trainer Image">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title mt-1">@trainer.Name</h4>
+                                    <p class="logo-1">You have an apointment with this trainer!</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
+                                        <input type="submit" value="Details" class="btn btn-primary btn-sm" />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     }
@@ -34,8 +37,8 @@
     }
     else
     {
-        <div class="MineNoTrainers">
-            <h3 class="text-lg-center"><i>You didnt picked trainers yet!</i></h3>
+        <div class="MineNoTrainers container-fluid">
+            <h3 class="text-center my-5"><i>You didnt picked trainers yet!</i></h3>
         </div>
     }
 </div>

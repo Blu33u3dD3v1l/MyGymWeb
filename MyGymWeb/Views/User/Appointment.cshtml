@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fancy Form</title>   
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   
     <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
 </head>
 
@@ -16,32 +16,35 @@
     <div class="Appointments">
         <div class="container mt-5">
             <form method="post">             
-                <div class="form-group">
-                    <label asp-for="@Model.AppointmentTime">Date</label>
+                <div class="form-group app">
+                    <label asp-for="@Model.AppointmentTime"><i style="color: white">Date</i></label>
                     <input asp-for="@Model.AppointmentTime" class="form-control" id="datetimeField" aria-required="true">
                     <span asp-validation-for="AppointmentTime" class="text-danger"></span>
                 </div>              
                 <div class="form-group">
-                    <label asp-for="@Model.ClientFullName" class="form-label">Name</label>
+                    <label asp-for="@Model.ClientFullName" class="form-label"><i style="color: white">Name</i></label>
                     <input asp-for="@Model.ClientFullName" class="form-control" aria-required="true" />
                     <span asp-validation-for="ClientFullName" class="text-danger"></span>
                 </div>        
                 <div class="form-group">
-                    <label asp-for="@Model.Email" class="form-label">Email</label>
+                    <label asp-for="@Model.Email" class="form-label"><i style="color: white">Email</i></label>
                     <input asp-for="@Model.Email" class="form-control" aria-required="true" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="@Model.TrainerName" class="form-label">TrainerName</label>
+                    <label asp-for="@Model.TrainerName" class="form-label"><i style="color: white">TrainerName</i></label>
                     <input asp-for="@Model.TrainerName" class="form-control" aria-required="true" />
                     <span asp-validation-for="TrainerName" class="text-danger"></span>
                 </div>
-                <button asp-controller="User" asp-action="Appointment" type="submit" class="btn btn-primary">Submit</button>
+                <div class="mt-2">
+                    <button asp-controller="User" asp-action="Appointment" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                
             </form>
         </div>
     </div>
   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
        
@@ -60,6 +63,3 @@
 </body>
 
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

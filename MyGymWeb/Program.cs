@@ -35,6 +35,8 @@ namespace MyGymWeb
             {                
                 options.IdleTimeout = TimeSpan.FromMinutes(5);               
                 options.Cookie.HttpOnly = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+              
             });
 
             builder.Services.AddControllersWithViews(options =>

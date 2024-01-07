@@ -12,6 +12,7 @@ html {
     html {
         font-size: 12px;
     }
+    
 }
 
 html {
@@ -169,7 +170,10 @@ body {
 
 .videoClass {
     margin: -268px 0px 0px;
-    margin-right: 20px;
+    margin-left: 5px;
+}
+.pic1{
+    margin-right:10px;
 }
 
 .spaClass {
@@ -282,6 +286,7 @@ body {
     padding: 3rem 0;
     margin: 60px 0px 100px;
 }
+
 
 .TrainerView {
     background-color: black;
@@ -736,13 +741,9 @@ body {
     margin: 9px 140px 10px;
 }
 
-.pic1 {
-    margin: 0px 10px 0px;
-}
 
-.pic2 {
-    margin-right: 20px;
-}
+
+
 
 .contactus h1{
    margin-left: 20px;

@@ -10,36 +10,41 @@
         <div class="row">
             @foreach (var trainer in Model.OrderByDescending(x => x.PricePerHour))
             {
-                <div class="card m-1 red-border" style="width: 18rem;">
-                    <img class="card-img-top" style="width: 17rem; height:280px;"
-                         src="@trainer.ImageUrl" alt="Trainer Image">
-                    <div class="card-body text-center">
-                        <h4 class="card-title mt-1">@trainer.Name</h4>
-                        @if (trainer.IsAvailable)
-                        {
-                            <img class="w-100" src="https://t4.ftcdn.net/jpg/02/19/01/15/360_F_219011565_RO9mdUz9DdQ9y8WMy8WZywx96wWnb6ct.jpg" alt="Error">
-                        }
-                        else
-                        {
-                            <img class="w-100" src="https://media.istockphoto.com/id/1398189751/vector/unavailable-grunge-rubber-stamp.jpg?s=612x612&w=0&k=20&c=rktpTaFVqS1AdEpcshO7S1Fc1AXYmg4i6opm_R2AohI=" alt="Error">
-                        }
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
-                         <input type="submit" value="Details" class="btn btn-primary btn-sm" />
-                        </a>
-                        @if (!User!.IsInRole("Administrator"))
-                        {
-                            <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post">
-                                <input type="submit" value="PickTrainer" class="btn btn-warning btn-sm" />
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card mb-2 h-100 red-border" style="width: auto">
+                        <img class="card-img-top h-100 img-fluid;" src="@trainer.ImageUrl" alt="Trainer Image">
+                        <div class="card-body text-center">
+                            <h4 class="card-title mt-1">@trainer.Name</h4>
+                            @if (trainer.IsAvailable)
+                            {
+                                <img class="w-100" style="width: 100%; height: auto;" src="https://t4.ftcdn.net/jpg/02/19/01/15/360_F_219011565_RO9mdUz9DdQ9y8WMy8WZywx96wWnb6ct.jpg" alt="Error">
+                            }
+                            else
+                            {
+                                <img class="w-100" style="width: 100%; height: auto;" src="https://media.istockphoto.com/id/1398189751/vector/unavailable-grunge-rubber-stamp.jpg?s=612x612&w=0&k=20&c=rktpTaFVqS1AdEpcshO7S1Fc1AXYmg4i6opm_R2AohI=" alt="Error">
+                            }
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post" class="btn btn-primary btn-sm">
+                                Details
                             </a>
-                        }                                              
+                            @if (!User!.IsInRole("Administrator"))
+                            {
+                                <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post" class="btn btn-warning btn-sm">
+                                    Pick Trainer
+                                </a>
+                            }
+                        </div>
                     </div>
                 </div>
             }
         </div>
     </div>
 </div>
+
+
+
+
 
 
 
