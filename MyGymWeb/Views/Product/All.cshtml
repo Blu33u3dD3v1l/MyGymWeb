@@ -5,12 +5,22 @@
 }
 
 
-<div class="MyProducts">
+<style>
+    .product-container-bg {
+        background-image: url('https://motionarray.imgix.net/preview-891187-wOvXOH2hVl-high_0000.jpg?w=660&q=60&fit=max&auto=format'); /* Replace 'your-background-image-url.jpg' with the actual URL of your background image */
+        background-size: auto;
+        background-position: center;
+       
+        
+    }
+</style>
+
+<div class="MyProducts product-container-bg">
     <div class="container">
-        <div class="text-center row">
+        <div class="row">
             @foreach (var product in Model)
             {
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 prod">
                     <div class="card mb-2 h-100 red-border" style="width: auto">
                         <img class="card-img-top h-100 img-fluid"
                              src="@product.ImageUrl" alt="Product Image">
@@ -35,7 +45,6 @@
             }
         </div>
     </div>
-
 </div>
 
 

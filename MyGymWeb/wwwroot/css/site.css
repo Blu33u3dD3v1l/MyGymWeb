@@ -300,7 +300,7 @@ body {
 }
 
 .AllGyms {
-    margin: 100px 50px 0px;
+    margin: 90px 0px 40px;
     background-color: black;
 }
 
@@ -779,6 +779,11 @@ body {
     margin-left: 10px; 
     vertical-align: middle;
 }
+
+.prod{
+    margin-bottom: 5rem;
+}
+
 
 
 
