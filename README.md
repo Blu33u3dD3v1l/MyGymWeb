@@ -18,6 +18,8 @@ Discount code: AAA-12345
 * The application have shopping cart and users with enough virtual money can buy available gym products.By providing promo code users can get various cash discounts.
 * In addition, there is a search menu from where users can search trainers by name or filter the trainers by criteria.
 
+##
+
 
 
 
