@@ -46,6 +46,8 @@ This is part of the admin menu where items can be added, deleted or edited. Ther
 ![Екранна снимка 2024-02-09 023844](https://github.com/Blu33u3dD3v1l/MyGymWeb/assets/22412647/bdb45006-1ddb-40f6-826c-349055e4ee05)
 
 
+![example workflow](https://github.com/github/docs/actions/workflows/dotnet.yml/badge.svg)
+
 
 
 
