@@ -9,7 +9,7 @@ namespace MyGymWeb.Services.Interface
         Task<IEnumerable<TrainerQuitViewModel>> GetAllAppliesAsync();       
         Task DeleteAppliersAsync(Guid id);
         Task ApproveTrainerAsync(Guid id);
-        Task<bool>  ApplierExistByUserId(string userId);
+        Task<bool> ApplierExistByUserId(string userId);
 
     }
 }
