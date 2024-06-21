@@ -14,18 +14,18 @@ Discount code: AAA-12345
 
 ## Functionality
 
-* Guest users can browse home page and view trainers.
-* Registered users can browse, view details of trainers, gyms and products. They can have appointments with trainers and buy products.Also they have own menu for manage their applications, appointments, products and trainers.
-* Admin users have own menu for managing.They can add, delete and edit Trainers, gyms and products.They approve or decline applications for become trainer and aprove or decline trainer appointments. Admins can view all the users and see who is trainer, adimin, or user.
-* The application have shopping cart and users with enough virtual money can buy available gym products.By providing promo code users can get various cash discounts.
-* In addition, there is a search menu from where users can search trainers by name or filter the trainers by criteria.
+* Guest users can browse the home page and view trainers.
+* Registered users can browse and view details of trainers, gyms, and products. They can schedule appointments with trainers and purchase products. Additionally, they have a personal menu to manage their applications, appointments, products, and trainers.
+* Admin users have their own management menu. They can add, delete, and edit trainers, gyms, and products. Admins approve or decline applications to become a trainer and can approve or decline trainer appointments. They can also view all users and see whether they are a trainer, admin, or user.
+* The application includes a shopping cart, and users with sufficient virtual money can buy available gym products. By providing a promo code, users can receive various cash discounts.
+* Moreover, there is a search menu where users can search for trainers by name or filter trainers based on specific criteria.
 
 
 
 
 ## How it Works
 
-You need to register first. Then you will be given 1000 virtual dollars for purchases.You can use the main menu to check if you have a trainer hired, if you have pending approval to hire one, or if you have an up-to-date trainer application.
+You need to register first. Then, you will be given 1,000 virtual dollars for purchases. You can use the main menu to check if you have hired a trainer, if you have pending approval to hire one, or if you have an up-to-date trainer application.
 
 
 ![Екранна снимка 2024-02-09 015750](https://github.com/Blu33u3dD3v1l/MyGymWeb/assets/22412647/70e0684e-baf6-4586-ba06-2199ac18f956)
