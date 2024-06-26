@@ -1,6 +1,4 @@
-## Web Project for the "ASP.NET Advanced" course @ SoftUni 
-
-[Visit My Website](https://mygymweb.azurewebsites.net)
+[See what the app can do here!](https://www.youtube.com/watch?v=sD1IfFklzvE)
 
 Admin account:
 
@@ -22,8 +20,6 @@ Discount code: AAA-12345
 
 
 ## How it Works
-
-See what the app can do here: https://www.youtube.com/watch?v=sD1IfFklzvE
 
 You need to register first. Then, you will be given 1,000 virtual dollars for purchases. You can use the main menu to check if you have hired a trainer, if you have pending approval to hire one, or if you have an up-to-date trainer application.
 
