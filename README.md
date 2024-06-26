@@ -21,9 +21,9 @@ Discount code: AAA-12345
 * Moreover, there is a search menu where users can search for trainers by name or filter trainers based on specific criteria.
 
 
-https://www.youtube.com/watch?v=sD1IfFklzvE
-
 ## How it Works
+
+See what the app can do here: https://www.youtube.com/watch?v=sD1IfFklzvE
 
 You need to register first. Then, you will be given 1,000 virtual dollars for purchases. You can use the main menu to check if you have hired a trainer, if you have pending approval to hire one, or if you have an up-to-date trainer application.
 
