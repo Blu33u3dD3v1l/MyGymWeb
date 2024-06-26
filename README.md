@@ -21,7 +21,7 @@ Discount code: AAA-12345
 * Moreover, there is a search menu where users can search for trainers by name or filter trainers based on specific criteria.
 
 
-
+https://www.youtube.com/watch?v=sD1IfFklzvE
 
 ## How it Works
 
@@ -46,8 +46,6 @@ Here you can see the details of the products and possibly buy one.
 This is part of the admin menu where items can be added, deleted or edited. There are sections where applications to become coaches are approved and others in which the hiring of coaches is approved.
 
 ![Екранна снимка 2024-02-09 023844](https://github.com/Blu33u3dD3v1l/MyGymWeb/assets/22412647/bdb45006-1ddb-40f6-826c-349055e4ee05)
-
-
 
 
 ## License
