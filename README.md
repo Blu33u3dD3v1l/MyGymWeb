@@ -58,7 +58,7 @@ Distributed under the GPL-3.0 license. See LICENSE.txt for more information.
 
 ## Contact
 
-Viktor Kachamakov - Kachamakov@abv.bg
+Viktor Kachamakov - Kachamakov@proton.me
 
 
  
