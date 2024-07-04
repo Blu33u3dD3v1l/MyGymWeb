@@ -1,5 +1,9 @@
-﻿
+﻿@using MyGymWeb.Services.Models.Statistics
+@model StatisticServiceModel
+
 @{
+    
+    
     ViewData["Title"] = "Home Page";
 
 }
@@ -13,6 +17,14 @@
         font-style: italic; 
         color: wheat
         
+    }
+    .count1{
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    .count2 {
+        font-size: 35px;
     }
 </style>
 <div class="wrapper">
@@ -42,6 +54,17 @@
 </div>
 
 <div class="col-12 text-center mt-5">
+    <div class="mt-4 p-5 counts">
+        <div class="row">
+            <h2 class="col-md-6 text-center count2" style="color:white;">Trainers</h2>
+            <h2 class="col-md-6 text-center count2" style="color:white;">Products</h2>
+        </div>
+        <div class="row">
+            <h2 class="col-md-6 text-center count1" style="color:red;">@Model.TrainerCount</h2>
+            <h2 class="col-md-6 text-center count1" style="color:red;">@Model.ProductCount</h2>
+        </div>
+    </div>
+
     <h1 class="text-white pt-4">Build with Ease</h1>
     <div class="border-top border-danger w-25 mx-auto my-3"></div>
     <p class="lead text-white">For all of the Championes in this world!</p>

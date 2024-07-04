@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyGymWeb.Services.Interface;
 using static MyGymWeb.WebExtensions.AdminConstants;
 
 
@@ -8,15 +9,20 @@ namespace MyGymWeb.Controllers
     public class HomeController : Controller
     {
 
-      
-        
-        public IActionResult Index()
-        {
+        private readonly IGymService gymService;
+
+        public HomeController(IGymService _gymService)
+            => gymService = _gymService;
+        public async  Task<IActionResult> Index()
+        { 
+
+            var statistics = await gymService.GetCountAsync();
+            
             if (User.IsInRole(AdminRolleName))
             {
                return RedirectToAction("Index", "Admin", new { area = AreaName });
             }
-            return View();
+            return View(statistics);
         }
       
 

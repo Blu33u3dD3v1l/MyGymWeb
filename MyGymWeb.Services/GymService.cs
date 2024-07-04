@@ -3,6 +3,7 @@ using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
+using MyGymWeb.Services.Models.Statistics;
 
 namespace MyGymWeb.Services
 {
@@ -143,6 +144,15 @@ namespace MyGymWeb.Services
 
              context.Remove(currentGym);
              await context.SaveChangesAsync();
+        }
+        
+        public async Task<StatisticServiceModel> GetCountAsync()
+        {
+            return new StatisticServiceModel()
+            {
+                TrainerCount = await context.Trainers.CountAsync(),
+                ProductCount = await context.Products.CountAsync()
+            };
         }
 
     }

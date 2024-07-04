@@ -1,4 +1,5 @@
 ﻿using MyGymWeb.Models.Home;
+using MyGymWeb.Services.Models.Statistics;
 
 namespace MyGymWeb.Services.Interface
 {
@@ -10,7 +11,9 @@ namespace MyGymWeb.Services.Interface
         Task<EditGymFormModel> GetEditGymAsync(int id);
         Task EditByIdAsync(int id, EditGymFormModel model);        
         Task AddGymAsync(AddGymFormModel model);
-        Task RemoveGymAsync(int id);     
+        Task RemoveGymAsync(int id);    
+        
+        Task<StatisticServiceModel> GetCountAsync();
 
     }
 }
