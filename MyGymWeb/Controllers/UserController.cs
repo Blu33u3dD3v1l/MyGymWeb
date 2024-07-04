@@ -5,6 +5,7 @@ using MyGymWeb.Data.Models;
 using MyGymWeb.Infrastructure.Extensions;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Admin;
+using MyGymWeb.Services.Interface;
 using System.Security.Claims;
 using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
 
@@ -15,14 +16,16 @@ namespace MyGymWeb.Controllers
     {
 
         private readonly IUserService userService;
+        private readonly ITrainerService trainerService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
 
-        public UserController(IUserService _userService, UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager)
+        public UserController(IUserService _userService, UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager, ITrainerService _trainerService)
         {
             userService = _userService;
             userManager = _userManager;
             signInManager = _signInManager;
+            trainerService = _trainerService;
 
         }
         public async Task<IActionResult> Buy(int id)
@@ -318,6 +321,19 @@ namespace MyGymWeb.Controllers
         }
 
 
+        public async Task<IActionResult> Resign(Guid id)
+        {
 
+           
+
+            await trainerService.DeleteTrainerForApplyAsync(id);
+            TempData[SuccessMessage] = "Updated Trainer Status";
+
+            return RedirectToAction("All", "Trainer");
+        
+        }
+        
+
+           
     }
 }

@@ -10,6 +10,7 @@ namespace MyGymWeb.Services.Interface
         Task DeleteAppliersAsync(Guid id);
         Task ApproveTrainerAsync(Guid id);
         Task<bool> ApplierExistByUserId(string userId);
+        
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<TrainerViewModel>
 
 @{
+    
     ViewBag.Title = "Trainers";
 }
 
@@ -14,7 +15,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title mt-1">@trainer.Name</h5>
                 </div>
-
+                
                 @if (User?.Identity?.IsAuthenticated ?? false)
                 {
                     <div class="d-flex justify-content-center">

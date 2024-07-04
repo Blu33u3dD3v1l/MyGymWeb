@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<TrainerViewModel>
 @using MyGymWeb.Infrastructure.Extensions;
 
+
 @{
+    
     ViewBag.Title = "Trainers";
 }
 
@@ -18,13 +20,14 @@
 
 <div class="TrainerContainer trainer-container-bg">
     <div class="container">
-        <div class="row">
+        <div class="row">                      
             @foreach (var trainer in Model.OrderByDescending(x => x.PricePerHour))
             {
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                     <div class="card mb-2 h-100 red-border" style="width: auto">
                         <img class="card-img-top h-100 img-fluid;" src="@trainer.ImageUrl" alt="Trainer Image">
                         <div class="card-body text-center">
+
                             <h4 class="card-title mt-1">@trainer.Name</h4>
                             @if (trainer.IsAvailable)
                             {
@@ -36,13 +39,19 @@
                             }
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post" class="btn btn-primary btn-sm">
+                            <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post" class="btn btn-primary btn-sm" style="margin-right: 5px;">
                                 Details
                             </a>
                             @if (!User!.IsInRole("Administrator"))
                             {
                                 <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post" class="btn btn-warning btn-sm">
-                                    Pick Trainer
+                                    Select
+                                </a>
+                            }
+                            @if (User!.Identity!.IsAuthenticated && trainer.UserId == User.GetId())
+                            {
+                                <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Resign" class="btn btn-danger btn-sm" style="margin-left: 5px;" >
+                                    Resign
                                 </a>
                             }
                         </div>

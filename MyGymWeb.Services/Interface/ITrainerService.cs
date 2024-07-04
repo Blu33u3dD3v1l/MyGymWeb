@@ -18,6 +18,7 @@ namespace MyGymWeb.Services.Interface
         Task AddTrainerAsync(AddTrainerFormModel model);       
         Task DeleteTrainerForApplyAsync(Guid id);
         Task<AllTrainersFilteredAndPagedServiceModel> AllAsync(AllTrainersQueryModel model);
+        
 
     }
 }
