@@ -18,6 +18,14 @@ Discount code: AAA-12345
 * The application includes a shopping cart, and users with sufficient virtual money can buy available gym products. By providing a promo code, users can receive various cash discounts.
 * Moreover, there is a search menu where users can search for trainers by name or filter trainers based on specific criteria.
 
+## Technology Frame
+
+- [EF Core](https://github.com/dotnet/efcore)
+- [ASP.NET Core](https://github.com/dotnet/aspnetcore)
+- Bootstrap
+- Razor Pages
+- MSSQL Server
+- XUnit
 
 ## How it Works
 
