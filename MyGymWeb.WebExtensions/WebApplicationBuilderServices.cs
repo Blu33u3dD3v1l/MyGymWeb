@@ -36,7 +36,7 @@ namespace MyGymWeb.WebExtensions
             }
 
         }
-        public static IApplicationBuilder SeedAdministrator(this IApplicationBuilder app, string email)
+        public static async Task<IApplicationBuilder> SeedAdministrator(this IApplicationBuilder app, string email)
         {
 
             using IServiceScope scopreServies = app.ApplicationServices.CreateScope();
@@ -47,22 +47,19 @@ namespace MyGymWeb.WebExtensions
             RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
 
-            Task.Run(async () =>
+
+            if (!await roleManager.RoleExistsAsync(AdminConstants.AdminRolleName))
             {
-                if (await roleManager.RoleExistsAsync(AdminConstants.AdminRolleName))
-                {
-                    return;
-                }
-
                 IdentityRole role = new IdentityRole(AdminConstants.AdminRolleName);
-
                 await roleManager.CreateAsync(role);
 
-                ApplicationUser adminUser = await userManager.FindByEmailAsync(email);               
-                await userManager.AddToRoleAsync(adminUser, AdminConstants.AdminRolleName);            
-            })
-             .GetAwaiter()
-             .GetResult();
+                ApplicationUser adminUser = await userManager.FindByEmailAsync(email);
+                if (adminUser != null)
+                {
+                    await userManager.AddToRoleAsync(adminUser, AdminConstants.AdminRolleName);
+                }
+            }
+
 
             return app;
         }

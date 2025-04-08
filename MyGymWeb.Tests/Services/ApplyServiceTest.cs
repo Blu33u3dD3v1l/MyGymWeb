@@ -27,6 +27,7 @@ namespace MyGymWeb.Tests.Services
             Assert.True(result);
 
         }
+
         [Fact]
         public async void ApplierExistByUserIdReturnIncorrectValue()
         {

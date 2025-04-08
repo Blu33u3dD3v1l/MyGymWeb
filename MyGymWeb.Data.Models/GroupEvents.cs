@@ -29,5 +29,6 @@ namespace MyGymWeb.Data.Models
         [Required]
         public GroupTrainerName GroupTrainerNames { get; set; } = null!;
 
+
     }
 }
