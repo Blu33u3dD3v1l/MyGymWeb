@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TrainerViewModel>
+﻿@* @model IEnumerable<TrainerViewModel>
 
 @{
     
@@ -29,6 +29,117 @@
                 }
             </div>
         }
+    </div>
+</div>
+ *@
+
+
+ @model IEnumerable<TrainerViewModel>
+
+@{
+    ViewBag.Title = "Trainers";
+}
+
+<style>
+    .trainer-search-view {
+        padding: 40px 0;
+    }
+
+    .trainer-card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #fff;
+    }
+
+        .trainer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+    .trainer-img {
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+
+    .modern-btn {
+        border: none;
+        border-radius: 25px;
+        padding: 8px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .modern-btn-details {
+        background: linear-gradient(45deg, #2196f3, #1e88e5);
+        color: white;
+    }
+
+        .modern-btn-details:hover {
+            background: linear-gradient(45deg, #1e88e5, #2196f3);
+            transform: translateY(-2px);
+        }
+
+    .modern-btn-pick {
+        background: linear-gradient(45deg, #ffc107, #ff9800);
+        color: white;
+    }
+
+        .modern-btn-pick:hover {
+            background: linear-gradient(45deg, #ff9800, #ffc107);
+            transform: translateY(-2px);
+        }
+</style>
+
+<div class="trainer-search-view">
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            @foreach (var trainer in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card trainer-card h-100">
+                        <img class="card-img-top trainer-img" src="@trainer.ImageUrl" alt="Trainer Image">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@trainer.Name</h5>
+                        </div>
+
+                        @if (User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            <div class="button-container">
+                                <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" class="modern-btn modern-btn-details">
+                                    Details
+                                </a>
+                                <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" class="modern-btn modern-btn-pick">
+                                    Pick Trainer
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
 

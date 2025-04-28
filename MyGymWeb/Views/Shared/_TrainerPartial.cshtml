@@ -1,33 +1,118 @@
-﻿@model AllTrainersViewModel
-@using MyGymWeb.Infrastructure.Extensions;
+﻿<style>
+    .trainer-card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #fff;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
 
+        .trainer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
 
-@{
-    ViewBag.Title = "Trainers";
-}
+    .trainer-img {
+        height: 100%; /* по-голямо изображение */
+        width: 100%;
+        object-fit: cover; /* гарантира, че няма деформации */
+    }
 
+    .card-body {
+        padding: 15px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+    }
 
-<div class="col-md-3 mb-4">
-    <div class="card mb-3 h-100" style="width: auto">
-        <img class="card-img-top h-100 red-border" src="@Model.ImageUrl" alt="House Image">
-        <div class="card-body text-center">
-            <h4>@Model.Name</h4>
-            <h6>Motto: <b>@Model.Motto</b></h6>
-            <h6>
-                Price Per Hour:
-                <b>@Model.PricePerHour $</b>
-            </h6>
-            <br />
-            <a asp-controller="Trainer" asp-action="Details" asp-route-trainerId="@Model.Id"
-               class="btn btn-success">Details</a>
-            @if (!User!.IsInRole("Administrator"))
-            {
-                <a asp-controller="User" asp-action="Appointment" asp-route-id="@Model.Id"
-                   class="btn btn-warning">PickTrainer</a>
-            }
+        .card-body h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-body h6 {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .card-body b {
+            color: #000;
+        }
+
+    .button-container {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .modern-btn {
+        border: none;
+        border-radius: 25px;
+        padding: 8px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+    }
+
+    .btn-details {
+        background: linear-gradient(45deg, #2196f3, #1e88e5);
+    }
+
+        .btn-details:hover {
+            background: linear-gradient(45deg, #1e88e5, #2196f3);
+            transform: translateY(-2px);
+        }
+
+    .btn-pick {
+        background: linear-gradient(45deg, #ffc107, #ff9800);
+    }
+
+        .btn-pick:hover {
+            background: linear-gradient(45deg, #ff9800, #ffc107);
+            transform: translateY(-2px);
+        }
+</style>
+
+<div class="col-md-3 mb-4 mt-5">
+    <div class="card trainer-card">
+        <img class="trainer-img" src="@Model.ImageUrl" alt="Trainer Image">
+        <div class="card-body">
+            <div>
+                <h4>@Model.Name</h4>
+                <h6>Motto: <b>@Model.Motto</b></h6>
+                <h6>Price Per Hour: <b>@Model.PricePerHour$</b></h6>
+            </div>
+
+            <div class="button-container">
+                <a asp-controller="Trainer" asp-action="Details" asp-route-trainerId="@Model.Id" class="modern-btn btn-details">
+                    Details
+                </a>
+                @if (!User!.IsInRole("Administrator"))
+                {
+                    <a asp-controller="User" asp-action="Appointment" asp-route-id="@Model.Id" class="modern-btn btn-pick">
+                        Pick Trainer
+                    </a>
+                }
+            </div>
         </div>
     </div>
 </div>
+
+
+
 
 
 
