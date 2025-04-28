@@ -1,4 +1,4 @@
-﻿@model AllTrainersQueryModel
+﻿@* @model AllTrainersQueryModel
 
 
 @{
@@ -79,7 +79,166 @@ string.Empty)"
             <partial name="_TrainerPartial" model="@trainer" />
         }
     </div>
+</div> *@
+<style>
+    .SearchTable {
+        background: linear-gradient(to right, #1c1c1c, #2a2a2a);
+        padding: 40px 0;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ffd700;
+        margin-bottom: 20px;
+    }
+
+    .form-floating .form-control,
+    .form-floating .form-select {
+        background-color: #3a3a3a;
+        border: none;
+        color: #fff;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 14px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .form-floating .form-control:focus,
+        .form-floating .form-select:focus {
+            border-color: #ffd700;
+            outline: none;
+            box-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+        }
+
+    input[type="submit"] {
+        background-color: #28a745;
+        border-radius: 25px;
+        padding: 8px 20px;
+        font-size: 16px;
+        border: none;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+    .pagination-container {
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #444;
+        margin-top: 20px;
+    }
+
+        .pagination-container .btn {
+            border-radius: 25px;
+            font-size: 16px;
+            padding: 8px 15px;
+        }
+
+            .pagination-container .btn:hover {
+                background-color: #1c6c1c;
+            }
+
+    .searchNoTrainers h4 {
+        color: #ff6f61;
+        font-weight: bold;
+    }
+
+
+</style>
+
+@model AllTrainersQueryModel
+
+@{
+    ViewBag.Title = "Search";
+}
+<h2 class="text-center mb-4">@ViewBag.Title</h2>
+<hr />
+
+<div class="SearchTable">
+    <form method="get">
+        <div class="row g-4">
+            <!-- Search by Name -->
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input asp-for="SeachString" class="form-control" placeholder="Search by Name..." id="searchName" />
+                    <label for="searchName" class="text-white">Search by Name</label>
+                </div>
+            </div>
+
+            <!-- Sorting Options -->
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <select asp-for="TrainerSorting" class="form-select" id="sorting">
+                        <option value="0">Name</option>
+                        <option value="1">Price Ascending</option>
+                        <option value="2">Price Descending</option>
+                    </select>
+                    <label for="sorting" class="text-white">Sorting By</label>
+                </div>
+            </div>
+
+            <!-- Search Button -->
+            <div class="col-md-4">
+                <div class="d-grid gap-2 mt-3">
+                    <input type="submit" value="Search" class="btn btn-success btn-sm shadow-sm" />
+                </div>
+            </div>
+        </div>
+    </form>
+
+    @if (ViewData["NoResults"] != null)
+    {
+        <div class="searchNoTrainers text-center mt-5">
+            <h4 class="text-white">@ViewData["NoResults"]</h4>
+        </div>
+    }
+
+    @if (Model.Trainers.Any())
+    {
+        <div class="row g-4">
+            @foreach (var trainer in Model.Trainers)
+            {
+                <partial name="_TrainerPartial" model="@trainer" />
+            }
+        </div>
+    }
+
+    <div class="pagination-container my-4">
+        @{
+            var previousPage = Model.CurrentPage - 1;
+            if (previousPage < 1) previousPage = 1;
+
+            int maxPage = (int)Math.Ceiling((double)Model.TotalTrainers / Model.TrainersPerPage);
+        }
+        <div class="row">
+            <!-- Previous Page Button -->
+            <div class="col-md-6 d-grid">
+                <a class="btn btn-outline-primary btn-sm @((Model.CurrentPage == 1) ? "disabled" : "")"
+                   asp-controller="Trainer"
+                   asp-action="Search"
+                   asp-route-currentPage="@previousPage"
+                   asp-route-searchTerm="@Model.SeachString"
+                   asp-route-sorting="@((int)Model.TrainerSorting)"><<</a>
+            </div>
+
+            <!-- Next Page Button -->
+            <div class="col-md-6 d-grid">
+                <a class="btn btn-outline-primary btn-sm @((Model.CurrentPage == maxPage || !Model.Trainers.Any()) ? "disabled" : "")"
+                   asp-controller="Trainer"
+                   asp-action="Search"
+                   asp-route-searchTerm="@Model.SeachString"
+                   asp-route-currentPage="@(Model.CurrentPage + 1)"
+                   asp-route-sorting="@((int)Model.TrainerSorting)">>></a>
+            </div>
+        </div>
+    </div>
 </div>
- 
+
 
 

@@ -1,4 +1,16 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿document.addEventListener("DOMContentLoaded", function () {
+    var trainerResults = document.getElementById("trainerResults");
+    if (trainerResults && trainerResults.children.length === 0) {
+        trainerResults.style.display = "none";
+    }
+});
 
-// Write your JavaScript code.
+// Показване на резултатите при успешен търсене
+document.querySelector("form").addEventListener("submit", function (e) {
+    setTimeout(function () {
+        var trainerResults = document.getElementById("trainerResults");
+        if (trainerResults && trainerResults.children.length > 0) {
+            trainerResults.style.display = "block";
+        }
+    }, 500);
+});

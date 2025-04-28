@@ -24,7 +24,7 @@ namespace MyGymWeb.Controllers
         public async Task<IActionResult> Search([FromQuery] AllTrainersQueryModel model)
         {
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
@@ -34,6 +34,7 @@ namespace MyGymWeb.Controllers
 
             model.Trainers = serviceModel.Trainers;
             model.TotalTrainers = serviceModel.TotalTrainersCount;
+        
 
             return View(model);
         }
