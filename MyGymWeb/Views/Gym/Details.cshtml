@@ -4,34 +4,89 @@
     ViewBag.Title = "Gym Details";
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+<style>
+    .gym-details-container {
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        padding: 60px 0;
+        color: white;
+        min-height: 100vh;
+    }
 
-<div class="GymDetails">
-    <div class="container" style="display:inline">
-        <div class="row">
-            <div class="col-4">
-                <img class="card-img-top" @*style="width: 20rem;"*@
-                     src="@Model.ImageUrl" alt="Gym Image">
-            </div>         
-                <div class="card-body col-8 border-0" style="color:black">
-                    <div class="color">
-                    <p style="font-size:25px; color:white"><u>@Model.Name</u></p>
-                    <p style="color:white">Description: <b>@Model.Description</b></p>
-                    <p style="color:wheat">Type: <b>@Model.Type</b></p>
-                    <div class="form-inline">
-                        @if (this.User.Identity?.IsAuthenticated ?? false)
-                        {
-                            if (!User.IsInRole("Administrator"))
-                            {
-                                <a class="ml-2 btn btn-danger" asp-controller="Trainer" asp-action="TrainerView"
-                                   asp-route-gymId="@Model.Id">Choose Trainer</a>
-                            }
-                        }
+    .gym-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        padding: 30px;
+    }
+
+    .gym-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .gym-title {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #ffd700;
+    }
+
+    .gym-description p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .btn-choose-trainer {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 30px;
+        background-color: #ff9800;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        .btn-choose-trainer:hover {
+            background-color: #fb8c00;
+            transform: translateY(-3px);
+        }
+</style>
+
+<div class="gym-details-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="gym-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-4 mb-md-0">
+                            <img src="@Model.ImageUrl" alt="Gym Image" class="gym-image">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="gym-description">
+                                <h2 class="gym-title">@Model.Name</h2>
+                                <p><strong>Description:</strong> @Model.Description</p>
+                                <p><strong>Type:</strong> @Model.Type</p>
+
+                                @if (this.User.Identity?.IsAuthenticated ?? false)
+                                {
+                                    if (!User.IsInRole("Administrator"))
+                                    {
+                                        <a class="btn btn-choose-trainer" asp-controller="Trainer" asp-action="TrainerView"
+                                           asp-route-gymId="@Model.Id">
+                                            Choose Trainer
+                                        </a>
+                                    }
+                                }
+                            </div>
+                        </div>
                     </div>
-                </div>                  
-            </div>                      
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
