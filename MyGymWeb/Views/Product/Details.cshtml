@@ -4,23 +4,62 @@
     ViewBag.Title = "Product Details";
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+<style>
+    .product-details-container {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 40px 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
 
-<div class="DetailsProducts">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <img class="card-img-top img-fluid" src="@Model.ImageUrl" alt="Gym Image">
-            </div>
-            <div class="card-body col-md-8">
-                <p style="font-size:25px; color:white"><u>@Model.Name</u></p>
-                <p style="color:white">Mark: <b>@Model.Mark</b></p>
-                <p style="color:white">Description: <b>@Model.Description</b></p>
-                <p style="color:wheat">Price: <b>@Model.Price</b>$</p>
-            </div>
+    .product-img {
+        border-radius: 15px;
+        max-height: 450px;
+        object-fit: cover;
+        width: 100%;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    .product-info h3 {
+        color: #f5c518;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .product-info p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .product-price {
+        color: #ff6f61;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .btn-back {
+        margin-top: 30px;
+    }
+</style>
+
+<div class="container product-details-container mt-5">
+    <h2 class="text-center mb-5">@ViewBag.Title</h2>
+
+    <div class="row align-items-center">
+        <div class="col-md-6 mb-4">
+            <img class="product-img" src="@Model.ImageUrl" alt="@Model.Name">
+        </div>
+
+        <div class="col-md-6 product-info">
+            <h3>@Model.Name</h3>
+            <p><strong>Brand:</strong> @Model.Mark</p>
+            <p><strong>Description:</strong> @Model.Description</p>
+            <p class="product-price">Price: $@Model.Price</p>
+
+            <a asp-controller="Product" asp-action="All" class="btn btn-outline-light btn-back">← Back to Products</a>
         </div>
     </div>
 </div>
-
 
