@@ -4,61 +4,106 @@
     ViewBag.Title = "Apply for Trainer";
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
-<div class="App">
-    <div class="row">
-        <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-            <form method="post" style="color:white">
+<style>
+    .trainer-form-wrapper {
+        background-color: #1f1f1f;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(255, 193, 7, 0.1);
+        color: white;
+    }
+
+        .trainer-form-wrapper label {
+            font-weight: 500;
+            color: #f8f9fa;
+        }
+
+        .trainer-form-wrapper input {
+            background-color: #2c2c2c;
+            border: 1px solid #444;
+            color: #fff;
+        }
+
+            .trainer-form-wrapper input:focus {
+                background-color: white;
+                border-color: #ffc107;
+                box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+            }
+
+        .trainer-form-wrapper .btn-primary {
+            background-color: #ffc107;
+            border: none;
+            font-weight: 600;
+            color: #1f1f1f;
+        }
+
+            .trainer-form-wrapper .btn-primary:hover {
+                background-color: #e0a800;
+            }
+
+    .form-title {
+        color: #ffc107;
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+</style>
+
+<h2 class="text-center text-warning mb-4">@ViewBag.Title</h2>
+
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-6 trainer-form-wrapper">
+            <div class="form-title">Trainer Application</div>
+            <form method="post">
                 <div class="mb-3">
-                    <label asp-for="@Model.Name" class="form-label"><h5><i>Name</i></h5></label>
-                    <input asp-for="@Model.Name" class="form-control" aria-required="true" />
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.Info" class="form-label"><h5><i>Info</i></h5></label>
-                    <input asp-for="@Model.Info" class="form-control" aria-required="true" />
+                    <label asp-for="Info">Info</label>
+                    <input asp-for="Info" class="form-control" />
                     <span asp-validation-for="Info" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.ImageUrl" class="form-label"><h5><i>Image</i></h5></label>
-                    <input asp-for="@Model.ImageUrl" class="form-control" aria-required="true" />
+                    <label asp-for="ImageUrl">Image URL</label>
+                    <input asp-for="ImageUrl" class="form-control" />
                     <span asp-validation-for="ImageUrl" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.Type" class="form-label"><h5><i>Type</i></h5></label>
-                    <input asp-for="@Model.Type" class="form-control" value="" />
+                    <label asp-for="Type">Type</label>
+                    <input asp-for="Type" class="form-control" />
                     <span asp-validation-for="Type" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.Motto" class="form-label"><h5><i>Motto</i></h5></label>
-                    <input asp-for="@Model.Motto" class="form-control" value="" />
+                    <label asp-for="Motto">Motto</label>
+                    <input asp-for="Motto" class="form-control" />
                     <span asp-validation-for="Motto" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.Practis" class="form-label"><h5><i>Practis</i></h5></label>
-                    <input asp-for="@Model.Practis" class="form-control" value="" />
+                    <label asp-for="Practis">Practis</label>
+                    <input asp-for="Practis" class="form-control" />
                     <span asp-validation-for="Practis" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.PricePerHour" class="form-label"><h5><i>PricePerHour</i></h5></label>
-                    <input asp-for="@Model.PricePerHour" class="form-control" value="" />
+                    <label asp-for="PricePerHour">Price per Hour</label>
+                    <input asp-for="PricePerHour" class="form-control" />
                     <span asp-validation-for="PricePerHour" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.PhoneNumber" class="form-label"><h5><i>PhoneNumber</i></h5></label>
-                    <input asp-for="@Model.PhoneNumber" class="form-control" aria-required="true" />
+                    <label asp-for="PhoneNumber">Phone Number</label>
+                    <input asp-for="PhoneNumber" class="form-control" />
                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
-                <div class="mb-3">
-                    <input class="btn btn-primary" type="submit" value="Apply" />
+                <div class="d-grid mt-4">
+                    <input class="btn btn-primary btn-lg" type="submit" value="Apply" />
                 </div>
             </form>
         </div>
     </div>
-
 </div>
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

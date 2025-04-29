@@ -1,48 +1,18 @@
-﻿@* @model IEnumerable<TrainerViewModel>
-
-@{
-    
-    ViewBag.Title = "Trainers";
-}
-
-<div class="TrainerView">
-    <div class="text-center row">
-        @foreach (var trainer in Model)
-        {
-            <div class="card col-7 m-1" style="width: 20rem;">
-                <img class="card-img-top" style="width: 19rem;  height:280px"
-                     src="@trainer.ImageUrl" alt="Trainer Image">
-                <div class="card-body text-center">
-                    <h5 class="card-title mt-1">@trainer.Name</h5>
-                </div>
-                
-                @if (User?.Identity?.IsAuthenticated ?? false)
-                {
-                    <div class="d-flex justify-content-center">
-                        <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" method="post">
-                            <input type="submit" value="Details" class="btn btn-primary btn-sm" />
-                        </a>
-                        <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post">
-                            <input type="submit" value="PickTrainer" class="btn btn-warning btn-sm" />
-                        </a>
-                    </div>
-                }
-            </div>
-        }
-    </div>
-</div>
- *@
-
-
- @model IEnumerable<TrainerViewModel>
+﻿@model IEnumerable<TrainerViewModel>
 
 @{
     ViewBag.Title = "Trainers";
 }
 
 <style>
-    .trainer-search-view {
-        padding: 40px 0;
+    .trainer-container-bg {
+        background-image: url('https://motionarray.imgix.net/preview-891187-wOvXOH2hVl-high_0000.jpg?w=660&q=60&fit=max&auto=format');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        padding: 60px 0;
+        padding-top: 120px;
     }
 
     .trainer-card {
@@ -51,7 +21,8 @@
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background-color: #fff;
+        text-decoration: none;
+        color: inherit;
     }
 
         .trainer-card:hover {
@@ -60,25 +31,14 @@
         }
 
     .trainer-img {
-        height: 180px;
+        height: 250px;
         object-fit: cover;
     }
 
-    .card-body {
-        padding: 15px;
-    }
-
-    .card-title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #333;
-    }
-
-    .button-container {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        padding-bottom: 15px;
+    .availability-img {
+        height: 40px;
+        width: auto;
+        margin-top: 10px;
     }
 
     .modern-btn {
@@ -88,55 +48,58 @@
         font-size: 14px;
         font-weight: bold;
         transition: background-color 0.3s, transform 0.3s;
-        text-align: center;
-        display: inline-block;
     }
 
-    .modern-btn-details {
-        background: linear-gradient(45deg, #2196f3, #1e88e5);
-        color: white;
-    }
-
-        .modern-btn-details:hover {
-            background: linear-gradient(45deg, #1e88e5, #2196f3);
-            transform: translateY(-2px);
-        }
-
-    .modern-btn-pick {
+    .modern-btn-select {
         background: linear-gradient(45deg, #ffc107, #ff9800);
         color: white;
     }
 
-        .modern-btn-pick:hover {
+        .modern-btn-select:hover {
             background: linear-gradient(45deg, #ff9800, #ffc107);
             transform: translateY(-2px);
         }
+
+    .modern-btn-resign {
+        background: linear-gradient(45deg, #f44336, #e53935);
+        color: white;
+    }
+
+        .modern-btn-resign:hover {
+            background: linear-gradient(45deg, #e53935, #f44336);
+            transform: translateY(-2px);
+        }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
 </style>
 
-<div class="trainer-search-view">
+<div class="trainer-container-bg">
     <div class="container">
-        <div class="row g-4 justify-content-center">
-            @foreach (var trainer in Model)
+        <div class="row g-4">
+            @foreach (var trainer in Model.OrderByDescending(x => x.PricePerHour))
             {
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card trainer-card h-100">
-                        <img class="card-img-top trainer-img" src="@trainer.ImageUrl" alt="Trainer Image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">@trainer.Name</h5>
-                        </div>
-
-                        @if (User?.Identity?.IsAuthenticated ?? false)
-                        {
-                            <div class="button-container">
-                                <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" class="modern-btn modern-btn-details">
-                                    Details
-                                </a>
-                                <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" class="modern-btn modern-btn-pick">
-                                    Pick Trainer
-                                </a>
+                    <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" class="text-decoration-none">
+                        <div class="card trainer-card h-100">
+                            <img src="@trainer.ImageUrl" class="card-img-top trainer-img" alt="Trainer Image">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">@trainer.Name</h5>                               
                             </div>
-                        }
-                    </div>
+                            <div class="button-container">
+                                @if (!User!.IsInRole("Administrator"))
+                                {
+                                    <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post" class="modern-btn modern-btn-select">
+                                        Select
+                                    </a>
+                                }                              
+                            </div>
+                        </div>
+                    </a>
                 </div>
             }
         </div>
