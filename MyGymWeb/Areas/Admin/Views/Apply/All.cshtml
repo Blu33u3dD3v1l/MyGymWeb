@@ -4,49 +4,62 @@
     ViewBag.Title = "Applications";
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+<h2 class="text-center text-light my-4">@ViewBag.Title</h2>
+<hr class="bg-light" />
 
-
-<div class="ApplyUsers" style="background-color:black">
+<div class="ApplyUsers py-4" style="background-color: #1e1e2f;">
     <div class="container">
-        <table class="table table-striped" style="color: white">
-            <thead>
-                <tr>
-                    <th><label class="text-white">Full Name</label></th>
-                    <th><label class="text-white">Practis</label></th>
-                    <th><label class="text-white">Phone Number</label></th>
-                    <th><label class="text-white">Reason</label></th>
-                    <th><label class="text-white">Actions</label></th>
-                </tr>
-            </thead>
-            @foreach (var user in Model)
-            {
-                <tbody>
+        <div class="table-responsive rounded">
+            <table class="table table-dark table-hover table-bordered shadow-sm rounded">
+                <thead class="thead-light text-center">
                     <tr>
-                        <td><label class="text-white">@user.Name</label></td>
-                        <td><label class="text-white">@user.Practis</label></td>
-                        <td><label class="text-white">@user.PhoneNumber</label></td>
-                        <td><label class="text-white">@user.ForApplication</label></td>
-                        <td>
-
-                            @if (user.ForApplication == "For Application")
-                            {
-                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
-                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Approve" class="Approve" title="Approve" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
-                            }
-                            else
-                            {
-                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete" class="reject" title="Reject" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
-                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Trainer" asp-action="DeleteForApply" class="delete" title="Delete" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
-
-                            }
-                        </td>
+                        <th>Full Name</th>
+                        <th>Practice</th>
+                        <th>Phone Number</th>
+                        <th>Reason</th>
+                        <th>Actions</th>
                     </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr class="text-center align-middle">
+                            <td class="fw-semibold">@user.Name</td>
+                            <td>@user.Practis</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>@user.ForApplication</td>
+                            <td>
+                                @if (user.ForApplication == "For Application")
+                                {
+                                    <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete"
+                                       class="btn btn-sm btn-outline-danger me-2" title="Reject">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                    <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Approve"
+                                       class="btn btn-sm btn-outline-success" title="Approve">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Apply" asp-action="Delete"
+                                       class="btn btn-sm btn-outline-warning me-2" title="Reject">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                    <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Trainer" asp-action="DeleteForApply"
+                                       class="btn btn-sm btn-outline-info" title="Delete Trainer">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
                 </tbody>
-            }
-        </table>
+            </table>
+        </div>
     </div>
 </div>
 
-
+@section Scripts {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+}
