@@ -1,45 +1,4 @@
-﻿@* @model IEnumerable<UserTrainersFormModel>
-
-@{
-    ViewBag.Title = "My Appointments";
-}
-
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
-
-<div class="AllAppointments">
-    <div class="container">
-        <table style="color:white" class="table table-striped">
-            <thead>
-                <tr>                                       
-                    <th><label>Full Name</label></th>
-                    <th><label>Email</label></th>
-                    <th><label>AppointmentTime</label></th>
-                    <th><label>Trainer Name</label></th>
-                    <th><label>Action</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in Model.Where(x => x.Email != null))
-                {
-                    <tr>
-                        <td><label style="color:white">@user.ClientFullName</label></td>
-                        <td><label style="color:white">@user.Email</label></td>
-                        <td><label style="color:white">@user.AppointmentTime</label></td>
-                        <td><label style="color:white">@user.TrainerName</label></td>
-                        <td>
-                            <a type="submit" class="btn btn-danger" asp-route-id="@user.Id"  asp-controller="User" asp-action="Cancel"  method="get">Cancel</a>
-                        </td>                      
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
-</div> *@
- 
-
-@model IEnumerable<UserTrainersFormModel>
+﻿@model IEnumerable<UserTrainersFormModel>
 
 @{
     ViewBag.Title = "My Appointments";
