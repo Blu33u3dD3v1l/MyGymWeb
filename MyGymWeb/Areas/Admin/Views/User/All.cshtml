@@ -2,48 +2,50 @@
 
 @{
     ViewBag.Title = "All Users";
-
-
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+<h2 class="text-center text-light mt-4">@ViewBag.Title</h2>
+<hr class="border-secondary" />
 
-<div class="AllUsers" style="background-color: black">
+<div class="AllUsers py-4" style="background-color: #121212; min-height: 80vh;">
     <div class="container">
-        <table class="table table-striped" style="color: white">
-            <thead>
-                <tr>
-                    <th><label class="text-white">Email</label></th>
-                    <th><label class="text-white">Full Name</label></th>
-                    <th><label class="text-white">Phone Number</label></th>
-                    <th><label class="text-white">State</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in Model.Where(x => x.Email != null))
-                {
-                    <tr>
-                        <td><label class="text-white">@user.Email</label></td>
-                        <td><label class="text-white">@user.FullName</label></td>
-                        <td><label class="text-white">@user.PhoneNumber</label></td>
-                        <td>
-                            @if (!string.IsNullOrEmpty(user.PhoneNumber))
-                            {
-                                <label class="text-white">Trainer</label>
-                            }
-                            else if(user.Email == "Admin@admin.bg")
-                            {
-                                <label class="text-danger">Admin</label>
-                            }                        
-                            else
-                            {
-                                <label class="text-center text-white">User</label>
-                            }
-                        </td>                   
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>   
+        <div class="card shadow-lg border-0 rounded-4 bg-dark text-white">
+            <div class="card-body">
+                <table class="table table-dark table-hover align-middle text-center rounded">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">📧 Email</th>
+                            <th scope="col">🙍 Full Name</th>
+                            <th scope="col">📱 Phone Number</th>
+                            <th scope="col">🎖️ Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Where(x => x.Email != null))
+                        {
+                            <tr>
+                                <td>@user.Email</td>
+                                <td>@user.FullName</td>
+                                <td>@user.PhoneNumber ?? "<i>No Number</i>"</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(user.PhoneNumber))
+                                    {
+                                        <span class="badge bg-success px-3 py-2 rounded-pill">Trainer</span>
+                                    }
+                                    else if (user.Email == "Admin@admin.bg")
+                                    {
+                                        <span class="badge bg-danger px-3 py-2 rounded-pill">Admin</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary px-3 py-2 rounded-pill">User</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
