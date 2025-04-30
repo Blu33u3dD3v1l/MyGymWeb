@@ -53,9 +53,10 @@ namespace MyGymWeb.WebExtensions
                 IdentityRole role = new IdentityRole(AdminConstants.AdminRolleName);
                 await roleManager.CreateAsync(role);
 
-                ApplicationUser adminUser = await userManager.FindByEmailAsync(email);
+                var adminUser = await userManager.FindByEmailAsync(email);
                 if (adminUser != null)
                 {
+                    
                     await userManager.AddToRoleAsync(adminUser, AdminConstants.AdminRolleName);
                 }
             }

@@ -65,7 +65,7 @@ namespace MyGymWeb.Services
             result = data.Trainers.Select(x => new UserServiceModel()
             {
                 UserId = x.UserId,
-                Email = x!.User!.Email,
+                Email = x!.User!.Email!,
                 FullName = $"{x.User.FirstName} {x.User.LastName}",
                 PhoneNumber = x.PhoneNumber,
 
@@ -78,7 +78,7 @@ namespace MyGymWeb.Services
                 .Select(u => new UserServiceModel()
                 {
                     UserId = u.Id,
-                    Email = u.Email,
+                    Email = u.Email!,
                     FullName = $"{u.FirstName} {u.LastName}",
 
                 })
@@ -208,7 +208,7 @@ namespace MyGymWeb.Services
                 throw new Exception("Appointment is null");
             }
 
-            data.Appointments.RemoveRange(currentAppointmentToCancel);
+            data.Appointments.Remove(currentAppointmentToCancel);
             await data.SaveChangesAsync();
 
         }

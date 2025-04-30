@@ -6,12 +6,11 @@ using MyGymWeb.Data.Models;
 using MyGymWeb.Services.Interface;
 using MyGymWeb.WebExtensions;
 
-
 namespace MyGymWeb
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -74,16 +73,15 @@ namespace MyGymWeb
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.SeedAdministrator(AdminConstants.AdminEmail);
+            await app.SeedAdministrator(AdminConstants.AdminEmail);
 
-            app.UseEndpoints(endpoints =>
-            {
+           
               
                 app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapControllerRoute(
+                app.MapControllerRoute(
                 name: "areas",
                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
@@ -92,9 +90,9 @@ namespace MyGymWeb
                 pattern: "Trainer/Details/{information}");
 
 
-                endpoints.MapRazorPages();
+                app.MapRazorPages();
 
-            });
+           
 
             app.UseResponseCaching();
             app.Run();

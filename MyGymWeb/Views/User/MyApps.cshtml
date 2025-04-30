@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UserTrainersFormModel>
+﻿@* @model IEnumerable<UserTrainersFormModel>
 
 @{
     ViewBag.Title = "My Appointments";
@@ -36,4 +36,109 @@
         </table>
     </div>
 
+</div> *@
+ 
+
+@model IEnumerable<UserTrainersFormModel>
+
+@{
+    ViewBag.Title = "My Appointments";
+}
+
+<style>
+    .appointments-wrapper {
+        background-color: #1e1e1e;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 0 25px rgba(255, 193, 7, 0.08);
+        color: white;
+    }
+
+    .appointments-table thead {
+        background-color: #343a40;
+    }
+
+    .appointments-table th {
+        color: #ffc107;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .appointments-table td {
+        vertical-align: middle;
+    }
+
+    .appointments-table tbody tr:hover {
+        background-color: #2a2a2a;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .btn-cancel {
+        background-color: #dc3545;
+        border: none;
+        padding: 6px 14px;
+        font-weight: 500;
+        color: #fff;
+        border-radius: 6px;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+        .btn-cancel:hover {
+            background-color: #bb2d3b;
+        }
+
+    .page-title {
+        color: #ffc107;
+        font-weight: bold;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .icon-cancel {
+        margin-right: 5px;
+    }
+    
+</style>
+
+<div class="container mt-5 mb-5">
+    <div class="appointments-wrapper">
+        <h2 class="page-title">@ViewBag.Title</h2>
+        <hr class="text-warning" />
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover appointments-table">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Appointment Time</th>
+                        <th>Trainer Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.Where(x => x.Email != null))
+                    {
+                        <tr>
+                            <td style="color:white; font-weight: 700; font-family: 'Segoe UI', sans-serif;">@user.ClientFullName</td>
+                            <td style="color:white; font-weight: 700; font-family: 'Segoe UI', sans-serif;">@user.Email</td>
+                            <td style="color:white; font-weight: 700; font-family: 'Segoe UI', sans-serif;">@user.AppointmentTime</td>
+                            <td style="color:white; font-weight: 700; font-family: 'Segoe UI', sans-serif;">@user.TrainerName</td>
+                            <td>
+                                <a asp-route-id="@user.Id" asp-controller="User" asp-action="Cancel" method="get" class="btn btn-cancel">
+                                    <i class="bi bi-x-circle-fill icon-cancel"></i> Cancel
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
+<!-- Bootstrap Icons CDN for cancel icon -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+ 
