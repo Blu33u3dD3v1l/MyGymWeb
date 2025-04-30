@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProductViewModel>
+﻿@* @model IEnumerable<ProductViewModel>
 
 @{
     int totalProductCount = 0;
@@ -166,3 +166,68 @@
 </body>
 </html>
 
+ *@
+
+
+@model IEnumerable<ProductViewModel>
+
+@{
+    int totalProductCount = 0;
+    ViewBag.Title = "Products";
+}
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<h2 class="text-center text-light my-4">@ViewBag.Title</h2>
+<hr class="bg-light" />
+
+<div class="py-4" style="background-color: #1c1c1c;">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-white">Products List</h4>
+            <a class="btn btn-outline-light rounded-pill px-4" asp-area="Admin" asp-controller="Product" asp-action="Add">
+                <i class="fas fa-plus me-2"></i>Add Product
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-bordered shadow rounded">
+                <thead class="text-center table-secondary text-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderByDescending(x => x.Price).ThenBy(x => x.Name))
+                    {
+                        totalProductCount++;
+                        <tr class="align-middle text-center">
+                            <td class="h6">@item.Name</td>
+                            <td class="h6">@item.Mark</td>
+                            <td class="h6">@item.Price $</td>
+                            <td>
+                                <a asp-route-id="@item.Id" asp-area="Admin" asp-controller="Product" asp-action="Edit"
+                                   class="btn btn-sm btn-outline-warning me-2" title="Edit">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <a asp-route-id="@item.Id" asp-area="Admin" asp-controller="Product" asp-action="Delete"
+                                   class="btn btn-sm btn-outline-danger" title="Delete" method="get">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center mt-4">
+            <h5 class="text-light">Total count of products: <span class="text-info">@totalProductCount</span></h5>
+        </div>
+    </div>
+</div>

@@ -1,86 +1,50 @@
 ﻿@model IEnumerable<UserTrainersFormModel>
 
 @{
-    ViewBag.Title = "All Appointents";
-
-
+    ViewBag.Title = "All Appointments";
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+<h2 class="text-center text-light my-4">@ViewBag.Title</h2>
+<hr class="bg-light" />
 
-
-@if (!Model.Any())
-{
-    <div class="AllUsersEmpty" style="background-color:black">
-        <div class="container">
-            <table class="table table-striped" style="color: white">
-                <thead>
+<div class="ApplyUsers py-4" style="background-color:#1c1c1c;">
+    <div class="container">
+            <table class="table table-bordered table-hover text-white shadow-sm rounded">
+                <thead class="text-center"style="background-color:#2c2f3f;">
                     <tr>
-                        <th><label class="text-white">Full Name</label></th>
-                        <th><label class="text-white">Email</label></th>
-                        <th><label class="text-white">AppointmentTime</label></th>
-                        <th><label class="text-white">Trainer Name</label></th>
-                        <th><label class="text-white">Action</label></th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Appointment Time</th>
+                        <th>Trainer Name</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var user in Model.Where(x => x.Email != null))
                     {
-                        <tr>
-                            <td><label class="text-white">@user.ClientFullName</label></td>
-                            <td><label class="text-white">@user.Email</label></td>
-                            <td><label class="text-white">@user.AppointmentTime</label></td>
-                            <td><label class="text-white">@user.TrainerName</label></td>
+                        <tr class="text-center align-middle">
+                            <td>@user.ClientFullName</td>
+                            <td>@user.Email</td>
+                            <td>@user.AppointmentTime</td>
+                            <td>@user.TrainerName</td>
                             <td>
-
-                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
-                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Approve" class="Approve" title="Approve" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Delete"
+                                   class="btn btn-sm btn-outline-danger me-2" title="Delete">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Approve"
+                                   class="btn btn-sm btn-outline-success" title="Approve">
+                                    <i class="fas fa-check"></i>
+                                </a>
                             </td>
-
                         </tr>
                     }
                 </tbody>
             </table>
-        </div>
+        }
     </div>
+</div>
+
+@section Scripts {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 }
-else
-{
-    <div class="AllUsers" style="background-color:black">
-        <div class="container" >
-            <table class="table table-striped" style="color: white">
-                <thead>
-                    <tr>
-
-                        <th><label class="text-white">Full Name</label></th>
-                        <th><label class="text-white">Email</label></th>
-                        <th><label class="text-white">AppointmentTime</label></th>
-                        <th><label class="text-white">Trainer Name</label></th>
-                        <th><label class="text-white">Action</label></th>
-
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var user in Model.Where(x => x.Email != null))
-                    {
-                        <tr>
-                            <td><label class="text-white">@user.ClientFullName</label></td>
-                            <td><label class="text-white">@user.Email</label></td>
-                            <td><label class="text-white">@user.AppointmentTime</label></td>
-                            <td><label class="text-white">@user.TrainerName</label></td>
-                            <td>
-
-                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Delete" class="delete" title="Delete" data-toggle="tooltip" method="get"><i class="material-icons">&#10008;</i></a>
-                                <a asp-route-id="@user.Id" asp-area="Admin" asp-controller="Appointment" asp-action="Approve" class="Approve" title="Approve" data-toggle="tooltip" method="post"><i class="material-icons">✔️</i></a>
-                            </td>
-
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-}
-
