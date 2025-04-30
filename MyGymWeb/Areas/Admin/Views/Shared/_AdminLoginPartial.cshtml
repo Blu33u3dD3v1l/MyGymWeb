@@ -11,7 +11,7 @@
 
 @{
 
-    var user = await userManager.GetUserAsync(_context?.HttpContext?.User);
+    var user = await userManager.GetUserAsync(_context?.HttpContext?.User!);
 }
 
 <ul class="navbar-nav">
