@@ -14,7 +14,7 @@ namespace MyGymWeb
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<MyGymProjectDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -26,16 +26,16 @@ namespace MyGymWeb
                 options.Password.RequireDigit = true;
 
             }).AddRoles<IdentityRole>()
-              .AddEntityFrameworkStores<MyGymProjectDbContext>();         
+              .AddEntityFrameworkStores<MyGymProjectDbContext>();
 
             builder.Services.AddDistributedMemoryCache();
 
             builder.Services.AddSession(options =>
-            {                
-                options.IdleTimeout = TimeSpan.FromMinutes(5);               
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(5);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-              
+
             });
 
             builder.Services.AddControllersWithViews(options =>
@@ -45,7 +45,7 @@ namespace MyGymWeb
 
             builder.Services.AddApplicationServices(typeof(ITrainerService));
             builder.Services.AddResponseCaching();
- 
+
             builder.Services.ConfigureApplicationCookie(cfg =>
             {
                 cfg.LoginPath = "/User/Login";
@@ -75,24 +75,22 @@ namespace MyGymWeb
 
             await app.SeedAdministrator(AdminConstants.AdminEmail);
 
-           
-              
-                app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                app.MapControllerRoute(
-                name: "areas",
-                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                app.MapControllerRoute(
-                name: "trainerDetails",
-                pattern: "Trainer/Details/{information}");
+            app.MapControllerRoute(
+            name: "areas",
+            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
+            name: "trainerDetails",
+            pattern: "Trainer/Details/{information}");
 
 
-                app.MapRazorPages();
+            app.MapRazorPages();
 
-           
 
             app.UseResponseCaching();
             app.Run();

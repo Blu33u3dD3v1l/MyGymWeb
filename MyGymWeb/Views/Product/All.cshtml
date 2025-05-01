@@ -4,6 +4,8 @@
     ViewBag.Title = "Products";
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 <style>
     /* Background image for the products page */
     .product-container-bg {
@@ -94,6 +96,24 @@
         padding-bottom: 10px;
     }
 
+    .cart-btn {
+        background: transparent;
+        border: none;
+        padding: 10px;
+        font-size: 22px;
+        color: #2196f3; /* син цвят за иконата */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease;
+    }
+
+        .cart-btn:hover {
+            transform: scale(1.2);
+            color: #1976d2; /* по-тъмен син при hover */
+        }
+
+
 </style>
 
 <div class="product-container-bg">
@@ -113,9 +133,10 @@
                             <div class="button-container">
                                 @if (!User.IsInRole("Administrator"))
                                 {
-                                    <a asp-route-id="@product.Id" asp-controller="User" asp-action="Buy" class="modern-btn modern-btn-add-to-cart">
-                                        Add to Cart
+                                    <a asp-route-id="@product.Id" asp-controller="User" asp-action="Buy" class="cart-btn">
+                                        <i class="fas fa-shopping-cart"></i>
                                     </a>
+
                                 }
                             </div>
                         </div>
