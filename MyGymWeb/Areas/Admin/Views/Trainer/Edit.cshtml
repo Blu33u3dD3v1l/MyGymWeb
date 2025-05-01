@@ -1,4 +1,4 @@
-﻿@model EditTrainerFormModel
+﻿@* @model EditTrainerFormModel
 
 @{
     ViewBag.Title = "Edit";
@@ -55,4 +55,96 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+} *@
+
+
+@model EditTrainerFormModel
+
+@{
+    ViewBag.Title = "Edit Trainer";
 }
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+
+<h2 class="text-center text-warning text-decoration-underline mb-4">@ViewBag.Title</h2>
+
+<div class="container" style="margin-top:60px">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 rounded-4 bg-dark text-white">
+                <div class="card-body p-4">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">
+                                <i class="fas fa-user me-2"></i>Name
+                            </label>
+                            <input asp-for="Name" class="form-control rounded-pill" placeholder="Trainer's name" />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Info" class="form-label">
+                                <i class="fas fa-info-circle me-2"></i>Info
+                            </label>
+                            <input asp-for="Info" class="form-control rounded-pill" placeholder="Short info or bio" />
+                            <span asp-validation-for="Info" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ImageUrl" class="form-label">
+                                <i class="fas fa-image me-2"></i>Image URL
+                            </label>
+                            <input asp-for="ImageUrl" class="form-control rounded-pill" placeholder="Link to image" />
+                            <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Practis" class="form-label">
+                                <i class="fas fa-running me-2"></i>Practice
+                            </label>
+                            <input asp-for="Practis" class="form-control rounded-pill" placeholder="Training areas" />
+                            <span asp-validation-for="Practis" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PricePerHour" class="form-label">
+                                <i class="fas fa-euro-sign me-2"></i>Price per Hour
+                            </label>
+                            <input asp-for="PricePerHour" class="form-control rounded-pill" placeholder="e.g. 40.00" />
+                            <span asp-validation-for="PricePerHour" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Type" class="form-label">
+                                <i class="fas fa-dumbbell me-2"></i>Type
+                            </label>
+                            <input asp-for="Type" class="form-control rounded-pill" placeholder="e.g. Group, Yoga..." />
+                            <span asp-validation-for="Type" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Motto" class="form-label">
+                                <i class="fas fa-quote-left me-2"></i>Motto
+                            </label>
+                            <input asp-for="Motto" class="form-control rounded-pill" placeholder="Trainer's motto" />
+                            <span asp-validation-for="Motto" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-outline-warning text-white rounded-pill fw-bold">
+                                <i class="fas fa-save me-2"></i>Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

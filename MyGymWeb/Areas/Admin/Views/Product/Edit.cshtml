@@ -1,4 +1,4 @@
-﻿@model TestViewModel
+﻿@* @model TestViewModel
 
 @{
     ViewBag.Title = "Edit Post";
@@ -43,6 +43,81 @@
     </div>
 </div>
 
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@
+
+
+@model TestViewModel
+
+@{
+    ViewBag.Title = "Edit Product";
+}
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+
+<h2 class="text-center text-warning text-decoration-underline mb-4">@ViewBag.Title</h2>
+
+<div class="container" style="margin-top:60px">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 rounded-4 bg-dark text-white">
+                <div class="card-body p-4">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">
+                                <i class="fas fa-tag me-2"></i>Name
+                            </label>
+                            <input asp-for="Name" class="form-control rounded-pill" placeholder="Product name" />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Mark" class="form-label">
+                                <i class="fas fa-industry me-2"></i>Brand
+                            </label>
+                            <input asp-for="Mark" class="form-control rounded-pill" placeholder="Brand name" />
+                            <span asp-validation-for="Mark" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ImageUrl" class="form-label">
+                                <i class="fas fa-image me-2"></i>Image URL
+                            </label>
+                            <input asp-for="ImageUrl" class="form-control rounded-pill" placeholder="Image link" />
+                            <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">
+                                <i class="fas fa-align-left me-2"></i>Description
+                            </label>
+                            <input asp-for="Description" class="form-control rounded-pill" placeholder="Short description" />
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Price" class="form-label">
+                                <i class="fas fa-euro-sign me-2"></i>Price
+                            </label>
+                            <input asp-for="Price" class="form-control rounded-pill" placeholder="e.g. 99.99" />
+                            <span asp-validation-for="Price" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-outline-warning text-white rounded-pill fw-bold">
+                                <i class="fas fa-save me-2"></i>Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
