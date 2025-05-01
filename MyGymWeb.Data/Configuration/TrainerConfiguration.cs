@@ -35,7 +35,7 @@ namespace MyGymWeb.Data.Configuration
               {
                   Id = Guid.NewGuid(),
                   Name = "Chris Bumstead",
-                  ImageUrl = "https://e0.pxfuel.com/wallpapers/609/537/desktop-wallpaper-chris-bumstead.jpg",
+                  ImageUrl = "https://cdn.prod.website-files.com/6367f8198bef742a30d18cba/63af0dd732bfdbd85f40eb89_Chris-Bumstead-10.jpeg",
                   Info = "Christopher Adam Bumstead, known by his fans as CBum, is a Canadian IFBB professional bodybuilder. Bumstead is the reigning Mr. Olympia Classic Physique winner, having won the competition in 2019, 2020, 2021 and 2022. He was also the runner-up in 2017 and 2018.Bumstead maintains a large online presence with content focusing on his lifestyle and bodybuilding.",
                   Motto = "More Weight.",
                   Practis = "Above 15 years.",
@@ -91,7 +91,7 @@ namespace MyGymWeb.Data.Configuration
               {
                   Id = Guid.NewGuid(),
                   Name = "Brad Schoenfeld",
-                  ImageUrl = "https://img.freepik.com/free-photo/young-adult-doing-indoor-sport-gym_23-2149205542.jpg?w=2000",
+                  ImageUrl = "https://img.freepik.com/free-photo/young-adult-doing-indoor-sport-gym_23-2149205542.jpg?semt=ais_hybrid&w=740",
                   Info = "Brad Schoenfeld considered one of greatest trainers of all time is a respected trainer, author and professor of exercise science who specialises in the science of bodybuilding and nutritionso he's often referred to as the gym trainer for men. He has spent over 30 years researching in the area of human performance, exercise physiology and muscle hypertrophy, and his work has been featured in major publications such as Men’s Health. He is also the author of numerous best-selling books on strength training and sports nutrition. His legacy lives on with his ongoing commitment to helping people achieve their fitness goals through his knowledge and experience from training thousands of athletes around the world.",
                     Motto = "Im The Best!",
                   Practis = "Above 20 years.",
@@ -124,7 +124,7 @@ namespace MyGymWeb.Data.Configuration
               {
                   Id = Guid.NewGuid(),
                   Name = "Rachel Braten",
-                  ImageUrl = "https://nathealth-assets.s3-eu-west-1.amazonaws.com/articles/Rachel_Brathen.jpg",
+                  ImageUrl = "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2015_14/475911/today-rachel-brathen-yoga-150330-13-tease.jpg",
                   Info = "Yoga social media star and author Rachel Brathen is well-known for her openness and authenticity. She tells Stacey Carter why she wanted to write her book and how she navigates sharing her life with the world",
                     Motto = "Let yoga be your life!",
                   Practis = "Above 8 years.",
@@ -157,7 +157,7 @@ namespace MyGymWeb.Data.Configuration
               {
                   Id = Guid.NewGuid(),
                   Name = "Anllela Sagra",
-                  ImageUrl = "https://storage.googleapis.com/pai-images/803e7f4cfb964082a057d3db348f18b2.jpeg",
+                  ImageUrl = "https://photogallery.indiatimes.com/photo/68319469.cms",
                   Info = "Anllela Sagra is a Colombian fitness model, trainer, bodybuilder, and social media personality. Blessed with inherent beauty and strict work ethics, she has emerged as one of the most influential figures in her industry in the recent years. Initially, her aspiration was to become a regular model and fashion designer. She even earned a degree in fashion design from the University of Colombia. However, she decided to become a fitness model after meeting a fitness enthusiast in the gym. The concept of female bodybuilders is still quite novel in her home country as muscles on women are not considered attractive in Colombia. Despite this, Sagra started undergoing weight training and began to put on muscles on her slim frame. Soon enough, she was attending fitness competitions and garnering fans from all over the world on social media. She has over 10 million followers on Instagram and more than one million followers on Facebook. On Twitter and YouTube, the social media platforms on which she is rarely active these days, she has 22.5 thousand followers and 265 thousand subscribers respectively. She has her own app listed on both Apple App Store and Google Play.",
                     Motto = "The world is mine!",
                   Practis = "Above 8 years.",
@@ -184,6 +184,17 @@ namespace MyGymWeb.Data.Configuration
                     Motto = "Just Bring It!",
                   Practis = "Above 8 years.",
                   Type = "ClassicTrainer",
+                  PricePerHour = 200,
+              },
+                          new Trainer()
+              {
+                  Id = Guid.NewGuid(),
+                  Name = "Oleksandr Usyk",
+                  ImageUrl = "https://i.guim.co.uk/img/media/29e2354853c6e5f190ae1f6be56d959bd467ae75/874_0_2865_3580/master/2865.jpg?width=1140&dpr=2&s=none&crop=none",
+                  Info = "Oleksandr Oleksandrovych Usyk is a Ukrainian professional boxer. He has held the unified heavyweight championship since 2021, and the Ring magazine title since 2022. He held the undisputed championship in two weight classes—cruiserweight and heavyweight—and is the third male boxer in history (after Terence Crawford and Naoya Inoue) to become a two-weight undisputed champion in the 'four-belt era'.",
+                    Motto = "Train in silence, strike with thunder!",
+                  Practis = "Above 8 years.",
+                  Type = "BoxingTrainer",
                   PricePerHour = 200,
               },
             };

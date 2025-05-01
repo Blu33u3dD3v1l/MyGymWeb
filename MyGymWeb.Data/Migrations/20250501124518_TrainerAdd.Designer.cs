@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGymWeb.Data;
 
@@ -11,9 +12,11 @@ using MyGymWeb.Data;
 namespace MyGymWeb.Data.Migrations
 {
     [DbContext(typeof(MyGymProjectDbContext))]
-    partial class MyGymProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250501124518_TrainerAdd")]
+    partial class TrainerAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,7 +249,7 @@ namespace MyGymWeb.Data.Migrations
                             Id = "bdb57211-855c-470a-b0f4-817d9335a26b",
                             AccessFailedCount = 0,
                             Amount = 1000m,
-                            ConcurrencyStamp = "0791dd2c-a0b7-4ac2-9b02-f4d8bcbb37a9",
+                            ConcurrencyStamp = "7a90db67-9d74-4bba-bdc3-5f207737a96a",
                             DiscountPrice = 0m,
                             Email = "Admin@admin.bg",
                             EmailConfirmed = false,
@@ -255,9 +258,9 @@ namespace MyGymWeb.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@admin.bg",
                             NormalizedUserName = "Admin@admin.bg",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHTk2JYYrGHiRSQRGAQ5yore95kh9deiQmKeVMwtmf9V8uidulnbZ0nneIn+h71oFQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBfkFNUmw6upiIMFtHgXCA5Yv93TPyfSKkWQMKCpnGRHPQDRNHtSrWPXxIWCSSPWEw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7a0cfa75-1e86-4a73-b2d5-bbcfac0525f9",
+                            SecurityStamp = "e378630a-714b-4f28-8537-20970c50e03d",
                             TwoFactorEnabled = false,
                             UseCode = false,
                             UserName = "Admin@admin.bg"
@@ -586,7 +589,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 2,
                             Description = "The UFE 2in1 Protein Shaker is a premium shaker that is BPA, BPS and BPF free. The Shaker has a 700ml capacity and comes complete dual mixing.",
-                            ImageUrl = "https://drberg.in/368-large_default/-shaker-bottle.jpg",
+                            ImageUrl = "https://files.ekmcdn.com/alphasports86/images/urban-fitness-2in1-protein-shaker-700ml--2023-p.jpg?v=6FB99E0C-5E66-4D39-B4E2-7384D9AB6276",
                             IsActive = true,
                             Mark = "Urban Fitness",
                             Name = "Urban Fitness 2in1 Protein Shaker",
@@ -597,7 +600,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 3,
                             Description = "ElephantSkin gloves are designed for (hobby) athletes who do not want to compromise on hygiene during their training.More training, less cleaning - that's the concept behind ElephantSkin's sustainable fitness glove.",
-                            ImageUrl = "https://elephantskin.com/wp-content/uploads/2024/05/ElephantSkin_CHAMPION_0002_Ebene-1_1800x1800.png-500x500.webp",
+                            ImageUrl = "https://cdn.shopify.com/s/files/1/0585/3016/9008/products/elephantskin-fitness-handschuhe-titelbild.png?v=1644683288",
                             IsActive = true,
                             Mark = "ElephantSkin Fitness",
                             Name = "The Fitness Gloves",
@@ -607,22 +610,22 @@ namespace MyGymWeb.Data.Migrations
                         new
                         {
                             Id = 4,
-                            Description = "Whey Gourmet Edition 2kg Life Pro is a supplement based on whey concentrate, which has exceptional nutritional values and is part of the Gourmet line of flavours. Life Pro's Gourmet line is characterised by a variety of very successful, exclusive and delicious flavours. Life Pro Whey Gourmet Edition 2kg is designed to help you meet your daily protein requirements, maintain a healthy lifestyle and enjoy every shake. It has a protein concentration of between 72% and 77% in its composition (depending on the flavour selected). In addition, you can now enjoy your favourite Gourmet flavour in 3 different formats: 30g, 900g and 2kg.",
+                            Description = "Keep your hard-earned muscles fed, whether youre at home or at the gym. Stay fit & consistent with your protein supplementation & stay strong around the clock, in the gym or at home. Pro series whey has a scientific combination of whey isolate (fast) for immediate absorption and whey concentrate (slow digesting) to give feed your muscles for longer time a protein drink thats richer & tastier than any whey protein in india",
                             ImageUrl = "https://gonobs.com/cdn/shop/files/raging-whey-listing-creative-1.png?v=1696973140",
                             IsActive = true,
-                            Mark = "Life Pro",
+                            Mark = "Goodlife",
                             Name = "Pro Nutrition and Fitness",
-                            Price = 61m,
+                            Price = 50m,
                             ProductCount = 0
                         },
                         new
                         {
                             Id = 5,
-                            Description = "Let L-Carnitine support your metabolism and endurance by tapping into your body's fuel reserves - turning your fat into energy. Take advantage of L-Carnitine's lipid-metabolizing power, that helps transport fat out of your system. It's the perfect addition to your diet and fitness program.Boost It Up Get a lean body and stay toned! L-Carnitine helps shuttle fatty acids to your muscles so they can be burnt as energy during exercise. Conquer fatigue by delaying muscle soreness so you can train longer! Amplify your performance! Enhance cellular energy production for max physical output. Suggested use Shake well before opening. Consume 1 serving at any time of the day between meals. On training days, consume 1 serving 30 minutes before exercise. Regular exercise and proper nutrition are essential components for achieving your diet and fitness goals. As individuals vary so may results from using this product.",
-                            ImageUrl = "https://proteinhouse.mu/cdn/shop/files/nutrex-research-l-carnitine-3000-698006.png?v=1723805951&width=1445",
+                            Description = "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing.",
+                            ImageUrl = "https://fitness1.bg/products/u/levrone-wellness-series-l-carnitine-125000-1-l-1786f0c.jpg",
                             IsActive = true,
-                            Mark = "Nutrex Research",
-                            Name = "L-Carnitine 3000",
+                            Mark = "Goodlife",
+                            Name = "L-Carnitine",
                             Price = 14m,
                             ProductCount = 0
                         },
@@ -630,7 +633,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 6,
                             Description = "At Fitness Superstore, we have the most rigorous remanufacturing process in the industry. All machines are disassembled, sand blasted, and repainted. Parts, belts, bearings, and batteries are replaced on every machine. All other parts that are worn more that 25% are replaced. We guarantee (Covered by our Warranty) your machine to be in “like new” working and “close to new” cosmetic condition. Click Play on the video below for through details.",
-                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREDhyUn0XH7qNDvKI21WGxL3SZ7d5ftwtsB_M3lTGhGI15hej4aYNE4Is046eHI6DrtL0&usqp=CAU",
+                            ImageUrl = "https://www.fitnesssuperstore.com/v/vspfiles/templates/fitness-resp/images/homepage/product-slider/precor-ellipticals.jpg",
                             IsActive = true,
                             Mark = "Force USA G20.",
                             Name = "New & Refurbished Gym & Fitness Equipment For Sale",
@@ -641,7 +644,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 7,
                             Description = "The French Fitness FSR100 Commercial Functional Smith Rack System features an innovative structure that combines arm and leg stations for strengthening different muscle groups and executing comprehensive workouts, limiting the need to switch between gym equipment. The FSR100 is a complete training system made with a heavy-duty steel frame reinforced with a durable powder-coated finish. Utilizes sturdy aircraft cable with a tensile strength of 2,000lb that's guaranteed to withstand intense long-lasting use. Standard weight horns let you organize weights on the machine for easy accessibility. Engage in intense weightlifting or strength training right in the comfort of your home with the French Fitness FSR100 Commercial Functional Smith Rack System.",
-                            ImageUrl = "https://www.johnsonfitness.com.au/cdn/shop/products/MX22_MAGNUMMG-PL62-03smithmachine_MatteBlk_hero_lores.jpg?v=1665704942",
+                            ImageUrl = "https://cdn3.volusion.com/aqyor.dadrn/v/vspfiles/photos/FF-FSR100-2.jpg?v-cache=1682102760",
                             IsActive = true,
                             Mark = "Force USA G20.",
                             Name = "Smith Machine",
@@ -652,7 +655,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 8,
                             Description = "This multi-station workhorse provides health club quality strength training for up to three people simultaneously (with optional GKR9). The G9 series of gyms features a multi-function Press Arm Station for bench press, incline press, shoulder press and chest supported mid row exercises. The Perfect Pec Station with fully adjustable range of motion allows users to achieve deeper muscle penetration for faster, more defined results. The Leg Press/ Calf Press Station operates on its own separate weight stack, with a 2 to 1 weight ratio, giving the G9 Gyms the awesome capacity of a 420 lb leg press. Add the optional Vertical Knee Raise / Dip Station (GKR9) and up to three people can workout simultaneously on the G9S.",
-                            ImageUrl = "https://www.ironcompany.com/media/catalog/product/cache/0497f845716ff9ff5fb3d560ec6f3888/b/o/body_solid_g9s_2_stack_gym_for_home_or_light_commercial_spaces.png",
+                            ImageUrl = "https://cdn3.volusion.com/aqyor.dadrn/v/vspfiles/photos/bsldG9S-2.jpg?v-cache=1669221040",
                             IsActive = true,
                             Mark = "American Musle",
                             Name = "Body-Solid G9S Selectorized",
@@ -674,7 +677,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 10,
                             Description = "Equipped with the Venum Gel Shock system, these Venum Body fitness gloves offer effective protection and shock absorption, so that you are comfortable during all phases of training.",
-                            ImageUrl = "https://f.nooncdn.com/p/pzsku/ZA596E824F4FF23EB0D32Z/45/_/1737458392/ae70680d-5d9c-426c-9cde-24382d53f0ca.jpg?width=240",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/401178608/930x1240x3/venum-venum-aero-body-fitness-gloves-black-pink.jpg",
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Venum Aero Body Fitness Gloves Black Pink",
@@ -684,11 +687,11 @@ namespace MyGymWeb.Data.Migrations
                         new
                         {
                             Id = 11,
-                            Description = "Experience superior performance with the Bad Boy Classic Vale Tudo Shorts. Designed to work as hard as you do, these shorts are more than just clothing - they're a second skin, moving seamlessly with your body without any restrictions.Crafted from a stretchy, sweat-wicking fabric, they help improve blood circulation, boosting your muscle performance to new heights. Plus, they keep you dry and comfortable, whether you're in the middle of a fight or an intense workout. With a customized fit thanks to the elastic waistband and inner drawstrings, these shorts stay perfectly in place, so you can focus on what really matters - your performance.",
-                            ImageUrl = "https://i.ebayimg.com/images/g/8UUAAOSwezxlAxYz/s-l1200.jpg",
+                            Description = "These multi-purpose resistance bands are light and very easily transportable. These are muscle building accessories that, depending on the use and the resistance chosen, will help develop your strength, flexibility or mobility.",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/360675752/930x1240x3/venum-venum-challenger-resistance-band-purple-22-3.jpg",
                             IsActive = true,
-                            Mark = "Bad Boy",
-                            Name = "Bad Boy Classic Mens White Training MMA Fight Shorts BJJ",
+                            Mark = "Venum",
+                            Name = "Venum Challenger Resistance Band Purple",
                             Price = 34.60m,
                             ProductCount = 0
                         },
@@ -706,11 +709,11 @@ namespace MyGymWeb.Data.Migrations
                         new
                         {
                             Id = 13,
-                            Description = "Composition: 92% polyester, 8% elastane Lightweight fast drying fabric to keep you dry and comfortable Stretchy fibre for exceptional mobility Raglan sleeves design for superior range of motion Flat seams for smooth sensation against your skin",
-                            ImageUrl = "https://minotaurfightstore.co.uk/wp-content/uploads/2023/03/BADBOY_Tee_BBC00003_Black_1.jpg",
+                            Description = "Bad Boy has been involved in the sport since the early nineties and is one of the original supporters of mixed martial arts and Jiu Jitsu tournaments.",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/422027250/466x544x1/image.jpg",
                             IsActive = true,
                             Mark = "Bad Boy",
-                            Name = "Bad Boy Core Logo T-Shirt Black",
+                            Name = "Bad Boy MMA Fightshorts Capo 2 White",
                             Price = 19.99m,
                             ProductCount = 0
                         },
@@ -718,7 +721,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 14,
                             Description = "Booster Boxing Gloves Pro Shield 3 Green.  Booster Boxing Gloves Pro Shield are a Top quality 100% handmade in Thailand genuine leather professional sparring and training gloves by Booster Fightgear.   Multi-layered high and low density foam core ensures the best protection for the knuckles and maximizes impact dispersion for ultimate fighter protection on the wrist.  Booster Pro Shield are made with a full +/- 8cm wide Velcro closure to ensure proper wrist support. Extra padded palm for increased support and added defensive protection   The interior lining is made to dry quickly to help rid the gloves of moisture and perspiration   Booster Pro Range Boxing Gloves are double stitched for extra durability with perfectly positioned attached thumb .  These gloves meet international standards and offer incredible results.  Specification’s Booster Boxing Gloves Pro Shield :  • Booster Kickboxing Gloves are Handmade in Thailand. • Attached thumb for extra safety. Booster Fight Gear Europe. • Durable Long Lasting Velcro closure. • 100% A-grade Cowhide Thai leather.",
-                            ImageUrl = "https://kingfightstore.nl/cdn/shop/files/gr3.jpg?v=1742221007&width=630",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/395465361/466x544x1/image.jpg",
                             IsActive = true,
                             Mark = "Booster",
                             Name = "Booster Boxing Gloves Pro Shield 3 Green",
@@ -728,11 +731,11 @@ namespace MyGymWeb.Data.Migrations
                         new
                         {
                             Id = 15,
-                            Description = "Experience unrestricted movement with this athletic compression top, meticulously crafted from a high-performance spandex blend that offers a second-skin fit, ideal for intense training sessions and competitive events.\r\nStay cool and dry during your toughest workouts; the advanced moisture-wicking technology efficiently draws sweat away from the skin, keeping you comfortable and focused on your performance.\r\nEngineered for durability, this base layer is constructed with reinforced stitching to withstand the rigors of grappling, striking, and high-impact exercises, ensuring long-lasting wear and tear resistance.\r\nDesigned with a streamlined, ergonomic fit, this compression top supports your muscles and enhances blood flow, promoting faster recovery and reduced muscle fatigue after strenuous activity, making it suitable as jiu jitsu shirts.\r\nEnjoy complete freedom of movement during any activity; the four-way stretch fabric allows for a full range of motion, enabling you to execute complex techniques and movements with ease and precision.",
-                            ImageUrl = "https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/g/21/9c17be60-10cf-4556-9ff7-78ca7c066565.jpg",
+                            Description = "Venum Rafter Sweatshirt Dark Heather Grey.  The Venum Rafter sweatshirt is an ultra comfortable fleece crewneck.  The 3D printing on the chest gives an original relief to this sweatshirt, which can be worn with jeans as well as with the Venum Rafter jogging pants.  The design marks a notable graphic evolution compared to previous collections.  Specification's Venum Rafter Sweatshirt :  • 55% Cotton / 45% Polyester • Fleece lining • Jacquard bands • Embroidered Venum logo • 3D printing • Straight cut • Machine wash at 30 °: do not iron or tumble dry",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/421682446/930x1240x3/venum-venum-rafter-sweatshirt-dark-heather-grey.jpg",
                             IsActive = true,
-                            Mark = "Cody",
-                            Name = "Spandex Base Layer for Gym, Training & Combat Sports",
+                            Mark = "Venum",
+                            Name = "Rafter Sweatshirt Dark Heather Grey",
                             Price = 49.95m,
                             ProductCount = 0
                         },
@@ -740,7 +743,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 16,
                             Description = "Hayabusa Kanpeki T3 LX Hybrid Sparring Gloves 7oz Italian Leather.  The Next Generation Of Kanpeki: The Hayabusa T3 LX 7oz MMA Gloves. Luxurious full-grain Italian leather.  Hayabusa Kanpeki T3 LX MMA Hybrids Sparring Gloves combine the best of both worlds.  For Fitness:  Maximize your high intensity interval training by going from the punching bag to the skipping rope, to crunches with a medicine ball and back to the bag.  For MMA:  The padding you need for heavy bag work with the flexibility of an open palm glove. This glove allows you to go from striking to grappling with ease while staying in place the whole time.  PERFECT FIT AND FEEL  The multi-directional Dual-X closure is unmatched when it comes to hand and wrist stabilization for the best protection and injury prevention possible.  INDUSTRY-LEADING WRIST SUPPORT  The best closure system ever created. Hayabusa’s patented wrist support technology helps eliminate hand strain to ensure the best in protection and safety.  CONSISTENT PERFORMANCE AND DURABILITY, PUNCH AFTER PUNCH  Hayabusa gloves are built to last. The attention to detail and craftsmanship guarantees a glove as resilient as the athletes who use it.",
-                            ImageUrl = "https://aagsport.com/cdn/shop/products/pKhP5YsPvYT5lvLmL8Shl1Yz-700x700_480x480.jpg",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/323824938/930x1240x3/hayabusa-hayabusa-kanpeki-t3-lx-hybrid-sparring-gl.jpg",
                             IsActive = true,
                             Mark = "Hayabusa",
                             Name = "Hayabusa Kanpeki T3 LX Hybrid Sparring Gloves 7oz ",
@@ -751,7 +754,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 17,
                             Description = "Venum Koi Rashguard Long Sleeves Black Blue.  Expert Tip: Venum Rashguards have very tight Fit. If you want to be more comfortable, we advise you to take minimal one size more than you take for a classic compression top.  With its one-of-a-kind attention to detail, the Venum Koi Rashguard brings an exclusive quality design like no other.  Made with a blend of spandex and elastane, the Venum Koi Rashguard perfectly fits every curve of your body, which minimizes your opponents’ grasps during grappling as well as protecting you against cuts and other skin abrasions.  The distinctive Koi design is sublimated into the fabric and the seams have been specifically strengthened for longer lasting vibrant durability.  Day after day, fight after fight, dominate your opponent with the Venum Koi Rashguard.  Specification's Venum Koi Rash Guard :  • Composition: 35% Cotton 65% Polyester • Care instructions: Do not bleach, do not iron, do not tumble dry, machine wash at 30°C • Sport: MMA, Grappling, BJJ • Collar shape: Round neck • Pattern / Color: Printed • Extras: Quick drying • Additional information: Reinforced seams, Silicone elastic bands at the bottom, Protects from chafing and burning • Properties: Breathable, quick drying",
-                            ImageUrl = "https://www.thefightfactory.com.au/cdn/shop/products/cl-sport-longsleeve-rash-guard-cl-sport-tropics-rashguard-long-sleeve-blue-30570066608171_760x.png?v=1721166388%27",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/433053093/930x1240x3/venum-venum-koi-rashguard-long-sleeves-black-blue.jpg",
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Venum Koi Rashguard Long Sleeves Black Blue",
@@ -762,7 +765,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 18,
                             Description = "Venum Elite Boxing Gloves Microfiber White Silver.\r\n\r\nThe triple density foam balances the shock, improving you as a fighter without the stress on your arms during impacts.\r\n\r\nAssembled and hand-sewn in Thailand, these boxing gloves have been designed for regular and intensive use.\r\n\r\nThe unique design and brand new colors are fit for all the fighters, no matter their level.\r\n\r\nThe reinforced seams and mesh panels combined with their ergonomic shape will bring you a comfortable fit and feel as if you are truly one with the glove.\r\n\r\nSpecification's Venum Elite Boxing Gloves :\r\n\r\n• Fully handmade in Thailand\r\n• Premium semi leather construction\r\n• Specific mesh panel placed under the fist for great thermal regulation\r\n• Triple density foam\r\n• Reinforced palm for a maximum absorption\r\n• 100% full attached thumb for a better injury prevention\r\n• Strengthened seams for a long-lasting quality\r\n• Large Velcro enclosure\r\n• Long cuffs improving wrist protection",
-                            ImageUrl = "https://eu.venum.com/cdn/shop/files/a509146d1d982199d9b22789bb3414a5f84d8073_VENUM_0984_210_1.jpg?v=1744031393",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/433528738/930x1240x3/venum-venum-elite-boxing-gloves-microfiber-white-s.jpg",
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Venum Elite Boxing Gloves Microfiber White Silver",
@@ -773,7 +776,7 @@ namespace MyGymWeb.Data.Migrations
                         {
                             Id = 19,
                             Description = "The PTS Lite, or Venum Power Training System Lite is a lite version of the original PTS.\r\n\r\nIt is a modular exercise system that will allow you to develop your endurance as well as your strength and your durability.\r\n\r\nEasily transportable and attachable almost anywhere, the Venum PTS Lite adapts to athletes of all levels: the variety and intensity of the exercises is adjustable to your goals, your level and your favorite discipline.\r\n\r\nInstalling the Power Training System is quick and easy, in the gym as well as at home training.",
-                            ImageUrl = "https://www.venum.com/cdn/shop/products/a_252Fc_252F9_252Fd_252Fac9db668ba094dea00e671838375208e3a323fcb_PTS_LIGHT_SD_02.jpg?v=1658483964&width=1946",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/350147425/466x544x1/image.jpg",
                             IsActive = true,
                             Mark = "Venum",
                             Name = "Venum Power Training System Lite - PTS Lite",
@@ -783,11 +786,11 @@ namespace MyGymWeb.Data.Migrations
                         new
                         {
                             Id = 20,
-                            Description = "Children's shin guards without a protective panel on the instep for kickboxing training. The shin guards are comfortable to wear and, thanks to their fastening with 2 wide Velcro straps, they adapt perfectly to the shape of the leg. The thick foam padding does an excellent job of absorbing impact force, protecting the shins from injury. The material on the inside is skin-friendly and minimises the risk of abrasions. The classic design makes the pads fit in with the rest of your training outfit and equipment.",
-                            ImageUrl = "https://static2.groundgame.com/hpeciai/4c3e2722b4b5b934246f2e5942b0b6ed/pol_il_Dzieciece-ochraniacze-piszczeli-bez-stopy-Cyborg-Czarne-1649.jpg",
+                            Description = "The Punch Round \"No-Fear\" kickboxing shin guards combine a good fit, high quality with good durability. They are made from a high-quality artificial leather. With a 3-layer shock-absorbing foam for optimum protection.\r\n\r\nThe attachment is made of 2 sturdy velcro closure for a good and lasting fit during training and sparring.",
+                            ImageUrl = "https://cdn.webshopapp.com/shops/16221/files/327053024/375x500x2/punchr-punch-round-kids-nofear-kickboxing-shin-gua.jpg",
                             IsActive = true,
                             Mark = "Punch Round",
-                            Name = "Children's Shin Guards Without Foot Protection Cyborg",
+                            Name = "Punch Round Kids NoFear Kickboxing Shin Guards Black White",
                             Price = 34.90m,
                             ProductCount = 0
                         });
@@ -848,7 +851,7 @@ namespace MyGymWeb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f337afd0-75a2-4c37-a601-17a3bb06bba6"),
+                            Id = new Guid("10782d15-b390-4be4-a0ae-e73b4b020e18"),
                             ImageUrl = "https://i.ebayimg.com/images/g/yDkAAOSw7vtjPegV/s-l1200.webp",
                             Info = "Arnold Alois Schwarzenegger is an Austrian and American actor, businessman, filmmaker, politician, and retired professional bodybuilder best known for his roles in high-profile action movies. He served as the 38th governor of California from 2003 to 2011 and was among Time magazine's 100 most influential people in the world in 2004 and 2007.",
                             IsActive = true,
@@ -860,7 +863,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("188d9e5e-fa03-42aa-a96b-7fd5f512daf4"),
+                            Id = new Guid("a6ff8612-042f-498a-8775-f7fbb96520ba"),
                             ImageUrl = "https://cdn.prod.website-files.com/6367f8198bef742a30d18cba/63af0dd732bfdbd85f40eb89_Chris-Bumstead-10.jpeg",
                             Info = "Christopher Adam Bumstead, known by his fans as CBum, is a Canadian IFBB professional bodybuilder. Bumstead is the reigning Mr. Olympia Classic Physique winner, having won the competition in 2019, 2020, 2021 and 2022. He was also the runner-up in 2017 and 2018.Bumstead maintains a large online presence with content focusing on his lifestyle and bodybuilding.",
                             IsActive = true,
@@ -872,7 +875,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("22bcd060-a119-4ef6-8a39-785c0569252d"),
+                            Id = new Guid("06cb4840-6506-413d-95b2-474364a1f371"),
                             ImageUrl = "https://pagesix.com/wp-content/uploads/sites/3/2022/08/Russell-Hornsby-Mike-Tyson_99-1.jpg?quality=75&strip=all&w=413",
                             Info = "Michael Gerard Tyson is an American former professional boxer who competed from 1985 to 2005. Nicknamed 'Iron Mike' and 'Kid Dynamite' in his early career, and later known as 'The Baddest Man on the Planet',Tyson is regarded as one of the greatest heavyweight boxers of all time.[6] He reigned as the undisputed world heavyweight champion from.Tyson won his first 19 professional fights by knockout, 12 of them in the first round. Claiming his first belt at 20 years, four months, and 22 days old, Tyson holds the record as the youngest boxer ever to win a heavyweight title. He was the first heavyweight boxer to simultaneously hold the WBA, WBC and IBF titles, as well as the only heavyweight to unify them in succession. The following year, Tyson became the lineal champion when he knocked out Michael Spinks in 91 seconds of the first round.Tyson was knocked out by underdog Buster Douglas in one of the biggest upsets in boxing history.",
                             IsActive = true,
@@ -884,7 +887,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fa45d067-370a-4b73-a88d-917b012c9bbf"),
+                            Id = new Guid("cce4ed16-f15f-486d-9a00-65b53a509391"),
                             ImageUrl = "https://ronniecoleman.net/cdn/shop/products/ronnie-coleman-signature-series-light-weight-baby-tee-apparel-accessories-shirt-29983544049777_1024x1024.jpg?v=1655495689",
                             Info = "Ronald Dean Coleman  is an American retired professional bodybuilder. The winner of the Mr. Olympia title for eight consecutive years, he is widely regarded as either the greatest bodybuilder of all time or one of the two greatest along with Arnold Schwarzenegger and as the most dominant bodybuilding physique ever to grace the stage.Winner of 26 IFBB professional titles, he is also renowned for his combination of size and conditioning,dominant body-parts and extremely heavy workouts,making him the strongest",
                             IsActive = true,
@@ -896,7 +899,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ab5d3213-9428-45ea-a1b8-d8f511f5cf51"),
+                            Id = new Guid("9ae3fac1-935a-429c-9774-861339db4e30"),
                             ImageUrl = "https://www.fitnessindiashow.com/wp-content/uploads/2018/11/Screen-Shot-2018-11-06-at-3.58.11-PM.png",
                             Info = "Michelle Lewin is a Venezuelan fitness coach, model, and YouTube star.She became famous because of her hourglass figure that she flaunts whenever she models.Michelle Lewin began her modeling career on a very small scale. She first discovered it by a photographer and it began her journey as a model.As a model, it is common that they take care of their body and Michelle is no exception. She takes care of her body and keeps in shape by going to the gym.",
                             IsActive = true,
@@ -908,7 +911,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4efcfbfa-b5f3-4334-8fb7-2921cca00c35"),
+                            Id = new Guid("53569872-3c7a-4216-81e4-c86d3d0723c8"),
                             ImageUrl = "https://i.pinimg.com/originals/a0/07/34/a00734047b571a8573c6a83f03c6a1fe.jpg",
                             Info = "Wladimir Klitschko is a Ukrainian former professional boxer who competed from 1996 to 2017. He held the world heavyweight championship twice, including the unified WBA (Super), IBF, WBO, IBO, and Ring magazine titles. A strategic and intelligent boxer, Klitschko is considered to be one of the best heavyweight champions of all time.He was known for his exceptional knockout power, using a strong jab, straight right hand and left hook, quick hand speed, as well as athletic footwork and mobility, unusual for boxers of his size.",
                             IsActive = true,
@@ -920,7 +923,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2b2180db-0b60-4d72-98d9-9bf00134d788"),
+                            Id = new Guid("5dd4a1eb-99e5-4ba8-a8cc-4084fa215fa7"),
                             ImageUrl = "https://img.freepik.com/free-photo/young-adult-doing-indoor-sport-gym_23-2149205542.jpg?semt=ais_hybrid&w=740",
                             Info = "Brad Schoenfeld considered one of greatest trainers of all time is a respected trainer, author and professor of exercise science who specialises in the science of bodybuilding and nutritionso he's often referred to as the gym trainer for men. He has spent over 30 years researching in the area of human performance, exercise physiology and muscle hypertrophy, and his work has been featured in major publications such as Men’s Health. He is also the author of numerous best-selling books on strength training and sports nutrition. His legacy lives on with his ongoing commitment to helping people achieve their fitness goals through his knowledge and experience from training thousands of athletes around the world.",
                             IsActive = true,
@@ -932,7 +935,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d91b8686-f5e7-4d8a-980b-1dc888b0ff45"),
+                            Id = new Guid("ff55833c-377d-457f-a8e3-381b67825ac0"),
                             ImageUrl = "https://firstclasspt.se/____impro/1/onewebmedia/Bigstock/professionella%20manliga%20skola%20sport%20coach%20ger%20tumme.jpg?etag=%22a97572-59303a63%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=321%2B481&extract=28%2B37%2B280%2B421&quality=85",
                             Info = "Matt trains a roster of celebrity clients, is a published author and has his own brand of fitness clothing. But despite this borderline celebrity trainer status, he remains grounded. He knows that working with regular people and helping them to achieve the results they’re looking for is what gets referrals, and word of mouth business. After 23 years of experience in the fitness industry, Matt knows something about being able to relate to others and considers interpersonal skills to be one of the most important assets an aspiring trainer can possess.",
                             IsActive = true,
@@ -944,7 +947,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f9a61a63-7ee0-4c06-b82c-6d990f963318"),
+                            Id = new Guid("ae7b7186-b50e-4e49-9594-fda0250cf528"),
                             ImageUrl = "https://xcal.com/wp-content/uploads/2023/02/Rachel.webp",
                             Info = "Exercise professional and sports nutrition specialist, Louise, has published a number of books which have become Sunday Times bestsellers. This isn’t a common achievement, and is evidence of the relatable and compassionate way that Louise discusses the relationship between nourishing your body with food and staying “lean for life”. Since starting her company in 2007, Louise has helped close to 20,000 individuals - a phenomenal number! Louise has taught her methods to a team of coaches so that she’s able to impact even more people each year. Louise is an advocate of connecting goals with values. Both from the perspective of a client connecting with their goal, and also from the perspective of a business owner. Operating from a place of vision means that you’re able to genuinely help people in a way which is meaningful and valuable to them.",
                             IsActive = true,
@@ -956,7 +959,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d174e5be-fb70-4083-b8c3-28b1da18b69b"),
+                            Id = new Guid("6268ee23-3538-4239-90bd-c53d181e0ba6"),
                             ImageUrl = "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2015_14/475911/today-rachel-brathen-yoga-150330-13-tease.jpg",
                             Info = "Yoga social media star and author Rachel Brathen is well-known for her openness and authenticity. She tells Stacey Carter why she wanted to write her book and how she navigates sharing her life with the world",
                             IsActive = true,
@@ -968,7 +971,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f2d5b2a5-8100-4103-b8ad-1bfa6f9672cb"),
+                            Id = new Guid("870dad61-30f9-474e-a8f1-e822f5a3daf3"),
                             ImageUrl = "https://www.hfe.co.uk/wp-content/uploads/2018/12/Shaun-Stafford-Headshot1-copy-2-703x1024.jpg",
                             Info = "With a Masters degree in strength and conditioning from Oxford University, Shaun left university and went into a bodybuilding career. He followed that with a semi-professional rugby career and more recently focused on personal training. He supports a number of clients, notably those in a rugby arena from his performance gym and has a huge presence of social media. But despite this level of influence, he encourages aspiring trainers to focus their energy into what’s important to them. He reminds them that an online following isn’t necessary to have a profoundly important impact on someone’s life and to double down on those things that you’re good at and that make you happy.",
                             IsActive = true,
@@ -980,7 +983,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b455fe0e-2d70-4609-8c6f-e34bce1c6af0"),
+                            Id = new Guid("fb4cd0a7-16cd-429f-9a51-a531d81dc209"),
                             ImageUrl = "https://www.greatestphysiques.com/wp-content/uploads/2018/04/Anna-Victoria.01.jpg",
                             Info = "Anna Victoria is a personal transformation coach and fitness star from the United States of America. Although she's now famous for her healthy and fit figure, Anna's early life looked completely different. She grew up being unaware of the importance of a healthy diet and regular exercise.",
                             IsActive = true,
@@ -992,7 +995,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9648c7c5-efd4-47ff-b5ae-936d7d35761f"),
+                            Id = new Guid("78602ed8-d406-4fda-b8c7-6f018f96c1ea"),
                             ImageUrl = "https://photogallery.indiatimes.com/photo/68319469.cms",
                             Info = "Anllela Sagra is a Colombian fitness model, trainer, bodybuilder, and social media personality. Blessed with inherent beauty and strict work ethics, she has emerged as one of the most influential figures in her industry in the recent years. Initially, her aspiration was to become a regular model and fashion designer. She even earned a degree in fashion design from the University of Colombia. However, she decided to become a fitness model after meeting a fitness enthusiast in the gym. The concept of female bodybuilders is still quite novel in her home country as muscles on women are not considered attractive in Colombia. Despite this, Sagra started undergoing weight training and began to put on muscles on her slim frame. Soon enough, she was attending fitness competitions and garnering fans from all over the world on social media. She has over 10 million followers on Instagram and more than one million followers on Facebook. On Twitter and YouTube, the social media platforms on which she is rarely active these days, she has 22.5 thousand followers and 265 thousand subscribers respectively. She has her own app listed on both Apple App Store and Google Play.",
                             IsActive = true,
@@ -1004,7 +1007,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("88a27837-2c79-4208-85a6-0cc0b963e02f"),
+                            Id = new Guid("b20cd77c-d6e3-41b7-a790-2c7fea6e14d6"),
                             ImageUrl = "https://www.the-sun.com/wp-content/uploads/sites/6/2023/03/karina-elle-lisenbee-fitness-model-801547146.jpg",
                             Info = "Karina Elle Lisenbee is an American Instagram Pilates model, gym instructor and former cross-country runner. She was a cheerleader and cross-country runner during her high school years. At the age of 16, she was spotted by a photographer in a mall, after which she started modeling. She then began to participate in bikini competitions, often winning them. Soon after that, she launched her Instagram account where she started posting her intense gym workouts, which are enough to put the fittest among us to shame. Known for her plyometrics, hack squats and deadlifts, Karina went on to win the ‘World Fitness Federation Pro Bikini Championship’. The famous fitness model has also graced the pages of magazines like ‘Racked’, ‘Hers’, ‘Self’ and ‘Shape’. Additionally, not only does she have brand endorsement deals with major brands like ‘Gymshark’ and ‘Nike’, but she also has her own line of merchandise called ‘Gym Bae’. Needless to say, she is one of the most followed fitness models and instructors on the popular photo-sharing app, Instagram.",
                             IsActive = true,
@@ -1016,7 +1019,7 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a98c629c-4fbd-451d-a720-f1f50086578b"),
+                            Id = new Guid("ed112441-b8a4-44bc-a5f9-c99c3d2ce44f"),
                             ImageUrl = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2015%2F06%2Fdwayne-johnson-1-2000.jpg&q=60",
                             Info = "Dwayne Douglas Johnson, also known by his ring name the Rock, is an American actor, film producer, and retired professional wrestler. Widely regarded as one of the greatest professional wrestlers of all time,he was integral to the development and success of the World Wrestling Federation (WWF, now WWE) during the Attitude Era, an industry boom period in the late 1990s and early 2000s. Johnson wrestled for the WWF for eight years prior to pursuing an acting career. His films have grossed over $3.5 billion in North America and over $10.5 billion worldwide, making him one of the world's highest-grossing and highest-paid actors.",
                             IsActive = true,
@@ -1028,8 +1031,8 @@ namespace MyGymWeb.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b4da124e-db71-4aae-a0df-7f52c84f1bcb"),
-                            ImageUrl = "https://i.guim.co.uk/img/media/29e2354853c6e5f190ae1f6be56d959bd467ae75/874_0_2865_3580/master/2865.jpg?width=1140&dpr=2&s=none&crop=none",
+                            Id = new Guid("1ad2ca87-01c8-485d-a5e3-4118c5e2fa53"),
+                            ImageUrl = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2015%2F06%2Fdwayne-johnson-1-2000.jpg&q=60",
                             Info = "Oleksandr Oleksandrovych Usyk is a Ukrainian professional boxer. He has held the unified heavyweight championship since 2021, and the Ring magazine title since 2022. He held the undisputed championship in two weight classes—cruiserweight and heavyweight—and is the third male boxer in history (after Terence Crawford and Naoya Inoue) to become a two-weight undisputed champion in the 'four-belt era'.",
                             IsActive = true,
                             Motto = "Train in silence, strike with thunder!",
