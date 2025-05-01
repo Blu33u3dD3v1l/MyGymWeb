@@ -17,7 +17,46 @@
 
 }
 
-<div class="newcart">
+ <style>
+    body {
+        background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
+    @@keyframes gradientBG {
+        0%{
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .bg-white {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(8px);
+    }
+
+    .rounded {
+        border-radius: 1rem !important;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+</style> 
+
+
+<div class="mt-5">
     <div class="container px-4 px-lg-0">
         @{
             var cnter = 0;
@@ -46,15 +85,14 @@
             {
                 <div class="container text-white py-5 text-center">
                     <h1 class="display-4">You have @cnter items in your cart!</h1>
-                    <p class="lead mb-0">If your purchased products are equal or above 100$ shipping will be free! </p>
-                    @*  <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic"><u>Bootstrapious</u></a></p> *@
+                    <p class="lead mb-0">If your purchased products are equal or above 100$ shipping will be free! </p>                   
                 </div>
             }
         }
 
 
 
-        <div class="pb-5">
+         <div class="pb-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
@@ -196,6 +234,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
-</div>
+</div>  
