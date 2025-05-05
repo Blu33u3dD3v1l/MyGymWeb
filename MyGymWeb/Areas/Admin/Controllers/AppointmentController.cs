@@ -8,7 +8,8 @@ namespace MyGymWeb.Areas.Admin.Controllers
     public class AppointmentController : BaseController
     {
 
-        private readonly IAppointmentService appointmentService;        
+        private readonly IAppointmentService appointmentService;
+     
         public AppointmentController(IAppointmentService _appointmentService)
         {
             appointmentService = _appointmentService;
@@ -34,7 +35,7 @@ namespace MyGymWeb.Areas.Admin.Controllers
                await appointmentService.ApproveAppointmentAsync(id);
                await appointmentService.DeleteAppointmentsAsync(id);
 
-                TempData[SuccessMessage] = "You Successfuly Approved an appointment!";
+               TempData[SuccessMessage] = "You Successfuly Approved an appointment!";
             }
             catch (Exception)
             {
