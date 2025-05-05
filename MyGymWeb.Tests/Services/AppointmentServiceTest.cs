@@ -1,5 +1,4 @@
 ﻿using Moq;
-using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Services;
 using MyGymWeb.Services.Interface;
@@ -9,12 +8,13 @@ namespace MyGymWeb.Tests.Services
 {
     public class AppointmentServiceTest
     {
-       
+
         private readonly IEmailService emailService;
 
-        public AppointmentServiceTest(IEmailService emailService)
+        public AppointmentServiceTest()
         {
-            this.emailService = emailService;
+            var mockEmailService = new Mock<IEmailService>();
+            emailService = mockEmailService.Object;
         }
 
         [Fact]
