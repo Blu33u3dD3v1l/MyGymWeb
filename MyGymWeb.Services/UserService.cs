@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
@@ -23,7 +22,7 @@ namespace MyGymWeb.Services
 
 
 
-        public async Task AddAppointmentAsync(Guid id, string userId, AppointmentFormModel model)
+        public async Task AddAppointmentAsync(Guid trainerId, string userId, AppointmentFormModel model)
         {
             var currentUser = await data.Appointments.FirstOrDefaultAsync(a => a.UserId == userId);
 
@@ -38,7 +37,7 @@ namespace MyGymWeb.Services
                     Email = model.Email,
                     TrainerName = model.TrainerName,
                     UserId = userId,
-                    TrainerId = id,
+                    TrainerId = trainerId,
                 };
 
                 if (appointment.AppointmentTime < DateTime.Now)

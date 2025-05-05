@@ -1,12 +1,17 @@
 ﻿using Moq;
+using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Services;
+using MyGymWeb.Services.Interface;
 using MyGymWeb.Tests.Mocks;
 
 namespace MyGymWeb.Tests.Services
 {
     public class AppointmentServiceTest
     {
+       
+        private IEmailService emailService;
+
         [Fact]
         public async void ApproveAppointmentShouldReturnRightValues()
         {
@@ -24,7 +29,7 @@ namespace MyGymWeb.Tests.Services
                 TrainerId = Guid.NewGuid(),
             });
             await data.SaveChangesAsync();
-            var appointmentService = new AppointmentService(data);
+            var appointmentService = new AppointmentService(data, emailService);
 
             var result = appointmentService.ApproveAppointmentAsync(appId);
 
@@ -51,7 +56,7 @@ namespace MyGymWeb.Tests.Services
                 TrainerId = Guid.NewGuid(),
             });
             await data.SaveChangesAsync();
-            var appointmentService = new AppointmentService(data);
+            var appointmentService = new AppointmentService(data, emailService);
 
             var result = appointmentService.ApproveAppointmentAsync(appId);
 
@@ -78,7 +83,7 @@ namespace MyGymWeb.Tests.Services
                 TrainerId = Guid.NewGuid(),
             });
             await data.SaveChangesAsync();
-            var appointmentService = new AppointmentService(data);
+            var appointmentService = new AppointmentService(data, emailService);
 
             var a = data.Appointments.FirstOrDefault(x => x.Id == appId);
 
@@ -108,7 +113,7 @@ namespace MyGymWeb.Tests.Services
                 TrainerId = Guid.NewGuid(),
             });
             await data.SaveChangesAsync();
-            var appointmentService = new AppointmentService(data);
+            var appointmentService = new AppointmentService(data, emailService);
 
            var result = appointmentService.DeleteAppointmentsAsync(appId);
 
@@ -133,7 +138,7 @@ namespace MyGymWeb.Tests.Services
             });
             
             await data.SaveChangesAsync();
-            var appointmentService = new AppointmentService(data);
+            var appointmentService = new AppointmentService(data, emailService);
 
             var result = await appointmentService.GetAllAsync();
 
@@ -147,7 +152,7 @@ namespace MyGymWeb.Tests.Services
             using var data = DatabaseMock.Instance;
 
             await data.SaveChangesAsync();
-            var appointmentService = new AppointmentService(data);
+            var appointmentService = new AppointmentService(data, emailService);
 
             var result = await appointmentService.GetAllAsync();
             var count = result.Count();
@@ -183,7 +188,7 @@ namespace MyGymWeb.Tests.Services
             });
 
             await data.SaveChangesAsync();
-            var appointmentService = new AppointmentService(data);
+            var appointmentService = new AppointmentService(data, emailService);
 
             var result = await appointmentService.GetAllAsync();
 

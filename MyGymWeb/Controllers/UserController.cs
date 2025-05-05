@@ -62,35 +62,28 @@ namespace MyGymWeb.Controllers
             return RedirectToAction("Cart", "User");
         }
 
+       
+
         [HttpGet]
-        public async Task<IActionResult> Appointment(Guid id)
+        public IActionResult Appointment(Guid trainerId)
         {
-
-            string? currentId = this.User.GetId();
-
-            try
+            var model = new AppointmentFormModel
             {
-                await this.userService.AppointmentExistByUserId(currentId, id);
-            }
-            catch (Exception)
-            {
+                TrainerId = trainerId
+            };
 
-                TempData[WarningMessage] = "You allready have pending appointment with this Trainer!";
-                return RedirectToAction("Index", "Home");
-            }
-
-            return View();
+            return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Appointment(Guid id, AppointmentFormModel model)
+        public async Task<IActionResult> Appointment(Guid trainerId, AppointmentFormModel model)
         {
 
             var currentId = User.GetId();
             try
             {
 
-                await this.userService.AddAppointmentAsync(id, currentId!, model);
+                await this.userService.AddAppointmentAsync(trainerId, currentId!, model);
                 TempData[SuccessMessage] = "You successfuly add an appointment!";
             }
             catch (InvalidOperationException)

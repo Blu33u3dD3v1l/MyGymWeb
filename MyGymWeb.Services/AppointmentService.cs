@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyGymWeb.Data;
 using MyGymWeb.Data.Models;
 using MyGymWeb.Models.Home;
@@ -7,22 +6,24 @@ using MyGymWeb.Services.Interface;
 
 namespace MyGymWeb.Services
 {
-   
+
     public class AppointmentService : IAppointmentService
     {
         private readonly MyGymProjectDbContext data;
+        private readonly IEmailService emailService;
 
-        public AppointmentService(MyGymProjectDbContext _data)
+        public AppointmentService(MyGymProjectDbContext data, IEmailService emailService)
         {
-            data = _data;
+            this.data = data;
+            this.emailService = emailService;
         }
-      
+
         public async Task ApproveAppointmentAsync(int id)
         {
 
 
             var ids = await data.Appointments.FirstOrDefaultAsync(x => x.Id == id);
-         
+
             var currentUser = await data.Users
                    .Where(u => u.Id == ids!.UserId)
                    .Include(x => x.UsersTrainers)
@@ -32,7 +33,7 @@ namespace MyGymWeb.Services
               .Where(u => u.Id == ids!.TrainerId)
               .FirstOrDefaultAsync();
 
-            if(currentUser!.Amount - currentTrainer!.PricePerHour < 0)
+            if (currentUser!.Amount - currentTrainer!.PricePerHour < 0)
             {
                 throw new Exception("money is low");
             }
@@ -47,15 +48,20 @@ namespace MyGymWeb.Services
                 });
 
                 currentUser.Amount -= currentTrainer.PricePerHour;
+
+               
             }
             else
             {
                 throw new InvalidOperationException("Wrong user");
             }
 
+
             await data.SaveChangesAsync();
+
+            //await emailService.SendEmailAsync(currentUser!.Email!, "Appointment Approved", $"Hello {currentUser.FirstName}, your appointment with {currentTrainer.Name} has been approved!");
         }
-      
+
         public async Task DeleteAppointmentsAsync(int id)
         {
             var currentApplier = await data.Appointments
@@ -69,7 +75,7 @@ namespace MyGymWeb.Services
             data.Appointments.RemoveRange(currentApplier);
             await data.SaveChangesAsync();
         }
-        
+
         public async Task<IEnumerable<UserTrainersFormModel>> GetAllAsync()
         {
             var currenUser = await data.Users.FirstOrDefaultAsync();

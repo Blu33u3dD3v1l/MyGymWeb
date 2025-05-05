@@ -5,12 +5,12 @@
     }
 });
 
-// Показване на резултатите при успешен търсене
-document.querySelector("form").addEventListener("submit", function (e) {
-    setTimeout(function () {
-        var trainerResults = document.getElementById("trainerResults");
-        if (trainerResults && trainerResults.children.length > 0) {
-            trainerResults.style.display = "block";
-        }
-    }, 500);
-});
+
+//document.querySelector("form").addEventListener("submit", function () {
+//    setTimeout(function () {
+//        var trainerResults = document.getElementById("trainerResults");
+//        if (trainerResults && trainerResults.children.length > 0) {
+//            trainerResults.style.display = "block";
+//        }
+//    }, 500);
+//});

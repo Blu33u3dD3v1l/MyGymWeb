@@ -66,26 +66,29 @@
             <div class="appointment-title">Book an Appointment</div>
 
             <form method="post">
+                <input type="hidden" asp-for="TrainerId" />
+
+
                 <div class="mb-3">
                     <label asp-for="AppointmentTime">Date and Time</label>
-                    <input asp-for="AppointmentTime" class="form-control" id="datetimeField" />
+                    <input asp-for="AppointmentTime" class="form-control" id="AppointmentTime" />
                     <span asp-validation-for="AppointmentTime" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="ClientFullName">Full Name</label>
-                    <input asp-for="ClientFullName" class="form-control" />
+                    <input asp-for="ClientFullName" class="form-control" id="ClientFullName" />
                     <span asp-validation-for="ClientFullName" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="Email">Email</label>
-                    <input asp-for="Email" class="form-control" />
+                    <input asp-for="Email" class="form-control" id="Email" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="TrainerName">Trainer</label>
+                    <label asp-for="TrainerName" >Trainer</label>
                     <input asp-for="TrainerName" class="form-control" />
                     <span asp-validation-for="TrainerName" class="text-danger"></span>
                 </div>
@@ -99,11 +102,28 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        flatpickr('#datetimeField', {
+        flatpickr('#AppointmentTime', {
             enableTime: true,
             noCalendar: false,
             dateFormat: 'Y-m-d H:i',
-            time_24hr: true
+            time_24hr: true,
+            defaultDate: new Date()});
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            if (form) {
+                form.addEventListener("submit", function () {
+                    setTimeout(function () {
+                        var trainerResults = document.getElementById("trainerResults");
+                        if (trainerResults && trainerResults.children.length > 0) {
+                            trainerResults.style.display = "block";
+                        }
+                    }, 500);
+                });
+            }
         });
     </script>
+
 </body>
