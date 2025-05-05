@@ -10,11 +10,13 @@ namespace MyGymWeb.Services
     public class AppointmentService : IAppointmentService
     {
         private readonly MyGymProjectDbContext data;
+        private readonly IEmailService emailService;
         
 
-        public AppointmentService(MyGymProjectDbContext data)
+        public AppointmentService(MyGymProjectDbContext data, IEmailService emailService)
         {
             this.data = data;
+            this.emailService = emailService;
            
         }
 
@@ -59,7 +61,8 @@ namespace MyGymWeb.Services
 
             await data.SaveChangesAsync();
 
-    
+            await emailService.SendEmailAsync(currentUser.Email!, "Appointment Approved", $"Hello {currentUser.FirstName}, your appointment with {currentTrainer.Name} has been approved. The amount has been deducted from your account. Thank you!");
+
         }
 
         public async Task DeleteAppointmentsAsync(int id)
