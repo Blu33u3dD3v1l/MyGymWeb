@@ -70,7 +70,7 @@
               "dependsOn": [
                 "[variables('appServicePlan_ResourceId')]"
               ],
-              "kind": "app",
+              "kind": "app",             
               "properties": {
                 "name": "[parameters('resourceName')]",
                 "kind": "app",
