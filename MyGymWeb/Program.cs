@@ -6,6 +6,9 @@ using MyGymWeb.Data.Models;
 using MyGymWeb.Services.Interface;
 using MyGymWeb.WebExtensions;
 
+
+
+
 namespace MyGymWeb
 {
     public class Program
