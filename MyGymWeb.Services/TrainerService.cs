@@ -7,6 +7,7 @@ using MyGymWeb.Models.Enums;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 using MyGymWeb.Services.Models.Trainer;
+using SendGrid.Helpers.Mail;
 using System.Reflection.Metadata.Ecma335;
 
 namespace MyGymWeb.Services
@@ -351,7 +352,47 @@ namespace MyGymWeb.Services
                 TotalTrainersCount = totalTrainers,
                 Trainers = allTrainers
             };
-        }       
-                
+        }
+
+        public void ReactToTrainer(Guid trainerId, string userId, bool isLike)
+        {
+            var existingReaction = context.TrainerReactions
+         .FirstOrDefault(r => r.TrainerId == trainerId && r.UserId == userId); // ⬅️ правилно
+
+            if (existingReaction != null)
+            {
+                if (existingReaction.IsLike == isLike)
+                {
+                    // Clicked same again => remove
+                    context.TrainerReactions.Remove(existingReaction);
+                }
+                else
+                {
+                    existingReaction.IsLike = isLike;
+                    context.TrainerReactions.Update(existingReaction);
+                }
+            }
+            else
+            {
+                context.TrainerReactions.Add(new TrainerReaction
+                {
+                    TrainerId = trainerId,
+                    UserId = userId,
+                    IsLike = isLike
+                });
+            }
+
+            context.SaveChanges();
+        }
+
+        public (int likes, int dislikes, bool? userReaction) GetReactions(Guid trainerId, string userId)
+        {
+            var reactions = context.TrainerReactions.Where(r => r.TrainerId == trainerId);
+            int likes = reactions.Count(r => r.IsLike);
+            int dislikes = reactions.Count(r => !r.IsLike);
+            bool? userReaction = reactions.FirstOrDefault(r => r.UserId == userId)?.IsLike;
+
+            return (likes, dislikes, userReaction);
+        }
     }
 }

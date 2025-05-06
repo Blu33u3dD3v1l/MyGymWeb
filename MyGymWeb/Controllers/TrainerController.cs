@@ -4,6 +4,7 @@ using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
 using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
+using MyGymWeb.Data.Models;
 
 
 namespace MyGymWeb.Controllers
@@ -34,17 +35,28 @@ namespace MyGymWeb.Controllers
 
             model.Trainers = serviceModel.Trainers;
             model.TotalTrainers = serviceModel.TotalTrainersCount;
-        
+
 
             return View(model);
         }
 
         [AllowAnonymous]
-        [HttpGet]             
+        [HttpGet]
         public async Task<IActionResult> All()
         {
 
             var t = await trainerService.GetAllTrainersAsync();
+
+            string userId = User.Identity!.IsAuthenticated ? User.GetId() : "";
+
+            foreach (var trainer in t)
+            {
+                var (likes, dislikes, userReaction) = trainerService.GetReactions(trainer.Id, userId);
+                trainer.LikesCount = likes;
+                trainer.DislikesCount = dislikes;
+                trainer.UserReaction = userReaction;
+            }
+
             return this.View(t);
         }
 
@@ -60,7 +72,31 @@ namespace MyGymWeb.Controllers
         public async Task<IActionResult> TrainerView(int gymId)
         {
             var t = await trainerService.GetTypeTrainersAsync(gymId);
+
+            string userId = User.GetId();
+
+            foreach (var trainer in t)
+            {
+                var (likes, dislikes, userReaction) = trainerService.GetReactions(trainer.Id, userId);
+                trainer.LikesCount = likes;
+                trainer.DislikesCount = dislikes;
+                trainer.UserReaction = userReaction;
+            }
             return View(t);
+        }
+
+        [HttpPost]
+        public IActionResult Like(Guid id)
+        {
+            trainerService.ReactToTrainer(id, User.GetId(), true);
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult Dislike(Guid id)
+        {
+            trainerService.ReactToTrainer(id, User.GetId(), false);
+            return Ok();
         }
 
     }

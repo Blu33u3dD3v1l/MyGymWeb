@@ -30,6 +30,12 @@ namespace MyGymWeb.Models.Home
 
        public IdentityUser? User { get; set; }
 
-        public bool Quit { get; set; }  
+        public bool Quit { get; set; }
+
+        public int LikesCount { get; set; }
+
+        public int DislikesCount { get; set; }
+
+        public bool? UserReaction { get; set; }
     }
 }

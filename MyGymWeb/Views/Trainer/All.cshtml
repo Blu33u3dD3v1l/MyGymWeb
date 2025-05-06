@@ -5,137 +5,189 @@
     ViewBag.Title = "Trainers";
 }
 
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@{
+    var antiForgeryToken = Antiforgery.GetAndStoreTokens(Context).RequestToken;
+}
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
     .trainer-container-bg {
-        background-image: url('https://motionarray.imgix.net/preview-891187-wOvXOH2hVl-high_0000.jpg?w=660&q=60&fit=max&auto=format');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        padding: 60px 0;
-        padding-top: 120px;
+    background-image: url('https://motionarray.imgix.net/preview-891187-wOvXOH2hVl-high_0000.jpg?w=660&q=60&fit=max&auto=format');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 60px 0;
+    padding-top: 120px;
     }
 
     .trainer-card {
-        border: none;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-decoration: none;
-        color: inherit;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
     }
 
-        .trainer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-        }
+    .trainer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
 
     .trainer-img {
-        height: 250px;
-        object-fit: cover;
-        object-position: top;
+    height: 250px;
+    object-fit: cover;
+    object-position: top;
     }
 
     .availability-img {
-        height: 40px;
-        width: auto;
-        margin-top: 10px;
+    height: 40px;
+    width: auto;
+    margin-top: 10px;
     }
 
     .modern-btn {
-        border: none;
-        border-radius: 25px;
-        padding: 8px 20px;
-        font-size: 14px;
-        font-weight: bold;
-        transition: background-color 0.3s, transform 0.3s;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
     }
 
     .modern-btn-select {
-        background: linear-gradient(45deg, #ffc107, #ff9800);
-        color: white;
+    background: linear-gradient(45deg, #ffc107, #ff9800);
+    color: white;
     }
 
-        .modern-btn-select:hover {
-            background: linear-gradient(45deg, #ff9800, #ffc107);
-            transform: translateY(-2px);
-        }
+    .modern-btn-select:hover {
+    background: linear-gradient(45deg, #ff9800, #ffc107);
+    transform: translateY(-2px);
+    }
 
     .modern-btn-resign {
-        background: linear-gradient(45deg, #f44336, #e53935);
-        color: white;
+    background: linear-gradient(45deg, #f44336, #e53935);
+    color: white;
     }
 
-        .modern-btn-resign:hover {
-            background: linear-gradient(45deg, #e53935, #f44336);
-            transform: translateY(-2px);
-        }
+    .modern-btn-resign:hover {
+    background: linear-gradient(45deg, #e53935, #f44336);
+    transform: translateY(-2px);
+    }
 
     .button-container {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 10px;
     }
 
     .handwritten-title {
-        font-family: 'Pacifico', cursive;
-        font-size: 1.5rem;
-        color: #18b9c6;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        letter-spacing: 1px;
-        margin-top: 10px;
-        transition: transform 0.3s ease, color 0.3s ease;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: #18b9c6;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    letter-spacing: 1px;
+    margin-top: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
     }
 
-        .handwritten-title:hover {
-            color: #18b9c6;
-            transform: scale(1.05);
-        }
+    .handwritten-title:hover {
+    color: #18b9c6;
+    transform: scale(1.05);
+    }
 
-   
+
 </style>
 
 <div class="trainer-container-bg">
     <div class="container">
+        <input type="hidden" id="RequestVerificationToken" name="__RequestVerificationToken" value="@antiForgeryToken" />
         <div class="row g-4">
             @foreach (var trainer in Model.OrderByDescending(x => x.PricePerHour))
             {
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" class="text-decoration-none">
-                        <div class="card trainer-card h-100">
+                    <div class="card trainer-card h-100">
+                        <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" class="text-decoration-none">
                             <img src="@trainer.ImageUrl" class="card-img-top trainer-img" alt="Trainer Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title handwritten-title">@trainer.Name</h5>
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title handwritten-title">@trainer.Name</h5>
 
-                                <img class="availability-img" src="@(trainer.IsAvailable
-                                    ? "https://t4.ftcdn.net/jpg/02/19/01/15/360_F_219011565_RO9mdUz9DdQ9y8WMy8WZywx96wWnb6ct.jpg"
-                                    : "https://media.istockphoto.com/id/1398189751/vector/unavailable-grunge-rubber-stamp.jpg?s=612x612&w=0&k=20&c=rktpTaFVqS1AdEpcshO7S1Fc1AXYmg4i6opm_R2AohI=")"
-                                     alt="Availability">
-                            </div>
-                            <div class="button-container">
-                                @if (!User!.IsInRole("Administrator"))
-                                {
-                                    <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post" class="modern-btn modern-btn-select">
-                                        Select
-                                    </a>
-                                }
-                                @if (User!.Identity!.IsAuthenticated && trainer.UserId == User.GetId())
-                                {
-                                    <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Resign" class="modern-btn modern-btn-resign">
-                                        Resign
-                                    </a>
-                                }
-                            </div>
+                            <img class="availability-img" src="@(trainer.IsAvailable
+                ? "https://t4.ftcdn.net/jpg/02/19/01/15/360_F_219011565_RO9mdUz9DdQ9y8WMy8WZywx96wWnb6ct.jpg"
+                : "https://media.istockphoto.com/id/1398189751/vector/unavailable-grunge-rubber-stamp.jpg?s=612x612&w=0&k=20&c=rktpTaFVqS1AdEpcshO7S1Fc1AXYmg4i6opm_R2AohI=")"
+                            alt="Availability">
+
+                         
+                            @if (User!.Identity!.IsAuthenticated)
+                            {
+                                <p class="card-text">Likes: @trainer.LikesCount | Dislikes: @trainer.DislikesCount</p>
+
+                                <button class="btn btn-success like-btn" data-id="@trainer.Id">👍 Like</button>
+                                <button class="btn btn-danger dislike-btn" data-id="@trainer.Id">👎 Dislike</button>
+                            }
+                           
                         </div>
-                    </a>                   
+                        <div class="button-container">
+                            @if (!User!.IsInRole("Administrator"))
+                            {
+                                <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post" class="modern-btn modern-btn-select">
+                                    Select
+                                </a>
+                            }
+                            @if (User!.Identity!.IsAuthenticated && trainer.UserId == User.GetId())
+                            {
+                                <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Resign" class="modern-btn modern-btn-resign">
+                                    Resign
+                                </a>
+                            }
+                        </div>
+                    </div>
                 </div>
+
             }
         </div>
     </div>
 </div>
 
+
+@section Scripts {
+    <script>
+        const token = document.getElementById("RequestVerificationToken").value;
+
+        function sendReaction(trainerId, isLike) {
+            fetch(`/Trainer/${isLike ? "Like" : "Dislike"}?id=${trainerId}`, {
+                method: 'POST',
+                headers: {
+                    'RequestVerificationToken': token
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    location.reload(); // refresh to update counts
+                } else {
+                    alert("Error reacting to trainer.");
+                }
+            });
+        }
+
+        document.querySelectorAll('.like-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const trainerId = this.getAttribute('data-id');
+                sendReaction(trainerId, true);
+            });
+        });
+
+        document.querySelectorAll('.dislike-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const trainerId = this.getAttribute('data-id');
+                sendReaction(trainerId, false);
+            });
+        });
+    </script>
+}
