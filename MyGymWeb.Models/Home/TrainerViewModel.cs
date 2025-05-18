@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MyGymWeb.Data.Models;
 
 
 namespace MyGymWeb.Models.Home
@@ -37,5 +38,7 @@ namespace MyGymWeb.Models.Home
         public int DislikesCount { get; set; }
 
         public bool? UserReaction { get; set; }
+
+        public ICollection<UserTrainer> UsersTrainers { get; set; } = new HashSet<UserTrainer>();
     }
 }

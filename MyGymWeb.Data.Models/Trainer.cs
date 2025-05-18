@@ -12,6 +12,7 @@ namespace MyGymWeb.Data.Models
         {
             this.Gyms = new List<Gym>();
             this.Appointments = new List<Appointment>();
+            this.UsersTrainers = new List<UserTrainer>();
         }
 
         [Key]
@@ -62,6 +63,7 @@ namespace MyGymWeb.Data.Models
         public virtual List<Gym> Gyms { get; set; }
 
         public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<UserTrainer> UsersTrainers { get; set; }
     }
 }
 

@@ -37,10 +37,10 @@ namespace MyGymWeb.Areas.Admin.Controllers
 
                TempData[SuccessMessage] = "You Successfuly Approved an appointment!";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                TempData[ErrorMessage] = "Not Enough Money!";
+                TempData[ErrorMessage] = "Not Enough Money!" + ex.Message;
             }
 
             return RedirectToAction("All", "Appointment", "Admin");

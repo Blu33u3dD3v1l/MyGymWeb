@@ -7,8 +7,6 @@ using MyGymWeb.Models.Enums;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 using MyGymWeb.Services.Models.Trainer;
-using SendGrid.Helpers.Mail;
-using System.Reflection.Metadata.Ecma335;
 
 namespace MyGymWeb.Services
 {
@@ -24,7 +22,7 @@ namespace MyGymWeb.Services
         public async Task<IEnumerable<TrainerViewModel>> GetAllTrainersAsync()
         {
             var trainers = await context.Trainers    
-               .Where(x => x.IsActive)                   
+                .Include(x => x.UsersTrainers)
                .Select(x => new TrainerViewModel()
                {
                    Id = x.Id,
@@ -38,6 +36,7 @@ namespace MyGymWeb.Services
                    UserId = x.UserId,
                    User = x.User,
                    PhoneNumber = x.PhoneNumber,
+                   UsersTrainers = x.UsersTrainers
                    
 
                })            

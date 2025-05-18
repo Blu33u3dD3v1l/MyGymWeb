@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
 using MyGymWeb.Services.Interface;
 using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
-using static MyGymWeb.Common.Constants.NotificationMessagesConstants;
-using MyGymWeb.Data.Models;
+
 
 
 namespace MyGymWeb.Controllers

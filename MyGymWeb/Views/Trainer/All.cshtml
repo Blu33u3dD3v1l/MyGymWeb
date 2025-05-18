@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Trainers";
+    
 }
 
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
@@ -110,6 +111,8 @@
         <div class="row g-4">
             @foreach (var trainer in Model.OrderByDescending(x => x.PricePerHour))
             {
+                var hasAppointment = trainer.UsersTrainers.Any(ut => ut.UserId == User.GetId());
+
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card trainer-card h-100">
                         <a asp-route-trainerId="@trainer.Id" asp-controller="Trainer" asp-action="Details" class="text-decoration-none">
@@ -118,13 +121,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title handwritten-title">@trainer.Name</h5>
 
-                            <img class="availability-img" src="@(trainer.IsAvailable
-                ? "https://t4.ftcdn.net/jpg/02/19/01/15/360_F_219011565_RO9mdUz9DdQ9y8WMy8WZywx96wWnb6ct.jpg"
-                : "https://media.istockphoto.com/id/1398189751/vector/unavailable-grunge-rubber-stamp.jpg?s=612x612&w=0&k=20&c=rktpTaFVqS1AdEpcshO7S1Fc1AXYmg4i6opm_R2AohI=")"
-                            alt="Availability">
-
-                         
-                            @if (User!.Identity!.IsAuthenticated)
+                            @if (User.Identity != null && User.Identity.IsAuthenticated && hasAppointment)
                             {
                                 <p class="card-text">Likes: @trainer.LikesCount | Dislikes: @trainer.DislikesCount</p>
 
@@ -136,13 +133,13 @@
                         <div class="button-container">
                             @if (!User!.IsInRole("Administrator"))
                             {
-                                <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post" class="modern-btn modern-btn-select">
+                                <a asp-route-trainerId="@trainer.Id" asp-controller="User" asp-action="Appointment" method="post" class="modern-btn modern-btn-select">
                                     Select
                                 </a>
                             }
                             @if (User!.Identity!.IsAuthenticated && trainer.UserId == User.GetId())
                             {
-                                <a asp-route-id="@trainer.Id" asp-controller="User" asp-action="Resign" class="modern-btn modern-btn-resign">
+                                <a asp-route-trainerId="@trainer.Id" asp-controller="User" asp-action="Resign" class="modern-btn modern-btn-resign">
                                     Resign
                                 </a>
                             }

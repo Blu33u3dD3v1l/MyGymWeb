@@ -61,12 +61,14 @@ namespace MyGymWeb.Services
 
             await data.SaveChangesAsync();
 
-            await emailService.SendEmailAsync(currentUser.Email!, "Appointment Approved", $"Hello {currentUser.FirstName}, your appointment with {currentTrainer.Name} has been approved. The amount has been deducted from your account. Thank you!");
-
+            //await emailService.SendEmailAsync(currentUser?.Email!, "Appointment Approved", $"Hello {currentUser?.FirstName}, your appointment with {currentTrainer?.Name} has been approved. The amount has been deducted from your account. Thank you!");
         }
+
+        
 
         public async Task DeleteAppointmentsAsync(int id)
         {
+
             var currentApplier = await data.Appointments
                    .FirstOrDefaultAsync(x => x.Id == id);
 
@@ -75,8 +77,9 @@ namespace MyGymWeb.Services
                 throw new NullReferenceException();
             }
 
-            data.Appointments.RemoveRange(currentApplier);
+            data.Appointments.Remove(currentApplier);
             await data.SaveChangesAsync();
+
         }
 
         public async Task<IEnumerable<UserTrainersFormModel>> GetAllAsync()
