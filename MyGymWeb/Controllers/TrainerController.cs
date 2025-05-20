@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyGymWeb.Models.Home;
+using MyGymWeb.Services;
 using MyGymWeb.Services.Interface;
 using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
 
@@ -87,15 +88,19 @@ namespace MyGymWeb.Controllers
         [HttpPost]
         public IActionResult Like(Guid id)
         {
-            trainerService.ReactToTrainer(id, User.GetId(), true);
-            return Ok();
+            var userId = User.GetId();
+            trainerService.ReactToTrainer(id, userId, true);
+            var result = trainerService.GetReactions(id, userId);
+            return Json(new { likes = result.likes, dislikes = result.dislikes });
         }
 
         [HttpPost]
         public IActionResult Dislike(Guid id)
         {
-            trainerService.ReactToTrainer(id, User.GetId(), false);
-            return Ok();
+            var userId = User.GetId();
+            trainerService.ReactToTrainer(id, userId, false);
+            var result = trainerService.GetReactions(id, userId);
+            return Json(new { likes = result.likes, dislikes = result.dislikes });
         }
 
     }
