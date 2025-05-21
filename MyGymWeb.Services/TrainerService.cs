@@ -384,14 +384,21 @@ namespace MyGymWeb.Services
             context.SaveChanges();
         }
 
-        public (int likes, int dislikes, bool? userReaction) GetReactions(Guid trainerId, string userId)
+        public (int likes, int dislikes, bool? userReaction) GetReactions(Guid trainerId, string? userId)
         {
             var reactions = context.TrainerReactions.Where(r => r.TrainerId == trainerId);
             int likes = reactions.Count(r => r.IsLike);
             int dislikes = reactions.Count(r => !r.IsLike);
-            bool? userReaction = reactions.FirstOrDefault(r => r.UserId == userId)?.IsLike;
+
+            bool? userReaction = null;
+
+            if (!string.IsNullOrEmpty(userId))
+            {
+                userReaction = reactions.FirstOrDefault(r => r.UserId == userId)?.IsLike;
+            }
 
             return (likes, dislikes, userReaction);
         }
+
     }
 }

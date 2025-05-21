@@ -242,33 +242,39 @@ namespace MyGymWeb.Controllers
         {
 
             var ids = this.User.GetId();
-            var prod = this.userService.GetAllProductsForBuyAsync(ids).Result;
-
-            await Task.Delay(1500);
-
-            try
+            if(ids != null)
             {
-               
-                await userService.BuyProducts(productId, ids);
-                if (prod?.Count() == 0)
+                var prod = this.userService.GetAllProductsForBuyAsync(ids).Result;
+
+                await Task.Delay(1500);
+
+                try
                 {
-                    TempData[SuccessMessage] = "You bought a product!";
+
+                    await userService.BuyProducts(productId, ids);
+                    if (prod?.Count() == 0)
+                    {
+                        TempData[SuccessMessage] = "You bought a product!";
+                    }
+                    else
+                    {
+                        TempData[SuccessMessage] = $"You bought {prod?.Count()} products!";
+                    }
+
                 }
-                else
+                catch (ArgumentException)
                 {
-                    TempData[SuccessMessage] = $"You bought {prod?.Count()} products!";
+
+                    TempData[ErrorMessage] = "Not enough money!";
                 }
+                catch (NullReferenceException)
+                {
+                    TempData[ErrorMessage] = "No products added!";
+                }
+            }
+           
 
-            }
-            catch (ArgumentException)
-            {
-
-                TempData[ErrorMessage] = "Not enough money!";
-            }
-            catch (NullReferenceException)
-            {
-                TempData[ErrorMessage] = "No products added!";
-            }
+            
 
             return RedirectToAction("Cart", "User");
         }
@@ -287,6 +293,9 @@ namespace MyGymWeb.Controllers
 
             var ids = this.User.GetId();
 
+            if(ids != null)
+            {
+                
             if(couponCode != null && couponCode == "AAA-12345")
             {
                 try
@@ -300,6 +309,8 @@ namespace MyGymWeb.Controllers
 
                 }
             }
+            }
+
 
             return RedirectToAction("RefreshedMine", "User");
            

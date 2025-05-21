@@ -19,7 +19,7 @@ namespace MyGymWeb.Services.Interface
         Task DeleteTrainerForApplyAsync(Guid id);
         Task<AllTrainersFilteredAndPagedServiceModel> AllAsync(AllTrainersQueryModel model);
         public void ReactToTrainer(Guid trainerId, string userId, bool isLike);
-        public (int likes, int dislikes, bool? userReaction) GetReactions(Guid trainerId, string userId);
+        public (int likes, int dislikes, bool? userReaction) GetReactions(Guid trainerId, string? userId);
 
 
     }

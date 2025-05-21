@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using MyGymWeb.Models.Home;
-using MyGymWeb.Services;
 using MyGymWeb.Services.Interface;
 using static MyGymWeb.Infrastructure.Extensions.ClaimsExtensions;
 
@@ -47,7 +47,7 @@ namespace MyGymWeb.Controllers
 
             var t = await trainerService.GetAllTrainersAsync();
 
-            string userId = User.Identity!.IsAuthenticated ? User.GetId() : "";
+            string? userId = User.Identity?.IsAuthenticated == true ? User.GetId() : null;
 
             foreach (var trainer in t)
             {
@@ -57,7 +57,7 @@ namespace MyGymWeb.Controllers
                 trainer.UserReaction = userReaction;
             }
 
-            return this.View(t);
+            return View(t);
         }
 
         [AllowAnonymous]
@@ -73,7 +73,7 @@ namespace MyGymWeb.Controllers
         {
             var t = await trainerService.GetTypeTrainersAsync(gymId);
 
-            string userId = User.GetId();
+            string? userId = User.Identity?.IsAuthenticated == true ? User.GetId() : null;
 
             foreach (var trainer in t)
             {
@@ -85,19 +85,32 @@ namespace MyGymWeb.Controllers
             return View(t);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Like(Guid id)
         {
             var userId = User.GetId();
+
+            if (userId is null)
+            {
+                return Unauthorized(); 
+            }
+
             trainerService.ReactToTrainer(id, userId, true);
             var result = trainerService.GetReactions(id, userId);
             return Json(new { likes = result.likes, dislikes = result.dislikes });
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Dislike(Guid id)
         {
             var userId = User.GetId();
+
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
             trainerService.ReactToTrainer(id, userId, false);
             var result = trainerService.GetReactions(id, userId);
             return Json(new { likes = result.likes, dislikes = result.dislikes });

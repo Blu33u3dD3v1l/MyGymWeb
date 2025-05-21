@@ -26,23 +26,30 @@ namespace MyGymWeb.Controllers
            
             string? currentId = this.User.GetId();
 
-            bool isApplier = await this.applyService.ApplierExistByUserId(currentId);
-            if (isApplier)
+
+            if(currentId != null)
             {
-               
+
+                bool isApplier = await this.applyService.ApplierExistByUserId(currentId);
+                if (isApplier)
+                {
+
                     TempData[ErrorMessage] = "You allready have pending application!";
 
-                    return RedirectToAction("Index", "Home");               
-                  
-            }
+                    return RedirectToAction("Index", "Home");
 
-            bool isTrainer = await this.trainerService.TrainerExistByUserId(currentId);
-            if (isTrainer)
-            {
-                TempData[WarningMessage] = "You are a trainer!";
+                }
 
-                return RedirectToAction("Index", "Home");
+                bool isTrainer = await this.trainerService.TrainerExistByUserId(currentId);
+                if (isTrainer)
+                {
+                    TempData[WarningMessage] = "You are a trainer!";
+
+                    return RedirectToAction("Index", "Home");
+                }
             }
+             
+
 
             return View();
         }
